@@ -1,0 +1,36 @@
+########################################################################## include
+include:
+  - project: "infrastructure/platform/gitlab-templates"
+    ref: "1.0.1"
+    file: "defaults.yml"
+  - project: "infrastructure/platform/gitlab-templates"
+    ref: "1.0.1"
+    file: "rules.yml"
+  - project: "infrastructure/platform/gitlab-templates"
+    ref: "1.2.0"
+    file: "go.yml"
+  - project: "infrastructure/platform/gitlab-templates"
+    ref: "1.0.1"
+    file: "show.yml"
+
+########################################################################## stages
+stages:
+  - gotest
+  - golint
+
+########################################################################## gotest
+test-gofiles:
+  stage: gotest
+  extends:
+    - .rules-semvertag-feature-alpha-release-branches
+    - .go-test-template
+  needs: [ ]
+  coverage: '/coverage: \d+.\d+% of statements/'
+
+########################################################################## golint
+lint-gofiles:
+  stage: golint
+  extends:
+    - .rules-semvertag-feature-alpha-release-branches
+    - .go-lint-template
+  needs: [ ]

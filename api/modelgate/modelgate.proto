@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package modelgate;
+
+option go_package = "github.com/yeastor/modelgate/pkg/modelgate;modelgate";
+
+import "google/api/annotations.proto";
+import "validate/validate.proto";
+
+message ChatResponse {
+  ChatAnswer answer = 1;
+}
+
+message ChatAnswer {
+  string content = 1;
+}
+
+message ChatQuestion {
+  string q = 1;
+}
+
+message ChatRequest {
+  ChatQuestion question = 1 [(validate.rules).message.required = true];;
+}
+
+
+
+message CreateResponse {
+  ChatAnswer note = 1;
+}
+
+service ModelService {
+
+  rpc Chat(ChatRequest) returns (ChatResponse) {
+    option (google.api.http) = {
+      post: "/model/chat"
+      body: "question"
+    };
+  }
+}

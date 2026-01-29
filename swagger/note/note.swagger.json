@@ -1,0 +1,150 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "note/note.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "NoteService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/note/create": {
+      "post": {
+        "operationId": "NoteService_Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/noteCreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "info",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/noteNoteInfo"
+            }
+          }
+        ],
+        "tags": [
+          "NoteService"
+        ]
+      }
+    },
+    "/note/get-by-uuid/{uuid}": {
+      "get": {
+        "operationId": "NoteService_GetByUUID",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/noteGetByUUIDResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "NoteService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "noteCreateResponse": {
+      "type": "object",
+      "properties": {
+        "note": {
+          "$ref": "#/definitions/noteNote"
+        }
+      }
+    },
+    "noteGetByUUIDResponse": {
+      "type": "object",
+      "properties": {
+        "note": {
+          "$ref": "#/definitions/noteNote"
+        }
+      }
+    },
+    "noteNote": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "info": {
+          "$ref": "#/definitions/noteNoteInfo"
+        }
+      }
+    },
+    "noteNoteInfo": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

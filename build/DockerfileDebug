@@ -1,0 +1,41 @@
+FROM golang:1.23.1-bullseye AS builder
+
+WORKDIR /build
+
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    git
+
+ENV GO111MODULE=on
+ENV GOOS=linux
+ENV GOARCH=amd64
+
+ARG CI_JOB_TOKEN
+ARG CI_JOB_USER
+
+
+
+COPY go.mod .
+COPY go.sum .
+RUN apt-get install --quiet  git && \
+    git config --global url."https://${CI_JOB_USER}:${CI_JOB_TOKEN}@gitlab.direct-credit.ru".insteadOf "https://gitlab.direct-credit.ru" && \
+    go mod download && \
+    go install github.com/go-delve/delve/cmd/dlv@latest
+
+COPY . .
+RUN go build -gcflags="all=-N -l" -o application .
+
+# Final stage
+FROM debian:buster
+
+ARG HTTP_PORT
+ENV HTTP_PORT="${HTTP_PORT}"
+
+ARG APP_DEBUG_PORT
+ENV APP_DEBUG_PORT="${APP_DEBUG_PORT}"
+
+EXPOSE ${HTTP_PORT} ${APP_DEBUG_PORT}
+WORKDIR /
+COPY --from=builder /go/bin/dlv /
+COPY --from=builder /build/application .
+
+ENTRYPOINT ./dlv --listen=:${APP_DEBUG_PORT} --headless=true --api-version=2 --accept-multiclient --only-same-user=false --log --log-output debugger,rpc,dap exec /application

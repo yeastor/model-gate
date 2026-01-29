@@ -1,0 +1,1 @@
+machine gitlab.direct-credit.ru login GO_PKG_READ_TOKEN password [see gitlab vars on cs-additional-products]

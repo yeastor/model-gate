@@ -1,0 +1,22 @@
+FROM golang:1.23.12-alpine3.22 AS builder
+
+ARG CI_JOB_TOKEN
+ARG CI_JOB_USER
+
+WORKDIR /build
+
+COPY go.mod go.sum ./
+
+RUN go mod download
+
+COPY . .
+
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o application .
+
+FROM docker.direct-credit.ru/retag/alpine:3.18.3
+
+WORKDIR /root
+
+COPY --from=builder /build/application .
+
+ENTRYPOINT ["./application"]

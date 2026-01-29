@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package healthcheck;
+
+option go_package = "gitlab.direct-credit.ru/go/msa-template/pkg/healthcheck;healthcheck";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+service HealthCheckService {
+
+  rpc LivenessProbe(google.protobuf.Empty) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      get: "/healthz/l"
+    };
+  }
+
+  rpc ReadinessProbe(google.protobuf.Empty) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      get: "/healthz/r"
+    };
+  }
+
+}
