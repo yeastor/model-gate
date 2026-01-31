@@ -15,6 +15,8 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o appl
 
 FROM alpine:3.22
 
+RUN apk add curl #for coker compose health check
+
 WORKDIR /root
 
 COPY --from=builder /build/application .
