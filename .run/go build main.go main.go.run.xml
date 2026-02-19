@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="go build main.go main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+    <module name="Mihon" />
+    <working_directory value="$PROJECT_DIR$/model-gate" />
+    <envs>
+      <env name="APP_DB_CHAT_LOGIN" value="cahr_writer" />
+    </envs>
+    <kind value="FILE" />
+    <package value="model-gate" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/main.go|$PROJECT_DIR$/model-gate/main.go" />
+    <method v="2" />
+  </configuration>
+</component>

@@ -116,6 +116,53 @@ func (x *ChatAnswer) GetContent() string {
 	return ""
 }
 
+type Chat struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *Chat) Reset() {
+	*x = Chat{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_modelgate_modelgate_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Chat) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Chat) ProtoMessage() {}
+
+func (x *Chat) ProtoReflect() protoreflect.Message {
+	mi := &file_modelgate_modelgate_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Chat.ProtoReflect.Descriptor instead.
+func (*Chat) Descriptor() ([]byte, []int) {
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Chat) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
 type ChatQuestion struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -127,7 +174,7 @@ type ChatQuestion struct {
 func (x *ChatQuestion) Reset() {
 	*x = ChatQuestion{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_modelgate_modelgate_proto_msgTypes[2]
+		mi := &file_modelgate_modelgate_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -140,7 +187,7 @@ func (x *ChatQuestion) String() string {
 func (*ChatQuestion) ProtoMessage() {}
 
 func (x *ChatQuestion) ProtoReflect() protoreflect.Message {
-	mi := &file_modelgate_modelgate_proto_msgTypes[2]
+	mi := &file_modelgate_modelgate_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -153,7 +200,7 @@ func (x *ChatQuestion) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChatQuestion.ProtoReflect.Descriptor instead.
 func (*ChatQuestion) Descriptor() ([]byte, []int) {
-	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{2}
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ChatQuestion) GetQ() string {
@@ -163,18 +210,73 @@ func (x *ChatQuestion) GetQ() string {
 	return ""
 }
 
+type ChatBody struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Chat     *Chat         `protobuf:"bytes,1,opt,name=chat,proto3" json:"chat,omitempty"`
+	Question *ChatQuestion `protobuf:"bytes,2,opt,name=question,proto3" json:"question,omitempty"`
+}
+
+func (x *ChatBody) Reset() {
+	*x = ChatBody{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_modelgate_modelgate_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ChatBody) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChatBody) ProtoMessage() {}
+
+func (x *ChatBody) ProtoReflect() protoreflect.Message {
+	mi := &file_modelgate_modelgate_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChatBody.ProtoReflect.Descriptor instead.
+func (*ChatBody) Descriptor() ([]byte, []int) {
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ChatBody) GetChat() *Chat {
+	if x != nil {
+		return x.Chat
+	}
+	return nil
+}
+
+func (x *ChatBody) GetQuestion() *ChatQuestion {
+	if x != nil {
+		return x.Question
+	}
+	return nil
+}
+
 type ChatRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Question *ChatQuestion `protobuf:"bytes,1,opt,name=question,proto3" json:"question,omitempty"`
+	ChatBody *ChatBody `protobuf:"bytes,1,opt,name=chatBody,proto3" json:"chatBody,omitempty"`
 }
 
 func (x *ChatRequest) Reset() {
 	*x = ChatRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_modelgate_modelgate_proto_msgTypes[3]
+		mi := &file_modelgate_modelgate_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -187,7 +289,7 @@ func (x *ChatRequest) String() string {
 func (*ChatRequest) ProtoMessage() {}
 
 func (x *ChatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_modelgate_modelgate_proto_msgTypes[3]
+	mi := &file_modelgate_modelgate_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -200,12 +302,12 @@ func (x *ChatRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChatRequest.ProtoReflect.Descriptor instead.
 func (*ChatRequest) Descriptor() ([]byte, []int) {
-	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{3}
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ChatRequest) GetQuestion() *ChatQuestion {
+func (x *ChatRequest) GetChatBody() *ChatBody {
 	if x != nil {
-		return x.Question
+		return x.ChatBody
 	}
 	return nil
 }
@@ -221,7 +323,7 @@ type CreateResponse struct {
 func (x *CreateResponse) Reset() {
 	*x = CreateResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_modelgate_modelgate_proto_msgTypes[4]
+		mi := &file_modelgate_modelgate_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -234,7 +336,7 @@ func (x *CreateResponse) String() string {
 func (*CreateResponse) ProtoMessage() {}
 
 func (x *CreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_modelgate_modelgate_proto_msgTypes[4]
+	mi := &file_modelgate_modelgate_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -247,12 +349,255 @@ func (x *CreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResponse.ProtoReflect.Descriptor instead.
 func (*CreateResponse) Descriptor() ([]byte, []int) {
-	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{4}
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateResponse) GetNote() *ChatAnswer {
 	if x != nil {
 		return x.Note
+	}
+	return nil
+}
+
+type MessageListRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Chat *Chat `protobuf:"bytes,1,opt,name=chat,proto3" json:"chat,omitempty"`
+}
+
+func (x *MessageListRequest) Reset() {
+	*x = MessageListRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_modelgate_modelgate_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MessageListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MessageListRequest) ProtoMessage() {}
+
+func (x *MessageListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_modelgate_modelgate_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MessageListRequest.ProtoReflect.Descriptor instead.
+func (*MessageListRequest) Descriptor() ([]byte, []int) {
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *MessageListRequest) GetChat() *Chat {
+	if x != nil {
+		return x.Chat
+	}
+	return nil
+}
+
+type MessageListResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Message []*Message `protobuf:"bytes,1,rep,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *MessageListResponse) Reset() {
+	*x = MessageListResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_modelgate_modelgate_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MessageListResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MessageListResponse) ProtoMessage() {}
+
+func (x *MessageListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_modelgate_modelgate_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MessageListResponse.ProtoReflect.Descriptor instead.
+func (*MessageListResponse) Descriptor() ([]byte, []int) {
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *MessageListResponse) GetMessage() []*Message {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type Message struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Text      string `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	Id        string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Direction int64  `protobuf:"varint,3,opt,name=direction,proto3" json:"direction,omitempty"`
+}
+
+func (x *Message) Reset() {
+	*x = Message{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_modelgate_modelgate_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Message) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Message) ProtoMessage() {}
+
+func (x *Message) ProtoReflect() protoreflect.Message {
+	mi := &file_modelgate_modelgate_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Message.ProtoReflect.Descriptor instead.
+func (*Message) Descriptor() ([]byte, []int) {
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *Message) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *Message) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Message) GetDirection() int64 {
+	if x != nil {
+		return x.Direction
+	}
+	return 0
+}
+
+// StartStart
+type StartRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *StartRequest) Reset() {
+	*x = StartRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_modelgate_modelgate_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StartRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartRequest) ProtoMessage() {}
+
+func (x *StartRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_modelgate_modelgate_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartRequest.ProtoReflect.Descriptor instead.
+func (*StartRequest) Descriptor() ([]byte, []int) {
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{10}
+}
+
+type StartResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Chat *Chat `protobuf:"bytes,1,opt,name=chat,proto3" json:"chat,omitempty"`
+}
+
+func (x *StartResponse) Reset() {
+	*x = StartResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_modelgate_modelgate_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StartResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartResponse) ProtoMessage() {}
+
+func (x *StartResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_modelgate_modelgate_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartResponse.ProtoReflect.Descriptor instead.
+func (*StartResponse) Descriptor() ([]byte, []int) {
+	return file_modelgate_modelgate_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *StartResponse) GetChat() *Chat {
+	if x != nil {
+		return x.Chat
 	}
 	return nil
 }
@@ -272,28 +617,66 @@ var file_modelgate_modelgate_proto_rawDesc = []byte{
 	0x73, 0x77, 0x65, 0x72, 0x52, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x22, 0x26, 0x0a, 0x0a,
 	0x43, 0x68, 0x61, 0x74, 0x41, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f,
 	0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6e,
-	0x74, 0x65, 0x6e, 0x74, 0x22, 0x1c, 0x0a, 0x0c, 0x43, 0x68, 0x61, 0x74, 0x51, 0x75, 0x65, 0x73,
-	0x74, 0x69, 0x6f, 0x6e, 0x12, 0x0c, 0x0a, 0x01, 0x71, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x01, 0x71, 0x22, 0x4c, 0x0a, 0x0b, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x12, 0x3d, 0x0a, 0x08, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65, 0x2e,
-	0x43, 0x68, 0x61, 0x74, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x42, 0x08, 0xfa, 0x42,
-	0x05, 0x8a, 0x01, 0x02, 0x10, 0x01, 0x52, 0x08, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
-	0x22, 0x3b, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x29, 0x0a, 0x04, 0x6e, 0x6f, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x15, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65, 0x2e, 0x43, 0x68, 0x61,
-	0x74, 0x41, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x52, 0x04, 0x6e, 0x6f, 0x74, 0x65, 0x32, 0x66, 0x0a,
-	0x0c, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x56, 0x0a,
-	0x04, 0x43, 0x68, 0x61, 0x74, 0x12, 0x16, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74,
-	0x65, 0x2e, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e,
-	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65, 0x2e, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1d, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x17, 0x3a, 0x08,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x0b, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
-	0x2f, 0x63, 0x68, 0x61, 0x74, 0x42, 0x36, 0x5a, 0x34, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
-	0x63, 0x6f, 0x6d, 0x2f, 0x79, 0x65, 0x61, 0x73, 0x74, 0x6f, 0x72, 0x2f, 0x6d, 0x6f, 0x64, 0x65,
-	0x6c, 0x67, 0x61, 0x74, 0x65, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67,
-	0x61, 0x74, 0x65, 0x3b, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x65, 0x6e, 0x74, 0x22, 0x16, 0x0a, 0x04, 0x43, 0x68, 0x61, 0x74, 0x12, 0x0e, 0x0a, 0x02,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x1c, 0x0a, 0x0c,
+	0x43, 0x68, 0x61, 0x74, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x0c, 0x0a, 0x01,
+	0x71, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x01, 0x71, 0x22, 0x78, 0x0a, 0x08, 0x43, 0x68,
+	0x61, 0x74, 0x42, 0x6f, 0x64, 0x79, 0x12, 0x2d, 0x0a, 0x04, 0x63, 0x68, 0x61, 0x74, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65,
+	0x2e, 0x43, 0x68, 0x61, 0x74, 0x42, 0x08, 0xfa, 0x42, 0x05, 0x8a, 0x01, 0x02, 0x10, 0x01, 0x52,
+	0x04, 0x63, 0x68, 0x61, 0x74, 0x12, 0x3d, 0x0a, 0x08, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f,
+	0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67,
+	0x61, 0x74, 0x65, 0x2e, 0x43, 0x68, 0x61, 0x74, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
+	0x42, 0x08, 0xfa, 0x42, 0x05, 0x8a, 0x01, 0x02, 0x10, 0x01, 0x52, 0x08, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x69, 0x6f, 0x6e, 0x22, 0x3e, 0x0a, 0x0b, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x2f, 0x0a, 0x08, 0x63, 0x68, 0x61, 0x74, 0x42, 0x6f, 0x64, 0x79, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74,
+	0x65, 0x2e, 0x43, 0x68, 0x61, 0x74, 0x42, 0x6f, 0x64, 0x79, 0x52, 0x08, 0x63, 0x68, 0x61, 0x74,
+	0x42, 0x6f, 0x64, 0x79, 0x22, 0x3b, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x29, 0x0a, 0x04, 0x6e, 0x6f, 0x74, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65,
+	0x2e, 0x43, 0x68, 0x61, 0x74, 0x41, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x52, 0x04, 0x6e, 0x6f, 0x74,
+	0x65, 0x22, 0x43, 0x0a, 0x12, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2d, 0x0a, 0x04, 0x63, 0x68, 0x61, 0x74, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74,
+	0x65, 0x2e, 0x43, 0x68, 0x61, 0x74, 0x42, 0x08, 0xfa, 0x42, 0x05, 0x8a, 0x01, 0x02, 0x10, 0x01,
+	0x52, 0x04, 0x63, 0x68, 0x61, 0x74, 0x22, 0x43, 0x0a, 0x13, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2c, 0x0a,
+	0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x12,
+	0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x4b, 0x0a, 0x07, 0x4d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x64, 0x69,
+	0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x64,
+	0x69, 0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x0e, 0x0a, 0x0c, 0x53, 0x74, 0x61, 0x72,
+	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x34, 0x0a, 0x0d, 0x53, 0x74, 0x61, 0x72,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x23, 0x0a, 0x04, 0x63, 0x68, 0x61,
+	0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67,
+	0x61, 0x74, 0x65, 0x2e, 0x43, 0x68, 0x61, 0x74, 0x52, 0x04, 0x63, 0x68, 0x61, 0x74, 0x32, 0xa8,
+	0x02, 0x0a, 0x0c, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
+	0x56, 0x0a, 0x04, 0x43, 0x68, 0x61, 0x74, 0x12, 0x16, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67,
+	0x61, 0x74, 0x65, 0x2e, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x17, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65, 0x2e, 0x43, 0x68, 0x61, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1d, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x17,
+	0x3a, 0x08, 0x63, 0x68, 0x61, 0x74, 0x42, 0x6f, 0x64, 0x79, 0x22, 0x0b, 0x2f, 0x6d, 0x6f, 0x64,
+	0x65, 0x6c, 0x2f, 0x63, 0x68, 0x61, 0x74, 0x12, 0x69, 0x0a, 0x0b, 0x4d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61,
+	0x74, 0x65, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74,
+	0x65, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1b, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x15, 0x3a, 0x04, 0x63,
+	0x68, 0x61, 0x74, 0x22, 0x0d, 0x2f, 0x6d, 0x61, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2f, 0x6c, 0x69,
+	0x73, 0x74, 0x12, 0x55, 0x0a, 0x0a, 0x53, 0x74, 0x61, 0x72, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74,
+	0x12, 0x17, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65, 0x2e, 0x53, 0x74, 0x61,
+	0x72, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x6d, 0x6f, 0x64, 0x65,
+	0x6c, 0x67, 0x61, 0x74, 0x65, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x14, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0e, 0x22, 0x0c, 0x2f, 0x73, 0x74,
+	0x61, 0x72, 0x74, 0x2f, 0x73, 0x74, 0x61, 0x72, 0x74, 0x42, 0x36, 0x5a, 0x34, 0x67, 0x69, 0x74,
+	0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x79, 0x65, 0x61, 0x73, 0x74, 0x6f, 0x72, 0x2f,
+	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x67, 0x61, 0x74, 0x65, 0x3b, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x67, 0x61, 0x74,
+	0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -308,25 +691,41 @@ func file_modelgate_modelgate_proto_rawDescGZIP() []byte {
 	return file_modelgate_modelgate_proto_rawDescData
 }
 
-var file_modelgate_modelgate_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_modelgate_modelgate_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_modelgate_modelgate_proto_goTypes = []interface{}{
-	(*ChatResponse)(nil),   // 0: modelgate.ChatResponse
-	(*ChatAnswer)(nil),     // 1: modelgate.ChatAnswer
-	(*ChatQuestion)(nil),   // 2: modelgate.ChatQuestion
-	(*ChatRequest)(nil),    // 3: modelgate.ChatRequest
-	(*CreateResponse)(nil), // 4: modelgate.CreateResponse
+	(*ChatResponse)(nil),        // 0: modelgate.ChatResponse
+	(*ChatAnswer)(nil),          // 1: modelgate.ChatAnswer
+	(*Chat)(nil),                // 2: modelgate.Chat
+	(*ChatQuestion)(nil),        // 3: modelgate.ChatQuestion
+	(*ChatBody)(nil),            // 4: modelgate.ChatBody
+	(*ChatRequest)(nil),         // 5: modelgate.ChatRequest
+	(*CreateResponse)(nil),      // 6: modelgate.CreateResponse
+	(*MessageListRequest)(nil),  // 7: modelgate.MessageListRequest
+	(*MessageListResponse)(nil), // 8: modelgate.MessageListResponse
+	(*Message)(nil),             // 9: modelgate.Message
+	(*StartRequest)(nil),        // 10: modelgate.StartRequest
+	(*StartResponse)(nil),       // 11: modelgate.StartResponse
 }
 var file_modelgate_modelgate_proto_depIdxs = []int32{
-	1, // 0: modelgate.ChatResponse.answer:type_name -> modelgate.ChatAnswer
-	2, // 1: modelgate.ChatRequest.question:type_name -> modelgate.ChatQuestion
-	1, // 2: modelgate.CreateResponse.note:type_name -> modelgate.ChatAnswer
-	3, // 3: modelgate.ModelService.Chat:input_type -> modelgate.ChatRequest
-	0, // 4: modelgate.ModelService.Chat:output_type -> modelgate.ChatResponse
-	4, // [4:5] is the sub-list for method output_type
-	3, // [3:4] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	1,  // 0: modelgate.ChatResponse.answer:type_name -> modelgate.ChatAnswer
+	2,  // 1: modelgate.ChatBody.chat:type_name -> modelgate.Chat
+	3,  // 2: modelgate.ChatBody.question:type_name -> modelgate.ChatQuestion
+	4,  // 3: modelgate.ChatRequest.chatBody:type_name -> modelgate.ChatBody
+	1,  // 4: modelgate.CreateResponse.note:type_name -> modelgate.ChatAnswer
+	2,  // 5: modelgate.MessageListRequest.chat:type_name -> modelgate.Chat
+	9,  // 6: modelgate.MessageListResponse.message:type_name -> modelgate.Message
+	2,  // 7: modelgate.StartResponse.chat:type_name -> modelgate.Chat
+	5,  // 8: modelgate.ModelService.Chat:input_type -> modelgate.ChatRequest
+	7,  // 9: modelgate.ModelService.MessageList:input_type -> modelgate.MessageListRequest
+	10, // 10: modelgate.ModelService.StartStart:input_type -> modelgate.StartRequest
+	0,  // 11: modelgate.ModelService.Chat:output_type -> modelgate.ChatResponse
+	8,  // 12: modelgate.ModelService.MessageList:output_type -> modelgate.MessageListResponse
+	11, // 13: modelgate.ModelService.StartStart:output_type -> modelgate.StartResponse
+	11, // [11:14] is the sub-list for method output_type
+	8,  // [8:11] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_modelgate_modelgate_proto_init() }
@@ -360,7 +759,7 @@ func file_modelgate_modelgate_proto_init() {
 			}
 		}
 		file_modelgate_modelgate_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChatQuestion); i {
+			switch v := v.(*Chat); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -372,7 +771,7 @@ func file_modelgate_modelgate_proto_init() {
 			}
 		}
 		file_modelgate_modelgate_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChatRequest); i {
+			switch v := v.(*ChatQuestion); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -384,7 +783,91 @@ func file_modelgate_modelgate_proto_init() {
 			}
 		}
 		file_modelgate_modelgate_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ChatBody); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_modelgate_modelgate_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ChatRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_modelgate_modelgate_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_modelgate_modelgate_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MessageListRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_modelgate_modelgate_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MessageListResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_modelgate_modelgate_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Message); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_modelgate_modelgate_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StartRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_modelgate_modelgate_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StartResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -402,7 +885,7 @@ func file_modelgate_modelgate_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_modelgate_modelgate_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

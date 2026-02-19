@@ -9,6 +9,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"log/slog"
 	"model-gate/config"
 	"model-gate/internal/api/health"
@@ -24,6 +25,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -62,7 +64,28 @@ func main() {
 
 	httpClient := &http.Client{}
 
-	api := injection.InitializeApplicationAPI(logHandler, cfg, httpClient)
+	clickHouseConnection, err := clickhouse.Open(&clickhouse.Options{
+		Addr: []string{cfg.APP.DB.ChatHost + ":9000"},
+		Auth: clickhouse.Auth{
+			Database: cfg.APP.DB.ChatDb,
+			Username: cfg.APP.DB.ChatLogin,
+			Password: cfg.APP.DB.ChatPassword,
+		},
+		ClientInfo: clickhouse.ClientInfo{
+			Products: []struct {
+				Name    string
+				Version string
+			}{
+				{Name: "ClickHouse-Importer", Version: "0.1"},
+			},
+		},
+		TLS: nil,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	api := injection.InitializeApplicationAPI(logHandler, cfg, httpClient, clickHouseConnection)
 	modelgate.RegisterModelServiceServer(server, api)
 
 	healthcheckAPI := health.NewAPI()

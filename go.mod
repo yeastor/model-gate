@@ -1,29 +1,42 @@
 module model-gate
 
-go 1.23
+go 1.26
 
 require (
+	github.com/ClickHouse/clickhouse-go/v2 v2.43.0
 	github.com/caarlos0/env/v10 v10.0.0
-	github.com/envoyproxy/protoc-gen-validate v0.9.1
-	github.com/google/uuid v1.3.0
+	github.com/envoyproxy/protoc-gen-validate v1.3.0
+	github.com/google/uuid v1.6.0
 	github.com/google/wire v0.7.0
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.15.2
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.8
 	github.com/mercari/go-grpc-interceptor v0.0.0-20180110035004-b8ad3827e82a
-	github.com/stretchr/testify v1.8.2
-	google.golang.org/genproto v0.0.0-20230403163135-c38d8f061ccd
-	google.golang.org/grpc v1.54.0
-	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.3.0
-	google.golang.org/protobuf v1.30.0
+	github.com/stretchr/testify v1.11.1
+	google.golang.org/genproto/googleapis/api v0.0.0-20260209200024-4cfbd4190f57
+	google.golang.org/grpc v1.79.1
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.6.1
+	google.golang.org/protobuf v1.36.11
 )
 
 require (
+	github.com/ClickHouse/ch-go v0.71.0 // indirect
+	github.com/andybalholm/brotli v1.2.0 // indirect
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/golang/glog v1.0.0 // indirect
-	github.com/golang/protobuf v1.5.3 // indirect
-	github.com/kr/pretty v0.3.0 // indirect
+	github.com/go-faster/city v1.0.1 // indirect
+	github.com/go-faster/errors v0.7.1 // indirect
+	github.com/klauspost/compress v1.18.4 // indirect
+	github.com/paulmach/orb v0.12.0 // indirect
+	github.com/pierrec/lz4/v4 v4.1.25 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	golang.org/x/net v0.20.0 // indirect
-	golang.org/x/sys v0.16.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	github.com/rogpeppe/go-internal v1.9.0 // indirect
+	github.com/segmentio/asm v1.2.1 // indirect
+	github.com/shopspring/decimal v1.4.0 // indirect
+	go.opentelemetry.io/otel v1.40.0 // indirect
+	go.opentelemetry.io/otel/trace v1.40.0 // indirect
+	go.yaml.in/yaml/v3 v3.0.4 // indirect
+	golang.org/x/net v0.50.0 // indirect
+	golang.org/x/sys v0.41.0 // indirect
+	golang.org/x/text v0.34.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260209200024-4cfbd4190f57 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

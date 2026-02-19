@@ -9,14 +9,17 @@ import (
 	modelgateApi "model-gate/internal/api/modelgate"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/pkg/model/processor"
+	"model-gate/internal/repository/clickhouse"
 	modelgateUsecase "model-gate/internal/usecase/modelgate"
 	dcHttp "model-gate/pkg/http"
 	"net/http"
 
+	clickhousego "github.com/ClickHouse/clickhouse-go/v2"
+
 	"github.com/google/wire"
 )
 
-func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client) *modelgateApi.API {
+func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client, conn clickhousego.Conn) *modelgateApi.API {
 	wire.Build(
 
 		wire.Bind(new(usecase.Chat), new(*modelgateUsecase.ChatUseCase)),
@@ -29,10 +32,14 @@ func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, clien
 		slog.New,
 		wire.Bind(new(processor.Logger), new(*slog.Logger)),
 		wire.Bind(new(processor.Options), new(*config.Config)),
-
 		dcHttp.NewDcHTTPClient,
 		modelgateUsecase.NewChatUseCase,
 		modelgateApi.NewAPI,
+
+		modelgateUsecase.NewClickHouseUseCase,
+		wire.Bind(new(usecase.ClickHouseUseCase), new(*modelgateUsecase.ClickHouseUseCase)),
+		clickhouse.NewRepository,
+		wire.Bind(new(clickhouse.ChatRepository), new(*clickhouse.Repository)),
 	)
 
 	return &modelgateApi.API{}

@@ -20,6 +20,7 @@ type (
 		Ports     `envPrefix:"PORTS_"`
 		Log       `envPrefix:"LOG_"`
 		Processor `envPrefix:"PROCESSOR_"`
+		DB        `envPrefix:"DB_"`
 	}
 
 	Ports struct {
@@ -38,6 +39,13 @@ type (
 	Model struct {
 		Url  string `env:"URL" envDefault:"http://localhost:11434/"`
 		Name string `env:"NAME" envDefault:"deepseek-r1"`
+	}
+
+	DB struct {
+		ChatHost     string `env:"CHAT_HOST" envDefault:"127.0.0.1"`
+		ChatDb       string `env:"CHAT_DB" envDefault:"chat"`
+		ChatLogin    string `env:"CHAT_LOGIN" envDefault:"app_chat_user"`
+		ChatPassword string `env:"CHAT_PASSWORD" envDefault:"chat"`
 	}
 )
 

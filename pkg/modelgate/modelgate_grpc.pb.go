@@ -19,7 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ModelService_Chat_FullMethodName = "/modelgate.ModelService/Chat"
+	ModelService_Chat_FullMethodName        = "/modelgate.ModelService/Chat"
+	ModelService_MessageList_FullMethodName = "/modelgate.ModelService/MessageList"
+	ModelService_StartStart_FullMethodName  = "/modelgate.ModelService/StartStart"
 )
 
 // ModelServiceClient is the client API for ModelService service.
@@ -27,6 +29,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ModelServiceClient interface {
 	Chat(ctx context.Context, in *ChatRequest, opts ...grpc.CallOption) (*ChatResponse, error)
+	MessageList(ctx context.Context, in *MessageListRequest, opts ...grpc.CallOption) (*MessageListResponse, error)
+	StartStart(ctx context.Context, in *StartRequest, opts ...grpc.CallOption) (*StartResponse, error)
 }
 
 type modelServiceClient struct {
@@ -46,11 +50,31 @@ func (c *modelServiceClient) Chat(ctx context.Context, in *ChatRequest, opts ...
 	return out, nil
 }
 
+func (c *modelServiceClient) MessageList(ctx context.Context, in *MessageListRequest, opts ...grpc.CallOption) (*MessageListResponse, error) {
+	out := new(MessageListResponse)
+	err := c.cc.Invoke(ctx, ModelService_MessageList_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *modelServiceClient) StartStart(ctx context.Context, in *StartRequest, opts ...grpc.CallOption) (*StartResponse, error) {
+	out := new(StartResponse)
+	err := c.cc.Invoke(ctx, ModelService_StartStart_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ModelServiceServer is the server API for ModelService service.
 // All implementations must embed UnimplementedModelServiceServer
 // for forward compatibility
 type ModelServiceServer interface {
 	Chat(context.Context, *ChatRequest) (*ChatResponse, error)
+	MessageList(context.Context, *MessageListRequest) (*MessageListResponse, error)
+	StartStart(context.Context, *StartRequest) (*StartResponse, error)
 	mustEmbedUnimplementedModelServiceServer()
 }
 
@@ -60,6 +84,12 @@ type UnimplementedModelServiceServer struct {
 
 func (UnimplementedModelServiceServer) Chat(context.Context, *ChatRequest) (*ChatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Chat not implemented")
+}
+func (UnimplementedModelServiceServer) MessageList(context.Context, *MessageListRequest) (*MessageListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessageList not implemented")
+}
+func (UnimplementedModelServiceServer) StartStart(context.Context, *StartRequest) (*StartResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartStart not implemented")
 }
 func (UnimplementedModelServiceServer) mustEmbedUnimplementedModelServiceServer() {}
 
@@ -92,6 +122,42 @@ func _ModelService_Chat_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ModelService_MessageList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MessageListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ModelServiceServer).MessageList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ModelService_MessageList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ModelServiceServer).MessageList(ctx, req.(*MessageListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ModelService_StartStart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ModelServiceServer).StartStart(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ModelService_StartStart_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ModelServiceServer).StartStart(ctx, req.(*StartRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ModelService_ServiceDesc is the grpc.ServiceDesc for ModelService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -102,6 +168,14 @@ var ModelService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Chat",
 			Handler:    _ModelService_Chat_Handler,
+		},
+		{
+			MethodName: "MessageList",
+			Handler:    _ModelService_MessageList_Handler,
+		},
+		{
+			MethodName: "StartStart",
+			Handler:    _ModelService_StartStart_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -16,6 +16,38 @@
     "application/json"
   ],
   "paths": {
+    "/massage/list": {
+      "post": {
+        "operationId": "ModelService_MessageList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelgateMessageListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "chat",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/modelgateChat"
+            }
+          }
+        ],
+        "tags": [
+          "ModelService"
+        ]
+      }
+    },
     "/model/chat": {
       "post": {
         "operationId": "ModelService_Chat",
@@ -35,11 +67,11 @@
         },
         "parameters": [
           {
-            "name": "question",
+            "name": "chatBody",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/modelgateChatQuestion"
+              "$ref": "#/definitions/modelgateChatBody"
             }
           }
         ],
@@ -47,14 +79,55 @@
           "ModelService"
         ]
       }
+    },
+    "/start/start": {
+      "post": {
+        "operationId": "ModelService_StartStart",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelgateStartResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "ModelService"
+        ]
+      }
     }
   },
   "definitions": {
+    "modelgateChat": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
     "modelgateChatAnswer": {
       "type": "object",
       "properties": {
         "content": {
           "type": "string"
+        }
+      }
+    },
+    "modelgateChatBody": {
+      "type": "object",
+      "properties": {
+        "chat": {
+          "$ref": "#/definitions/modelgateChat"
+        },
+        "question": {
+          "$ref": "#/definitions/modelgateChatQuestion"
         }
       }
     },
@@ -71,6 +144,41 @@
       "properties": {
         "answer": {
           "$ref": "#/definitions/modelgateChatAnswer"
+        }
+      }
+    },
+    "modelgateMessage": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "direction": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelgateMessageListResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/modelgateMessage"
+          }
+        }
+      }
+    },
+    "modelgateStartResponse": {
+      "type": "object",
+      "properties": {
+        "chat": {
+          "$ref": "#/definitions/modelgateChat"
         }
       }
     },

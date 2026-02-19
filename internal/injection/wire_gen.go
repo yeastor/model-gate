@@ -7,10 +7,12 @@
 package injection
 
 import (
+	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
 	"log/slog"
 	"model-gate/config"
 	"model-gate/internal/api/modelgate"
 	"model-gate/internal/pkg/model/processor"
+	"model-gate/internal/repository/clickhouse"
 	modelgate2 "model-gate/internal/usecase/modelgate"
 	http2 "model-gate/pkg/http"
 	"net/http"
@@ -18,11 +20,13 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client) *modelgate.API {
+func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client, conn driver.Conn) *modelgate.API {
 	logger := slog.New(logHandler)
 	dcHTTPClient := http2.NewDcHTTPClient(logger, client)
 	factory := processor.NewFactory(dcHTTPClient, cfg, logger)
 	chatUseCase := modelgate2.NewChatUseCase(factory, cfg)
-	api := modelgate.NewAPI(chatUseCase)
+	repository := clickhouse.NewRepository(conn)
+	clickHouseUseCase := modelgate2.NewClickHouseUseCase(repository)
+	api := modelgate.NewAPI(chatUseCase, clickHouseUseCase)
 	return api
 }
