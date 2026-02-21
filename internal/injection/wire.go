@@ -7,6 +7,7 @@ import (
 	"log/slog"
 	"model-gate/config"
 	modelgateApi "model-gate/internal/api/modelgate"
+	"model-gate/internal/domain/repository"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/pkg/model/processor"
 	"model-gate/internal/repository/clickhouse"
@@ -39,7 +40,7 @@ func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, clien
 		modelgateUsecase.NewClickHouseUseCase,
 		wire.Bind(new(usecase.ClickHouseUseCase), new(*modelgateUsecase.ClickHouseUseCase)),
 		clickhouse.NewRepository,
-		wire.Bind(new(clickhouse.ChatRepository), new(*clickhouse.Repository)),
+		wire.Bind(new(repository.ChatRepository), new(*clickhouse.Repository)),
 	)
 
 	return &modelgateApi.API{}

@@ -4,18 +4,19 @@ import (
 	"context"
 	"fmt"
 	"model-gate/internal/domain/entity"
+	"model-gate/internal/domain/repository"
 	"model-gate/internal/domain/usecase"
-	"model-gate/internal/repository/clickhouse"
+	"slices"
 	"time"
 
 	"github.com/google/uuid"
 )
 
 type ClickHouseUseCase struct {
-	chatRepo clickhouse.ChatRepository
+	chatRepo repository.ChatRepository
 }
 
-func NewClickHouseUseCase(chatRepo clickhouse.ChatRepository) *ClickHouseUseCase {
+func NewClickHouseUseCase(chatRepo repository.ChatRepository) *ClickHouseUseCase {
 	return &ClickHouseUseCase{chatRepo: chatRepo}
 }
 
@@ -52,6 +53,7 @@ func (s ClickHouseUseCase) CheckExist(ctx context.Context, chatID uuid.UUID) (b 
 
 func (s ClickHouseUseCase) MessageList(ctx context.Context, chatID uuid.UUID) (message []*entity.Message, err error) {
 	messages, err := s.chatRepo.GetMessagesByChatID(ctx, chatID)
+	slices.Reverse(messages)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get messages: %w", err)
 	}

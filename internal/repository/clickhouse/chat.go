@@ -9,14 +9,6 @@ import (
 	"github.com/google/uuid"
 )
 
-type ChatRepository interface {
-	CreateChat(ctx context.Context, chat *entity.Chat) error
-	ChatExists(ctx context.Context, id uuid.UUID) (bool, error)
-	GetChat(ctx context.Context, id uuid.UUID) (*entity.Chat, error)
-	CreateMessage(ctx context.Context, message *entity.Message) error
-	GetMessagesByChatID(ctx context.Context, chatID uuid.UUID) ([]*entity.Message, error)
-}
-
 type Repository struct {
 	conn clickhouse.Conn
 }
@@ -95,7 +87,7 @@ func (r *Repository) GetMessagesByChatID(ctx context.Context, chatID uuid.UUID) 
         SELECT id, chat_id, question, answer, created_at 
         FROM chat.message 
         WHERE chat_id = ? 
-        ORDER BY created_at DESC
+        ORDER BY created_at DESC LIMIT 30
     `
 
 	rows, err := r.conn.Query(ctx, query, chatID)
