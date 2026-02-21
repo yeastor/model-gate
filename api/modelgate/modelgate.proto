@@ -62,21 +62,21 @@ service ModelService {
 
   rpc Chat(ChatRequest) returns (ChatResponse) {
     option (google.api.http) = {
-      post: "/model/chat"
+      post: "/model/chat/chat"
       body: "chatBody"
     };
   }
 
   rpc MessageList(MessageListRequest) returns (MessageListResponse) {
     option (google.api.http) = {
-      post: "/massage/list"
+      post: "/model/chat/massage/list"
       body: "chat"
     };
   }
 
   rpc StartStart(StartRequest) returns (StartResponse) {
     option (google.api.http) = {
-      post: "/start/start"
+      post: "/model/chat/start/start"
     };
   }
 }

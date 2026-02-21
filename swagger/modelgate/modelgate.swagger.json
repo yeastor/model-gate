@@ -16,39 +16,7 @@
     "application/json"
   ],
   "paths": {
-    "/massage/list": {
-      "post": {
-        "operationId": "ModelService_MessageList",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelgateMessageListResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "chat",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/modelgateChat"
-            }
-          }
-        ],
-        "tags": [
-          "ModelService"
-        ]
-      }
-    },
-    "/model/chat": {
+    "/model/chat/chat": {
       "post": {
         "operationId": "ModelService_Chat",
         "responses": {
@@ -80,7 +48,39 @@
         ]
       }
     },
-    "/start/start": {
+    "/model/chat/massage/list": {
+      "post": {
+        "operationId": "ModelService_MessageList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelgateMessageListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "chat",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/modelgateChat"
+            }
+          }
+        ],
+        "tags": [
+          "ModelService"
+        ]
+      }
+    },
+    "/model/chat/start/start": {
       "post": {
         "operationId": "ModelService_StartStart",
         "responses": {

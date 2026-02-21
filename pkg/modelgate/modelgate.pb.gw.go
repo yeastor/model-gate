@@ -131,7 +131,7 @@ func RegisterModelServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/modelgate.ModelService/Chat", runtime.WithHTTPPathPattern("/model/chat"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/modelgate.ModelService/Chat", runtime.WithHTTPPathPattern("/model/chat/chat"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -156,7 +156,7 @@ func RegisterModelServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/modelgate.ModelService/MessageList", runtime.WithHTTPPathPattern("/massage/list"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/modelgate.ModelService/MessageList", runtime.WithHTTPPathPattern("/model/chat/massage/list"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -181,7 +181,7 @@ func RegisterModelServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/modelgate.ModelService/StartStart", runtime.WithHTTPPathPattern("/start/start"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/modelgate.ModelService/StartStart", runtime.WithHTTPPathPattern("/model/chat/start/start"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -245,7 +245,7 @@ func RegisterModelServiceHandlerClient(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/modelgate.ModelService/Chat", runtime.WithHTTPPathPattern("/model/chat"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/modelgate.ModelService/Chat", runtime.WithHTTPPathPattern("/model/chat/chat"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -267,7 +267,7 @@ func RegisterModelServiceHandlerClient(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/modelgate.ModelService/MessageList", runtime.WithHTTPPathPattern("/massage/list"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/modelgate.ModelService/MessageList", runtime.WithHTTPPathPattern("/model/chat/massage/list"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -289,7 +289,7 @@ func RegisterModelServiceHandlerClient(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/modelgate.ModelService/StartStart", runtime.WithHTTPPathPattern("/start/start"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/modelgate.ModelService/StartStart", runtime.WithHTTPPathPattern("/model/chat/start/start"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -309,11 +309,11 @@ func RegisterModelServiceHandlerClient(ctx context.Context, mux *runtime.ServeMu
 }
 
 var (
-	pattern_ModelService_Chat_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"model", "chat"}, ""))
+	pattern_ModelService_Chat_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 1}, []string{"model", "chat"}, ""))
 
-	pattern_ModelService_MessageList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"massage", "list"}, ""))
+	pattern_ModelService_MessageList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"model", "chat", "massage", "list"}, ""))
 
-	pattern_ModelService_StartStart_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 0}, []string{"start"}, ""))
+	pattern_ModelService_StartStart_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 2}, []string{"model", "chat", "start"}, ""))
 )
 
 var (
