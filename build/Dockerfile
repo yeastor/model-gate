@@ -1,4 +1,4 @@
-FROM golang:1.23.12-alpine3.22 AS builder
+FROM golang:1.26.0-alpine3.23 AS builder
 
 ARG CI_JOB_TOKEN
 ARG CI_JOB_USER
