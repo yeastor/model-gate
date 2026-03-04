@@ -2,12 +2,14 @@ package modelgate
 
 import (
 	"context"
-	"fmt"
+	"errors"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/domain/usecase/converter"
 	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/vector/processor"
 )
+
+var ErrNoVectorFound = errors.New("no vector found for question")
 
 type Vector struct {
 	vectorFactory   *processor.Factory
@@ -49,5 +51,5 @@ func (v Vector) Search(ctx context.Context, question *usecase.Question) (*usecas
 		}
 	}
 
-	return nil, fmt.Errorf("no answer found for question '%s'", question.Question)
+	return nil, ErrNoVectorFound
 }

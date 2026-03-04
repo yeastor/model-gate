@@ -2,6 +2,7 @@ package modelgate
 
 import (
 	"context"
+	"errors"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/pkg/model/processor"
 )
@@ -19,7 +20,10 @@ func NewChatUseCase(modelFactory *processor.Factory, vectorUseCase usecase.Vecto
 func (useCase *ChatUseCase) Chat(ctx context.Context, question *usecase.Question) (*usecase.Answer, error) {
 
 	vectorAnswer, err := useCase.vectorUseCase.Search(ctx, question)
-	if err != nil {
+	if errors.Is(err, ErrNoVectorFound) {
+		//todo: обработать отсутствие ошибки
+		return &usecase.Answer{Content: "Уточните вопрос."}, nil
+	} else if err != nil {
 		return nil, err
 	}
 

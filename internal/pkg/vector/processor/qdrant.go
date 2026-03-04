@@ -31,23 +31,25 @@ func (q *Qdrant) GetAnswer(ctx context.Context, question *Question) ([]VectorAns
 	searchResult, err := q.client.Query(context.Background(), &qdrant.QueryPoints{
 		CollectionName: q.options.GetVectorMainCollection(),
 		Query:          qdrant.NewQueryDense(embAnswer.Vector),
+		WithPayload:    qdrant.NewWithPayload(true),
+		WithVectors:    qdrant.NewWithVectors(true),
 	})
 	if err != nil {
 		return nil, err
 	}
 
 	answer := make([]VectorAnswer, len(searchResult))
-	for _, sr := range searchResult {
-		var payloads map[string]string
+	for i, sr := range searchResult {
+		payloads := make(map[string]string, len(sr.Payload))
 
 		for key, value := range sr.GetPayload() {
-			payloads[key] = value.String()
+			payloads[key] = value.GetStringValue()
 		}
-		answer = append(answer, Answer{
+		answer[i] = Answer{
 			payload: payloads,
 			score:   sr.GetScore(),
 			id:      sr.GetId(),
-		})
+		}
 	}
 
 	log := fmt.Sprint("qdrant answer is: ", answer)
