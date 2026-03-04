@@ -10,6 +10,7 @@ require (
 	github.com/google/wire v0.7.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.8
 	github.com/mercari/go-grpc-interceptor v0.0.0-20180110035004-b8ad3827e82a
+	github.com/qdrant/go-client v1.17.1
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/genproto/googleapis/api v0.0.0-20260209200024-4cfbd4190f57
 	google.golang.org/grpc v1.79.1

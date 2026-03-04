@@ -8,10 +8,14 @@ package injection
 
 import (
 	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
+	"github.com/qdrant/go-client/qdrant"
 	"log/slog"
 	"model-gate/config"
 	"model-gate/internal/api/modelgate"
+	"model-gate/internal/pkg/embedding"
+	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/model/processor"
+	processor2 "model-gate/internal/pkg/vector/processor"
 	"model-gate/internal/repository/clickhouse"
 	modelgate2 "model-gate/internal/usecase/modelgate"
 	http2 "model-gate/pkg/http"
@@ -20,11 +24,15 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client, conn driver.Conn) *modelgate.API {
+func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client, conn driver.Conn, qdrantClient *qdrant.Client) *modelgate.API {
 	logger := slog.New(logHandler)
 	dcHTTPClient := http2.NewDcHTTPClient(logger, client)
 	factory := processor.NewFactory(dcHTTPClient, cfg, logger)
-	chatUseCase := modelgate2.NewChatUseCase(factory, cfg)
+	embeddingFactory := embedding.NewFactory(dcHTTPClient, cfg, logger)
+	processorFactory := processor2.NewFactory(qdrantClient, embeddingFactory, cfg, logger)
+	strategyFactory := answer.NewStrategyFactory()
+	vector := modelgate2.NewVector(processorFactory, cfg, logger, strategyFactory)
+	chatUseCase := modelgate2.NewChatUseCase(factory, vector, cfg)
 	repository := clickhouse.NewRepository(conn)
 	clickHouseUseCase := modelgate2.NewClickHouseUseCase(repository)
 	api := modelgate.NewAPI(chatUseCase, clickHouseUseCase)

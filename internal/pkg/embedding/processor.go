@@ -1,23 +1,9 @@
-package usecase
+package embedding
 
-import (
-	"context"
-)
+import "context"
 
-type Chat interface {
-	Chat(ctx context.Context, question *Question) (*Answer, error)
-}
-
-type Vector interface {
-	Search(ctx context.Context, question *Question) (*Answer, error)
-}
-
-type Question struct {
-	Question string
-}
-
-type Answer struct {
-	Content string
+type Processor interface {
+	GetEmbedding(ctx context.Context, question *EmbQuestion) (*EmbAnswer, error)
 }
 
 type Logger interface {
@@ -29,4 +15,19 @@ type Logger interface {
 	WarnContext(ctx context.Context, msg string, args ...any)
 	Error(msg string, args ...any)
 	ErrorContext(ctx context.Context, msg string, args ...any)
+}
+
+type SearchResult interface {
+}
+
+type EmbQuestion struct {
+	Question string
+}
+
+type EmbAnswer struct {
+	Vector []float32
+}
+
+type Options interface {
+	GetEmbeddingUrl() string
 }

@@ -3,22 +3,29 @@ package modelgate
 import (
 	"context"
 	"model-gate/internal/domain/usecase"
-	"model-gate/internal/domain/usecase/converter"
 	"model-gate/internal/pkg/model/processor"
 )
 
 type ChatUseCase struct {
-	modelFactory *processor.Factory
-	options      ChatUseCaseOptions
+	modelFactory  *processor.Factory
+	vectorUseCase usecase.Vector
+	options       ChatUseCaseOptions
 }
 
-func NewChatUseCase(modelFactory *processor.Factory, options ChatUseCaseOptions) *ChatUseCase {
-	return &ChatUseCase{modelFactory: modelFactory, options: options}
+func NewChatUseCase(modelFactory *processor.Factory, vectorUseCase usecase.Vector, options ChatUseCaseOptions) *ChatUseCase {
+	return &ChatUseCase{modelFactory: modelFactory, vectorUseCase: vectorUseCase, options: options}
 }
 
 func (useCase *ChatUseCase) Chat(ctx context.Context, question *usecase.Question) (*usecase.Answer, error) {
 
-	modelProcessor, err := useCase.modelFactory.GetProcessor(useCase.options.GetModelName())
+	vectorAnswer, err := useCase.vectorUseCase.Search(ctx, question)
+	if err != nil {
+		return nil, err
+	}
+
+	return vectorAnswer, nil
+
+	/*modelProcessor, err := useCase.modelFactory.GetProcessor(useCase.options.GetModelName())
 	if err != nil {
 		return nil, err
 	}
@@ -27,11 +34,14 @@ func (useCase *ChatUseCase) Chat(ctx context.Context, question *usecase.Question
 		return nil, err
 	}
 
-	return converter.FromProcessorAnswerAnswerToUseCase(modelAnswer), nil
+	return converter.FromProcessorAnswerAnswerToUseCase(modelAnswer), nil*/
 }
 
 type ChatUseCaseOptions interface {
 	GetModelName() string
+	GetVectorModelName() string
+	GetVectorMinScore() float32
+	GetVectorMaxCount() int
 }
 
 var _ usecase.Chat = (*ChatUseCase)(nil)

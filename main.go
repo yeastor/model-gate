@@ -27,6 +27,7 @@ import (
 
 	"github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+	"github.com/qdrant/go-client/qdrant"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/reflection"
@@ -85,7 +86,15 @@ func main() {
 		log.Fatal(err)
 	}
 
-	api := injection.InitializeApplicationAPI(logHandler, cfg, httpClient, clickHouseConnection)
+	client, err := qdrant.NewClient(&qdrant.Config{
+		Host: cfg.GetVectorHost(),
+		Port: cfg.GetVectorPort(),
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	api := injection.InitializeApplicationAPI(logHandler, cfg, httpClient, clickHouseConnection, client)
 	modelgate.RegisterModelServiceServer(server, api)
 
 	healthcheckAPI := health.NewAPI()

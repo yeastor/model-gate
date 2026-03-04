@@ -3,7 +3,9 @@ package config
 import (
 	"fmt"
 	"log/slog"
+	"model-gate/internal/pkg/embedding"
 	"model-gate/internal/pkg/model/processor"
+	processorvector "model-gate/internal/pkg/vector/processor"
 	"model-gate/internal/usecase/modelgate"
 	"strings"
 
@@ -20,6 +22,8 @@ type (
 		Ports     `envPrefix:"PORTS_"`
 		Log       `envPrefix:"LOG_"`
 		Processor `envPrefix:"PROCESSOR_"`
+		Embedding `envPrefix:"EMBEDDING_"`
+		Vector    `envPrefix:"VECTOR_"`
 		DB        `envPrefix:"DB_"`
 	}
 
@@ -41,6 +45,28 @@ type (
 		Name string `env:"NAME" envDefault:"deepseek-r1"`
 	}
 
+	Vector struct {
+		VectorModel `envPrefix:"MODEL_"`
+	}
+
+	VectorModel struct {
+		Host           string  `env:"HOST" envDefault:"localhost"`
+		Port           int     `env:"PORT" envDefault:"6334"`
+		Name           string  `env:"NAME" envDefault:"qdrant"`
+		MainCollection string  `env:"MAIN_COLLECTION" envDefault:"legal_advice"`
+		MinScore       float32 `env:"MIN_SCORE" envDefault:"0.57"`
+		MaxCount       int     `env:"MAX_COUNT" envDefault:"1"`
+	}
+
+	Embedding struct {
+		EmbModel `envPrefix:"MODEL_"`
+	}
+
+	EmbModel struct {
+		Url  string `env:"URL" envDefault:"http://localhost:11434/"`
+		Name string `env:"NAME" envDefault:"bge-m3"`
+	}
+
 	DB struct {
 		ChatHost     string `env:"CHAT_HOST" envDefault:"127.0.0.1"`
 		ChatDb       string `env:"CHAT_DB" envDefault:"chat"`
@@ -48,6 +74,37 @@ type (
 		ChatPassword string `env:"CHAT_PASSWORD" envDefault:"chat"`
 	}
 )
+
+func (c *Config) GetEmbeddingUrl() string {
+	return c.Embedding.EmbModel.Url
+}
+func (c *Config) GetEmbeddingModelName() string {
+	return c.Embedding.EmbModel.Name
+}
+
+func (c *Config) GetVectorModelName() string {
+	return c.Vector.VectorModel.Name
+}
+
+func (c *Config) GetVectorHost() string {
+	return c.Vector.VectorModel.Host
+}
+
+func (c *Config) GetVectorPort() int {
+	return c.Vector.VectorModel.Port
+}
+
+func (c *Config) GetVectorMainCollection() string {
+	return c.Vector.VectorModel.MainCollection
+}
+
+func (c *Config) GetVectorMinScore() float32 {
+	return c.Vector.VectorModel.MinScore
+}
+
+func (c *Config) GetVectorMaxCount() int {
+	return c.Vector.VectorModel.MaxCount
+}
 
 func (c *Config) GetModelName() string {
 	return c.Processor.Model.Name
@@ -82,4 +139,6 @@ func (c *Config) GetModelUrl() string {
 }
 
 var _ processor.Options = (*Config)(nil)
+var _ processorvector.Options = (*Config)(nil)
+var _ embedding.Options = (*Config)(nil)
 var _ modelgate.ChatUseCaseOptions = (*Config)(nil)
