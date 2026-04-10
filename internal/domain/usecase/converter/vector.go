@@ -2,50 +2,53 @@ package converter
 
 import (
 	"encoding/json"
+	"fmt"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/pkg/formater/answer"
 )
 
 func FromProcessorVectorAnswerToAnswerPayload(logger usecase.Logger, payload map[string]string) (*answer.Payload, error) {
-	var vectorAnswer answer.VectorAnswer
-	var category answer.Category
-	var next answer.Next
-
-	if answerStr, ok := payload["answer"]; ok {
-		err := json.Unmarshal([]byte(answerStr), &vectorAnswer)
-		if err != nil {
-			logger.Error("error Unmarshal answer")
-			return nil, err
-		}
-	} else {
-		logger.Error("error No answer in payload")
+	category, err := unmarshalPayloadField[answer.Category](logger, payload, "category")
+	if err != nil {
+		return nil, err
 	}
 
-	if categoryStr, ok := payload["category"]; ok {
-		err := json.Unmarshal([]byte(categoryStr), &category)
-		if err != nil {
-			logger.Error("error Unmarshal category")
-			return nil, err
-		}
-	} else {
-		logger.Error("error No category in payload")
+	stage, err := unmarshalPayloadField[answer.Stage](logger, payload, "stage")
+	if err != nil {
+		return nil, err
 	}
 
-	if nextStr, ok := payload["next"]; ok {
-		err := json.Unmarshal([]byte(nextStr), &next)
-		if err != nil {
-			logger.Error("error Unmarshal next")
-			return nil, err
-		}
-	} else {
-		logger.Error("error No next in payload")
+	answerPayload, err := unmarshalPayloadField[answer.Answer](logger, payload, "answer")
+	if err != nil {
+		return nil, err
 	}
 
-	payloadRes := &answer.Payload{
+	next, err := unmarshalPayloadField[answer.NextStep](logger, payload, "next")
+	if err != nil {
+		return nil, err
+	}
+
+	return &answer.Payload{
 		Category: category,
-		Answer:   vectorAnswer,
+		Stage:    stage,
+		Answer:   answerPayload,
 		Next:     next,
+	}, nil
+}
+
+func unmarshalPayloadField[T any](logger usecase.Logger, payload map[string]string, key string) (T, error) {
+	var result T
+
+	raw, ok := payload[key]
+	if !ok {
+		logger.Error("payload field is missing", "key", key)
+		return result, nil
 	}
 
-	return payloadRes, nil
+	if err := json.Unmarshal([]byte(raw), &result); err != nil {
+		logger.Error("failed to unmarshal payload field", "key", key, "error", err)
+		return result, fmt.Errorf("unmarshal payload field %q: %w", key, err)
+	}
+
+	return result, nil
 }

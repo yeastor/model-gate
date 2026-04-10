@@ -69,6 +69,7 @@ type (
 
 	DB struct {
 		ChatHost     string `env:"CHAT_HOST" envDefault:"127.0.0.1"`
+		ChatPort     string `env:"CHAT_PORT" envDefault:"9000"`
 		ChatDb       string `env:"CHAT_DB" envDefault:"chat"`
 		ChatLogin    string `env:"CHAT_LOGIN" envDefault:"app_chat_user"`
 		ChatPassword string `env:"CHAT_PASSWORD" envDefault:"chat"`

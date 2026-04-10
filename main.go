@@ -66,7 +66,7 @@ func main() {
 	httpClient := &http.Client{}
 
 	clickHouseConnection, err := clickhouse.Open(&clickhouse.Options{
-		Addr: []string{cfg.APP.DB.ChatHost + ":9000"},
+		Addr: []string{cfg.APP.DB.ChatHost + ":" + cfg.APP.DB.ChatPort},
 		Auth: clickhouse.Auth{
 			Database: cfg.APP.DB.ChatDb,
 			Username: cfg.APP.DB.ChatLogin,
