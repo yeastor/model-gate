@@ -32,9 +32,9 @@ func (format MultiFormater) Format(payload *Payload) string {
 		sections = append(sections, laws)
 	}
 
-	if payload.Next != nil && payload.Next[0].Question != "" {
+	/*if payload.Next != nil && payload.Next[0].Question != "" {
 		sections = append(sections, "Следующий вопрос: "+payload.Next[0].Question)
-	}
+	}*/
 
 	return strings.Join(sections, "\n\n")
 }
@@ -84,5 +84,5 @@ func formatLaws(laws []Law) string {
 		}
 	}
 
-	return formatList("🧑‍⚖️ Законы: ", items)
+	return formatList("🧑‍⚖️ Законы", items)
 }

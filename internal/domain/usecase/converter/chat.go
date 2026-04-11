@@ -3,6 +3,7 @@ package converter
 import (
 	"model-gate/internal/domain/entity"
 	"model-gate/internal/domain/usecase"
+	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/model/processor"
 	desc "model-gate/pkg/modelgate"
 )
@@ -84,7 +85,7 @@ func fromUseCaseViewToDescView(view []usecase.View) []*desc.View {
 			Type:     item.Type,
 			Id:       item.ID,
 			Value:    item.Value,
-			Question: item.Question,
+			Question: answer.FormatNextQuestion(item.Value),
 		})
 	}
 
