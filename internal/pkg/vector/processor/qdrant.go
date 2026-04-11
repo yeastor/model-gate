@@ -50,34 +50,29 @@ func (q *Qdrant) GetAnswer(ctx context.Context, question *Question) ([]VectorAns
 
 func (q *Qdrant) getResult(ctx context.Context, question *Question) ([]*qdrant.ScoredPoint, error) {
 
+	var query *qdrant.Query
+	var filter *qdrant.Filter
+
 	if question.VariantID != "" {
-		searchResult, err := q.client.Query(context.Background(), &qdrant.QueryPoints{
-			CollectionName: q.options.GetVectorMainCollection(),
-			Filter: &qdrant.Filter{
-				Must: []*qdrant.Condition{
-					qdrant.NewMatch("variant_id", question.VariantID),
-				},
+		filter = &qdrant.Filter{
+			Must: []*qdrant.Condition{
+				qdrant.NewMatch("variant_id", question.VariantID),
 			},
-			WithPayload: qdrant.NewWithPayload(true),
-			WithVectors: qdrant.NewWithVectors(true),
-		})
+		}
+	} else {
+		embQuestion := &embedding.EmbQuestion{Question: question.Question}
+
+		embAnswer, err := q.embeddingProcessor.GetEmbedding(ctx, embQuestion)
 		if err != nil {
 			return nil, err
 		}
-
-		return searchResult, nil
-	}
-
-	embQuestion := &embedding.EmbQuestion{Question: question.Question}
-
-	embAnswer, err := q.embeddingProcessor.GetEmbedding(ctx, embQuestion)
-	if err != nil {
-		return nil, err
+		query = qdrant.NewQueryDense(embAnswer.Vector)
 	}
 
 	searchResult, err := q.client.Query(context.Background(), &qdrant.QueryPoints{
 		CollectionName: q.options.GetVectorMainCollection(),
-		Query:          qdrant.NewQueryDense(embAnswer.Vector),
+		Query:          query,
+		Filter:         filter,
 		WithPayload:    qdrant.NewWithPayload(true),
 		WithVectors:    qdrant.NewWithVectors(true),
 	})
