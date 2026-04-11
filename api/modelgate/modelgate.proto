@@ -13,6 +13,19 @@ message ChatResponse {
 
 message ChatAnswer {
   string content = 1;
+  repeated Next next = 2;
+}
+
+message Next {
+  string question_text = 1;
+  repeated View view = 2;
+}
+
+message View {
+  string type = 1;
+  string id = 2;
+  string value = 3;
+  string question = 4;
 }
 
 message Chat {
@@ -21,6 +34,11 @@ message Chat {
 
 message ChatQuestion {
   string q = 1;
+  ChatQuestionVariant variant = 2;
+}
+
+message ChatQuestionVariant {
+  string id = 1;
 }
 
 message ChatBody {

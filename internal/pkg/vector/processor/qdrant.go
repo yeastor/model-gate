@@ -21,19 +21,7 @@ func NewQdrant(client *qdrant.Client, embeddingProcessor embedding.Processor, op
 
 func (q *Qdrant) GetAnswer(ctx context.Context, question *Question) ([]VectorAnswer, error) {
 
-	embQuestion := &embedding.EmbQuestion{Question: question.Question}
-
-	embAnswer, err := q.embeddingProcessor.GetEmbedding(ctx, embQuestion)
-	if err != nil {
-		return nil, err
-	}
-
-	searchResult, err := q.client.Query(context.Background(), &qdrant.QueryPoints{
-		CollectionName: q.options.GetVectorMainCollection(),
-		Query:          qdrant.NewQueryDense(embAnswer.Vector),
-		WithPayload:    qdrant.NewWithPayload(true),
-		WithVectors:    qdrant.NewWithVectors(true),
-	})
+	searchResult, err := q.getResult(ctx, question)
 	if err != nil {
 		return nil, err
 	}
@@ -58,4 +46,44 @@ func (q *Qdrant) GetAnswer(ctx context.Context, question *Question) ([]VectorAns
 
 	return answer, nil
 
+}
+
+func (q *Qdrant) getResult(ctx context.Context, question *Question) ([]*qdrant.ScoredPoint, error) {
+
+	if question.VariantID != "" {
+		searchResult, err := q.client.Query(context.Background(), &qdrant.QueryPoints{
+			CollectionName: q.options.GetVectorMainCollection(),
+			Filter: &qdrant.Filter{
+				Must: []*qdrant.Condition{
+					qdrant.NewMatch("variant_id", question.VariantID),
+				},
+			},
+			WithPayload: qdrant.NewWithPayload(true),
+			WithVectors: qdrant.NewWithVectors(true),
+		})
+		if err != nil {
+			return nil, err
+		}
+
+		return searchResult, nil
+	}
+
+	embQuestion := &embedding.EmbQuestion{Question: question.Question}
+
+	embAnswer, err := q.embeddingProcessor.GetEmbedding(ctx, embQuestion)
+	if err != nil {
+		return nil, err
+	}
+
+	searchResult, err := q.client.Query(context.Background(), &qdrant.QueryPoints{
+		CollectionName: q.options.GetVectorMainCollection(),
+		Query:          qdrant.NewQueryDense(embAnswer.Vector),
+		WithPayload:    qdrant.NewWithPayload(true),
+		WithVectors:    qdrant.NewWithVectors(true),
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return searchResult, nil
 }

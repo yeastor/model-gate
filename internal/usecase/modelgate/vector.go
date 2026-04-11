@@ -29,7 +29,7 @@ func (v Vector) Search(ctx context.Context, question *usecase.Question) (*usecas
 		return nil, err
 	}
 
-	vQuestion := &processor.Question{Question: question.Question}
+	vQuestion := &processor.Question{Question: question.Question, VariantID: question.Variant.ID}
 	vAnswers, err := vectorProcessor.GetAnswer(ctx, vQuestion)
 	if err != nil {
 		return nil, err

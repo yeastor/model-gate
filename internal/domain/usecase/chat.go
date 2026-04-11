@@ -12,8 +12,13 @@ type Vector interface {
 	Search(ctx context.Context, question *Question) (*Answer, error)
 }
 
+type Variant struct {
+	ID string
+}
+
 type Question struct {
 	Question string
+	Variant  Variant
 }
 
 type View struct {

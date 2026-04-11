@@ -117,6 +117,13 @@
       "properties": {
         "content": {
           "type": "string"
+        },
+        "next": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/modelgateNext"
+          }
         }
       }
     },
@@ -135,6 +142,17 @@
       "type": "object",
       "properties": {
         "q": {
+          "type": "string"
+        },
+        "variant": {
+          "$ref": "#/definitions/modelgateChatQuestionVariant"
+        }
+      }
+    },
+    "modelgateChatQuestionVariant": {
+      "type": "object",
+      "properties": {
+        "id": {
           "type": "string"
         }
       }
@@ -174,11 +192,43 @@
         }
       }
     },
+    "modelgateNext": {
+      "type": "object",
+      "properties": {
+        "questionText": {
+          "type": "string"
+        },
+        "view": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/modelgateView"
+          }
+        }
+      }
+    },
     "modelgateStartResponse": {
       "type": "object",
       "properties": {
         "chat": {
           "$ref": "#/definitions/modelgateChat"
+        }
+      }
+    },
+    "modelgateView": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
         }
       }
     },
