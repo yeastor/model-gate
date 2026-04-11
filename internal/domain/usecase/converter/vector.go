@@ -23,7 +23,7 @@ func FromProcessorVectorAnswerToAnswerPayload(logger usecase.Logger, payload map
 		return nil, err
 	}
 
-	next, err := unmarshalPayloadField[answer.NextStep](logger, payload, "next")
+	next, err := unmarshalPayloadField[[]answer.NextStep](logger, payload, "next")
 	if err != nil {
 		return nil, err
 	}
@@ -51,4 +51,38 @@ func unmarshalPayloadField[T any](logger usecase.Logger, payload map[string]stri
 	}
 
 	return result, nil
+}
+
+func FromProcessorVectorAnswerToAnswerNext(nextSteps []answer.NextStep) []usecase.Next {
+	if nextSteps == nil {
+		return nil
+	}
+
+	result := make([]usecase.Next, 0, len(nextSteps))
+
+	for _, nextStep := range nextSteps {
+		result = append(result, usecase.Next{
+			QuestionText: nextStep.Question,
+			View:         getViews(&nextStep),
+		})
+	}
+
+	return result
+}
+
+func getViews(nextStep *answer.NextStep) []usecase.View {
+	if nextStep.Type != "" {
+		viewType := nextStep.Type
+		views := make([]usecase.View, 0, 1)
+
+		views = append(views, usecase.View{
+			Type:  viewType,
+			ID:    nextStep.Data.VariantId,
+			Value: nextStep.Question,
+		})
+
+		return views
+	}
+
+	return nil
 }

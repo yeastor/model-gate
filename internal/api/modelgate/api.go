@@ -74,7 +74,7 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 	}
 
 	message := entity.NewMessage(chatID, question, useCaseAnswer.Content)
-	api.clickHouseUseCase.AddMessage(ctx, message)
+	err = api.clickHouseUseCase.AddMessage(ctx, message)
 	if err != nil {
 		return nil, fmt.Errorf("add message err: %w", err)
 	}

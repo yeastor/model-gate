@@ -47,6 +47,7 @@ func (v Vector) Search(ctx context.Context, question *usecase.Question) (*usecas
 			strAnswer := answerStrategyFormater.Format(payload)
 			return &usecase.Answer{
 				Content: strAnswer,
+				Next:    converter.FromProcessorVectorAnswerToAnswerNext(payload.Next),
 			}, nil
 		}
 	}

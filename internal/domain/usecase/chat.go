@@ -16,8 +16,21 @@ type Question struct {
 	Question string
 }
 
+type View struct {
+	Type     string
+	ID       string
+	Value    string
+	Question string
+}
+
+type Next struct {
+	QuestionText string
+	View         []View
+}
+
 type Answer struct {
 	Content string
+	Next    []Next
 }
 
 type Logger interface {

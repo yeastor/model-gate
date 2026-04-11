@@ -1,10 +1,10 @@
 package answer
 
 type Payload struct {
-	Category Category `json:"category"`
-	Stage    Stage    `json:"stage"`
-	Answer   Answer   `json:"answer"`
-	Next     NextStep `json:"next"`
+	Category Category   `json:"category"`
+	Stage    Stage      `json:"stage"`
+	Answer   Answer     `json:"answer"`
+	Next     []NextStep `json:"next"`
 }
 
 type Category struct {
@@ -35,12 +35,9 @@ type NextStep struct {
 	ID       string `json:"id"`
 	Question string `json:"question"`
 	Type     string `json:"type"`
-	Chips    []Chip `json:"chips"`
+	Data     Data   `json:"data"`
 }
 
-type Chip struct {
-	ID          string                 `json:"id"`
-	Label       string                 `json:"label"`
-	SetContext  map[string]interface{} `json:"set_context"`
-	GoToVariant string                 `json:"go_to_variant"`
+type Data struct {
+	VariantId string `json:"go_to_variant"`
 }

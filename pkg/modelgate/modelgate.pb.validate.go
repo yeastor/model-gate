@@ -529,7 +529,7 @@ func (m *ChatBody) validate(all bool) error {
 
 	if m.GetQuestion() == nil {
 		err := ChatBodyValidationError{
-			field:  "Question",
+			field:  "QuestionText",
 			reason: "value is required",
 		}
 		if !all {
@@ -543,7 +543,7 @@ func (m *ChatBody) validate(all bool) error {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
 				errors = append(errors, ChatBodyValidationError{
-					field:  "Question",
+					field:  "QuestionText",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
@@ -551,7 +551,7 @@ func (m *ChatBody) validate(all bool) error {
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
 				errors = append(errors, ChatBodyValidationError{
-					field:  "Question",
+					field:  "QuestionText",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
@@ -560,7 +560,7 @@ func (m *ChatBody) validate(all bool) error {
 	} else if v, ok := interface{}(m.GetQuestion()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return ChatBodyValidationError{
-				field:  "Question",
+				field:  "QuestionText",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}
