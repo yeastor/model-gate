@@ -18,13 +18,14 @@ type (
 	}
 
 	APP struct {
-		ENV       string `env:"ENV" envDefault:"dev"`
-		Ports     `envPrefix:"PORTS_"`
-		Log       `envPrefix:"LOG_"`
-		Processor `envPrefix:"PROCESSOR_"`
-		Embedding `envPrefix:"EMBEDDING_"`
-		Vector    `envPrefix:"VECTOR_"`
-		DB        `envPrefix:"DB_"`
+		ENV         string `env:"ENV" envDefault:"dev"`
+		DatabaseDSN string `env:"DATABASE_DSN"`
+		Ports       `envPrefix:"PORTS_"`
+		Log         `envPrefix:"LOG_"`
+		Processor   `envPrefix:"PROCESSOR_"`
+		Embedding   `envPrefix:"EMBEDDING_"`
+		Vector      `envPrefix:"VECTOR_"`
+		DB          `envPrefix:"DB_"`
 	}
 
 	Ports struct {

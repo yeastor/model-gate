@@ -14,11 +14,13 @@ import (
 	"model-gate/internal/pkg/model/processor"
 	processorvector "model-gate/internal/pkg/vector/processor"
 	"model-gate/internal/repository/clickhouse"
+	"model-gate/internal/repository/postgres"
 	modelgateUsecase "model-gate/internal/usecase/modelgate"
 	dcHttp "model-gate/pkg/http"
 	"net/http"
 
 	clickhousego "github.com/ClickHouse/clickhouse-go/v2"
+	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/qdrant/go-client/qdrant"
 
 	"github.com/google/wire"
@@ -29,6 +31,7 @@ func InitializeApplicationAPI(
 	cfg *config.Config,
 	client *http.Client,
 	conn clickhousego.Conn,
+	pool *pgxpool.Pool,
 	qdrantClient *qdrant.Client,
 ) *modelgateApi.API {
 	wire.Build(
@@ -65,10 +68,19 @@ func InitializeApplicationAPI(
 
 		modelgateApi.NewAPI,
 
-		modelgateUsecase.NewClickHouseUseCase,
-		wire.Bind(new(usecase.ClickHouseUseCase), new(*modelgateUsecase.ClickHouseUseCase)),
+		modelgateUsecase.NewAddChatUseCase,
+		wire.Bind(new(usecase.AddChatUseCase), new(*modelgateUsecase.AddChatUseCase)),
+		modelgateUsecase.NewCheckChatExistsUseCase,
+		wire.Bind(new(usecase.CheckChatExistsUseCase), new(*modelgateUsecase.CheckChatExistsUseCase)),
+		modelgateUsecase.NewAddMessageUseCase,
+		wire.Bind(new(usecase.AddMessageUseCase), new(*modelgateUsecase.AddMessageUseCase)),
+		modelgateUsecase.NewMessageListUseCase,
+		wire.Bind(new(usecase.MessageListUseCase), new(*modelgateUsecase.MessageListUseCase)),
+
 		clickhouse.NewRepository,
-		wire.Bind(new(repository.ChatRepository), new(*clickhouse.Repository)),
+		wire.Bind(new(repository.ClickhouseChatRepository), new(*clickhouse.Repository)),
+		postgres.NewRepository,
+		wire.Bind(new(repository.ChatRepository), new(*postgres.Repository)),
 	)
 
 	return &modelgateApi.API{}

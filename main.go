@@ -27,6 +27,7 @@ import (
 
 	"github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/qdrant/go-client/qdrant"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -86,6 +87,12 @@ func main() {
 		log.Fatal(err)
 	}
 
+	postgresPool, err := pgxpool.New(ctx, cfg.APP.DatabaseDSN)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer postgresPool.Close()
+
 	client, err := qdrant.NewClient(&qdrant.Config{
 		Host: cfg.GetVectorHost(),
 		Port: cfg.GetVectorPort(),
@@ -94,7 +101,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	api := injection.InitializeApplicationAPI(logHandler, cfg, httpClient, clickHouseConnection, client)
+	api := injection.InitializeApplicationAPI(logHandler, cfg, httpClient, clickHouseConnection, postgresPool, client)
 	modelgate.RegisterModelServiceServer(server, api)
 
 	healthcheckAPI := health.NewAPI()

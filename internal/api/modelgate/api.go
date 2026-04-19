@@ -14,12 +14,27 @@ import (
 
 type API struct {
 	desc.UnimplementedModelServiceServer
-	chatUseCase       usecase.Chat
-	clickHouseUseCase usecase.ClickHouseUseCase
+	chatUseCase            usecase.Chat
+	addChatUseCase         usecase.AddChatUseCase
+	checkChatExistsUseCase usecase.CheckChatExistsUseCase
+	addMessageUseCase      usecase.AddMessageUseCase
+	messageListUseCase     usecase.MessageListUseCase
 }
 
-func NewAPI(useCase usecase.Chat, clickHouseUseCase usecase.ClickHouseUseCase) *API {
-	return &API{chatUseCase: useCase, clickHouseUseCase: clickHouseUseCase}
+func NewAPI(
+	useCase usecase.Chat,
+	addChatUseCase usecase.AddChatUseCase,
+	checkChatExistsUseCase usecase.CheckChatExistsUseCase,
+	addMessageUseCase usecase.AddMessageUseCase,
+	messageListUseCase usecase.MessageListUseCase,
+) *API {
+	return &API{
+		chatUseCase:            useCase,
+		addChatUseCase:         addChatUseCase,
+		checkChatExistsUseCase: checkChatExistsUseCase,
+		addMessageUseCase:      addMessageUseCase,
+		messageListUseCase:     messageListUseCase,
+	}
 }
 
 func (api *API) StartStart(ctx context.Context, req *desc.StartRequest) (*desc.StartResponse, error) {
@@ -41,7 +56,7 @@ func (api *API) MessageList(ctx context.Context, request *desc.MessageListReques
 		return nil, err
 	}
 
-	messages, err := api.clickHouseUseCase.MessageList(ctx, chatID)
+	messages, err := api.messageListUseCase.MessageList(ctx, chatID)
 	return converter.FromUseCaseMessagesToDescMessageListResponse(messages), err
 }
 
@@ -55,14 +70,14 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 		return nil, err
 	}
 
-	isChatExist, err := api.clickHouseUseCase.CheckExist(ctx, chatID)
+	isChatExist, err := api.checkChatExistsUseCase.CheckExist(ctx, chatID)
 	if err != nil {
 		return nil, err
 	}
 
 	question := chatRequest.ChatBody.Question.Q
 	if !isChatExist {
-		err = api.clickHouseUseCase.AddChat(ctx, chatID, utils.GenerateChatName(question))
+		err = api.addChatUseCase.AddChat(ctx, chatID, utils.GenerateChatName(question))
 		if err != nil {
 			return nil, fmt.Errorf("create chat err: %w", err)
 		}
@@ -74,7 +89,7 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 	}
 
 	message := entity.NewMessage(chatID, question, useCaseAnswer.Content)
-	err = api.clickHouseUseCase.AddMessage(ctx, message)
+	err = api.addMessageUseCase.AddMessage(ctx, message)
 	if err != nil {
 		return nil, fmt.Errorf("add message err: %w", err)
 	}
