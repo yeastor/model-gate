@@ -24,12 +24,16 @@ func NewVector(vectorFactory *processor.Factory, options ChatUseCaseOptions, log
 
 func (v Vector) Search(ctx context.Context, question *usecase.Question) (*usecase.Answer, error) {
 
-	vectorProcessor, err := v.vectorFactory.GetModelProcessor(v.options.GetVectorModelName())
+	vectorProcessor, err := v.vectorFactory.GetModelProcessor(v.options.GetVectorModelName(), "")
 	if err != nil {
 		return nil, err
 	}
 
-	vQuestion := &processor.Question{Question: question.Question, VariantID: question.Variant.ID}
+	vQuestion := &processor.Question{
+		Question:   question.Question,
+		VariantID:  question.Variant.ID,
+		CategoryID: question.Category.ID,
+	}
 	vAnswers, err := vectorProcessor.GetAnswer(ctx, vQuestion)
 	if err != nil {
 		return nil, err

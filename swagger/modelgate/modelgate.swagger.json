@@ -104,6 +104,14 @@
     }
   },
   "definitions": {
+    "modelgateCategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
     "modelgateChat": {
       "type": "object",
       "properties": {
@@ -146,6 +154,9 @@
         },
         "variant": {
           "$ref": "#/definitions/modelgateChatQuestionVariant"
+        },
+        "category": {
+          "$ref": "#/definitions/modelgateCategory"
         }
       }
     },
@@ -222,12 +233,21 @@
           "type": "string"
         },
         "id": {
-          "type": "string"
+          "type": "string",
+          "title": "что отправим на бэк"
         },
         "value": {
-          "type": "string"
+          "type": "string",
+          "title": "что покажем в бейдже"
         },
         "question": {
+          "type": "string",
+          "title": "что выведем в чате"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "variantId": {
           "type": "string"
         }
       }

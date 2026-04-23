@@ -25,6 +25,7 @@ type (
 		Processor   `envPrefix:"PROCESSOR_"`
 		Embedding   `envPrefix:"EMBEDDING_"`
 		Vector      `envPrefix:"VECTOR_"`
+		Strategy    `envPrefix:"STRATEGY_"`
 		DB          `envPrefix:"DB_"`
 	}
 
@@ -57,6 +58,16 @@ type (
 		MainCollection string  `env:"MAIN_COLLECTION" envDefault:"legal_advice"`
 		MinScore       float32 `env:"MIN_SCORE" envDefault:"0.57"`
 		MaxCount       int     `env:"MAX_COUNT" envDefault:"1"`
+	}
+
+	Strategy struct {
+		Category CategoryStrategy `envPrefix:"CATEGORY_"`
+	}
+
+	CategoryStrategy struct {
+		MinScore       float32 `env:"MIN_SCORE" envDefault:"0.51"`
+		MaxCount       int     `env:"MAX_COUNT" envDefault:"3"`
+		CollectionName string  `env:"COLLECTION_NAME" envDefault:"categories"`
 	}
 
 	Embedding struct {
@@ -110,6 +121,22 @@ func (c *Config) GetVectorMaxCount() int {
 
 func (c *Config) GetModelName() string {
 	return c.Processor.Model.Name
+}
+
+func (c *Config) GetCategoryVectorCollection() string {
+	return c.Strategy.Category.CollectionName
+}
+
+func (c *Config) GetCategoryVectorModelName() string {
+	return c.GetVectorModelName()
+}
+
+func (c *Config) GetStrategyCategoryMinScore() float32 {
+	return c.Strategy.Category.MinScore
+}
+
+func (c *Config) GetStrategyCategoryMaxCount() int {
+	return c.Strategy.Category.MaxCount
 }
 
 func NewConfig() (*Config, error) {

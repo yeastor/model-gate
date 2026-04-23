@@ -23,9 +23,11 @@ message Next {
 
 message View {
   string type = 1;
-  string id = 2;
-  string value = 3;
-  string question = 4;
+  string id = 2; // что отправим на бэк
+  string value = 3; // что покажем в бейдже
+  string question = 5; // что выведем в чате
+  string category_id = 6;
+  string variant_id = 7;
 }
 
 message Chat {
@@ -35,9 +37,14 @@ message Chat {
 message ChatQuestion {
   string q = 1;
   ChatQuestionVariant variant = 2;
+  Category category = 3;
 }
 
 message ChatQuestionVariant {
+  string id = 1;
+}
+
+message Category {
   string id = 1;
 }
 

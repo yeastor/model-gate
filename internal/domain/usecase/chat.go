@@ -16,26 +16,33 @@ type Variant struct {
 	ID string
 }
 
+type Category struct {
+	ID string
+}
+
 type Question struct {
 	Question string
 	Variant  Variant
+	Category Category
 }
 
 type View struct {
-	Type     string
-	ID       string
-	Value    string
-	Question string
+	Type       string
+	ID         string
+	CategoryID string
+	Value      string
+	Question   string
+	VariantID  string
 }
 
 type Next struct {
 	QuestionText string
-	View         []View
+	View         []*View
 }
 
 type Answer struct {
 	Content string
-	Next    []Next
+	Next    []*Next
 }
 
 type Logger interface {

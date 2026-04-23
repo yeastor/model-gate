@@ -1,5 +1,7 @@
 package answer
 
+import "errors"
+
 const StrategyMulti = "multi"
 
 type FormatStrategy interface {
@@ -14,5 +16,8 @@ func NewStrategyFactory() *StrategyFactory {
 }
 
 func (factory *StrategyFactory) GetFormater(formater string) (FormatStrategy, error) {
-	return NewMultiFormater(), nil
+	if formater == StrategyMulti {
+		return NewMultiFormater(), nil
+	}
+	return nil, errors.New("invalid formater:" + formater)
 }

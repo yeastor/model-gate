@@ -461,6 +461,10 @@ func (m *View) validate(all bool) error {
 
 	// no validation rules for Question
 
+	// no validation rules for CategoryId
+
+	// no validation rules for VariantId
+
 	if len(errors) > 0 {
 		return ViewMultiError(errors)
 	}
@@ -691,6 +695,35 @@ func (m *ChatQuestion) validate(all bool) error {
 		}
 	}
 
+	if all {
+		switch v := interface{}(m.GetCategory()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ChatQuestionValidationError{
+					field:  "Category",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ChatQuestionValidationError{
+					field:  "Category",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCategory()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ChatQuestionValidationError{
+				field:  "Category",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if len(errors) > 0 {
 		return ChatQuestionMultiError(errors)
 	}
@@ -871,6 +904,107 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ChatQuestionVariantValidationError{}
+
+// Validate checks the field values on Category with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Category) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Category with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in CategoryMultiError, or nil
+// if none found.
+func (m *Category) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Category) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	if len(errors) > 0 {
+		return CategoryMultiError(errors)
+	}
+
+	return nil
+}
+
+// CategoryMultiError is an error wrapping multiple validation errors returned
+// by Category.ValidateAll() if the designated constraints aren't met.
+type CategoryMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CategoryMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CategoryMultiError) AllErrors() []error { return m }
+
+// CategoryValidationError is the validation error returned by
+// Category.Validate if the designated constraints aren't met.
+type CategoryValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CategoryValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CategoryValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CategoryValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CategoryValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CategoryValidationError) ErrorName() string { return "CategoryValidationError" }
+
+// Error satisfies the builtin error interface
+func (e CategoryValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCategory.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CategoryValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CategoryValidationError{}
 
 // Validate checks the field values on ChatBody with the rules defined in the
 // proto definition for this message. If any rules are violated, the first

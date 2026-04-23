@@ -3,7 +3,6 @@ package converter
 import (
 	"model-gate/internal/domain/entity"
 	"model-gate/internal/domain/usecase"
-	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/model/processor"
 	desc "model-gate/pkg/modelgate"
 )
@@ -17,7 +16,11 @@ func FromDescChatRequestToUseCaseQuestion(request *desc.ChatRequest) *usecase.Qu
 		Question: request.ChatBody.Question.Q,
 		Variant: usecase.Variant{
 			ID: request.ChatBody.Question.Variant.GetId(),
-		}}
+		},
+		Category: usecase.Category{
+			ID: request.ChatBody.Question.Category.GetId(),
+		},
+	}
 }
 
 func FromUseCaseAnswerToDescChatResponse(request *usecase.Answer) *desc.ChatResponse {
@@ -58,7 +61,7 @@ func FromUseCaseMessagesToDescMessageListResponse(messages []*entity.Message) *d
 	return response
 }
 
-func fromUseCaseNextToDescNext(next []usecase.Next) []*desc.Next {
+func fromUseCaseNextToDescNext(next []*usecase.Next) []*desc.Next {
 	if len(next) == 0 {
 		return nil
 	}
@@ -74,7 +77,7 @@ func fromUseCaseNextToDescNext(next []usecase.Next) []*desc.Next {
 	return result
 }
 
-func fromUseCaseViewToDescView(view []usecase.View) []*desc.View {
+func fromUseCaseViewToDescView(view []*usecase.View) []*desc.View {
 	if len(view) == 0 {
 		return nil
 	}
@@ -82,10 +85,12 @@ func fromUseCaseViewToDescView(view []usecase.View) []*desc.View {
 	result := make([]*desc.View, 0, len(view))
 	for _, item := range view {
 		result = append(result, &desc.View{
-			Type:     item.Type,
-			Id:       item.ID,
-			Value:    item.Value,
-			Question: answer.FormatNextQuestion(item.Value),
+			Type:       item.Type,
+			Id:         item.ID,
+			Value:      item.Value,
+			Question:   item.Question,
+			CategoryId: item.CategoryID,
+			VariantId:  item.VariantID,
 		})
 	}
 

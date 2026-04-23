@@ -5,8 +5,9 @@ import (
 )
 
 type Question struct {
-	Question  string
-	VariantID string
+	Question   string
+	VariantID  string
+	CategoryID string
 }
 
 type PointId interface {

@@ -1,5 +1,7 @@
 package answer
 
+const NextTypeBadge = "badge"
+
 type Payload struct {
 	Category Category   `json:"category"`
 	Stage    Stage      `json:"stage"`

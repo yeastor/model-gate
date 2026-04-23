@@ -2,6 +2,7 @@ package processor
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"model-gate/internal/pkg/embedding"
 
@@ -13,10 +14,21 @@ type Qdrant struct {
 	embeddingProcessor embedding.Processor
 	options            Options
 	logger             Logger
+	collectionName     string
 }
 
-func NewQdrant(client *qdrant.Client, embeddingProcessor embedding.Processor, options Options, logger Logger) *Qdrant {
-	return &Qdrant{client: client, embeddingProcessor: embeddingProcessor, options: options, logger: logger}
+func NewQdrant(
+	client *qdrant.Client,
+	collectionName string,
+	embeddingProcessor embedding.Processor,
+	options Options,
+	logger Logger) *Qdrant {
+	return &Qdrant{
+		client:             client,
+		collectionName:     collectionName,
+		embeddingProcessor: embeddingProcessor,
+		options:            options,
+		logger:             logger}
 }
 
 func (q *Qdrant) GetAnswer(ctx context.Context, question *Question) ([]VectorAnswer, error) {
@@ -31,6 +43,8 @@ func (q *Qdrant) GetAnswer(ctx context.Context, question *Question) ([]VectorAns
 		payloads := make(map[string]string, len(sr.Payload))
 
 		for key, value := range sr.GetPayload() {
+			str, _ := json.Marshal(value.GetStructValue())
+			fmt.Println(string(str))
 			payloads[key] = value.GetStringValue()
 		}
 		answer[i] = Answer{
@@ -60,6 +74,14 @@ func (q *Qdrant) getResult(ctx context.Context, question *Question) ([]*qdrant.S
 			},
 		}
 	} else {
+		if question.CategoryID != "" {
+			filter = &qdrant.Filter{
+				Must: []*qdrant.Condition{
+					qdrant.NewMatch("category.id", question.CategoryID),
+				},
+			}
+		}
+
 		embQuestion := &embedding.EmbQuestion{Question: question.Question}
 
 		embAnswer, err := q.embeddingProcessor.GetEmbedding(ctx, embQuestion)
@@ -70,7 +92,7 @@ func (q *Qdrant) getResult(ctx context.Context, question *Question) ([]*qdrant.S
 	}
 
 	searchResult, err := q.client.Query(context.Background(), &qdrant.QueryPoints{
-		CollectionName: q.options.GetVectorMainCollection(),
+		CollectionName: q.collectionName,
 		Query:          query,
 		Filter:         filter,
 		WithPayload:    qdrant.NewWithPayload(true),

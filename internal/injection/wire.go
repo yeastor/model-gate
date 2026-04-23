@@ -9,12 +9,14 @@ import (
 	modelgateApi "model-gate/internal/api/modelgate"
 	"model-gate/internal/domain/repository"
 	"model-gate/internal/domain/usecase"
+	categoryInterface "model-gate/internal/domain/usecase/category"
 	"model-gate/internal/pkg/embedding"
 	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/model/processor"
 	processorvector "model-gate/internal/pkg/vector/processor"
 	"model-gate/internal/repository/clickhouse"
 	"model-gate/internal/repository/postgres"
+	"model-gate/internal/usecase/category"
 	modelgateUsecase "model-gate/internal/usecase/modelgate"
 	dcHttp "model-gate/pkg/http"
 	"net/http"
@@ -81,6 +83,11 @@ func InitializeApplicationAPI(
 		wire.Bind(new(repository.ClickhouseChatRepository), new(*clickhouse.Repository)),
 		postgres.NewRepository,
 		wire.Bind(new(repository.ChatRepository), new(*postgres.Repository)),
+
+		//modelgateUsecase.getCategoryVariantUseCase
+		category.NewGetCategoryVariantUseCase,
+		wire.Bind(new(categoryInterface.GetCategoryVariantUseCase), new(*category.GetCategoryVariantUseCase)),
+		wire.Bind(new(categoryInterface.CategoryVariantUseCaseOptions), new(*config.Config)),
 	)
 
 	return &modelgateApi.API{}

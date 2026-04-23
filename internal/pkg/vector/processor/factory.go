@@ -20,16 +20,20 @@ func NewFactory(qdrantClient *qdrant.Client, embeddingFactory *embedding.Factory
 	return &Factory{qdrantClient: qdrantClient, embeddingFactory: embeddingFactory, options: options, logger: logger}
 }
 
-func (f *Factory) GetModelProcessor(processorName string) (Processor, error) {
+func (f *Factory) GetModelProcessor(processorName string, collectionName string) (Processor, error) {
 
 	embeddingProcessor, err := f.embeddingFactory.GetProcessor(f.options.GetEmbeddingModelName())
 	if err != nil {
 		return nil, err
 	}
 
+	if collectionName == "" {
+		collectionName = f.options.GetVectorMainCollection()
+	}
+
 	if processorName == NameQdrant {
 		return NewQdrant(
-			f.qdrantClient, embeddingProcessor, f.options, f.logger), nil
+			f.qdrantClient, collectionName, embeddingProcessor, f.options, f.logger), nil
 	}
 
 	return nil, fmt.Errorf("vector processor not found %s", processorName)
