@@ -57,7 +57,7 @@ func (u GetCategoryVariantUseCase) Invoke(ctx context.Context, question *usecase
 				return nil, err
 			}
 
-			next.View[0].Value = question.Question
+			next.View[0].ID = question.Question
 			next.QuestionText = next.View[0].Question
 			categoryChecked[next.View[0].CategoryID] = true
 			categoryVariantsAnswer.Next = append(categoryVariantsAnswer.Next, next)

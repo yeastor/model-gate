@@ -25,7 +25,7 @@ message View {
   string type = 1;
   string id = 2; // что отправим на бэк
   string value = 3; // что покажем в бейдже
-  string question = 5; // что выведем в чате
+  string question = 5; // что выведем в чате при ответе (нажатии на бейдж)
   string category_id = 6;
   string variant_id = 7;
 }

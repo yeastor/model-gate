@@ -41,12 +41,21 @@ func (q *Qdrant) GetAnswer(ctx context.Context, question *Question) ([]VectorAns
 	answer := make([]VectorAnswer, len(searchResult))
 	for i, sr := range searchResult {
 		payloads := make(map[string]string, len(sr.Payload))
-
 		for key, value := range sr.GetPayload() {
-			str, _ := json.Marshal(value.GetStructValue())
-			fmt.Println(string(str))
-			payloads[key] = value.GetStringValue()
+			newVal := ConvertPayload(value.GetKind())
+			switch val := newVal.(type) {
+			case string:
+				payloads[key] = val
+			default:
+				res, err := json.Marshal(val)
+				if err != nil {
+					q.logger.Error("GetAnswer error: " + err.Error())
+				}
+				payloads[key] = string(res)
+			}
 		}
+
+		fmt.Printf("%v", payloads)
 		answer[i] = Answer{
 			payload: payloads,
 			score:   sr.GetScore(),
@@ -60,6 +69,35 @@ func (q *Qdrant) GetAnswer(ctx context.Context, question *Question) ([]VectorAns
 
 	return answer, nil
 
+}
+
+func ConvertPayload(v any) any {
+	switch val := v.(type) {
+	case *qdrant.Value_NullValue:
+		return val.NullValue.String()
+	case *qdrant.Value_BoolValue:
+		return val.BoolValue
+	case *qdrant.Value_DoubleValue:
+		return val.DoubleValue
+	case *qdrant.Value_IntegerValue:
+		return val.IntegerValue
+	case *qdrant.Value_StringValue:
+		return val.StringValue
+	case *qdrant.Value_ListValue:
+		res := make([]any, len(val.ListValue.Values))
+		for fkey, value := range val.ListValue.Values {
+			res[fkey] = ConvertPayload(value.GetKind())
+		}
+		return res
+	case *qdrant.Value_StructValue:
+		res := make(map[string]any, len(val.StructValue.Fields))
+		for fkey, value := range val.StructValue.Fields {
+			res[fkey] = ConvertPayload(value.GetKind())
+		}
+		return res
+	}
+
+	return nil
 }
 
 func (q *Qdrant) getResult(ctx context.Context, question *Question) ([]*qdrant.ScoredPoint, error) {
