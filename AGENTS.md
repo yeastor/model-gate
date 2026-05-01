@@ -87,6 +87,7 @@ This file is for coding agents working in `model-gate`.
     - `internal/injection/wire_gen.go`
     - `swagger/**/*.json`
 - Edit source inputs such as `api/**/*.proto` and `internal/injection/wire.go`, then regenerate.
+- Never edit wire_gen manually.
 
 ## Code style guidelines
 

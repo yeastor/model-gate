@@ -73,6 +73,7 @@ message Message {
   string text  = 1;
   string id = 2;
   int64 direction = 3;
+  Category category = 4;
 }
 
 // StartStart

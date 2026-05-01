@@ -31,7 +31,7 @@ func NewChatUseCase(
 
 func (useCase *ChatUseCase) Chat(ctx context.Context, question *usecase.Question) (*usecase.Answer, error) {
 
-	if question.Category.ID == "" {
+	if question.Category.ID == "" && question.Variant.ID == "" {
 		categoryVariants, err := useCase.getCategoryVariantUseCase.Invoke(ctx, question)
 		if err != nil {
 			return nil, err

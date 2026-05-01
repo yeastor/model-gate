@@ -51,12 +51,14 @@ func FromUseCaseMessagesToDescMessageListResponse(messages []*entity.Message) *d
 			Text:      message.Question,
 			Id:        message.ID.String(),
 			Direction: DirectionHuman,
+			Category:  fromEntityMessageCategoryToDescCategory(message.Category),
 		})
 
 		response.Message = append(response.Message, &desc.Message{
 			Text:      message.Answer,
 			Id:        message.ID.String(),
 			Direction: DirectionAi,
+			Category:  fromEntityMessageCategoryToDescCategory(message.Category),
 		})
 	}
 	return response
@@ -105,5 +107,15 @@ func fromUseCaseCategoryToDescCategory(category usecase.Category) *desc.Category
 
 	return &desc.Category{
 		Id: category.ID,
+	}
+}
+
+func fromEntityMessageCategoryToDescCategory(categoryID string) *desc.Category {
+	if categoryID == "" {
+		return nil
+	}
+
+	return &desc.Category{
+		Id: categoryID,
 	}
 }
