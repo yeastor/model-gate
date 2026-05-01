@@ -36,7 +36,12 @@ func (useCase *ChatUseCase) Chat(ctx context.Context, question *usecase.Question
 		if err != nil {
 			return nil, err
 		}
-		return categoryVariants, nil
+
+		if useCase.isOnlyOneCat(categoryVariants) {
+			return categoryVariants, nil
+		}
+
+		question.Category.ID = categoryVariants.Next[0].View[0].CategoryID
 	}
 
 	vectorAnswer, err := useCase.vectorUseCase.Search(ctx, question)
@@ -63,6 +68,10 @@ func (useCase *ChatUseCase) Chat(ctx context.Context, question *usecase.Question
 	}
 
 	return converter.FromProcessorAnswerAnswerToUseCase(modelAnswer), nil*/
+}
+
+func (useCase *ChatUseCase) isOnlyOneCat(categoryVariants *usecase.Answer) bool {
+	return categoryVariants.Next != nil && len(categoryVariants.Next) > 1
 }
 
 func fromUseCaseViewToDescView(views []*usecase.View) []*usecase.View {
