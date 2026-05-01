@@ -14,6 +14,7 @@ message ChatResponse {
 message ChatAnswer {
   string content = 1;
   repeated Next next = 2;
+  Category category = 3;
 }
 
 message Next {

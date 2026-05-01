@@ -41,8 +41,9 @@ type Next struct {
 }
 
 type Answer struct {
-	Content string
-	Next    []*Next
+	Content  string
+	Next     []*Next
+	Category Category
 }
 
 type Logger interface {

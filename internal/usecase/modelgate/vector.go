@@ -52,6 +52,9 @@ func (v Vector) Search(ctx context.Context, question *usecase.Question) (*usecas
 			return &usecase.Answer{
 				Content: strAnswer,
 				Next:    converter.FromProcessorVectorAnswerToAnswerNext(payload.Next),
+				Category: usecase.Category{
+					ID: payload.Category.ID,
+				},
 			}, nil
 		}
 	}

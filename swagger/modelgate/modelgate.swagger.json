@@ -132,6 +132,9 @@
             "type": "object",
             "$ref": "#/definitions/modelgateNext"
           }
+        },
+        "category": {
+          "$ref": "#/definitions/modelgateCategory"
         }
       }
     },
@@ -242,7 +245,7 @@
         },
         "question": {
           "type": "string",
-          "title": "что выведем в чате"
+          "title": "что выведем в чате при ответе (нажатии на бейдж)"
         },
         "categoryId": {
           "type": "string"

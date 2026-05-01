@@ -29,8 +29,9 @@ func FromUseCaseAnswerToDescChatResponse(request *usecase.Answer) *desc.ChatResp
 	}
 
 	return &desc.ChatResponse{Answer: &desc.ChatAnswer{
-		Content: request.Content,
-		Next:    fromUseCaseNextToDescNext(request.Next),
+		Content:  request.Content,
+		Next:     fromUseCaseNextToDescNext(request.Next),
+		Category: fromUseCaseCategoryToDescCategory(request.Category),
 	}}
 }
 
@@ -95,4 +96,14 @@ func fromUseCaseViewToDescView(view []*usecase.View) []*desc.View {
 	}
 
 	return result
+}
+
+func fromUseCaseCategoryToDescCategory(category usecase.Category) *desc.Category {
+	if category.ID == "" {
+		return nil
+	}
+
+	return &desc.Category{
+		Id: category.ID,
+	}
 }
