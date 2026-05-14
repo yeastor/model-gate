@@ -8,10 +8,10 @@ import (
 
 var ErrCategoryAlreadyChecked = errors.New("category already checked")
 
-func FromProcessorVectorAnswerToUseCaseNext(logger usecase.Logger, payload map[string]string, categoryChecked map[string]bool) (*usecase.Next, error) {
+func FromProcessorVectorAnswerToUseCaseNext(logger usecase.Logger, payload map[string]string, categoryChecked map[string]bool) (*usecase.View, error) {
 	const ErrorText = "category payload field is missing"
-	next := &usecase.Next{}
-	next.Type = answer.NextTypeBadge
+	//next := &usecase.Next{}
+	//.Type = answer.NextTypeBadge
 
 	key := "category_id"
 	raw, ok := payload[key]
@@ -20,7 +20,7 @@ func FromProcessorVectorAnswerToUseCaseNext(logger usecase.Logger, payload map[s
 	}
 
 	if _, isChecked := categoryChecked[raw]; isChecked {
-		return next, ErrCategoryAlreadyChecked
+		return nil, ErrCategoryAlreadyChecked
 	}
 
 	view := &usecase.View{}
@@ -35,7 +35,7 @@ func FromProcessorVectorAnswerToUseCaseNext(logger usecase.Logger, payload map[s
 	view.ID = raw
 	view.Value = raw
 	view.Question = raw
-	next.View = append(next.View, view)
+	//next.View = append(next.View, view)
 
-	return next, nil
+	return view, nil
 }

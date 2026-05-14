@@ -75,7 +75,7 @@ func (useCase *ChatUseCase) Chat(ctx context.Context, question *usecase.Question
 }
 
 func (useCase *ChatUseCase) isOnlyOneCat(categoryVariants *usecase.Answer) bool {
-	return categoryVariants.Next != nil && len(categoryVariants.Next) > 1
+	return categoryVariants.Next[0].View != nil && len(categoryVariants.Next[0].View) > 1
 }
 
 func fromUseCaseViewToDescView(next *usecase.Next) []*usecase.View {

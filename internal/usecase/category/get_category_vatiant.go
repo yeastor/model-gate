@@ -5,6 +5,7 @@ import (
 	"errors"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/domain/usecase/category"
+	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/vector/processor"
 	converter2 "model-gate/internal/usecase/category/converter"
 )
@@ -43,13 +44,18 @@ func (u GetCategoryVariantUseCase) Invoke(ctx context.Context, question *usecase
 
 	categoryVariantsAnswer := &usecase.Answer{
 		Content: TextChooseCategory,
+		Next: []*usecase.Next{
+			{
+				Type: answer.NextTypeBadge,
+			},
+		},
 	}
 
 	maxCats := u.options.GetStrategyCategoryMaxCount()
 	i := 1
 	for _, vAnswer := range vAnswers {
 		if vAnswer.GetScore() >= u.options.GetStrategyCategoryMinScore() {
-			next, err := converter2.FromProcessorVectorAnswerToUseCaseNext(u.logger, vAnswer.GetPayload(), categoryChecked)
+			view, err := converter2.FromProcessorVectorAnswerToUseCaseNext(u.logger, vAnswer.GetPayload(), categoryChecked)
 			if err != nil {
 				if errors.Is(err, converter2.ErrCategoryAlreadyChecked) {
 					continue
@@ -57,10 +63,10 @@ func (u GetCategoryVariantUseCase) Invoke(ctx context.Context, question *usecase
 				return nil, err
 			}
 
-			next.View[0].ID = question.Question
-			next.QuestionText = next.View[0].Question
-			categoryChecked[next.View[0].CategoryID] = true
-			categoryVariantsAnswer.Next = append(categoryVariantsAnswer.Next, next)
+			view.ID = question.Question
+			categoryVariantsAnswer.Next[0].QuestionText = view.Question
+			categoryChecked[view.CategoryID] = true
+			categoryVariantsAnswer.Next[0].View = append(categoryVariantsAnswer.Next[0].View, view)
 			i++
 		}
 		if i == maxCats {
@@ -68,7 +74,7 @@ func (u GetCategoryVariantUseCase) Invoke(ctx context.Context, question *usecase
 		}
 	}
 
-	if len(categoryVariantsAnswer.Next) == 0 {
+	if len(categoryVariantsAnswer.Next[0].View) == 0 {
 		return nil, ErrNoCategoryVariantFound
 	}
 
