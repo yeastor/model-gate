@@ -53,7 +53,7 @@ func (useCase *ChatUseCase) Chat(ctx context.Context, question *usecase.Question
 	}
 
 	for _, next := range vectorAnswer.Next {
-		next.View = fromUseCaseViewToDescView(next.View)
+		next.View = fromUseCaseViewToDescView(next)
 	}
 
 	return vectorAnswer, nil
@@ -74,16 +74,16 @@ func (useCase *ChatUseCase) isOnlyOneCat(categoryVariants *usecase.Answer) bool 
 	return categoryVariants.Next != nil && len(categoryVariants.Next) > 1
 }
 
-func fromUseCaseViewToDescView(views []*usecase.View) []*usecase.View {
-	if len(views) == 0 {
+func fromUseCaseViewToDescView(next *usecase.Next) []*usecase.View {
+	if len(next.View) == 0 {
 		return nil
 	}
 
-	for _, view := range views {
-		view.Question = answer.FormatNextQuestion(view.Value)
+	for _, view := range next.View {
+		view.Question = answer.FormatNextQuestion(view.Value, next.Type)
 	}
 
-	return views
+	return next.View
 }
 
 type ChatUseCaseOptions interface {

@@ -212,6 +212,9 @@
     "modelgateNext": {
       "type": "object",
       "properties": {
+        "type": {
+          "type": "string"
+        },
         "questionText": {
           "type": "string"
         },

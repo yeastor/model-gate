@@ -36,6 +36,7 @@ type View struct {
 }
 
 type Next struct {
+	Type         string
 	QuestionText string
 	View         []*View
 }

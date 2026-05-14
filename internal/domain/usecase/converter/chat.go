@@ -72,6 +72,7 @@ func fromUseCaseNextToDescNext(next []*usecase.Next) []*desc.Next {
 	result := make([]*desc.Next, 0, len(next))
 	for _, item := range next {
 		result = append(result, &desc.Next{
+			Type:         item.Type,
 			QuestionText: item.QuestionText,
 			View:         fromUseCaseViewToDescView(item.View),
 		})

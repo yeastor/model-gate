@@ -1,6 +1,7 @@
 package answer
 
 const NextTypeBadge = "badge"
+const NextTypeChoice = "choice"
 
 type Payload struct {
 	Category Category   `json:"category"`
@@ -37,9 +38,10 @@ type NextStep struct {
 	ID       string `json:"id"`
 	Question string `json:"question"`
 	Type     string `json:"type"`
-	Data     Data   `json:"data"`
+	Data     []Data `json:"data"`
 }
 
 type Data struct {
+	Value     string `json:"value"`
 	VariantId string `json:"go_to_variant"`
 }

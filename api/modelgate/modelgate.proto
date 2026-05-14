@@ -18,8 +18,9 @@ message ChatAnswer {
 }
 
 message Next {
-  string question_text = 1;
-  repeated View view = 2;
+  string type = 1;
+  string question_text = 2;
+  repeated View view = 3;
 }
 
 message View {

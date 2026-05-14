@@ -11,6 +11,7 @@ var ErrCategoryAlreadyChecked = errors.New("category already checked")
 func FromProcessorVectorAnswerToUseCaseNext(logger usecase.Logger, payload map[string]string, categoryChecked map[string]bool) (*usecase.Next, error) {
 	const ErrorText = "category payload field is missing"
 	next := &usecase.Next{}
+	next.Type = answer.NextTypeBadge
 
 	key := "category_id"
 	raw, ok := payload[key]

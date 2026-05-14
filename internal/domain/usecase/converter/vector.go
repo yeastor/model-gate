@@ -62,6 +62,7 @@ func FromProcessorVectorAnswerToAnswerNext(nextSteps []answer.NextStep) []*useca
 
 	for _, nextStep := range nextSteps {
 		result = append(result, &usecase.Next{
+			Type:         nextStep.Type,
 			QuestionText: nextStep.Question,
 			View:         getViews(&nextStep),
 		})
@@ -71,17 +72,26 @@ func FromProcessorVectorAnswerToAnswerNext(nextSteps []answer.NextStep) []*useca
 }
 
 func getViews(nextStep *answer.NextStep) []*usecase.View {
-	if nextStep.Type != "" {
-		viewType := nextStep.Type
-		views := make([]*usecase.View, 0, 1)
+	views := make([]*usecase.View, 0, 1)
 
+	if nextStep.Type == answer.NextTypeBadge {
 		views = append(views, &usecase.View{
-			Type:      viewType,
+			Type:      answer.NextTypeBadge,
 			ID:        nextStep.Question,
-			VariantID: nextStep.Data.VariantId,
+			VariantID: nextStep.Data[0].VariantId,
 			Value:     nextStep.Question,
 		})
 
+		return views
+	} else if nextStep.Type == answer.NextTypeChoice {
+		for _, data := range nextStep.Data {
+			views = append(views, &usecase.View{
+				Type:      answer.NextTypeBadge,
+				ID:        nextStep.Question,
+				VariantID: data.VariantId,
+				Value:     data.Value,
+			})
+		}
 		return views
 	}
 
