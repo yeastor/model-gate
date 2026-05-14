@@ -7,6 +7,7 @@ import (
 	"model-gate/internal/domain/usecase/category"
 	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/model/processor"
+	category2 "model-gate/internal/usecase/category"
 )
 
 type ChatUseCase struct {
@@ -33,7 +34,10 @@ func (useCase *ChatUseCase) Chat(ctx context.Context, question *usecase.Question
 
 	if question.Category.ID == "" && question.Variant.ID == "" {
 		categoryVariants, err := useCase.getCategoryVariantUseCase.Invoke(ctx, question)
-		if err != nil {
+
+		if errors.Is(err, category2.ErrNoCategoryVariantFound) {
+			return &usecase.Answer{Content: "Уточните вопрос."}, nil
+		} else if err != nil {
 			return nil, err
 		}
 
