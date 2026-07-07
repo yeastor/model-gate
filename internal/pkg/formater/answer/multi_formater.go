@@ -24,7 +24,7 @@ func (format MultiFormater) Format(payload *Payload) string {
 		sections = append(sections, say)
 	}
 
-	if whereTo := formatList("🖊️Куда обратиться", payload.Answer.WhereTo); whereTo != "" {
+	if whereTo := formatWhereTo("🖊️Куда обратиться", payload.Answer.WhereTo); whereTo != "" {
 		sections = append(sections, whereTo)
 	}
 
@@ -41,6 +41,15 @@ func (format MultiFormater) Format(payload *Payload) string {
 
 func NewMultiFormater() *MultiFormater {
 	return &MultiFormater{}
+}
+
+func formatWhereTo(title string, WhereTo []WhereTo) string {
+	filtered := make([]string, 0, len(WhereTo))
+	for _, w := range WhereTo {
+		filtered = append(filtered, w.Title)
+	}
+
+	return formatList(title, filtered)
 }
 
 func formatList(title string, items []string) string {

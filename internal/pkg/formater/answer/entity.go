@@ -21,12 +21,17 @@ type Stage struct {
 }
 
 type Answer struct {
-	Now     string   `json:"now"`
-	Steps   []string `json:"steps"`
-	Dont    []string `json:"dont"`
-	Say     []string `json:"say"`
-	WhereTo []string `json:"where_to"`
-	Laws    []Law    `json:"laws"`
+	Now     string    `json:"now"`
+	Steps   []string  `json:"steps"`
+	Dont    []string  `json:"dont"`
+	Say     []string  `json:"say"`
+	WhereTo []WhereTo `json:"where_to"`
+	Laws    []Law     `json:"laws"`
+}
+
+type WhereTo struct {
+	Title          string `json:"title"`
+	DocumentLinkId string `json:"document_link_id"`
 }
 
 type Law struct {
