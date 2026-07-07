@@ -132,6 +132,10 @@ This file is for coding agents working in `model-gate`.
   keeps code simpler.
 - In tests, use the standard `testing` package and `stretchr/testify/assert`, matching existing usage.
 
+## Git
+
+- run `git add` for all new files, that you develop.
+
 ## Additional repo conventions
 
 - Configuration is loaded through `caarlos0/env` with nested structs and `envPrefix` tags in `config/config.go`.
