@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"log/slog"
+	"model-gate/internal/domain/usecase"
 	"model-gate/internal/pkg/embedding"
 	"model-gate/internal/pkg/model/processor"
 	processorvector "model-gate/internal/pkg/vector/processor"
@@ -27,6 +28,7 @@ type (
 		Vector      `envPrefix:"VECTOR_"`
 		Strategy    `envPrefix:"STRATEGY_"`
 		DB          `envPrefix:"DB_"`
+		Auth        `envPrefix:"AUTH_"`
 	}
 
 	Ports struct {
@@ -85,6 +87,12 @@ type (
 		ChatDb       string `env:"CHAT_DB" envDefault:"chat"`
 		ChatLogin    string `env:"CHAT_LOGIN" envDefault:"app_chat_user"`
 		ChatPassword string `env:"CHAT_PASSWORD" envDefault:"chat"`
+	}
+
+	Auth struct {
+		CookieName       string `env:"COOKIE_NAME" envDefault:"aizaschita-app-session"`
+		FreeMessageLimit int    `env:"FREE_MESSAGE_LIMIT" envDefault:"5"`
+		LoginDomain      string `env:"LOGIN_DOMAIN" envDefault:"https://aizashchita.ru"`
 	}
 )
 
@@ -167,7 +175,20 @@ func (c *Config) GetModelUrl() string {
 	return c.Processor.Model.Url
 }
 
+func (c *Config) GetAuthCookieName() string {
+	return c.APP.Auth.CookieName
+}
+
+func (c *Config) GetAuthFreeMessageLimit() int {
+	return c.APP.Auth.FreeMessageLimit
+}
+
+func (c *Config) GetAuthLoginDomain() string {
+	return c.APP.Auth.LoginDomain
+}
+
 var _ processor.Options = (*Config)(nil)
 var _ processorvector.Options = (*Config)(nil)
 var _ embedding.Options = (*Config)(nil)
 var _ modelgate.ChatUseCaseOptions = (*Config)(nil)
+var _ usecase.AuthOptions = (*Config)(nil)

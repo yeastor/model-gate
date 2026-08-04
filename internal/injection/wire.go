@@ -15,6 +15,7 @@ import (
 	"model-gate/internal/pkg/model/processor"
 	processorvector "model-gate/internal/pkg/vector/processor"
 	"model-gate/internal/repository/clickhouse"
+	"model-gate/internal/repository/cookie"
 	"model-gate/internal/repository/postgres"
 	"model-gate/internal/usecase/category"
 	modelgateUsecase "model-gate/internal/usecase/modelgate"
@@ -88,6 +89,12 @@ func InitializeApplicationAPI(
 		category.NewGetCategoryVariantUseCase,
 		wire.Bind(new(categoryInterface.GetCategoryVariantUseCase), new(*category.GetCategoryVariantUseCase)),
 		wire.Bind(new(categoryInterface.CategoryVariantUseCaseOptions), new(*config.Config)),
+
+		modelgateUsecase.NewAuthUseCase,
+		wire.Bind(new(usecase.Auth), new(*modelgateUsecase.AuthUseCase)),
+		cookie.NewMetadataCookieProvider,
+		wire.Bind(new(usecase.AuthProvider), new(*cookie.MetadataCookieProvider)),
+		wire.Bind(new(usecase.AuthOptions), new(*config.Config)),
 	)
 
 	return &modelgateApi.API{}

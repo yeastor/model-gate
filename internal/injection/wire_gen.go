@@ -7,7 +7,7 @@
 package injection
 
 import (
-	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
+	"github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/qdrant/go-client/qdrant"
 	"log/slog"
@@ -17,7 +17,8 @@ import (
 	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/model/processor"
 	processor2 "model-gate/internal/pkg/vector/processor"
-	"model-gate/internal/repository/clickhouse"
+	clickhouse2 "model-gate/internal/repository/clickhouse"
+	"model-gate/internal/repository/cookie"
 	"model-gate/internal/repository/postgres"
 	"model-gate/internal/usecase/category"
 	modelgate2 "model-gate/internal/usecase/modelgate"
@@ -27,7 +28,7 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client, conn driver.Conn, pool *pgxpool.Pool, qdrantClient *qdrant.Client) *modelgate.API {
+func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client, conn clickhouse.Conn, pool *pgxpool.Pool, qdrantClient *qdrant.Client) *modelgate.API {
 	logger := slog.New(logHandler)
 	dcHTTPClient := http2.NewDcHTTPClient(logger, client)
 	factory := processor.NewFactory(dcHTTPClient, cfg, logger)
@@ -40,9 +41,11 @@ func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, clien
 	repository := postgres.NewRepository(pool)
 	addChatUseCase := modelgate2.NewAddChatUseCase(repository)
 	checkChatExistsUseCase := modelgate2.NewCheckChatExistsUseCase(repository)
-	clickhouseRepository := clickhouse.NewRepository(conn)
+	clickhouseRepository := clickhouse2.NewRepository(conn)
 	addMessageUseCase := modelgate2.NewAddMessageUseCase(clickhouseRepository)
 	messageListUseCase := modelgate2.NewMessageListUseCase(clickhouseRepository)
-	api := modelgate.NewAPI(chatUseCase, addChatUseCase, checkChatExistsUseCase, addMessageUseCase, messageListUseCase)
+	metadataCookieProvider := cookie.NewMetadataCookieProvider()
+	authUseCase := modelgate2.NewAuthUseCase(metadataCookieProvider, cfg)
+	api := modelgate.NewAPI(chatUseCase, addChatUseCase, checkChatExistsUseCase, addMessageUseCase, messageListUseCase, authUseCase, cfg)
 	return api
 }
