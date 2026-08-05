@@ -13,6 +13,7 @@ import (
 	"log/slog"
 	"model-gate/config"
 	"model-gate/internal/api/health"
+	"model-gate/internal/api/middleware"
 	"model-gate/internal/injection"
 	healthcheck "model-gate/pkg/healthcheck/pb"
 	"model-gate/pkg/interceptor/logger/logrus/logruswithrequestid"
@@ -55,6 +56,7 @@ func main() {
 
 	server := grpc.NewServer(grpc.ChainUnaryInterceptor(
 		xrequestid.UnaryServerInterceptor(),
+		middleware.UnaryServerInterceptor(cfg.GetAuthCookieName()),
 		logruswithrequestid.UnaryServerInterceptor(cfg),
 	))
 

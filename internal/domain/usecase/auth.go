@@ -7,7 +7,7 @@ type Auth interface {
 }
 
 type AuthProvider interface {
-	IsTokenExist(ctx context.Context, cookieName string) (bool, error)
+	IsTokenExist(ctx context.Context) (bool, error)
 }
 
 type AuthOptions interface {

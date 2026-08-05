@@ -7,18 +7,16 @@ import (
 
 type AuthUseCase struct {
 	authProvider usecase.AuthProvider
-	cookieName   string
 }
 
-func NewAuthUseCase(authProvider usecase.AuthProvider, options usecase.AuthOptions) *AuthUseCase {
+func NewAuthUseCase(authProvider usecase.AuthProvider) *AuthUseCase {
 	return &AuthUseCase{
 		authProvider: authProvider,
-		cookieName:   options.GetAuthCookieName(),
 	}
 }
 
 func (u *AuthUseCase) IsTokenExist(ctx context.Context) (bool, error) {
-	return u.authProvider.IsTokenExist(ctx, u.cookieName)
+	return u.authProvider.IsTokenExist(ctx)
 }
 
 var _ usecase.Auth = (*AuthUseCase)(nil)

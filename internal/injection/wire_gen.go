@@ -45,7 +45,7 @@ func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, clien
 	addMessageUseCase := modelgate2.NewAddMessageUseCase(clickhouseRepository)
 	messageListUseCase := modelgate2.NewMessageListUseCase(clickhouseRepository)
 	metadataCookieProvider := cookie.NewMetadataCookieProvider()
-	authUseCase := modelgate2.NewAuthUseCase(metadataCookieProvider, cfg)
+	authUseCase := modelgate2.NewAuthUseCase(metadataCookieProvider)
 	api := modelgate.NewAPI(chatUseCase, addChatUseCase, checkChatExistsUseCase, addMessageUseCase, messageListUseCase, authUseCase, cfg)
 	return api
 }
