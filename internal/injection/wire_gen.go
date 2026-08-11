@@ -44,8 +44,10 @@ func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, clien
 	clickhouseRepository := clickhouse2.NewRepository(conn)
 	addMessageUseCase := modelgate2.NewAddMessageUseCase(clickhouseRepository)
 	messageListUseCase := modelgate2.NewMessageListUseCase(clickhouseRepository)
-	metadataCookieProvider := cookie.NewMetadataCookieProvider()
+	metadataCookieProvider := cookie.NewMetadataCookieProvider(dcHTTPClient, cfg)
 	authUseCase := modelgate2.NewAuthUseCase(metadataCookieProvider)
-	api := modelgate.NewAPI(chatUseCase, addChatUseCase, checkChatExistsUseCase, addMessageUseCase, messageListUseCase, authUseCase, cfg)
+	relChatUserRepository := postgres.NewRelChatUserRepository(pool)
+	userRepository := postgres.NewUserRepository(pool)
+	api := modelgate.NewAPI(chatUseCase, addChatUseCase, checkChatExistsUseCase, addMessageUseCase, messageListUseCase, authUseCase, relChatUserRepository, userRepository, cfg)
 	return api
 }

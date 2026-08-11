@@ -87,7 +87,7 @@ func callChat(t *testing.T, requestBody *desc.ChatBody) *desc.ChatResponse {
 	req, err := http.NewRequestWithContext(t.Context(), http.MethodPost, endpoint, bytes.NewReader(payload))
 	require.NoError(t, err)
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Cookie", "aizaschita-app-session=test-token")
+	req.Header.Set("Cookie", "aizaschita-app-session=test-user-7:yeastor@yandex.ru")
 
 	client := &http.Client{Timeout: 2 * time.Minute}
 	resp, err := client.Do(req)

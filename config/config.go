@@ -187,6 +187,10 @@ func (c *Config) GetAuthLoginDomain() string {
 	return c.APP.Auth.LoginDomain
 }
 
+func (c *Config) GetEnv() string {
+	return c.APP.ENV
+}
+
 var _ processor.Options = (*Config)(nil)
 var _ processorvector.Options = (*Config)(nil)
 var _ embedding.Options = (*Config)(nil)

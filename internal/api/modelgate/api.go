@@ -4,10 +4,12 @@ import (
 	"context"
 	"fmt"
 	"model-gate/internal/domain/entity"
+	"model-gate/internal/domain/repository"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/domain/usecase/converter"
 	desc "model-gate/pkg/modelgate"
 	"model-gate/pkg/utils"
+	"slices"
 
 	"github.com/google/uuid"
 )
@@ -20,6 +22,8 @@ type API struct {
 	addMessageUseCase      usecase.AddMessageUseCase
 	messageListUseCase     usecase.MessageListUseCase
 	authUseCase            usecase.Auth
+	relChatUserRepo        repository.RelChatUserRepository
+	userRepo               repository.UserRepository
 	freeMessageLimit       int
 	loginDomain            string
 }
@@ -31,6 +35,8 @@ func NewAPI(
 	addMessageUseCase usecase.AddMessageUseCase,
 	messageListUseCase usecase.MessageListUseCase,
 	authUseCase usecase.Auth,
+	relChatUserRepo repository.RelChatUserRepository,
+	userRepo repository.UserRepository,
 	options usecase.AuthOptions,
 ) *API {
 	return &API{
@@ -40,6 +46,8 @@ func NewAPI(
 		addMessageUseCase:      addMessageUseCase,
 		messageListUseCase:     messageListUseCase,
 		authUseCase:            authUseCase,
+		relChatUserRepo:        relChatUserRepo,
+		userRepo:               userRepo,
 		freeMessageLimit:       options.GetAuthFreeMessageLimit(),
 		loginDomain:            options.GetAuthLoginDomain(),
 	}
@@ -48,7 +56,6 @@ func NewAPI(
 func (api *API) StartStart(ctx context.Context, req *desc.StartRequest) (*desc.StartResponse, error) {
 	chatID := uuid.New().String()
 
-	// Формируем ответ с созданным чатом
 	response := &desc.StartResponse{
 		Chat: &desc.Chat{
 			Id: chatID,
@@ -88,11 +95,44 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 			return nil, err
 		}
 		if len(messages) >= api.freeMessageLimit {
-			return &desc.ChatResponse{
-				Answer: &desc.ChatAnswer{
-					Content: "Для продолжения необходимо <a href=\"" + api.loginDomain + "/login\">авторизоваться</a>.",
-				},
-			}, nil
+			return api.buildAuthRequiredResponse(), nil
+		}
+	}
+
+	if isAuth {
+		user, err := api.authUseCase.GetAuthUserId(ctx)
+		if err != nil {
+			return api.buildAuthRequiredResponse(), nil
+		}
+
+		exists, err := api.userRepo.UserExists(ctx, user.GetID())
+		if err != nil {
+			return nil, err
+		}
+		if !exists {
+			if err := api.userRepo.CreateUser(ctx, user); err != nil {
+				return nil, err
+			}
+		}
+
+		userIDs, err := api.relChatUserRepo.GetUsersByChatID(ctx, chatID)
+		if err != nil {
+			return nil, err
+		}
+
+		if len(userIDs) == 0 {
+			err = api.relChatUserRepo.AddUserToChat(ctx, &entity.RelChatUser{
+				UserID: user.GetID(),
+				ChatID: chatID,
+			})
+			if err != nil {
+				return nil, err
+			}
+		} else {
+			found := slices.Contains(userIDs, user.GetID())
+			if !found {
+				return nil, fmt.Errorf("работа с этим чатом невозможна")
+			}
 		}
 	}
 
@@ -121,4 +161,12 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 	}
 
 	return converter.FromUseCaseAnswerToDescChatResponse(useCaseAnswer), err
+}
+
+func (api *API) buildAuthRequiredResponse() *desc.ChatResponse {
+	return &desc.ChatResponse{
+		Answer: &desc.ChatAnswer{
+			Content: "Для продолжения необходимо <a href=\"" + api.loginDomain + "/login\">авторизоваться</a>.",
+		},
+	}
 }
