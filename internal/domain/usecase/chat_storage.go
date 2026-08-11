@@ -22,3 +22,7 @@ type AddMessageUseCase interface {
 type MessageListUseCase interface {
 	MessageList(ctx context.Context, chatID uuid.UUID) ([]*entity.Message, error)
 }
+
+type ChatListUseCase interface {
+	ChatList(ctx context.Context) ([]*entity.Chat, error)
+}

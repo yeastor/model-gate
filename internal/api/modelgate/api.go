@@ -21,6 +21,7 @@ type API struct {
 	checkChatExistsUseCase usecase.CheckChatExistsUseCase
 	addMessageUseCase      usecase.AddMessageUseCase
 	messageListUseCase     usecase.MessageListUseCase
+	chatListUseCase        usecase.ChatListUseCase
 	authUseCase            usecase.Auth
 	relChatUserRepo        repository.RelChatUserRepository
 	userRepo               repository.UserRepository
@@ -34,6 +35,7 @@ func NewAPI(
 	checkChatExistsUseCase usecase.CheckChatExistsUseCase,
 	addMessageUseCase usecase.AddMessageUseCase,
 	messageListUseCase usecase.MessageListUseCase,
+	chatListUseCase usecase.ChatListUseCase,
 	authUseCase usecase.Auth,
 	relChatUserRepo repository.RelChatUserRepository,
 	userRepo repository.UserRepository,
@@ -45,6 +47,7 @@ func NewAPI(
 		checkChatExistsUseCase: checkChatExistsUseCase,
 		addMessageUseCase:      addMessageUseCase,
 		messageListUseCase:     messageListUseCase,
+		chatListUseCase:        chatListUseCase,
 		authUseCase:            authUseCase,
 		relChatUserRepo:        relChatUserRepo,
 		userRepo:               userRepo,
@@ -169,4 +172,21 @@ func (api *API) buildAuthRequiredResponse() *desc.ChatResponse {
 			Content: "Для продолжения необходимо <a href=\"" + api.loginDomain + "/login\">авторизоваться</a>.",
 		},
 	}
+}
+
+func (api *API) ChatList(ctx context.Context, _ *desc.ChatListRequest) (*desc.ChatListResponse, error) {
+	chats, err := api.chatListUseCase.ChatList(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	items := make([]*desc.ChatListItem, 0, len(chats))
+	for _, chat := range chats {
+		items = append(items, &desc.ChatListItem{
+			Id:   chat.ID.String(),
+			Name: chat.Name,
+		})
+	}
+
+	return &desc.ChatListResponse{Chats: items}, nil
 }

@@ -23,6 +23,7 @@ import (
 )
 
 const chatPath = "/model/chat/chat"
+const chatListPath = "/model/chat/list"
 
 func TestChatReturnsAnswerForPPSCategory(t *testing.T) {
 	response := callChat(t, &desc.ChatBody{
@@ -158,4 +159,44 @@ func readServiceEndpointFromDotEnv() (string, error) {
 	}
 
 	return "", fmt.Errorf("SERVICE_ENDPOINT not found in %s", envPath)
+}
+
+func TestChatList(t *testing.T) {
+	response := callChatList(t)
+
+	require.NotNil(t, response)
+	require.NotNil(t, response.GetChats())
+
+	for _, chat := range response.GetChats() {
+		assert.NotEmpty(t, chat.GetId())
+		assert.NotEmpty(t, chat.GetName())
+	}
+}
+
+func callChatList(t *testing.T) *desc.ChatListResponse {
+	t.Helper()
+
+	endpoint, err := url.JoinPath(getServiceEndpoint(t), chatListPath)
+	require.NoError(t, err)
+
+	req, err := http.NewRequestWithContext(t.Context(), http.MethodGet, endpoint, nil)
+	require.NoError(t, err)
+	req.Header.Set("Cookie", "aizaschita-app-session=test-user-7:yeastor@yandex.ru")
+
+	client := &http.Client{Timeout: 2 * time.Minute}
+	resp, err := client.Do(req)
+	require.NoErrorf(t, err, "request to %s failed; ensure the service is running", endpoint)
+	defer func() {
+		require.NoError(t, resp.Body.Close())
+	}()
+
+	body, err := io.ReadAll(resp.Body)
+	require.NoError(t, err)
+	require.Equalf(t, http.StatusOK, resp.StatusCode, "unexpected response body: %s", string(body))
+
+	var response desc.ChatListResponse
+	err = protojson.Unmarshal(body, &response)
+	require.NoError(t, err)
+
+	return &response
 }

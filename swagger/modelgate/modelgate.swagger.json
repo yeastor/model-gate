@@ -48,6 +48,28 @@
         ]
       }
     },
+    "/model/chat/list": {
+      "get": {
+        "operationId": "ModelService_ChatList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelgateChatListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "ModelService"
+        ]
+      }
+    },
     "/model/chat/massage/list": {
       "post": {
         "operationId": "ModelService_MessageList",
@@ -146,6 +168,29 @@
         },
         "question": {
           "$ref": "#/definitions/modelgateChatQuestion"
+        }
+      }
+    },
+    "modelgateChatListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "modelgateChatListResponse": {
+      "type": "object",
+      "properties": {
+        "chats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/modelgateChatListItem"
+          }
         }
       }
     },

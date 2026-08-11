@@ -79,6 +79,8 @@ func InitializeApplicationAPI(
 		wire.Bind(new(usecase.AddMessageUseCase), new(*modelgateUsecase.AddMessageUseCase)),
 		modelgateUsecase.NewMessageListUseCase,
 		wire.Bind(new(usecase.MessageListUseCase), new(*modelgateUsecase.MessageListUseCase)),
+		modelgateUsecase.NewChatListUseCase,
+		wire.Bind(new(usecase.ChatListUseCase), new(*modelgateUsecase.ChatListUseCase)),
 
 		clickhouse.NewRepository,
 		wire.Bind(new(repository.ClickhouseChatRepository), new(*clickhouse.Repository)),

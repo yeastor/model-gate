@@ -47,7 +47,8 @@ func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, clien
 	metadataCookieProvider := cookie.NewMetadataCookieProvider(dcHTTPClient, cfg)
 	authUseCase := modelgate2.NewAuthUseCase(metadataCookieProvider)
 	relChatUserRepository := postgres.NewRelChatUserRepository(pool)
+	chatListUseCase := modelgate2.NewChatListUseCase(authUseCase, repository, relChatUserRepository, logger)
 	userRepository := postgres.NewUserRepository(pool)
-	api := modelgate.NewAPI(chatUseCase, addChatUseCase, checkChatExistsUseCase, addMessageUseCase, messageListUseCase, authUseCase, relChatUserRepository, userRepository, cfg)
+	api := modelgate.NewAPI(chatUseCase, addChatUseCase, checkChatExistsUseCase, addMessageUseCase, messageListUseCase, chatListUseCase, authUseCase, relChatUserRepository, userRepository, cfg)
 	return api
 }
