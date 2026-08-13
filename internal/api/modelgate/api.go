@@ -3,12 +3,14 @@ package modelgate
 import (
 	"context"
 	"fmt"
+	"model-gate/internal/api/middleware"
 	"model-gate/internal/domain/entity"
 	"model-gate/internal/domain/repository"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/domain/usecase/converter"
 	desc "model-gate/pkg/modelgate"
 	"model-gate/pkg/utils"
+	"net/url"
 	"slices"
 
 	"github.com/google/uuid"
@@ -98,14 +100,14 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 			return nil, err
 		}
 		if len(messages) >= api.freeMessageLimit {
-			return api.buildAuthRequiredResponse(), nil
+			return api.buildAuthRequiredResponse(ctx), nil
 		}
 	}
 
 	if isAuth {
 		user, err := api.authUseCase.GetAuthUserId(ctx)
 		if err != nil {
-			return api.buildAuthRequiredResponse(), nil
+			return api.buildAuthRequiredResponse(ctx), nil
 		}
 
 		exists, err := api.userRepo.UserExists(ctx, user.GetID())
@@ -166,10 +168,15 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 	return converter.FromUseCaseAnswerToDescChatResponse(useCaseAnswer), err
 }
 
-func (api *API) buildAuthRequiredResponse() *desc.ChatResponse {
+func (api *API) buildAuthRequiredResponse(ctx context.Context) *desc.ChatResponse {
+	loginURL := api.loginDomain + "/login"
+	if referer, ok := middleware.GetReferer(ctx); ok && referer != "" {
+		loginURL += "?redirectUrl=" + url.QueryEscape(referer)
+	}
+
 	return &desc.ChatResponse{
 		Answer: &desc.ChatAnswer{
-			Content: "Для продолжения необходимо <a href=\"" + api.loginDomain + "/login\">авторизоваться</a>.",
+			Content: "Для продолжения необходимо <a href=\"" + loginURL + "\">авторизоваться</a>.",
 		},
 	}
 }

@@ -151,7 +151,7 @@ func httpProxy(ctx context.Context, grpcPort string, httpProxyPort string, logge
 	mux := runtime.NewServeMux(
 		runtime.WithIncomingHeaderMatcher(xrequestid.HeaderMatcher),
 		runtime.WithMetadata(func(ctx context.Context, req *http.Request) metadata.MD {
-			return metadata.Pairs("grpcgateway-cookie", req.Header.Get("Cookie"))
+			return metadata.Pairs("grpcgateway-cookie", req.Header.Get("Cookie"), "grpcgateway-referer", req.Header.Get("Referer"))
 		}),
 	)
 
