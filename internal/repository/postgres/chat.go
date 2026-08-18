@@ -83,6 +83,7 @@ func (r *Repository) GetChatsByUserID(ctx context.Context, userID int) ([]*entit
 		SELECT id, name, created_at, user_id
 		FROM chat.chat
 		WHERE user_id = $1
+		ORDER BY updated_at DESC
 	`
 
 	rows, err := r.pool.Query(ctx, query, userID)
