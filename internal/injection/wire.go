@@ -86,8 +86,6 @@ func InitializeApplicationAPI(
 		wire.Bind(new(repository.ClickhouseChatRepository), new(*clickhouse.Repository)),
 		postgres.NewRepository,
 		wire.Bind(new(repository.ChatRepository), new(*postgres.Repository)),
-		postgres.NewRelChatUserRepository,
-		wire.Bind(new(repository.RelChatUserRepository), new(*postgres.RelChatUserRepository)),
 		postgres.NewUserRepository,
 		wire.Bind(new(repository.UserRepository), new(*postgres.UserRepository)),
 

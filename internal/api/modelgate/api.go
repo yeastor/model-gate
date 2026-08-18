@@ -11,7 +11,6 @@ import (
 	desc "model-gate/pkg/modelgate"
 	"model-gate/pkg/utils"
 	"net/url"
-	"slices"
 
 	"github.com/google/uuid"
 )
@@ -25,7 +24,7 @@ type API struct {
 	messageListUseCase     usecase.MessageListUseCase
 	chatListUseCase        usecase.ChatListUseCase
 	authUseCase            usecase.Auth
-	relChatUserRepo        repository.RelChatUserRepository
+	chatRepo               repository.ChatRepository
 	userRepo               repository.UserRepository
 	freeMessageLimit       int
 	loginDomain            string
@@ -39,7 +38,7 @@ func NewAPI(
 	messageListUseCase usecase.MessageListUseCase,
 	chatListUseCase usecase.ChatListUseCase,
 	authUseCase usecase.Auth,
-	relChatUserRepo repository.RelChatUserRepository,
+	chatRepo repository.ChatRepository,
 	userRepo repository.UserRepository,
 	options usecase.AuthOptions,
 ) *API {
@@ -51,7 +50,7 @@ func NewAPI(
 		messageListUseCase:     messageListUseCase,
 		chatListUseCase:        chatListUseCase,
 		authUseCase:            authUseCase,
-		relChatUserRepo:        relChatUserRepo,
+		chatRepo:               chatRepo,
 		userRepo:               userRepo,
 		freeMessageLimit:       options.GetAuthFreeMessageLimit(),
 		loginDomain:            options.GetAuthLoginDomain(),
@@ -134,24 +133,19 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 		}
 	}
 
-	userIDs, err := api.relChatUserRepo.GetUsersByChatID(ctx, chatID)
+	chat, err := api.chatRepo.GetChat(ctx, chatID)
 	if err != nil {
 		return nil, err
 	}
 
-	if len(userIDs) == 0 {
-		err = api.relChatUserRepo.AddUserToChat(ctx, &entity.RelChatUser{
-			UserID: user.GetID(),
-			ChatID: chatID,
-		})
-		if err != nil {
+	if chat.UserID == nil {
+		userID := user.GetID()
+		chat.UserID = &userID
+		if err := api.chatRepo.UpdateChat(ctx, chat); err != nil {
 			return nil, err
 		}
-	} else {
-		found := slices.Contains(userIDs, user.GetID())
-		if !found {
-			return nil, fmt.Errorf("работа с этим чатом невозможна")
-		}
+	} else if *chat.UserID != user.GetID() {
+		return nil, fmt.Errorf("работа с этим чатом невозможна")
 	}
 
 	useCaseAnswer, err := api.chatUseCase.Chat(ctx, converter.FromDescChatRequestToUseCaseQuestion(chatRequest))

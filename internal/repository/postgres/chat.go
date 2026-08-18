@@ -20,11 +20,11 @@ func NewRepository(pool *pgxpool.Pool) *Repository {
 
 func (r *Repository) CreateChat(ctx context.Context, chat *entity.Chat) error {
 	query := `
-		INSERT INTO chat.chat (id, name, created_at)
-		VALUES ($1, $2, $3)
+		INSERT INTO chat.chat (id, name, created_at, user_id)
+		VALUES ($1, $2, $3, $4)
 	`
 
-	_, err := r.pool.Exec(ctx, query, chat.ID, chat.Name, chat.CreatedAt)
+	_, err := r.pool.Exec(ctx, query, chat.ID, chat.Name, chat.CreatedAt, chat.UserID)
 	if err != nil {
 		return fmt.Errorf("failed to create chat: %w", err)
 	}
@@ -49,18 +49,58 @@ func (r *Repository) ChatExists(ctx context.Context, id uuid.UUID) (bool, error)
 
 func (r *Repository) GetChat(ctx context.Context, id uuid.UUID) (*entity.Chat, error) {
 	query := `
-		SELECT id, name, created_at
+		SELECT id, name, created_at, user_id
 		FROM chat.chat
 		WHERE id = $1
 		LIMIT 1
 	`
 
 	var chat entity.Chat
-	if err := r.pool.QueryRow(ctx, query, id).Scan(&chat.ID, &chat.Name, &chat.CreatedAt); err != nil {
+	if err := r.pool.QueryRow(ctx, query, id).Scan(&chat.ID, &chat.Name, &chat.CreatedAt, &chat.UserID); err != nil {
 		return nil, fmt.Errorf("failed to get chat: %w", err)
 	}
 
 	return &chat, nil
+}
+
+func (r *Repository) UpdateChat(ctx context.Context, chat *entity.Chat) error {
+	query := `
+		UPDATE chat.chat
+		SET user_id = $2
+		WHERE id = $1
+	`
+
+	_, err := r.pool.Exec(ctx, query, chat.ID, chat.UserID)
+	if err != nil {
+		return fmt.Errorf("failed to update chat: %w", err)
+	}
+
+	return nil
+}
+
+func (r *Repository) GetChatsByUserID(ctx context.Context, userID int) ([]*entity.Chat, error) {
+	query := `
+		SELECT id, name, created_at, user_id
+		FROM chat.chat
+		WHERE user_id = $1
+	`
+
+	rows, err := r.pool.Query(ctx, query, userID)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get chats by user id: %w", err)
+	}
+	defer rows.Close()
+
+	var chats []*entity.Chat
+	for rows.Next() {
+		var chat entity.Chat
+		if err := rows.Scan(&chat.ID, &chat.Name, &chat.CreatedAt, &chat.UserID); err != nil {
+			return nil, fmt.Errorf("failed to scan chat: %w", err)
+		}
+		chats = append(chats, &chat)
+	}
+
+	return chats, nil
 }
 
 var _ repository.ChatRepository = (*Repository)(nil)
