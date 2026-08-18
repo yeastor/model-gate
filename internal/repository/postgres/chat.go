@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"model-gate/internal/domain/entity"
 	"model-gate/internal/domain/repository"
+	"time"
 
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -66,13 +67,28 @@ func (r *Repository) GetChat(ctx context.Context, id uuid.UUID) (*entity.Chat, e
 func (r *Repository) UpdateChat(ctx context.Context, chat *entity.Chat) error {
 	query := `
 		UPDATE chat.chat
-		SET user_id = $2
+		SET user_id = $2, updated_at = $3
 		WHERE id = $1
 	`
 
-	_, err := r.pool.Exec(ctx, query, chat.ID, chat.UserID)
+	_, err := r.pool.Exec(ctx, query, chat.ID, chat.UserID, time.Now())
 	if err != nil {
 		return fmt.Errorf("failed to update chat: %w", err)
+	}
+
+	return nil
+}
+
+func (r *Repository) UpdateUpdatedAt(ctx context.Context, chatID uuid.UUID) error {
+	query := `
+		UPDATE chat.chat
+		SET updated_at = $2
+		WHERE id = $1
+	`
+
+	_, err := r.pool.Exec(ctx, query, chatID, time.Now())
+	if err != nil {
+		return fmt.Errorf("failed to update chat updated at: %w", err)
 	}
 
 	return nil

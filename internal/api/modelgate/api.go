@@ -159,6 +159,10 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 		return nil, fmt.Errorf("add message err: %w", err)
 	}
 
+	if err := api.chatRepo.UpdateUpdatedAt(ctx, chatID); err != nil {
+		return nil, err
+	}
+
 	return converter.FromUseCaseAnswerToDescChatResponse(useCaseAnswer), err
 }
 

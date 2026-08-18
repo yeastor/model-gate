@@ -12,6 +12,7 @@ type ChatRepository interface {
 	ChatExists(ctx context.Context, id uuid.UUID) (bool, error)
 	GetChat(ctx context.Context, id uuid.UUID) (*entity.Chat, error)
 	UpdateChat(ctx context.Context, chat *entity.Chat) error
+	UpdateUpdatedAt(ctx context.Context, chatID uuid.UUID) error
 	GetChatsByUserID(ctx context.Context, userID int) ([]*entity.Chat, error)
 }
 
