@@ -90,57 +90,6 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 		return nil, err
 	}
 
-	isAuth, err := api.authUseCase.IsTokenExist(ctx)
-	if err != nil {
-		return nil, err
-	}
-	if !isAuth {
-		messages, err := api.messageListUseCase.MessageList(ctx, chatID)
-		if err != nil {
-			return nil, err
-		}
-		if len(messages) >= api.freeMessageLimit {
-			return api.buildAuthRequiredResponse(ctx), nil
-		}
-	}
-
-	if isAuth {
-		user, err := api.authUseCase.GetAuthUserId(ctx)
-		if err != nil {
-			return api.buildAuthRequiredResponse(ctx), nil
-		}
-
-		exists, err := api.userRepo.UserExists(ctx, user.GetID())
-		if err != nil {
-			return nil, err
-		}
-		if !exists {
-			if err := api.userRepo.CreateUser(ctx, user); err != nil {
-				return nil, err
-			}
-		}
-
-		userIDs, err := api.relChatUserRepo.GetUsersByChatID(ctx, chatID)
-		if err != nil {
-			return nil, err
-		}
-
-		if len(userIDs) == 0 {
-			err = api.relChatUserRepo.AddUserToChat(ctx, &entity.RelChatUser{
-				UserID: user.GetID(),
-				ChatID: chatID,
-			})
-			if err != nil {
-				return nil, err
-			}
-		} else {
-			found := slices.Contains(userIDs, user.GetID())
-			if !found {
-				return nil, fmt.Errorf("работа с этим чатом невозможна")
-			}
-		}
-	}
-
 	isChatExist, err := api.checkChatExistsUseCase.CheckExist(ctx, chatID)
 	if err != nil {
 		return nil, err
@@ -151,6 +100,57 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 		err = api.addChatUseCase.AddChat(ctx, chatID, utils.GenerateChatName(question))
 		if err != nil {
 			return nil, fmt.Errorf("create chat err: %w", err)
+		}
+	}
+
+	isAuth, err := api.authUseCase.IsTokenExist(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if !isAuth {
+		messages, err := api.messageListUseCase.MessageList(ctx, chatID)
+		if err != nil {
+			return nil, err
+		}
+		if len(messages) >= api.freeMessageLimit {
+			return api.buildAuthRequiredResponse(ctx), nil
+		}
+	}
+
+	user, err := api.authUseCase.GetAuthUserId(ctx)
+	if err != nil {
+		return api.buildAuthRequiredResponse(ctx), nil
+	}
+
+	isUserExists, err := api.userRepo.UserExists(ctx, user.GetID())
+	if err != nil {
+		return nil, err
+	}
+
+	if !isUserExists {
+		if err := api.userRepo.CreateUser(ctx, user); err != nil {
+			return nil, err
+		}
+	}
+
+	userIDs, err := api.relChatUserRepo.GetUsersByChatID(ctx, chatID)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(userIDs) == 0 {
+		err = api.relChatUserRepo.AddUserToChat(ctx, &entity.RelChatUser{
+			UserID: user.GetID(),
+			ChatID: chatID,
+		})
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		found := slices.Contains(userIDs, user.GetID())
+		if !found {
+			return nil, fmt.Errorf("работа с этим чатом невозможна")
 		}
 	}
 
