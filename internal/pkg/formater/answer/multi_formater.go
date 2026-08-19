@@ -1,6 +1,11 @@
 package answer
 
-import "strings"
+import (
+	"net/url"
+	"strings"
+)
+
+const documentLinkPathPrefix = "/documents/link/"
 
 type MultiFormater struct {
 }
@@ -24,7 +29,7 @@ func (format MultiFormater) Format(payload *Payload) string {
 		sections = append(sections, say)
 	}
 
-	if whereTo := formatList("🖊️Куда обратиться", payload.Answer.WhereTo); whereTo != "" {
+	if whereTo := formatDestinations(payload.Answer.WhereTo); whereTo != "" {
 		sections = append(sections, whereTo)
 	}
 
@@ -68,6 +73,26 @@ func formatList(title string, items []string) string {
 	return strings.TrimSuffix(builder.String(), "\n")
 }
 
+func formatDestinations(destinations []Destination) string {
+	items := make([]string, 0, len(destinations))
+	for _, destination := range destinations {
+		item := destination.Title
+		if destination.DocumentLinkID != "" {
+			documentPath := documentLinkPathPrefix + url.PathEscape(destination.DocumentLinkID)
+			if item == "" {
+				item = documentPath
+			} else {
+				item += " — " + documentPath
+			}
+		}
+		if item != "" {
+			items = append(items, item)
+		}
+	}
+
+	return formatList("🖊️Куда обратиться", items)
+}
+
 func formatLaws(laws []Law) string {
 	items := make([]string, 0, len(laws))
 	for _, law := range laws {
@@ -77,6 +102,20 @@ func formatLaws(laws []Law) string {
 			item += " (" + law.Ref + ")"
 		case item == "":
 			item = law.Ref
+		}
+		if law.Title != "" && law.Title != law.Ref {
+			if item == "" {
+				item = law.Title
+			} else {
+				item = law.Title + ": " + item
+			}
+		}
+		if law.URL != "" {
+			if item == "" {
+				item = law.URL
+			} else {
+				item += " — " + law.URL
+			}
 		}
 
 		if item != "" {
