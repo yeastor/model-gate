@@ -3,11 +3,14 @@ package modelgate
 import (
 	"context"
 	"fmt"
+	"model-gate/internal/api/middleware"
 	"model-gate/internal/domain/entity"
+	"model-gate/internal/domain/repository"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/domain/usecase/converter"
 	desc "model-gate/pkg/modelgate"
 	"model-gate/pkg/utils"
+	"net/url"
 
 	"github.com/google/uuid"
 )
@@ -19,6 +22,12 @@ type API struct {
 	checkChatExistsUseCase usecase.CheckChatExistsUseCase
 	addMessageUseCase      usecase.AddMessageUseCase
 	messageListUseCase     usecase.MessageListUseCase
+	chatListUseCase        usecase.ChatListUseCase
+	authUseCase            usecase.Auth
+	chatRepo               repository.ChatRepository
+	userRepo               repository.UserRepository
+	freeMessageLimit       int
+	loginDomain            string
 }
 
 func NewAPI(
@@ -27,6 +36,11 @@ func NewAPI(
 	checkChatExistsUseCase usecase.CheckChatExistsUseCase,
 	addMessageUseCase usecase.AddMessageUseCase,
 	messageListUseCase usecase.MessageListUseCase,
+	chatListUseCase usecase.ChatListUseCase,
+	authUseCase usecase.Auth,
+	chatRepo repository.ChatRepository,
+	userRepo repository.UserRepository,
+	options usecase.AuthOptions,
 ) *API {
 	return &API{
 		chatUseCase:            useCase,
@@ -34,13 +48,18 @@ func NewAPI(
 		checkChatExistsUseCase: checkChatExistsUseCase,
 		addMessageUseCase:      addMessageUseCase,
 		messageListUseCase:     messageListUseCase,
+		chatListUseCase:        chatListUseCase,
+		authUseCase:            authUseCase,
+		chatRepo:               chatRepo,
+		userRepo:               userRepo,
+		freeMessageLimit:       options.GetAuthFreeMessageLimit(),
+		loginDomain:            options.GetAuthLoginDomain(),
 	}
 }
 
 func (api *API) StartStart(ctx context.Context, req *desc.StartRequest) (*desc.StartResponse, error) {
 	chatID := uuid.New().String()
 
-	// Формируем ответ с созданным чатом
 	response := &desc.StartResponse{
 		Chat: &desc.Chat{
 			Id: chatID,
@@ -83,6 +102,52 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 		}
 	}
 
+	isAuth, err := api.authUseCase.IsTokenExist(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if !isAuth {
+		messages, err := api.messageListUseCase.MessageList(ctx, chatID)
+		if err != nil {
+			return nil, err
+		}
+		if len(messages) >= api.freeMessageLimit {
+			return api.buildAuthRequiredResponse(ctx), nil
+		}
+	}
+
+	user, err := api.authUseCase.GetAuthUserId(ctx)
+	if err != nil {
+		return api.buildAuthRequiredResponse(ctx), nil
+	}
+
+	isUserExists, err := api.userRepo.UserExists(ctx, user.GetID())
+	if err != nil {
+		return nil, err
+	}
+
+	if !isUserExists {
+		if err := api.userRepo.CreateUser(ctx, user); err != nil {
+			return nil, err
+		}
+	}
+
+	chat, err := api.chatRepo.GetChat(ctx, chatID)
+	if err != nil {
+		return nil, err
+	}
+
+	if chat.UserID == nil {
+		userID := user.GetID()
+		chat.UserID = &userID
+		if err := api.chatRepo.UpdateChat(ctx, chat); err != nil {
+			return nil, err
+		}
+	} else if *chat.UserID != user.GetID() {
+		return nil, fmt.Errorf("работа с этим чатом невозможна")
+	}
+
 	useCaseAnswer, err := api.chatUseCase.Chat(ctx, converter.FromDescChatRequestToUseCaseQuestion(chatRequest))
 	if err != nil {
 		return nil, fmt.Errorf("chat answer err: %w", err)
@@ -94,5 +159,39 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 		return nil, fmt.Errorf("add message err: %w", err)
 	}
 
+	if err := api.chatRepo.UpdateUpdatedAt(ctx, chatID); err != nil {
+		return nil, err
+	}
+
 	return converter.FromUseCaseAnswerToDescChatResponse(useCaseAnswer), err
+}
+
+func (api *API) buildAuthRequiredResponse(ctx context.Context) *desc.ChatResponse {
+	loginURL := api.loginDomain + "/login"
+	if referer, ok := middleware.GetReferer(ctx); ok && referer != "" {
+		loginURL += "?redirectUrl=" + url.QueryEscape(referer)
+	}
+
+	return &desc.ChatResponse{
+		Answer: &desc.ChatAnswer{
+			Content: "Для продолжения необходимо <a href=\"" + loginURL + "\">авторизоваться</a>.",
+		},
+	}
+}
+
+func (api *API) ChatList(ctx context.Context, _ *desc.ChatListRequest) (*desc.ChatListResponse, error) {
+	chats, err := api.chatListUseCase.ChatList(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	items := make([]*desc.ChatListItem, 0, len(chats))
+	for _, chat := range chats {
+		items = append(items, &desc.ChatListItem{
+			Id:   chat.ID.String(),
+			Name: chat.Name,
+		})
+	}
+
+	return &desc.ChatListResponse{Chats: items}, nil
 }

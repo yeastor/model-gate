@@ -15,6 +15,7 @@ import (
 	"model-gate/internal/pkg/model/processor"
 	processorvector "model-gate/internal/pkg/vector/processor"
 	"model-gate/internal/repository/clickhouse"
+	"model-gate/internal/repository/cookie"
 	"model-gate/internal/repository/postgres"
 	"model-gate/internal/usecase/category"
 	modelgateUsecase "model-gate/internal/usecase/modelgate"
@@ -78,16 +79,26 @@ func InitializeApplicationAPI(
 		wire.Bind(new(usecase.AddMessageUseCase), new(*modelgateUsecase.AddMessageUseCase)),
 		modelgateUsecase.NewMessageListUseCase,
 		wire.Bind(new(usecase.MessageListUseCase), new(*modelgateUsecase.MessageListUseCase)),
+		modelgateUsecase.NewChatListUseCase,
+		wire.Bind(new(usecase.ChatListUseCase), new(*modelgateUsecase.ChatListUseCase)),
 
 		clickhouse.NewRepository,
 		wire.Bind(new(repository.ClickhouseChatRepository), new(*clickhouse.Repository)),
 		postgres.NewRepository,
 		wire.Bind(new(repository.ChatRepository), new(*postgres.Repository)),
+		postgres.NewUserRepository,
+		wire.Bind(new(repository.UserRepository), new(*postgres.UserRepository)),
 
 		//modelgateUsecase.getCategoryVariantUseCase
 		category.NewGetCategoryVariantUseCase,
 		wire.Bind(new(categoryInterface.GetCategoryVariantUseCase), new(*category.GetCategoryVariantUseCase)),
 		wire.Bind(new(categoryInterface.CategoryVariantUseCaseOptions), new(*config.Config)),
+
+		modelgateUsecase.NewAuthUseCase,
+		wire.Bind(new(usecase.Auth), new(*modelgateUsecase.AuthUseCase)),
+		cookie.NewMetadataCookieProvider,
+		wire.Bind(new(usecase.AuthProvider), new(*cookie.MetadataCookieProvider)),
+		wire.Bind(new(usecase.AuthOptions), new(*config.Config)),
 	)
 
 	return &modelgateApi.API{}

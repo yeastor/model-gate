@@ -86,6 +86,19 @@ message StartResponse {
   Chat chat = 1;
 }
 
+// ChatList
+message ChatListRequest {
+}
+
+message ChatListItem {
+  string id = 1;
+  string name = 2;
+}
+
+message ChatListResponse {
+  repeated ChatListItem chats = 1;
+}
+
 service ModelService {
 
   rpc Chat(ChatRequest) returns (ChatResponse) {
@@ -105,6 +118,12 @@ service ModelService {
   rpc StartStart(StartRequest) returns (StartResponse) {
     option (google.api.http) = {
       post: "/model/chat/start/start"
+    };
+  }
+
+  rpc ChatList(ChatListRequest) returns (ChatListResponse) {
+    option (google.api.http) = {
+      get: "/model/chat/list"
     };
   }
 }

@@ -13,6 +13,7 @@ import (
 	"log/slog"
 	"model-gate/config"
 	"model-gate/internal/api/health"
+	"model-gate/internal/api/middleware"
 	"model-gate/internal/injection"
 	healthcheck "model-gate/pkg/healthcheck/pb"
 	"model-gate/pkg/interceptor/logger/logrus/logruswithrequestid"
@@ -31,6 +32,7 @@ import (
 	"github.com/qdrant/go-client/qdrant"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/reflection"
 )
 
@@ -54,6 +56,7 @@ func main() {
 
 	server := grpc.NewServer(grpc.ChainUnaryInterceptor(
 		xrequestid.UnaryServerInterceptor(),
+		middleware.UnaryServerInterceptor(cfg.GetAuthCookieName()),
 		logruswithrequestid.UnaryServerInterceptor(cfg),
 	))
 
@@ -147,6 +150,9 @@ func httpProxy(ctx context.Context, grpcPort string, httpProxyPort string, logge
 
 	mux := runtime.NewServeMux(
 		runtime.WithIncomingHeaderMatcher(xrequestid.HeaderMatcher),
+		runtime.WithMetadata(func(ctx context.Context, req *http.Request) metadata.MD {
+			return metadata.Pairs("grpcgateway-cookie", req.Header.Get("Cookie"), "grpcgateway-referer", req.Header.Get("Referer"))
+		}),
 	)
 
 	opts := []grpc.DialOption{

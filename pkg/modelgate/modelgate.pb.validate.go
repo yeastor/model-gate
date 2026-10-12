@@ -2111,3 +2111,340 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = StartResponseValidationError{}
+
+// Validate checks the field values on ChatListRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ChatListRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ChatListRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ChatListRequestMultiError, or nil if none found.
+func (m *ChatListRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ChatListRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return ChatListRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ChatListRequestMultiError is an error wrapping multiple validation errors
+// returned by ChatListRequest.ValidateAll() if the designated constraints
+// aren't met.
+type ChatListRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ChatListRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ChatListRequestMultiError) AllErrors() []error { return m }
+
+// ChatListRequestValidationError is the validation error returned by
+// ChatListRequest.Validate if the designated constraints aren't met.
+type ChatListRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ChatListRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ChatListRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ChatListRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ChatListRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ChatListRequestValidationError) ErrorName() string { return "ChatListRequestValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ChatListRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sChatListRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ChatListRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ChatListRequestValidationError{}
+
+// Validate checks the field values on ChatListItem with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *ChatListItem) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ChatListItem with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in ChatListItemMultiError, or
+// nil if none found.
+func (m *ChatListItem) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ChatListItem) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	// no validation rules for Name
+
+	if len(errors) > 0 {
+		return ChatListItemMultiError(errors)
+	}
+
+	return nil
+}
+
+// ChatListItemMultiError is an error wrapping multiple validation errors
+// returned by ChatListItem.ValidateAll() if the designated constraints aren't met.
+type ChatListItemMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ChatListItemMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ChatListItemMultiError) AllErrors() []error { return m }
+
+// ChatListItemValidationError is the validation error returned by
+// ChatListItem.Validate if the designated constraints aren't met.
+type ChatListItemValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ChatListItemValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ChatListItemValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ChatListItemValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ChatListItemValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ChatListItemValidationError) ErrorName() string { return "ChatListItemValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ChatListItemValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sChatListItem.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ChatListItemValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ChatListItemValidationError{}
+
+// Validate checks the field values on ChatListResponse with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ChatListResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ChatListResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ChatListResponseMultiError, or nil if none found.
+func (m *ChatListResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ChatListResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetChats() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ChatListResponseValidationError{
+						field:  fmt.Sprintf("Chats[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ChatListResponseValidationError{
+						field:  fmt.Sprintf("Chats[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ChatListResponseValidationError{
+					field:  fmt.Sprintf("Chats[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return ChatListResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ChatListResponseMultiError is an error wrapping multiple validation errors
+// returned by ChatListResponse.ValidateAll() if the designated constraints
+// aren't met.
+type ChatListResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ChatListResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ChatListResponseMultiError) AllErrors() []error { return m }
+
+// ChatListResponseValidationError is the validation error returned by
+// ChatListResponse.Validate if the designated constraints aren't met.
+type ChatListResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ChatListResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ChatListResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ChatListResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ChatListResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ChatListResponseValidationError) ErrorName() string { return "ChatListResponseValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ChatListResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sChatListResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ChatListResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ChatListResponseValidationError{}

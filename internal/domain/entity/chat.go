@@ -9,6 +9,7 @@ import (
 type Chat struct {
 	ID        uuid.UUID
 	Name      string
+	UserID    *int
 	CreatedAt time.Time
 }
 

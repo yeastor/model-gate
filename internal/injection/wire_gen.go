@@ -18,6 +18,7 @@ import (
 	"model-gate/internal/pkg/model/processor"
 	processor2 "model-gate/internal/pkg/vector/processor"
 	"model-gate/internal/repository/clickhouse"
+	"model-gate/internal/repository/cookie"
 	"model-gate/internal/repository/postgres"
 	"model-gate/internal/usecase/category"
 	modelgate2 "model-gate/internal/usecase/modelgate"
@@ -43,6 +44,10 @@ func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, clien
 	clickhouseRepository := clickhouse.NewRepository(conn)
 	addMessageUseCase := modelgate2.NewAddMessageUseCase(clickhouseRepository)
 	messageListUseCase := modelgate2.NewMessageListUseCase(clickhouseRepository)
-	api := modelgate.NewAPI(chatUseCase, addChatUseCase, checkChatExistsUseCase, addMessageUseCase, messageListUseCase)
+	metadataCookieProvider := cookie.NewMetadataCookieProvider(dcHTTPClient, cfg)
+	authUseCase := modelgate2.NewAuthUseCase(metadataCookieProvider)
+	chatListUseCase := modelgate2.NewChatListUseCase(authUseCase, repository, logger)
+	userRepository := postgres.NewUserRepository(pool)
+	api := modelgate.NewAPI(chatUseCase, addChatUseCase, checkChatExistsUseCase, addMessageUseCase, messageListUseCase, chatListUseCase, authUseCase, repository, userRepository, cfg)
 	return api
 }
