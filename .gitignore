@@ -29,3 +29,8 @@ go.work.sum
 
 # idea
 .idea
+
+# Local runtime datasets are transferred separately from source code.
+.gocache/
+.env.*
+data/guided-runtime.json

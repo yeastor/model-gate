@@ -2,17 +2,20 @@ package modelgate
 
 import (
 	"context"
+	"errors"
 	"fmt"
-	"model-gate/internal/api/middleware"
 	"model-gate/internal/domain/entity"
 	"model-gate/internal/domain/repository"
 	"model-gate/internal/domain/usecase"
 	"model-gate/internal/domain/usecase/converter"
 	desc "model-gate/pkg/modelgate"
 	"model-gate/pkg/utils"
-	"net/url"
+	"time"
 
 	"github.com/google/uuid"
+	"github.com/jackc/pgx/v5"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type API struct {
@@ -58,94 +61,83 @@ func NewAPI(
 }
 
 func (api *API) StartStart(ctx context.Context, req *desc.StartRequest) (*desc.StartResponse, error) {
-	chatID := uuid.New().String()
-
-	response := &desc.StartResponse{
-		Chat: &desc.Chat{
-			Id: chatID,
-		},
+	user, err := api.authenticatedUser(ctx)
+	if err != nil {
+		return nil, err
 	}
-
-	return response, nil
+	userID := user.GetID()
+	chat := &entity.Chat{ID: uuid.New(), Name: "New chat", UserID: &userID, CreatedAt: time.Now()}
+	if err := api.chatRepo.CreateChat(ctx, chat); err != nil {
+		return nil, status.Error(codes.Internal, "failed to create chat")
+	}
+	return &desc.StartResponse{Chat: &desc.Chat{Id: chat.ID.String()}}, nil
 }
 
 func (api *API) MessageList(ctx context.Context, request *desc.MessageListRequest) (*desc.MessageListResponse, error) {
-	chatID, err := uuid.Parse(request.Chat.Id)
+	user, err := api.authenticatedUser(ctx)
 	if err != nil {
 		return nil, err
 	}
-
-	messages, err := api.messageListUseCase.MessageList(ctx, chatID)
-	return converter.FromUseCaseMessagesToDescMessageListResponse(messages), err
+	if request == nil || request.Chat == nil {
+		return nil, status.Error(codes.InvalidArgument, "chat ID required")
+	}
+	chatID, err := uuid.Parse(request.Chat.Id)
+	if err != nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid chat ID")
+	}
+	var response *desc.MessageListResponse
+	err = api.chatRepo.WithChatLock(ctx, chatID, func(lockCtx context.Context) error {
+		if _, err := api.ownedChat(lockCtx, chatID, user.GetID()); err != nil {
+			return err
+		}
+		messages, err := api.messageListUseCase.MessageList(lockCtx, chatID)
+		if err != nil {
+			return err
+		}
+		response = converter.FromUseCaseMessagesToDescMessageListResponse(messages)
+		return nil
+	})
+	return response, err
 }
 
 func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.ChatResponse, error) {
-	err := chatRequest.Validate()
-	if err != nil {
-		return nil, fmt.Errorf("validate err: %w", err)
-	}
-	chatID, err := uuid.Parse(chatRequest.ChatBody.Chat.Id)
+	user, err := api.authenticatedUser(ctx)
 	if err != nil {
 		return nil, err
 	}
+	if chatRequest == nil || chatRequest.ChatBody == nil {
+		return nil, status.Error(codes.InvalidArgument, "chat request required")
+	}
+	err = chatRequest.Validate()
+	if err != nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid chat request")
+	}
+	chatID, err := uuid.Parse(chatRequest.ChatBody.Chat.Id)
+	if err != nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid chat ID")
+	}
 
-	isChatExist, err := api.checkChatExistsUseCase.CheckExist(ctx, chatID)
+	var response *desc.ChatResponse
+	err = api.chatRepo.WithChatLock(ctx, chatID, func(lockCtx context.Context) error {
+		var err error
+		response, err = api.chatForOwner(lockCtx, chatRequest, chatID, user.GetID())
+		return err
+	})
+	return response, err
+}
+
+func (api *API) chatForOwner(ctx context.Context, chatRequest *desc.ChatRequest, chatID uuid.UUID, userID int) (*desc.ChatResponse, error) {
+	chat, err := api.ownedChat(ctx, chatID, userID)
 	if err != nil {
 		return nil, err
 	}
 
 	question := chatRequest.ChatBody.Question.Q
-	if !isChatExist {
-		err = api.addChatUseCase.AddChat(ctx, chatID, utils.GenerateChatName(question))
-		if err != nil {
-			return nil, fmt.Errorf("create chat err: %w", err)
-		}
-	}
-
-	isAuth, err := api.authUseCase.IsTokenExist(ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	if !isAuth {
-		messages, err := api.messageListUseCase.MessageList(ctx, chatID)
-		if err != nil {
-			return nil, err
-		}
-		if len(messages) >= api.freeMessageLimit {
-			return api.buildAuthRequiredResponse(ctx), nil
-		}
-	}
-
-	user, err := api.authUseCase.GetAuthUserId(ctx)
-	if err != nil {
-		return api.buildAuthRequiredResponse(ctx), nil
-	}
-
-	isUserExists, err := api.userRepo.UserExists(ctx, user.GetID())
-	if err != nil {
-		return nil, err
-	}
-
-	if !isUserExists {
-		if err := api.userRepo.CreateUser(ctx, user); err != nil {
-			return nil, err
-		}
-	}
-
-	chat, err := api.chatRepo.GetChat(ctx, chatID)
-	if err != nil {
-		return nil, err
-	}
-
-	if chat.UserID == nil {
-		userID := user.GetID()
-		chat.UserID = &userID
+	if chat.Name == "New chat" {
+		chat.Name = utils.GenerateChatName(question)
 		if err := api.chatRepo.UpdateChat(ctx, chat); err != nil {
 			return nil, err
 		}
-	} else if *chat.UserID != user.GetID() {
-		return nil, fmt.Errorf("работа с этим чатом невозможна")
 	}
 
 	useCaseAnswer, err := api.chatUseCase.Chat(ctx, converter.FromDescChatRequestToUseCaseQuestion(chatRequest))
@@ -166,21 +158,12 @@ func (api *API) Chat(ctx context.Context, chatRequest *desc.ChatRequest) (*desc.
 	return converter.FromUseCaseAnswerToDescChatResponse(useCaseAnswer), err
 }
 
-func (api *API) buildAuthRequiredResponse(ctx context.Context) *desc.ChatResponse {
-	loginURL := api.loginDomain + "/login"
-	if referer, ok := middleware.GetReferer(ctx); ok && referer != "" {
-		loginURL += "?redirectUrl=" + url.QueryEscape(referer)
-	}
-
-	return &desc.ChatResponse{
-		Answer: &desc.ChatAnswer{
-			Content: "Для продолжения необходимо <a href=\"" + loginURL + "\">авторизоваться</a>.",
-		},
-	}
-}
-
 func (api *API) ChatList(ctx context.Context, _ *desc.ChatListRequest) (*desc.ChatListResponse, error) {
-	chats, err := api.chatListUseCase.ChatList(ctx)
+	user, err := api.authenticatedUser(ctx)
+	if err != nil {
+		return nil, err
+	}
+	chats, err := api.chatRepo.GetChatsByUserID(ctx, user.GetID())
 	if err != nil {
 		return nil, err
 	}
@@ -194,4 +177,38 @@ func (api *API) ChatList(ctx context.Context, _ *desc.ChatListRequest) (*desc.Ch
 	}
 
 	return &desc.ChatListResponse{Chats: items}, nil
+}
+
+func (api *API) authenticatedUser(ctx context.Context) (*entity.User, error) {
+	user, err := api.authUseCase.GetAuthUserId(ctx)
+	if err != nil {
+		if status.Code(err) == codes.Unavailable {
+			return nil, err
+		}
+		return nil, status.Error(codes.Unauthenticated, "authentication required")
+	}
+	if user == nil || user.GetID() <= 0 {
+		return nil, status.Error(codes.Unauthenticated, "authentication required")
+	}
+	if err := api.userRepo.CreateUser(ctx, user); err != nil {
+		return nil, status.Error(codes.Unavailable, "user directory unavailable")
+	}
+	return user, nil
+}
+
+func (api *API) ownedChat(ctx context.Context, id uuid.UUID, userID int) (*entity.Chat, error) {
+	chat, err := api.chatRepo.GetChat(ctx, id)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return nil, status.Error(codes.NotFound, "chat not found")
+	}
+	if err != nil {
+		return nil, status.Error(codes.Unavailable, "chat storage unavailable")
+	}
+	if chat == nil {
+		return nil, status.Error(codes.Unavailable, "chat storage unavailable")
+	}
+	if chat.UserID == nil || *chat.UserID != userID {
+		return nil, status.Error(codes.PermissionDenied, "chat access denied")
+	}
+	return chat, nil
 }

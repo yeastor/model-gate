@@ -1,0 +1,6 @@
+.git
+.gocache
+.idea
+.env*
+*.exe
+wrk

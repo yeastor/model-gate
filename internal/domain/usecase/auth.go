@@ -19,5 +19,6 @@ type AuthOptions interface {
 	GetAuthCookieName() string
 	GetAuthFreeMessageLimit() int
 	GetAuthLoginDomain() string
+	GetAuthUserInfoURL() string
 	GetEnv() string
 }

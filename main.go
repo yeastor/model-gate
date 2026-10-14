@@ -14,8 +14,12 @@ import (
 	"model-gate/config"
 	"model-gate/internal/api/health"
 	"model-gate/internal/api/middleware"
+	modelgateAPI "model-gate/internal/api/modelgate"
 	"model-gate/internal/injection"
+	"model-gate/internal/pkg/embedding"
+	"model-gate/internal/pkg/guided"
 	healthcheck "model-gate/pkg/healthcheck/pb"
+	dcHTTP "model-gate/pkg/http"
 	"model-gate/pkg/interceptor/logger/logrus/logruswithrequestid"
 	"model-gate/pkg/interceptor/xrequestid"
 	"model-gate/pkg/modelgate"
@@ -67,7 +71,9 @@ func main() {
 		panic(fmt.Sprintf("failed to listen: %v", err))
 	}
 
-	httpClient := &http.Client{}
+	httpClient := &http.Client{
+		CheckRedirect: func(_ *http.Request, _ []*http.Request) error { return http.ErrUseLastResponse },
+	}
 
 	clickHouseConnection, err := clickhouse.Open(&clickhouse.Options{
 		Addr: []string{cfg.APP.DB.ChatHost + ":" + cfg.APP.DB.ChatPort},
@@ -105,6 +111,17 @@ func main() {
 	}
 
 	api := injection.InitializeApplicationAPI(logHandler, cfg, httpClient, clickHouseConnection, postgresPool, client)
+	var guidedRuntime *guided.Runtime
+	if cfg.APP.GuidedDataPath != "" {
+		emb, err := embedding.NewFactory(dcHTTP.NewDcHTTPClient(logger, httpClient), cfg, logger).GetProcessor(cfg.GetEmbeddingModelName())
+		if err != nil {
+			log.Fatal(err)
+		}
+		guidedRuntime, err = guided.Load(cfg.APP.GuidedDataPath, emb, client, cfg.APP.GuidedStageCollection)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
 	modelgate.RegisterModelServiceServer(server, api)
 
 	healthcheckAPI := health.NewAPI()
@@ -114,7 +131,7 @@ func main() {
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM, syscall.SIGINT)
 
-	go httpProxy(ctx, cfg.APP.Ports.GRPC, cfg.APP.Ports.HTTP, logger)
+	go httpProxy(ctx, cfg.APP.Ports.GRPC, cfg.APP.Ports.HTTP, logger, api, cfg.GetAuthCookieName(), guidedRuntime)
 
 	logger.Info("server started",
 		"port", cfg.APP.Ports.HTTP)
@@ -139,7 +156,7 @@ func main() {
 	logger.Info("Server shutdown completed")
 }
 
-func httpProxy(ctx context.Context, grpcPort string, httpProxyPort string, logger *slog.Logger) {
+func httpProxy(ctx context.Context, grpcPort string, httpProxyPort string, logger *slog.Logger, api *modelgateAPI.API, cookieName string, guidedRuntime *guided.Runtime) {
 	const ReadTimeout = 10
 	const WriteTimeout = 20
 	const IdleTimeout = 120
@@ -157,6 +174,13 @@ func httpProxy(ctx context.Context, grpcPort string, httpProxyPort string, logge
 
 	opts := []grpc.DialOption{
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
+	}
+
+	if err := api.RegisterManagementHTTP(mux, cookieName); err != nil {
+		panic(fmt.Errorf("register chat management: %w", err))
+	}
+	if err := api.RegisterGuidedHTTP(mux, cookieName, guidedRuntime); err != nil {
+		panic(fmt.Errorf("register guided chat: %w", err))
 	}
 
 	err := modelgate.RegisterModelServiceHandlerFromEndpoint(

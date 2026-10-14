@@ -63,3 +63,32 @@ func (r *Repository) GetMessagesByChatID(ctx context.Context, chatID uuid.UUID) 
 }
 
 var _ repository.ClickhouseChatRepository = (*Repository)(nil)
+
+func (r *Repository) GetAllMessagesByChatID(ctx context.Context, chatID uuid.UUID) ([]*entity.Message, error) {
+	rows, err := r.conn.Query(ctx, `SELECT id, chat_id, question, answer, category, created_at
+        FROM chat.message WHERE chat_id = ? ORDER BY created_at ASC, id ASC LIMIT 10001`, chatID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	messages := make([]*entity.Message, 0)
+	for rows.Next() {
+		var message entity.Message
+		if err := rows.Scan(&message.ID, &message.ChatID, &message.Question, &message.Answer, &message.Category, &message.CreatedAt); err != nil {
+			return nil, err
+		}
+		messages = append(messages, &message)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	if len(messages) > 10000 {
+		return nil, fmt.Errorf("chat export exceeds 10000 exchanges")
+	}
+	return messages, nil
+}
+
+func (r *Repository) DeleteMessagesByChatID(ctx context.Context, chatID uuid.UUID) error {
+	// Wait for the mutation before acknowledging removal, not just for its enqueue.
+	return r.conn.Exec(ctx, `ALTER TABLE chat.message DELETE WHERE chat_id = ? SETTINGS mutations_sync = 2`, chatID)
+}

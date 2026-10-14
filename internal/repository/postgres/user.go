@@ -19,8 +19,10 @@ func NewUserRepository(pool *pgxpool.Pool) *UserRepository {
 
 func (r *UserRepository) CreateUser(ctx context.Context, user *entity.User) error {
 	query := `
-		INSERT INTO chat.user (id, email)
+		INSERT INTO chat.site_user (id, email)
 		VALUES ($1, $2)
+		ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email
+		WHERE chat.site_user.email IS DISTINCT FROM EXCLUDED.email
 	`
 
 	_, err := r.pool.Exec(ctx, query, user.ID, user.Email)
@@ -34,7 +36,7 @@ func (r *UserRepository) CreateUser(ctx context.Context, user *entity.User) erro
 func (r *UserRepository) UserExists(ctx context.Context, id int) (bool, error) {
 	query := `
 		SELECT count(*)
-		FROM chat.user
+		FROM chat.site_user
 		WHERE id = $1
 	`
 
@@ -49,7 +51,7 @@ func (r *UserRepository) UserExists(ctx context.Context, id int) (bool, error) {
 func (r *UserRepository) GetUser(ctx context.Context, id int) (*entity.User, error) {
 	query := `
 		SELECT id, email
-		FROM chat.user
+		FROM chat.site_user
 		WHERE id = $1
 		LIMIT 1
 	`

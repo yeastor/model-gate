@@ -74,7 +74,7 @@ func (q *Qdrant) GetAnswer(ctx context.Context, question *Question) ([]VectorAns
 func ConvertPayload(v any) any {
 	switch val := v.(type) {
 	case *qdrant.Value_NullValue:
-		return val.NullValue.String()
+		return nil
 	case *qdrant.Value_BoolValue:
 		return val.BoolValue
 	case *qdrant.Value_DoubleValue:
