@@ -1,0 +1,13 @@
+{
+  "purpose": "Reference metadata for a separately supplied local review dataset, not legal or production acceptance",
+  "file": "data/guided-runtime.json",
+  "bytes": 119804692,
+  "sha256": "8a92d68a7f3c0e7ca8dad78316d338ce72db5b5641096174298630476aa12e19",
+  "version": "0c5dd76462724af6c2c247538742859cca16e763afb82648badadab8806458a9",
+  "categories": 10,
+  "stages": 80,
+  "variants": 4559,
+  "nodes": 155915,
+  "included_in_git": false,
+  "production_deployed": false
+}
