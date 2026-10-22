@@ -1,0 +1,12 @@
+{
+  "name": "aizashchita-category-runtime",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node service/server.mjs",
+    "test": "node --test service/explicit.test.mjs service/validation.test.mjs service/conversation/*.test.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.17.1"
+  }
+}

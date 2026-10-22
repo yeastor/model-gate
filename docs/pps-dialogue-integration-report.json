@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-10-22T15:42:45.635Z",
+  "status": "LOCAL_INTEGRATION_VERIFIED",
+  "categorySha256": "1f3d30732d4c00d77bbb5c63b715bdddfe97e5ecaed92bb764706541c2bd26af",
+  "policyVersion": "pps-dialogue/20261022-v2",
+  "extraction": {
+    "cases": 681,
+    "reviewedFieldCases": 657,
+    "blockedFieldCases": 24,
+    "fieldsEnabled": 45,
+    "fieldsDeferred": [
+      "pps.use_of_force.active_resistance_present",
+      "pps.use_of_force.attack_present"
+    ],
+    "corpus": "synthetic_dev_regression",
+    "holdout": 0
+  },
+  "runtimeTests": {
+    "command": [
+      "node",
+      "--test",
+      "service/explicit.test.mjs",
+      "service/validation.test.mjs",
+      "service/conversation/*.test.mjs"
+    ],
+    "cwd": "C:\\Users\\mujlo\\Documents\\Codex\\model-gate/services/category-runtime",
+    "exitCode": 0,
+    "passed": 99,
+    "failed": 0,
+    "skippedLegacyOptIn": 5,
+    "evidence": "work/pps-dialogue-integration-20261022-v1/runtime-final.txt",
+    "supplementalBranchesExecuted": 42
+  },
+  "browser": {
+    "status": "PASS",
+    "url": "http://127.0.0.1:3000/chat?chat_id=441bfa66-b8ff-4c54-81bb-054ab25c8a19",
+    "steps": [
+      "shouting -> clarification",
+      "unknown -> short continuation",
+      "pronoun force -> use_of_force answer",
+      "unknown injuries -> supplemental warning question",
+      "second unknown -> no third question",
+      "reload restores history",
+      "new bruise detail after service restart -> approved injury variant"
+    ]
+  },
+  "preservation": {
+    "sourceUnchanged": true,
+    "qdrantPayloadsCompared": 290,
+    "qdrantUnchanged": true,
+    "categoryNextBranchesUnchanged": 3462
+  },
+  "deployment": {
+    "environment": "local",
+    "site": "http://127.0.0.1:3000/chat",
+    "runtime": "http://127.0.0.1:18110",
+    "remoteServerUpdated": false
+  },
+  "limitations": [
+    "No independent real-language holdout; interpreter is bounded.",
+    "Two unresolved fields remain blocked.",
+    "The 171 authoring dialogues were not all executed as a separate batch; actual manager checks are recorded above.",
+    "Pre-existing gateway/frontend worktree changes are outside this Node-service commit."
+  ]
+}

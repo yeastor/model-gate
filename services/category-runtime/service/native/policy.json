@@ -1,0 +1,21 @@
+{
+  "schema": "next-interaction-policy/v1",
+  "version": "2026-10-16",
+  "answer_values": [true, false, null],
+  "default_pair_limit": 2,
+  "complex_pair_limit": 3,
+  "simultaneous_question_limit": 1,
+  "require_all_answer_values": false,
+  "omit_questions_without_useful_answers": true,
+  "unknown_labels": {
+    "fact": "Не знаю",
+    "memory": "Не помню",
+    "document": "Нужно проверить",
+    "observation": "Не могу определить",
+    "confidence": "Не уверен(а)"
+  },
+  "complexity_level": "very_complex",
+  "unknown_is_false": false,
+  "repeat_unknown_automatically": false,
+  "scope": "sequential_question_answer_chain_for_one_source_context"
+}

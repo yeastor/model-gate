@@ -1,0 +1,398 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aizashchita.local/private/pps-next-interaction-20261016.schema.json",
+  "title": "AIZashchita variant category authoring file",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "category",
+    "metadata",
+    "subcategories"
+  ],
+  "properties": {
+    "category": {
+      "$ref": "#/$defs/idName"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_version",
+        "generated_on",
+        "laws_checked_on",
+        "note"
+      ],
+      "properties": {
+        "format_version": {
+          "const": "mvp_v4_next_interaction_20261016"
+        },
+        "generated_on": {
+          "format": "date",
+          "type": "string"
+        },
+        "laws_checked_on": {
+          "format": "date",
+          "type": "string"
+        },
+        "note": {
+          "minLength": 1,
+          "type": "string"
+        }
+      }
+    },
+    "subcategories": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stage",
+          "context_fields",
+          "variants"
+        ],
+        "properties": {
+          "stage": {
+            "$ref": "#/$defs/idName"
+          },
+          "context_fields": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/idName"
+            }
+          },
+          "variants": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/variant"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "idName": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "variant_id",
+        "context",
+        "question",
+        "payload"
+      ],
+      "properties": {
+        "variant_id": {
+          "maxLength": 160,
+          "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*_v(?:0[1-9]|[1-9][0-9]+)$",
+          "type": "string"
+        },
+        "context": {
+          "type": "object",
+          "description": "Canonical ordered tri-state material-outcome match mask. Every active key remains present; true means confirmed, false means explicitly disproved or validly derived, and null means unknown, unreported, not yet asked, or non-material to this outcome. Context-mask differences alone do not create variant identity, and a null representative never erases a separately preserved confirmed runtime fact.",
+          "additionalProperties": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "question": {
+          "description": "Retrieval and embedding text. The normal range is 150-450 Unicode code points, 451-500 warns, and more than 500 fails under authoring-content-policy.json.",
+          "minLength": 1,
+          "pattern": "^\\s*(?:\\S|\\S[\\s\\S]{0,498}\\S)\\s*$",
+          "type": "string",
+          "x-aizashchita-content-policy": "retrieval_question"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "category",
+            "stage",
+            "answer",
+            "next"
+          ],
+          "properties": {
+            "category": {
+              "$ref": "#/$defs/idName"
+            },
+            "stage": {
+              "$ref": "#/$defs/idName"
+            },
+            "answer": {
+              "$ref": "#/$defs/answer"
+            },
+            "next": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/next"
+              },
+              "maxItems": 1
+            }
+          }
+        }
+      }
+    },
+    "answer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "now",
+        "steps",
+        "dont",
+        "say",
+        "where_to",
+        "laws"
+      ],
+      "properties": {
+        "now": {
+          "description": "Immediate answer text governed by the versioned authoring content policy.",
+          "minLength": 1,
+          "pattern": "^\\s*(?:\\S|\\S[\\s\\S]{0,648}\\S)\\s*$",
+          "type": "string",
+          "x-aizashchita-content-policy": "answer.now"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "x-aizashchita-content-policy": "answer.steps"
+        },
+        "dont": {
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "x-aizashchita-content-policy": "answer.dont"
+        },
+        "say": {
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "x-aizashchita-content-policy": "answer.say"
+        },
+        "where_to": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "document_link_id"
+            ],
+            "properties": {
+              "title": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "document_link_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            }
+          }
+        },
+        "laws": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ref",
+              "url",
+              "title",
+              "short"
+            ],
+            "properties": {
+              "ref": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "url": {
+                "maxLength": 2048,
+                "minLength": 1,
+                "pattern": "^/laws/[^\\s\\\\?#]+(?:#[^\\s\\\\#?]+)?$",
+                "type": "string"
+              },
+              "title": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "short": {
+                "description": "Exact frozen-catalog summary; hard maximum 200 Unicode code points.",
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string",
+                "x-aizashchita-content-policy": "answer.laws.short"
+              }
+            }
+          }
+        }
+      }
+    },
+    "next": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "stage_key",
+        "questions",
+        "facts",
+        "history",
+        "source_binding"
+      ],
+      "properties": {
+        "schema": {
+          "const": "next-interaction-request/v1"
+        },
+        "stage_key": {
+          "type": "string",
+          "pattern": "^pps\\.[a-z_]+$"
+        },
+        "source_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "candidate_sha256",
+            "source_pointer",
+            "source_key"
+          ],
+          "properties": {
+            "candidate_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "source_pointer": {
+              "type": "string",
+              "pattern": "^/subcategories/[0-9]+/variants/[0-9]+$"
+            },
+            "source_key": {
+              "type": "string"
+            }
+          }
+        },
+        "facts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "history": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "field_key",
+              "value"
+            ],
+            "properties": {
+              "field_key": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "questions": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "field_key",
+              "question_text",
+              "answers",
+              "uncertainty_kind"
+            ],
+            "properties": {
+              "field_key": {
+                "type": "string",
+                "pattern": "^pps\\.[a-z_]+\\.[a-z_]+$"
+              },
+              "question_text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "answers": {
+                "type": "array",
+                "maxItems": 3,
+                "uniqueItems": true,
+                "items": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              },
+              "uncertainty_kind": {
+                "enum": [
+                  "fact",
+                  "memory",
+                  "document",
+                  "observation",
+                  "confidence"
+                ]
+              },
+              "requires": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "field_key",
+                    "value"
+                  ],
+                  "properties": {
+                    "field_key": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

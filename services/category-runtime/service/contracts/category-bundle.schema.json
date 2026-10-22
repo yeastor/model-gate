@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aizashchita:category-bundle:v1",
+  "title": "Portable category bundle v1: native NEXT and full frozen document templates",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["category", "metadata", "subcategories", "document_templates"],
+  "properties": {
+    "category": {"$ref": "#/$defs/idName"},
+    "metadata": {
+      "type": "object", "additionalProperties": false,
+      "required": ["format_version", "generated_on", "laws_checked_on", "note", "bundle"],
+      "properties": {
+        "format_version": {"const": "category-bundle/v1"},
+        "generated_on": {"$ref": "#/$defs/date"},
+        "laws_checked_on": {"$ref": "#/$defs/date"},
+        "note": {"$ref": "#/$defs/text"},
+        "bundle": {"$ref": "#/$defs/assembly"}
+      }
+    },
+    "subcategories": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/stage"}},
+    "document_templates": {"type": "array", "items": {"$ref": "#/$defs/documentTemplate"}}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "sha": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "date": {"type": "string", "format": "date"},
+    "field": {"type": "string", "pattern": "^[a-z][a-z0-9_]*[.][a-z][a-z0-9_]*[.][a-z][a-z0-9_]*$"},
+    "triState": {"type": ["boolean", "null"]},
+    "idName": {
+      "type": "object", "additionalProperties": false, "required": ["id", "name"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "name": {"$ref": "#/$defs/text"}}
+    },
+    "pin": {
+      "type": "object", "additionalProperties": false, "required": ["name", "bytes", "sha256"],
+      "properties": {
+        "name": {"type": "string", "pattern": "^[a-zA-Z0-9_.-]+$"},
+        "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha"}
+      }
+    },
+    "stage": {
+      "type": "object", "additionalProperties": false, "required": ["stage", "context_fields", "variants"],
+      "properties": {
+        "stage": {"$ref": "#/$defs/idName"},
+        "context_fields": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/idName"}},
+        "variants": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/variant"}}
+      }
+    },
+    "variant": {
+      "type": "object", "additionalProperties": false, "required": ["variant_id", "context", "question", "payload"],
+      "properties": {
+        "variant_id": {"type": "string", "minLength": 1, "maxLength": 160},
+        "context": {
+          "type": "object", "minProperties": 1,
+          "propertyNames": {"$ref": "#/$defs/id"}, "additionalProperties": {"$ref": "#/$defs/triState"}
+        },
+        "question": {"type": "string", "minLength": 1, "maxLength": 500},
+        "payload": {
+          "type": "object", "additionalProperties": false, "required": ["category", "stage", "answer", "next"],
+          "properties": {
+            "category": {"$ref": "#/$defs/idName"}, "stage": {"$ref": "#/$defs/idName"},
+            "answer": {"$ref": "#/$defs/answer"},
+            "next": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/nextRequest"}]}
+          }
+        }
+      }
+    },
+    "answer": {
+      "type": "object", "additionalProperties": false, "required": ["now", "steps", "dont", "say", "where_to", "laws"],
+      "properties": {
+        "now": {"type": "string", "minLength": 1, "maxLength": 650},
+        "steps": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "dont": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "say": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "where_to": {
+          "type": "array", "items": {
+            "type": "object", "additionalProperties": false, "required": ["title", "document_link_id"],
+            "properties": {"title": {"$ref": "#/$defs/text"}, "document_link_id": {"$ref": "#/$defs/id"}}
+          }
+        },
+        "laws": {"type": "array", "items": {"$ref": "#/$defs/law"}}
+      }
+    },
+    "law": {
+      "type": "object", "additionalProperties": false, "required": ["ref", "url", "title", "short"],
+      "properties": {
+        "ref": {"$ref": "#/$defs/text"},
+        "url": {"type": "string", "minLength": 1, "maxLength": 2048, "pattern": "^/laws/[^\\s\\\\?#]+(?:#[^\\s\\\\#?]+)?$"},
+        "title": {"$ref": "#/$defs/text"}, "short": {"type": "string", "minLength": 1, "maxLength": 200}
+      }
+    },
+    "nextRequest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "stage_key", "questions", "facts", "history", "source_binding"],
+      "properties": {
+        "schema": {"const": "next-interaction-request/v1"},
+        "stage_key": {"type": "string", "pattern": "^[a-z][a-z0-9_]*[.][a-z][a-z0-9_]*$"},
+        "questions": {"type": "array", "minItems": 1, "maxItems": 128, "items": {"$ref": "#/$defs/question"}},
+        "facts": {"type": "object", "maxProperties": 0, "description": "Empty template. Runtime facts come only from the trusted session."},
+        "history": {"type": "array", "maxItems": 0, "description": "Empty template. Persist runtime history; never reset to bypass the chain limit."},
+        "source_binding": {
+          "type": "object", "additionalProperties": false, "required": ["candidate_sha256", "source_pointer", "source_key"],
+          "properties": {
+            "candidate_sha256": {"$ref": "#/$defs/sha"},
+            "source_pointer": {"type": "string", "pattern": "^/subcategories/[0-9]+/variants/[0-9]+$"},
+            "source_key": {"$ref": "#/$defs/text"}
+          }
+        },
+        "complexity": {
+          "type": "object", "additionalProperties": false, "required": ["level", "reason", "third_question_reason"],
+          "properties": {
+            "level": {"const": "very_complex"}, "reason": {"$ref": "#/$defs/text"}, "third_question_reason": {"$ref": "#/$defs/text"}
+          }
+        }
+      }
+    },
+    "question": {
+      "type": "object", "additionalProperties": false, "required": ["field_key", "question_text", "answers"],
+      "properties": {
+        "field_key": {"$ref": "#/$defs/field"}, "question_text": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "answers": {"type": "array", "maxItems": 3, "uniqueItems": true, "items": {"$ref": "#/$defs/triState"}},
+        "uncertainty_kind": {"enum": ["fact", "memory", "document", "observation", "confidence"]},
+        "requires": {
+          "type": "array", "maxItems": 128, "items": {
+            "type": "object", "additionalProperties": false, "required": ["field_key", "value"],
+            "properties": {"field_key": {"$ref": "#/$defs/field"}, "value": {"type": "boolean"}}
+          }
+        }
+      }
+    },
+    "documentTemplate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "category", "link_id", "name", "description", "output", "fields", "title", "body", "profile_fields"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "category": {"$ref": "#/$defs/id"}, "link_id": {"$ref": "#/$defs/id"},
+        "name": {"$ref": "#/$defs/text"}, "description": {"$ref": "#/$defs/text"},
+        "output": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["pdf", "docx", "txt"]}},
+        "fields": {
+          "type": "array", "minItems": 1, "uniqueItems": true, "items": {
+            "type": "object", "additionalProperties": false, "required": ["id"], "properties": {"id": {"$ref": "#/$defs/id"}}
+          }
+        },
+        "title": {"$ref": "#/$defs/text"}, "body": {"$ref": "#/$defs/text"},
+        "profile_fields": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
+      }
+    },
+    "closure": {
+      "type": "object", "additionalProperties": false,
+      "required": ["stage_id", "status", "source_stage_sha256", "bundle_stage_sha256", "variant_ids", "context_field_ids", "required_module_ids", "evidence_names"],
+      "properties": {
+        "stage_id": {"$ref": "#/$defs/id"}, "status": {"const": "CLOSED_LOCAL_WITH_LIMITS"},
+        "source_stage_sha256": {"$ref": "#/$defs/sha"}, "bundle_stage_sha256": {"$ref": "#/$defs/sha"},
+        "variant_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+        "context_field_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+        "required_module_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+        "evidence_names": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}}
+      }
+    },
+    "policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "version", "answer_values", "default_pair_limit", "complex_pair_limit", "simultaneous_question_limit", "require_all_answer_values", "omit_questions_without_useful_answers", "unknown_labels", "complexity_level", "unknown_is_false", "repeat_unknown_automatically", "scope"],
+      "properties": {
+        "schema": {"const": "next-interaction-policy/v1"}, "version": {"$ref": "#/$defs/date"},
+        "answer_values": {"const": [true, false, null]}, "default_pair_limit": {"const": 2}, "complex_pair_limit": {"const": 3},
+        "simultaneous_question_limit": {"const": 1}, "require_all_answer_values": {"const": false},
+        "omit_questions_without_useful_answers": {"const": true},
+        "unknown_labels": {
+          "type": "object", "additionalProperties": false, "required": ["fact", "memory", "document", "observation", "confidence"],
+          "properties": {"fact": {"$ref": "#/$defs/text"}, "memory": {"$ref": "#/$defs/text"}, "document": {"$ref": "#/$defs/text"}, "observation": {"$ref": "#/$defs/text"}, "confidence": {"$ref": "#/$defs/text"}}
+        },
+        "complexity_level": {"const": "very_complex"}, "unknown_is_false": {"const": false},
+        "repeat_unknown_automatically": {"const": false}, "scope": {"const": "sequential_question_answer_chain_for_one_source_context"}
+      }
+    },
+    "assembly": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "adapter_id", "built_on", "readiness", "source", "canonical_stage_ids", "stage_closures", "evidence", "next_policy", "category_max_pairs", "omitted_next_fields", "template_manifest", "limitations", "gates", "integrity"],
+      "properties": {
+        "schema": {"const": "category-bundle-assembly/v1"}, "adapter_id": {"$ref": "#/$defs/text"},
+        "built_on": {"$ref": "#/$defs/date"}, "readiness": {"const": "LOCAL_INTEGRATION_READY_WITH_LIMITS"},
+        "source": {
+          "type": "object", "additionalProperties": false, "required": ["name", "bytes", "sha256", "format_version"],
+          "properties": {"name": {"$ref": "#/$defs/text"}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha"}, "format_version": {"$ref": "#/$defs/text"}}
+        },
+        "canonical_stage_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+        "stage_closures": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/closure"}},
+        "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/pin"}},
+        "next_policy": {"$ref": "#/$defs/policy"},
+        "category_max_pairs": {"enum": [2, 3]},
+        "omitted_next_fields": {
+          "type": "array", "items": {
+            "type": "object", "additionalProperties": false, "required": ["field_key", "reason"],
+            "properties": {"field_key": {"$ref": "#/$defs/field"}, "reason": {"$ref": "#/$defs/text"}}
+          }
+        },
+        "template_manifest": {
+          "type": "array", "items": {
+            "type": "object", "additionalProperties": false, "required": ["link_id", "content_sha256", "source"],
+            "properties": {"link_id": {"$ref": "#/$defs/id"}, "content_sha256": {"$ref": "#/$defs/sha"}, "source": {"$ref": "#/$defs/pin"}}
+          }
+        },
+        "limitations": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/text"}},
+        "gates": {
+          "type": "object", "additionalProperties": false,
+          "required": ["final_lawyer_approval", "production", "publication", "cms", "registry_mutation", "historical_source_mutation"],
+          "properties": {
+            "final_lawyer_approval": {"const": false}, "production": {"const": false}, "publication": {"const": false},
+            "cms": {"const": false}, "registry_mutation": {"const": false}, "historical_source_mutation": {"const": false}
+          }
+        },
+        "integrity": {
+          "type": "object", "additionalProperties": false, "required": ["algorithm", "content_sha256"],
+          "properties": {"algorithm": {"const": "sha256/canonical-json-v1"}, "content_sha256": {"$ref": "#/$defs/sha"}}
+        }
+      }
+    }
+  }
+}

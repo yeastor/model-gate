@@ -1,0 +1,44 @@
+{
+  "version": "pps-dialogue/20261022-v2",
+  "categoryId": "pps",
+  "defaultClarificationLimit": 2,
+  "stageRules": [
+    {
+      "id": "street_stop",
+      "pattern": "(?:остановил[аи]?|остановили|подош[её]л).{0,35}(?:улиц|полиц)|(?:на улице).{0,35}(?:останов|полиц)",
+      "requires": "reported_street_contact"
+    },
+    {
+      "id": "identity_check",
+      "pattern": "(?:проверя[ею]т|прос[яи]т|требу[ею]т).{0,25}(?:паспорт|удостовер|документ)|устанавлива.{0,12}личност",
+      "requires": "reported_identity_check"
+    },
+    {
+      "id": "delivery_to_station",
+      "pattern": "(?:вез[её]т|везут|ехать|поехать|проехать|пройти|едем|ведут).{0,35}(?:отдел|участок|отделени)|(?:доставляют|доставили).{0,20}(?:полици|отдел)",
+      "requires": "reported_trip"
+    },
+    {
+      "id": "explanation_request",
+      "pattern": "(?:пишу|писать|пишем|дать|даю|составля[ею]т|подписать|подписываю).{0,30}объяснен|копи.{0,25}объяснен",
+      "requires": "reported_current_explanation"
+    },
+    {
+      "id": "personal_search",
+      "pattern": "личный досмотр|досматрива.{0,25}(?:меня|одежд)|обыскива.{0,15}(?:меня|карман)|(?:проверя|лез[еу]т).{0,20}карман",
+      "requires": "reported_body_or_clothes"
+    },
+    {
+      "id": "bag_search",
+      "pattern": "(?:досматрива|обыскива|открыва|проверя).{0,25}(?:сумк|рюкзак|вещ)|(?:сумк|рюкзак).{0,25}(?:досмотр|открыва)",
+      "requires": "reported_bag_action"
+    },
+    {
+      "id": "home_entry",
+      "pattern": "(?:полици|сотрудник).{0,40}(?:войти|вход|влом|врыва|лома.{0,8}двер|обыск.{0,10}(?:дома|квартир))|(?:войти|вход|влом|врыва).{0,20}(?:жиль|квартир|дом)",
+      "requires": "reported_home_action"
+    }
+  ],
+  "forcePattern": "(?:бь[её]т|бьют|бил|били|ударил[аи]?|ударили|толкнул[аи]?|толкнули|выкручива.{0,10}рук|применил[аи]?.{0,15}(?:физическ.{0,5})?сил|применяют.{0,15}сил|распуска.{0,12}рук)",
+  "rulesAuthority": "Routing cues only. Reviewed field definitions and supplemental questions: pps.v2.json. Extraction: extract.mjs. No legal findings."
+}

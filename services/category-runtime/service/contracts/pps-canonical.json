@@ -1,0 +1,89 @@
+[
+  {
+    "stage": "street_stop",
+    "fields": [
+      "reason_explained",
+      "identity_document_requested",
+      "recording_blocked",
+      "free_to_leave_denied"
+    ]
+  },
+  {
+    "stage": "identity_check",
+    "fields": [
+      "documents_present",
+      "reason_explained",
+      "taken_to_station_for_id",
+      "documents_taken_away",
+      "minor_person"
+    ]
+  },
+  {
+    "stage": "delivery_to_station",
+    "fields": [
+      "grounds_explained",
+      "phone_taken",
+      "voluntary_trip_agreed",
+      "free_to_leave_denied",
+      "delivery_record_created",
+      "minor_person"
+    ]
+  },
+  {
+    "stage": "explanation_request",
+    "fields": [
+      "signature_on_explanation_requested",
+      "refusal_pressure",
+      "copy_requested",
+      "copy_requested_and_refused",
+      "procedural_status_explained",
+      "questions_about_self_or_relatives"
+    ]
+  },
+  {
+    "stage": "personal_search",
+    "fields": [
+      "grounds_explained",
+      "same_sex_officer_present",
+      "witnesses_or_video_present",
+      "items_seized",
+      "search_protocol_created"
+    ]
+  },
+  {
+    "stage": "bag_search",
+    "fields": [
+      "grounds_explained",
+      "witnesses_or_video_present",
+      "bag_opened_by_officer",
+      "items_seized",
+      "voluntary_show_agreed",
+      "search_protocol_created"
+    ]
+  },
+  {
+    "stage": "use_of_force",
+    "fields": [
+      "force_actually_used",
+      "handcuffs_used",
+      "active_resistance_present",
+      "attack_present",
+      "warning_given",
+      "injuries_present",
+      "force_documented"
+    ]
+  },
+  {
+    "stage": "home_entry",
+    "fields": [
+      "resident_consent_given",
+      "search_court_order_shown",
+      "immediate_danger_present",
+      "suspect_pursuit_present",
+      "officer_stated_crime_suppression_basis",
+      "forced_entry_used",
+      "formal_search_started",
+      "premises_inspection_started"
+    ]
+  }
+]
