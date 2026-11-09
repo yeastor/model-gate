@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "mc-regression-cases/v1",
+  "origin": "synthetic",
+  "split": "dev-regression",
+  "cases": [
+    {
+      "id": "MC-X01",
+      "stage": "no_response",
+      "field": "written_request_sent",
+      "yes": "Я отправил письменное обращение.",
+      "no": "Я не отправлял обращение."
+    },
+    {
+      "id": "MC-X02",
+      "stage": "no_response",
+      "field": "delivery_confirmed",
+      "yes": "Получение моего обращения подтверждено.",
+      "no": "Получение моего обращения не подтверждено."
+    },
+    {
+      "id": "MC-X03",
+      "stage": "no_response",
+      "field": "request_rejected_without_review",
+      "yes": "Моё обращение отказались регистрировать.",
+      "no": "Моё обращение зарегистрировали и рассмотрели."
+    },
+    {
+      "id": "MC-X04",
+      "stage": "no_response",
+      "field": "response_received",
+      "yes": "Я получил ответ от УК.",
+      "no": "Я не получил ответ."
+    },
+    {
+      "id": "MC-X05",
+      "stage": "no_response",
+      "field": "immediate_danger_present",
+      "yes": "Сейчас есть непосредственная угроза жизни.",
+      "no": "Угрозы жизни нет."
+    },
+    {
+      "id": "MC-X06",
+      "stage": "poor_services",
+      "field": "service_interruption_present",
+      "yes": "Нет воды.",
+      "no": "Перерыва в подаче нет."
+    },
+    {
+      "id": "MC-X07",
+      "stage": "poor_services",
+      "field": "service_violation_documented",
+      "yes": "Нарушение зафиксировано актом.",
+      "no": "Нарушение не зафиксировано."
+    },
+    {
+      "id": "MC-X08",
+      "stage": "poor_services",
+      "field": "service_violation_ongoing",
+      "yes": "Перерыв услуги продолжается.",
+      "no": "Перерыв услуги закончился."
+    },
+    {
+      "id": "MC-X09",
+      "stage": "common_property",
+      "field": "defect_documented",
+      "yes": "Дефект зафиксирован.",
+      "no": "Дефект не зафиксирован."
+    },
+    {
+      "id": "MC-X10",
+      "stage": "common_property",
+      "field": "written_repair_request_sent",
+      "yes": "Я отправил заявку на ремонт.",
+      "no": "Я не отправлял заявку на ремонт."
+    },
+    {
+      "id": "MC-X11",
+      "stage": "common_property",
+      "field": "immediate_danger_present",
+      "yes": "Сейчас есть непосредственная угроза жизни.",
+      "no": "Угрозы жизни нет."
+    },
+    {
+      "id": "MC-X12",
+      "stage": "common_property",
+      "field": "specific_damage_already_caused",
+      "yes": "Из-за дефекта повреждено моё имущество.",
+      "no": "Из-за дефекта имущество не повреждено."
+    },
+    {
+      "id": "MC-X13",
+      "stage": "meetings_protocol",
+      "field": "applicant_owned_premises_at_meeting",
+      "yes": "Я был собственником на момент собрания.",
+      "no": "Я не был собственником на момент собрания."
+    },
+    {
+      "id": "MC-X14",
+      "stage": "meetings_protocol",
+      "field": "meeting_notice_received",
+      "yes": "Я получил уведомление о собрании.",
+      "no": "Я не получил уведомление о собрании."
+    },
+    {
+      "id": "MC-X15",
+      "stage": "meetings_protocol",
+      "field": "protocol_or_vote_register_received",
+      "yes": "Я получил протокол этого собрания.",
+      "no": "Я не получил ни протокол, ни реестр голосов этого собрания."
+    },
+    {
+      "id": "MC-X16",
+      "stage": "meetings_protocol",
+      "field": "vote_or_signature_mismatch",
+      "yes": "Запись моего голоса в протоколе не совпадает.",
+      "no": "Запись моего голоса в протоколе совпадает."
+    },
+    {
+      "id": "MC-X17",
+      "stage": "meetings_protocol",
+      "field": "decision_already_implemented",
+      "yes": "Решение собрания уже исполнено.",
+      "no": "Решение собрания ещё не исполнено."
+    },
+    {
+      "id": "MC-X18",
+      "stage": "emergency_house_condition",
+      "field": "immediate_danger_present",
+      "yes": "Сейчас есть непосредственная угроза жизни.",
+      "no": "Угрозы жизни нет."
+    },
+    {
+      "id": "MC-X19",
+      "stage": "emergency_house_condition",
+      "field": "people_injured_or_trapped",
+      "yes": "Есть пострадавшие.",
+      "no": "Пострадавших нет, все могут безопасно выйти."
+    },
+    {
+      "id": "MC-X20",
+      "stage": "emergency_house_condition",
+      "field": "emergency_service_contacted",
+      "yes": "Я позвонил в 112.",
+      "no": "Я не обращался ни в 112, ни в АДС, ни в аварийную службу."
+    },
+    {
+      "id": "MC-X21",
+      "stage": "emergency_house_condition",
+      "field": "uk_ignored_emergency",
+      "yes": "УК отказалась реагировать.",
+      "no": "УК не игнорировала сообщение об аварии."
+    },
+    {
+      "id": "MC-X22",
+      "stage": "change_uk",
+      "field": "creating_hoa",
+      "yes": "В решении собственников указано создание ТСЖ.",
+      "no": "В решении собственников указан выбор новой УК."
+    },
+    {
+      "id": "MC-X23",
+      "stage": "change_uk",
+      "field": "repeated_breaches_documented",
+      "yes": "Повторные нарушения УК зафиксированы.",
+      "no": "Повторные нарушения УК не зафиксированы."
+    },
+    {
+      "id": "MC-X24",
+      "stage": "change_uk",
+      "field": "meeting_decision_adopted",
+      "yes": "Решение собственников принято.",
+      "no": "Решение собственников ещё не принято."
+    },
+    {
+      "id": "MC-X25",
+      "stage": "change_uk",
+      "field": "old_manager_notified",
+      "yes": "Прежняя УК уже уведомлена.",
+      "no": "Прежняя УК ещё не уведомлена."
+    },
+    {
+      "id": "MC-X26",
+      "stage": "change_uk",
+      "field": "handover_refused",
+      "yes": "Прежняя УК прямо отказалась передать документы.",
+      "no": "Отказа прежней УК в передаче документов не было."
+    }
+  ]
+}

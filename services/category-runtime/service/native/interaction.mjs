@@ -50,13 +50,20 @@ function validateRequest(request) {
   if (!Array.isArray(request.questions) || request.questions.length > 128) fail('NEXT_QUESTIONS_INVALID')
   const seen = new Set()
   for (const question of request.questions) {
-    exactKeys(question, ['field_key', 'question_text', 'answers'], ['uncertainty_kind', 'requires'], 'NEXT_QUESTION_INVALID')
+    exactKeys(question, ['field_key', 'question_text', 'answers'], ['uncertainty_kind', 'requires', 'answer_labels'], 'NEXT_QUESTION_INVALID')
     if (!scopeField(question.field_key, request.stage_key) || seen.has(question.field_key)) fail('NEXT_FIELD_DUPLICATE_OR_OUT_OF_SCOPE')
     seen.add(question.field_key)
     text(question.question_text, 'NEXT_QUESTION_TEXT_REQUIRED')
     if (!Array.isArray(question.answers) || question.answers.length > 3
       || new Set(question.answers).size !== question.answers.length
       || question.answers.some(value => !(typeof value === 'boolean' || value === null))) fail('NEXT_ANSWERS_INVALID')
+    if (question.answer_labels !== undefined) {
+      exactKeys(question.answer_labels, ['true', 'false', 'null'], [], 'NEXT_ANSWER_LABELS_INVALID')
+      const labels = Object.values(question.answer_labels)
+      if (labels.some(label => typeof label !== 'string' || !label.trim() || label !== label.trim()
+        || Array.from(label).length > 100 || /[\u0000-\u001f\u007f]/u.test(label))
+        || new Set(labels).size !== 3) fail('NEXT_ANSWER_LABELS_INVALID')
+    }
     if (question.uncertainty_kind !== undefined && (typeof question.uncertainty_kind !== 'string'
       || !own(policy.unknown_labels, question.uncertainty_kind))) fail('NEXT_UNCERTAINTY_KIND_INVALID')
     if (question.requires !== undefined && (!Array.isArray(question.requires) || question.requires.length > 128)) fail('NEXT_DEPENDENCY_INVALID')
@@ -132,7 +139,8 @@ export function createNextBlock(request) {
     uncertainty_kind: question.uncertainty_kind ?? 'fact',
     controls: question.answers.map(value => ({
       value,
-      label: value === null ? policy.unknown_labels[question.uncertainty_kind ?? 'fact'] : value ? 'Да' : 'Нет',
+      label: question.answer_labels?.[String(value)]
+        ?? (value === null ? policy.unknown_labels[question.uncertainty_kind ?? 'fact'] : value ? 'Да' : 'Нет'),
       transition: value === null ? 'answer_unknown' : value ? 'answer_true' : 'answer_false',
     })),
   }))
@@ -220,7 +228,7 @@ export function prepareCandidateNext(candidate, options) {
     if (typeof node.next_context_field !== 'string' || !own(node.source_context, node.next_context_field)) fail('NEXT_FIELD_OUT_OF_SOURCE')
     const field_key = options.stage_key + '.' + node.next_context_field
     const extra = metadata[field_key] ?? {}
-    exactKeys(extra, [], ['uncertainty_kind', 'requires', 'answers'], 'NEXT_QUESTION_METADATA_INVALID')
+    exactKeys(extra, [], ['uncertainty_kind', 'requires', 'answers', 'answer_labels'], 'NEXT_QUESTION_METADATA_INVALID')
     // Legacy two-choice schemas do not establish which choices are useful now.
     // No reviewed choices supplied means nothing is offered for this question.
     return { field_key, question_text: node.question_text, answers: [], ...structuredClone(extra) }

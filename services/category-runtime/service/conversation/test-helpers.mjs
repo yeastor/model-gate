@@ -31,7 +31,7 @@ export async function conversationFixture(t, initial = {}) {
     s = fresh(userId, id, dialoguePackage.categorySha256),
     e = episode(s);
   Object.assign(e, {
-    actor: initial.actor ?? "police",
+    actor: Object.hasOwn(initial, "actor") ? initial.actor : "police",
     stageId: initial.stageId || null,
     stageConfirmedByUser: !!initial.stageId,
   });
@@ -66,7 +66,7 @@ export async function conversationFixture(t, initial = {}) {
       dataDir: dir,
       getActive: async () => ({ sha256: s.version }),
       getBundle: async () => bundle,
-      search: async () => [],
+      search: initial.search || (async () => []),
     }),
     response;
   const f = {
@@ -108,6 +108,7 @@ export async function conversationFixture(t, initial = {}) {
         dataDir: dir,
         getActive: async () => ({ sha256: s.version }),
         getBundle: async () => bundle,
+        search: initial.search || (async () => []),
       });
     },
     async answerPending(value) {

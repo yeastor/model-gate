@@ -3,7 +3,8 @@ import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { createBundleRuntime, bytesHash } from "./bundle/core.mjs";
-import { active, root, jsonFile, atomic, search } from "./storage.mjs";
+import { active, root, search } from "./storage.mjs";
+import { read as jsonFile, atomic } from "./conversation/state.mjs";
 import { respondExplicit } from './explicit/runtime.mjs';
 import { FORMAT } from './explicit/contract.mjs';
 

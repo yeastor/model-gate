@@ -46,7 +46,7 @@ func unmarshalPayloadField[T any](logger usecase.Logger, payload map[string]stri
 	}
 
 	if err := json.Unmarshal([]byte(raw), &result); err != nil {
-		logger.Error("failed to unmarshal payload field", "key", key, "error", err)
+		logger.Error("failed to unmarshal payload field", "key", key)
 		return result, fmt.Errorf("unmarshal payload field %q: %w", key, err)
 	}
 

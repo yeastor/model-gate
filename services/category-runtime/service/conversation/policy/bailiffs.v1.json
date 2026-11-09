@@ -1,0 +1,3392 @@
+{
+  "schemaVersion": "bailiffs-private-observation/v1",
+  "version": "bailiffs.standard.20261030.v4",
+  "defaultActivation": false,
+  "categoryId": "bailiffs",
+  "maxQuestionsPerCase": 2,
+  "thirdQuestionReasons": {},
+  "sources": {
+    "category": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/bailiffs/standard-dm-qdrant/20261030-v1/category.json",
+      "bytes": 323974,
+      "sha256": "d9c68a0c9f927a207da7bcf487b16227fbd4a67478c85af48f57c3d2451f979b"
+    },
+    "bindings": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/bailiffs/dialogue-manager-analysis/20261026-v1/current-read-bindings.json",
+      "bytes": 316299,
+      "sha256": "de39d535b248e8f735b5a5ce01fc79d61254b968327e15803b2df68aab375798"
+    },
+    "NEXT": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/bailiffs/dialogue-manager-analysis/20261026-v1/source-and-NEXT-inventory.json",
+      "bytes": 174398,
+      "sha256": "07c61a35398eb2933120d9f84f855aea51f8d22073016d3108bb4fde75ab977b"
+    },
+    "TFU": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/bailiffs/dialogue-manager-analysis/20261026-v1/all-NEXT-TFU-reuse-matrix.json",
+      "bytes": 320446,
+      "sha256": "c07508324d4c419bcbbe9e2b538a6f34b43323526cb0d7ce0ccd8c8eb81bf523"
+    },
+    "guards": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/bailiffs/dialogue-manager-analysis/20261026-v1/full-body-material-guards.json",
+      "bytes": 19457,
+      "sha256": "0962da826c6ab94af2ecae03cd1d43dd2d6b05ded150a61f68b689e0f515b226"
+    }
+  },
+  "fields": [
+    {
+      "fieldKey": "bailiffs.ip_opened.other_person_identifiers",
+      "fieldId": "other_person_identifiers",
+      "stageId": "ip_opened",
+      "group": "ip_opened",
+      "meaning": "в постановлении имеются идентификаторы другого человека",
+      "boundary": "True: identified foreign identifiers in this opening order. Not merely a denial of debt or same-name fear; no judicial identity determination.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.enforcement_fee_charged",
+      "fieldId": "enforcement_fee_charged",
+      "stageId": "ip_opened",
+      "group": "ip_opened",
+      "meaning": "имеется отдельное постановление об исполнительском сборе",
+      "boundary": "True: separate fee order in this proceeding. Notice of principal debt or expected fee is insufficient; no fee-rate calculation.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.opening_order_received",
+      "fieldId": "opening_order_received",
+      "stageId": "ip_opened",
+      "group": "ip_opened",
+      "meaning": "получена копия постановления о возбуждении ИП",
+      "boundary": "Receipt of this opening order's copy, not the order date or lawful service.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.executive_document_copy_received",
+      "fieldId": "executive_document_copy_received",
+      "stageId": "ip_opened",
+      "group": "ip_opened",
+      "meaning": "получена копия исполнительного документа",
+      "boundary": "Receipt of this enforcement instrument's copy; no validity/enforceability inference.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.prior_payment_receipt_available",
+      "fieldId": "prior_payment_receipt_available",
+      "stageId": "ip_opened",
+      "group": "ip_opened",
+      "meaning": "есть подтверждение ранее совершённого платежа",
+      "boundary": "Evidence of the specified prior payment exists; no automatic payment allocation, debt extinguishment or matching across cases.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.electronic_delivery_record_available",
+      "fieldId": "electronic_delivery_record_available",
+      "stageId": "ip_opened",
+      "group": "ip_opened",
+      "meaning": "имеется запись об электронной доставке извещения",
+      "boundary": "An electronic delivery record is reported; does not establish legal service or start a computed deadline.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.own_debt_disputed",
+      "fieldId": "own_debt_disputed",
+      "stageId": "ip_opened",
+      "group": "ip_opened",
+      "meaning": "заявитель оспаривает своё обязательство",
+      "boundary": "The person disputes their own obligation; not proof of no debt, mistaken identity or successful challenge.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.funds_debited_or_written_off",
+      "fieldId": "funds_debited_or_written_off",
+      "stageId": "account_arrest",
+      "group": "account_arrest",
+      "meaning": "банк подтвердил фактическое списание по взысканию",
+      "boundary": "Bank-statement actual debit tied to this enforcement. A balance freeze, pending card hold or fees for other service are not this debit.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.fssp_order_identified",
+      "fieldId": "fssp_order_identified",
+      "stageId": "account_arrest",
+      "group": "account_arrest",
+      "meaning": "получено постановление пристава, указанное основанием ограничения",
+      "boundary": "Actual receipt of the FSSP order copy identified as the basis of this particular restriction/debit, not just knowing a proceeding number.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.salary_or_pension_received_on_account",
+      "fieldId": "salary_or_pension_received_on_account",
+      "stageId": "account_arrest",
+      "group": "account_arrest",
+      "meaning": "на счёт поступает зарплата или пенсия",
+      "boundary": "Salary/pension arrives to this account; protection of the entire balance is not implied.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.payment_purpose_documents_available",
+      "fieldId": "payment_purpose_documents_available",
+      "stageId": "account_arrest",
+      "group": "account_arrest",
+      "meaning": "имеются документы о назначении поступления",
+      "boundary": "Documents specifying this payment's purpose exist; authenticity/protected legal class not established.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.prior_payment_receipt_available",
+      "fieldId": "prior_payment_receipt_available",
+      "stageId": "account_arrest",
+      "group": "account_arrest",
+      "meaning": "есть подтверждение ранее совершённого платежа",
+      "boundary": "Evidence of the specified prior payment exists; no automatic payment allocation, debt extinguishment or matching across cases.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.ip_end_order_received",
+      "fieldId": "ip_end_order_received",
+      "stageId": "account_arrest",
+      "group": "account_arrest",
+      "meaning": "получено постановление об окончании или прекращении ИП",
+      "boundary": "Receipt of an end/termination order for this proceeding; not proof all measures were withdrawn at the bank or all debts cleared.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.direct_bank_document_confirmed",
+      "fieldId": "direct_bank_document_confirmed",
+      "stageId": "account_arrest",
+      "group": "account_arrest",
+      "meaning": "банк подтвердил прямое предъявление исполнительного документа взыскателем",
+      "boundary": "Bank explicitly confirms direct presentation by creditor of this enforcement instrument; not merely debit at a bank.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.fssp_order_identified",
+      "fieldId": "fssp_order_identified",
+      "stageId": "money_writeoff",
+      "group": "money_writeoff",
+      "meaning": "получено постановление пристава, указанное основанием списания",
+      "boundary": "Actual receipt of the FSSP order copy identified as the basis of this particular restriction/debit, not just knowing a proceeding number.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.funds_transferred_to_claimant",
+      "fieldId": "funds_transferred_to_claimant",
+      "stageId": "money_writeoff",
+      "group": "money_writeoff",
+      "meaning": "подтверждён перевод списанных денег взыскателю",
+      "boundary": "Bank OR FSSP confirms transfer of the identified debited funds to creditor. Either is sufficient; denial of one source or mere absence of confirmation is not denial of the transfer.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.payment_purpose_documents_available",
+      "fieldId": "payment_purpose_documents_available",
+      "stageId": "money_writeoff",
+      "group": "money_writeoff",
+      "meaning": "имеются документы о назначении списанного поступления",
+      "boundary": "Documents specifying this payment's purpose exist; authenticity/protected legal class not established.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.prior_payment_receipt_available",
+      "fieldId": "prior_payment_receipt_available",
+      "stageId": "money_writeoff",
+      "group": "money_writeoff",
+      "meaning": "есть подтверждение ранее совершённого платежа",
+      "boundary": "Evidence of the specified prior payment exists; no automatic payment allocation, debt extinguishment or matching across cases.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.several_collection_operations_reported",
+      "fieldId": "several_collection_operations_reported",
+      "stageId": "money_writeoff",
+      "group": "money_writeoff",
+      "meaning": "сообщено о нескольких операциях взыскания",
+      "boundary": "Several collection operations reported; no inferred duplicate/unlawful collection or sum comparison.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.direct_bank_document_confirmed",
+      "fieldId": "direct_bank_document_confirmed",
+      "stageId": "money_writeoff",
+      "group": "money_writeoff",
+      "meaning": "банк подтвердил прямое предъявление исполнительного документа взыскателем",
+      "boundary": "Bank explicitly confirms direct presentation by creditor of this enforcement instrument; not merely debit at a bank.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.withheld_by_payer",
+      "fieldId": "withheld_by_payer",
+      "stageId": "wage_garnishment",
+      "group": "wage_garnishment",
+      "meaning": "плательщик удерживает деньги до зачисления дохода на счёт",
+      "boundary": "This payer withholds before credit of the identified income; bank later debit remains independent.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.bank_additional_withholding",
+      "fieldId": "bank_additional_withholding",
+      "stageId": "wage_garnishment",
+      "group": "wage_garnishment",
+      "meaning": "банк дополнительно списывает из поступившего остатка дохода",
+      "boundary": "Existing BA24 bank-only component after credit; independent of payer true/false/null. Same payment/account/debt required.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.dependents_reported",
+      "fieldId": "dependents_reported",
+      "stageId": "wage_garnishment",
+      "group": "wage_garnishment",
+      "meaning": "заявитель сообщает о находящихся на его иждивении лицах",
+      "boundary": "Reported dependency circumstances only; no automatic legal dependency adjudication or amount per person.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.subsistence_request_submitted",
+      "fieldId": "subsistence_request_submitted",
+      "stageId": "wage_garnishment",
+      "group": "wage_garnishment",
+      "meaning": "подано заявление о сохранении прожиточного минимума",
+      "boundary": "Filing this subsistence-protection request, not approval/receipt by competent body or activated protection.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.subsistence_order_received",
+      "fieldId": "subsistence_order_received",
+      "stageId": "wage_garnishment",
+      "group": "wage_garnishment",
+      "meaning": "получен акт о сохранении дохода",
+      "boundary": "Receipt of a preservation order, not proof of scope/application to all funds or linked bank execution.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.payment_purpose_documents_available",
+      "fieldId": "payment_purpose_documents_available",
+      "stageId": "wage_garnishment",
+      "group": "wage_garnishment",
+      "meaning": "имеются документы о виде и назначении выплаты",
+      "boundary": "Documents specifying this payment's purpose exist; authenticity/protected legal class not established.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.military_linked_payment_reported",
+      "fieldId": "military_linked_payment_reported",
+      "stageId": "wage_garnishment",
+      "group": "wage_garnishment",
+      "meaning": "сообщено о выплате в связи с военными обстоятельствами",
+      "boundary": "Reported military connection of this payment; no protected-fund classification or exclusion of statutory exceptions.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.disability_or_veteran_travel_compensation_reported",
+      "fieldId": "disability_or_veteran_travel_compensation_reported",
+      "stageId": "wage_garnishment",
+      "group": "wage_garnishment",
+      "meaning": "сообщено о компенсации проезда инвалида, ветерана или сопровождающего",
+      "boundary": "Reported compensation recipient and purpose; no automatic exemption for all travel/rehabilitation funds.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.third_party_ownership_claimed",
+      "fieldId": "third_party_ownership_claimed",
+      "stageId": "property_arrest",
+      "group": "property_arrest",
+      "meaning": "о праве на вещь заявляет лицо, которое не является должником",
+      "boundary": "Non-debtor claims a right to the same property. Do not convert the claim into proven ownership or legal standing.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.sale_scheduled",
+      "fieldId": "sale_scheduled",
+      "stageId": "property_arrest",
+      "group": "property_arrest",
+      "meaning": "назначена дата продажи или торгов",
+      "boundary": "A sale/auction date was set for this property/event. Do not derive imminence from a raw date; past/completed/cancelled event must hold pre-sale specialization.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.sole_dwelling_reported",
+      "fieldId": "sole_dwelling_reported",
+      "stageId": "property_arrest",
+      "group": "property_arrest",
+      "meaning": "заявитель сообщает о единственном пригодном жилье",
+      "boundary": "The person reports sole suitable housing; no immunity adjudication or automatic prohibition of arrest/sale.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.mortgage_record_available",
+      "fieldId": "mortgage_record_available",
+      "stageId": "property_arrest",
+      "group": "property_arrest",
+      "meaning": "имеются сведения о залоге или ипотеке имущества",
+      "boundary": "Mortgage/pledge information exists; no validity, enforceability or scope adjudication.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.household_use_reported",
+      "fieldId": "household_use_reported",
+      "stageId": "property_arrest",
+      "group": "property_arrest",
+      "meaning": "сообщено об использовании вещи для необходимых бытовых нужд",
+      "boundary": "Reported necessary household use; no automatic statutory immunity.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.valuation_notice_received",
+      "fieldId": "valuation_notice_received",
+      "stageId": "property_arrest",
+      "group": "property_arrest",
+      "meaning": "получено извещение о произведённой оценке",
+      "boundary": "This valuation notice received; date observedAt is not notice time; do not calculate deadline.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.valuation_disputed",
+      "fieldId": "valuation_disputed",
+      "stageId": "property_arrest",
+      "group": "property_arrest",
+      "meaning": "заявитель оспаривает указанную стоимость",
+      "boundary": "Person disputes stated value; not proof valuation invalid or disproportionate.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.property_seized",
+      "fieldId": "property_seized",
+      "stageId": "property_arrest",
+      "group": "property_arrest",
+      "meaning": "вещь фактически изъята",
+      "boundary": "Actual removal/seizure of this item reported; mere inventory/arrest/sale notice is not physical seizure.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.travel_restricted",
+      "fieldId": "travel_restricted",
+      "stageId": "restrictions",
+      "group": "restrictions",
+      "meaning": "имеется постановление об ограничении выезда из России",
+      "boundary": "Existing travel restriction order reported; not proof it is lawful/currently enforced or not cancelled.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.driving_restricted",
+      "fieldId": "driving_restricted",
+      "stageId": "restrictions",
+      "group": "restrictions",
+      "meaning": "имеется постановление пристава об ограничении управления транспортом",
+      "boundary": "Separate bailiff driving restriction order reported; not judicial licence deprivation or simple failure to possess licence.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.prior_payment_receipt_available",
+      "fieldId": "prior_payment_receipt_available",
+      "stageId": "restrictions",
+      "group": "restrictions",
+      "meaning": "есть подтверждение совершённого платежа",
+      "boundary": "Evidence of the specified prior payment exists; no automatic payment allocation, debt extinguishment or matching across cases.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.driving_income_documents_available",
+      "fieldId": "driving_income_documents_available",
+      "stageId": "restrictions",
+      "group": "restrictions",
+      "meaning": "имеются документы о доходе от управления транспортом",
+      "boundary": "Documents of driving income exist; principal lawful livelihood exception still not established.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.disability_transport_need_reported",
+      "fieldId": "disability_transport_need_reported",
+      "stageId": "restrictions",
+      "group": "restrictions",
+      "meaning": "сообщено об использовании транспорта из-за инвалидности",
+      "boundary": "Reported transport use tied to disability; no automatic legal exception.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.remote_transport_need_reported",
+      "fieldId": "remote_transport_need_reported",
+      "stageId": "restrictions",
+      "group": "restrictions",
+      "meaning": "сообщено об ограниченной транспортной доступности",
+      "boundary": "Reported limited transport access; no automatic legal exception.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.installment_order_received",
+      "fieldId": "installment_order_received",
+      "stageId": "restrictions",
+      "group": "restrictions",
+      "meaning": "получен акт об отсрочке или рассрочке",
+      "boundary": "Receipt of this deferral/installment act. No inference that it covers another proceeding/restriction or permits self-changing schedule.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.restriction_copy_received",
+      "fieldId": "restriction_copy_received",
+      "stageId": "restrictions",
+      "group": "restrictions",
+      "meaning": "получена копия постановления об ограничении",
+      "boundary": "Receipt of this particular restriction order copy; no automatic personal-service/time qualification.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.underlying_act_appealed",
+      "fieldId": "underlying_act_appealed",
+      "stageId": "installment_suspension",
+      "group": "installment_suspension",
+      "meaning": "подана жалоба на судебный акт, на котором основано взыскание",
+      "boundary": "GENERIC filing on same underlying act/debt: self/representative/other participant/unknown filer with known filing may confirm. 'I did not personally file' does not deny generic filing. No acceptance/stay/legaleligibility inference.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.urgent_enforcement_scheduled",
+      "fieldId": "urgent_enforcement_scheduled",
+      "stageId": "installment_suspension",
+      "group": "installment_suspension",
+      "meaning": "имеется документ с датой предстоящего исполнительного действия",
+      "boundary": "Document scheduling the specific action/date. No urgency arithmetic or automatic suspension. Explicit past/completed/cancelled event holds future-action advice without falsifying historical scheduling.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.hardship_reported",
+      "fieldId": "hardship_reported",
+      "stageId": "installment_suspension",
+      "group": "installment_suspension",
+      "meaning": "сообщено о материальных затруднениях",
+      "boundary": "Reported financial difficulty; not insolvency or legal right to stay/installments.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.hospital_treatment_document_available",
+      "fieldId": "hospital_treatment_document_available",
+      "stageId": "installment_suspension",
+      "group": "installment_suspension",
+      "meaning": "имеются документы о стационарном лечении",
+      "boundary": "Documents of inpatient treatment exist; no automatic mandatory suspension.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.military_status_document_available",
+      "fieldId": "military_status_document_available",
+      "stageId": "installment_suspension",
+      "group": "installment_suspension",
+      "meaning": "имеются документы о военном статусе",
+      "boundary": "Military-status documents exist; no automatic qualifying status/exception or suspension.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.martial_or_cto_territory_document_available",
+      "fieldId": "martial_or_cto_territory_document_available",
+      "stageId": "installment_suspension",
+      "group": "installment_suspension",
+      "meaning": "имеются сведения о территории военного положения или КТО",
+      "boundary": "Information about a territory/status is available; no legal determination that this case/person meets territorial prerequisites.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.disaster_affected_reported",
+      "fieldId": "disaster_affected_reported",
+      "stageId": "installment_suspension",
+      "group": "installment_suspension",
+      "meaning": "заявитель сообщает, что пострадал от ЧС",
+      "boundary": "Person reports harm from emergency; not martial law/CTO equivalence or automatic suspension.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.installment_order_received",
+      "fieldId": "installment_order_received",
+      "stageId": "installment_suspension",
+      "group": "installment_suspension",
+      "meaning": "получен акт об отсрочке или рассрочке",
+      "boundary": "Receipt of this deferral/installment act. No inference that it covers another proceeding/restriction or permits self-changing schedule.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.installment_payment_missed_reported",
+      "fieldId": "installment_payment_missed_reported",
+      "stageId": "installment_suspension",
+      "group": "installment_suspension",
+      "meaning": "сообщено о пропуске платежа по предоставленному графику",
+      "boundary": "A scheduled payment missed as reported; no computed arrears or automatic cancellation of the whole schedule.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.applicant_is_claimant",
+      "fieldId": "applicant_is_claimant",
+      "stageId": "complaint_bailiff",
+      "group": "complaint_bailiff",
+      "meaning": "заявитель указан взыскателем в ИП",
+      "boundary": "This applicant is named creditor in this proceeding. False leaves debtor/third party/representative unresolved; not simply 'I want money'.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.specific_action_request_submitted",
+      "fieldId": "specific_action_request_submitted",
+      "stageId": "complaint_bailiff",
+      "group": "complaint_bailiff",
+      "meaning": "письменно подано ходатайство о конкретном исполнительном действии",
+      "boundary": "User's written specific-action request in this proceeding was submitted. Generic request, another person's submission, draft or planned filing is insufficient. Receipt/competent addressee/deadline breach remain separate. Submission on the user's behalf by their representative is not excluded merely because the user did not physically file it.",
+      "status": "BOUNDED_OBSERVATION"
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.challenged_order_copy_received",
+      "fieldId": "challenged_order_copy_received",
+      "stageId": "complaint_bailiff",
+      "group": "complaint_bailiff",
+      "meaning": "получена копия оспариваемого постановления",
+      "boundary": "Received this challenged order's copy, not proof of illegal order or deadline compliance.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.reply_received",
+      "fieldId": "reply_received",
+      "stageId": "complaint_bailiff",
+      "group": "complaint_bailiff",
+      "meaning": "получен ответ на обращение",
+      "boundary": "Reply to this same request received; not proof of lawful substantive resolution or performing the requested act.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.ongoing_harm_reported",
+      "fieldId": "ongoing_harm_reported",
+      "stageId": "complaint_bailiff",
+      "group": "complaint_bailiff",
+      "meaning": "сообщено о продолжающемся вреде от меры или бездействия",
+      "boundary": "Continuing harm reported from this measure/inaction, not an adjudicated violation or entitlement to compensation.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.superior_complaint_submitted",
+      "fieldId": "superior_complaint_submitted",
+      "stageId": "complaint_bailiff",
+      "group": "complaint_bailiff",
+      "meaning": "подана жалоба в порядке подчинённости",
+      "boundary": "Filing a complaint in hierarchical procedure reported; not acceptance, satisfaction, mandatory pretrial compliance or tolling.",
+      "status": "BOUNDED_OBSERVATION",
+      "producerKind": "user_report_not_legal_qualification"
+    }
+  ],
+  "predicates": [
+    {
+      "fieldKey": "bailiffs.ip_opened.other_person_identifiers",
+      "stageId": "ip_opened",
+      "fieldId": "other_person_identifiers",
+      "positive": "В постановлении указана чужая дата рождения",
+      "negative": "В постановлении нет чужих идентификаторов",
+      "unknown": "Я не знаю, указаны ли в постановлении чужие идентификаторы",
+      "positiveAliases": [
+        "В постановлении указан чужой СНИЛС"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.enforcement_fee_charged",
+      "stageId": "ip_opened",
+      "fieldId": "enforcement_fee_charged",
+      "positive": "Есть отдельное постановление об исполнительском сборе",
+      "negative": "Отдельного постановления об исполнительском сборе нет",
+      "unknown": "Я не знаю, есть ли отдельное постановление об исполнительском сборе",
+      "positiveAliases": [],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.funds_debited_or_written_off",
+      "stageId": "account_arrest",
+      "fieldId": "funds_debited_or_written_off",
+      "positive": "В выписке есть списание по этому взысканию",
+      "negative": "В выписке нет списания по этому взысканию",
+      "unknown": "Я не знаю, есть ли в выписке списание по этому взысканию",
+      "positiveAliases": [],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.fssp_order_identified",
+      "stageId": "account_arrest",
+      "fieldId": "fssp_order_identified",
+      "positive": "Я получил копию постановления пристава, которое банк указал основанием этого ареста",
+      "negative": "Я не получил копию постановления пристава, которое банк указал основанием этого ареста",
+      "unknown": "Я не знаю, получил ли копию постановления пристава, которое банк указал основанием этого ареста",
+      "positiveAliases": [],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.fssp_order_identified",
+      "stageId": "money_writeoff",
+      "fieldId": "fssp_order_identified",
+      "positive": "Я получил копию постановления пристава, которое банк указал основанием этого списания",
+      "negative": "Я не получил копию постановления пристава, которое банк указал основанием этого списания",
+      "unknown": "Я не знаю, получил ли копию постановления пристава, которое банк указал основанием этого списания",
+      "positiveAliases": [],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.funds_transferred_to_claimant",
+      "stageId": "money_writeoff",
+      "fieldId": "funds_transferred_to_claimant",
+      "positive": "Банк подтвердил перевод этих списанных денег взыскателю",
+      "negative": "Ни банк, ни ФССП не подтвердили перевод этих списанных денег взыскателю",
+      "unknown": "Я не знаю, подтвердили ли перевод этих списанных денег взыскателю",
+      "positiveAliases": [
+        "ФССП подтвердила перевод этих списанных денег взыскателю",
+        "Банк и ФССП подтвердили перевод этих списанных денег взыскателю"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.withheld_by_payer",
+      "stageId": "wage_garnishment",
+      "fieldId": "withheld_by_payer",
+      "positive": "Работодатель удерживает из этой выплаты до зачисления на мой счёт",
+      "negative": "Работодатель не удерживает из этой выплаты до зачисления на мой счёт",
+      "unknown": "Я не знаю, удерживает ли работодатель из этой выплаты до зачисления на мой счёт",
+      "positiveAliases": [
+        "Плательщик удерживает из этой выплаты до зачисления на мой счёт"
+      ],
+      "negativeAliases": [
+        "Плательщик не удерживает из этой выплаты до зачисления на мой счёт"
+      ],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.bank_additional_withholding",
+      "stageId": "wage_garnishment",
+      "fieldId": "bank_additional_withholding",
+      "positive": "Банк списывает из этой выплаты после зачисления по этому взысканию",
+      "negative": "Банк не списывает из этой выплаты после зачисления по этому взысканию",
+      "unknown": "Я не знаю, списывает ли банк из этой выплаты после зачисления по этому взысканию",
+      "positiveAliases": [],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.third_party_ownership_claimed",
+      "stageId": "property_arrest",
+      "fieldId": "third_party_ownership_claimed",
+      "positive": "На эту вещь заявляет право человек, который не является должником",
+      "negative": "На эту вещь никто, кроме должника, не заявляет право",
+      "unknown": "Я не знаю, заявляет ли на эту вещь право кто-то, кроме должника",
+      "positiveAliases": [
+        "На эту вещь заявляет право организация, которая не является должником"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.sale_scheduled",
+      "stageId": "property_arrest",
+      "fieldId": "sale_scheduled",
+      "positive": "На продажу этой вещи назначена дата",
+      "negative": "На продажу этой вещи дата не назначена",
+      "unknown": "Я не знаю, назначена ли дата продажи этой вещи",
+      "positiveAliases": [
+        "Назначена дата торгов по этой вещи"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.travel_restricted",
+      "stageId": "restrictions",
+      "fieldId": "travel_restricted",
+      "positive": "Есть постановление об ограничении моего выезда из России",
+      "negative": "Постановления об ограничении моего выезда из России нет",
+      "unknown": "Я не знаю, есть ли постановление об ограничении моего выезда из России",
+      "positiveAliases": [],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.driving_restricted",
+      "stageId": "restrictions",
+      "fieldId": "driving_restricted",
+      "positive": "Есть отдельное постановление пристава об ограничении моего управления транспортом",
+      "negative": "Отдельного постановления пристава об ограничении моего управления транспортом нет",
+      "unknown": "Я не знаю, есть ли отдельное постановление пристава об ограничении моего управления транспортом",
+      "positiveAliases": [],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.underlying_act_appealed",
+      "stageId": "installment_suspension",
+      "fieldId": "underlying_act_appealed",
+      "positive": "На этот судебный акт по этому долгу подана жалоба",
+      "negative": "На этот судебный акт по этому долгу жалоба не подана",
+      "unknown": "Я не знаю, подана ли жалоба на этот судебный акт по этому долгу",
+      "positiveAliases": [
+        "На этот судебный акт по этому долгу жалобу подал другой участник",
+        "На этот судебный акт по этому долгу жалобу подал мой представитель",
+        "На этот судебный акт по этому долгу жалоба подана, но я не знаю кем"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.urgent_enforcement_scheduled",
+      "stageId": "installment_suspension",
+      "fieldId": "urgent_enforcement_scheduled",
+      "positive": "Есть документ с датой предстоящего исполнительного действия по этому делу",
+      "negative": "У меня нет документа с датой предстоящего исполнительного действия по этому делу",
+      "unknown": "Я не знаю, есть ли документ с датой предстоящего исполнительного действия по этому делу",
+      "positiveAliases": [],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.applicant_is_claimant",
+      "stageId": "complaint_bailiff",
+      "fieldId": "applicant_is_claimant",
+      "positive": "Я указан взыскателем в этом исполнительном производстве",
+      "negative": "Я не указан взыскателем в этом исполнительном производстве",
+      "unknown": "Я не знаю, указан ли взыскателем в этом исполнительном производстве",
+      "positiveAliases": [],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.specific_action_request_submitted",
+      "stageId": "complaint_bailiff",
+      "fieldId": "specific_action_request_submitted",
+      "positive": "Я подал приставу письменное заявление о конкретном действии по этому делу",
+      "negative": "Я не подавал приставу письменного заявления о конкретном действии по этому делу",
+      "unknown": "Я не знаю, подано ли моё письменное заявление приставу о конкретном действии по этому делу",
+      "positiveAliases": [
+        "Мой представитель подал от моего имени приставу письменное заявление о конкретном действии по этому делу"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA24-accepted-TFU",
+      "guardRequires": [],
+      "existingNext": true,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.opening_order_received",
+      "stageId": "ip_opened",
+      "fieldId": "opening_order_received",
+      "positive": "Я получил копию постановления о возбуждении этого исполнительного производства",
+      "negative": "Я не получил копию постановления о возбуждении этого исполнительного производства",
+      "unknown": "Я не знаю, получил ли копию постановления о возбуждении этого исполнительного производства",
+      "positiveAliases": [
+        "Постановление о возбуждении этого ИП у меня на руках",
+        "Мне выдали копию постановления о возбуждении этого исполнительного производства"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.executive_document_copy_received",
+      "stageId": "ip_opened",
+      "fieldId": "executive_document_copy_received",
+      "positive": "У меня есть копия исполнительного документа по этому делу",
+      "negative": "У меня нет копии исполнительного документа по этому делу",
+      "unknown": "Я не знаю, есть ли у меня копия исполнительного документа по этому делу",
+      "positiveAliases": [
+        "Копию исполнительного документа по этому делу мне выдали",
+        "копия исполнительного документа по этому делу у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "document"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.prior_payment_receipt_available",
+      "stageId": "ip_opened",
+      "fieldId": "prior_payment_receipt_available",
+      "positive": "У меня есть подтверждение этого ранее совершённого платежа",
+      "negative": "У меня нет подтверждения этого ранее совершённого платежа",
+      "unknown": "Я не знаю, есть ли подтверждение этого ранее совершённого платежа",
+      "positiveAliases": [
+        "Квитанция об этом платеже сохранилась",
+        "подтверждение этого ранее совершённого платежа у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.electronic_delivery_record_available",
+      "stageId": "ip_opened",
+      "fieldId": "electronic_delivery_record_available",
+      "positive": "Есть запись об электронной доставке этого извещения",
+      "negative": "Записи об электронной доставке этого извещения нет",
+      "unknown": "Я не знаю, есть ли запись об электронной доставке этого извещения",
+      "positiveAliases": [
+        "В личном кабинете есть запись о доставке этого извещения"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "delivery"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.ip_opened.own_debt_disputed",
+      "stageId": "ip_opened",
+      "fieldId": "own_debt_disputed",
+      "positive": "Я оспариваю свой долг по этому делу",
+      "negative": "Я не оспариваю свой долг по этому делу",
+      "unknown": "Пока не могу сказать, согласен ли я с этим долгом",
+      "positiveAliases": [
+        "С этим своим долгом я не согласен"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.salary_or_pension_received_on_account",
+      "stageId": "account_arrest",
+      "fieldId": "salary_or_pension_received_on_account",
+      "positive": "На этот счёт поступает моя зарплата",
+      "negative": "На этот счёт не поступает ни зарплата, ни пенсия",
+      "unknown": "Я не знаю, поступает ли на этот счёт зарплата или пенсия",
+      "positiveAliases": [
+        "На этот счёт поступает моя пенсия",
+        "Зарплата приходит на этот счёт",
+        "Пенсию получаю на этот счёт"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.payment_purpose_documents_available",
+      "stageId": "account_arrest",
+      "fieldId": "payment_purpose_documents_available",
+      "positive": "У меня есть документы о назначении этой выплаты",
+      "negative": "У меня нет документов о назначении этой выплаты",
+      "unknown": "Я не знаю, есть ли документы о назначении этой выплаты",
+      "positiveAliases": [
+        "Назначение этой выплаты подтверждено моими документами",
+        "документы о назначении этой выплаты у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.prior_payment_receipt_available",
+      "stageId": "account_arrest",
+      "fieldId": "prior_payment_receipt_available",
+      "positive": "У меня есть подтверждение этого ранее совершённого платежа",
+      "negative": "У меня нет подтверждения этого ранее совершённого платежа",
+      "unknown": "Я не знаю, есть ли подтверждение этого ранее совершённого платежа",
+      "positiveAliases": [
+        "Квитанция об этом платеже сохранилась",
+        "подтверждение этого ранее совершённого платежа у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.ip_end_order_received",
+      "stageId": "account_arrest",
+      "fieldId": "ip_end_order_received",
+      "positive": "Я получил постановление об окончании этого исполнительного производства",
+      "negative": "Я не получил постановление ни об окончании, ни о прекращении этого исполнительного производства",
+      "unknown": "Я не знаю, получил ли постановление об окончании или прекращении этого исполнительного производства",
+      "positiveAliases": [
+        "Я получил постановление о прекращении этого исполнительного производства",
+        "Мне выдали постановление об окончании этого исполнительного производства"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "order"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.account_arrest.direct_bank_document_confirmed",
+      "stageId": "account_arrest",
+      "fieldId": "direct_bank_document_confirmed",
+      "positive": "Банк подтвердил, что взыскатель предъявил исполнительный документ напрямую по этому взысканию",
+      "negative": "Банк подтвердил, что взыскатель не предъявлял исполнительный документ напрямую по этому взысканию",
+      "unknown": "Я не знаю, подтвердил ли банк прямое предъявление документа взыскателем по этому взысканию",
+      "positiveAliases": [
+        "По ответу банка этот исполнительный документ поступил непосредственно от взыскателя"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "document"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.payment_purpose_documents_available",
+      "stageId": "money_writeoff",
+      "fieldId": "payment_purpose_documents_available",
+      "positive": "У меня есть документы о назначении этой выплаты",
+      "negative": "У меня нет документов о назначении этой выплаты",
+      "unknown": "Я не знаю, есть ли документы о назначении этой выплаты",
+      "positiveAliases": [
+        "Назначение этой выплаты подтверждено моими документами",
+        "документы о назначении этой выплаты у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.prior_payment_receipt_available",
+      "stageId": "money_writeoff",
+      "fieldId": "prior_payment_receipt_available",
+      "positive": "У меня есть подтверждение этого ранее совершённого платежа",
+      "negative": "У меня нет подтверждения этого ранее совершённого платежа",
+      "unknown": "Я не знаю, есть ли подтверждение этого ранее совершённого платежа",
+      "positiveAliases": [
+        "Квитанция об этом платеже сохранилась",
+        "подтверждение этого ранее совершённого платежа у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.several_collection_operations_reported",
+      "stageId": "money_writeoff",
+      "fieldId": "several_collection_operations_reported",
+      "positive": "По этому взысканию было несколько операций списания",
+      "negative": "По этому делу была только одна операция взыскания",
+      "unknown": "Я не знаю, сколько операций списания было по этому взысканию",
+      "positiveAliases": [
+        "По этому взысканию деньги списали дважды"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.money_writeoff.direct_bank_document_confirmed",
+      "stageId": "money_writeoff",
+      "fieldId": "direct_bank_document_confirmed",
+      "positive": "Банк подтвердил, что взыскатель предъявил исполнительный документ напрямую по этому взысканию",
+      "negative": "Банк подтвердил, что взыскатель не предъявлял исполнительный документ напрямую по этому взысканию",
+      "unknown": "Я не знаю, подтвердил ли банк прямое предъявление документа взыскателем по этому взысканию",
+      "positiveAliases": [
+        "По ответу банка этот исполнительный документ поступил непосредственно от взыскателя"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "document"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.dependents_reported",
+      "stageId": "wage_garnishment",
+      "fieldId": "dependents_reported",
+      "positive": "У меня есть иждивенцы",
+      "negative": "У меня нет иждивенцев",
+      "unknown": "Я не знаю, есть ли у меня иждивенцы",
+      "positiveAliases": [
+        "Я содержу несовершеннолетнего ребёнка",
+        "иждивенцы у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.subsistence_request_submitted",
+      "stageId": "wage_garnishment",
+      "fieldId": "subsistence_request_submitted",
+      "positive": "Я подал заявление о сохранении прожиточного минимума по этому взысканию",
+      "negative": "Я не подавал заявление о сохранении прожиточного минимума по этому взысканию",
+      "unknown": "Я не знаю, подано ли моё заявление о сохранении прожиточного минимума по этому взысканию",
+      "positiveAliases": [
+        "Мой представитель подал от моего имени заявление о сохранении прожиточного минимума по этому взысканию"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "request"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.subsistence_order_received",
+      "stageId": "wage_garnishment",
+      "fieldId": "subsistence_order_received",
+      "positive": "Я получил акт о сохранении дохода по этому взысканию",
+      "negative": "Я не получил акт о сохранении дохода по этому взысканию",
+      "unknown": "Я не знаю, получил ли акт о сохранении дохода по этому взысканию",
+      "positiveAliases": [
+        "Постановление о сохранении прожиточного минимума по этому взысканию у меня на руках",
+        "Мне выдали акт о сохранении дохода по этому взысканию"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "order"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.payment_purpose_documents_available",
+      "stageId": "wage_garnishment",
+      "fieldId": "payment_purpose_documents_available",
+      "positive": "У меня есть документы о назначении этой выплаты",
+      "negative": "У меня нет документов о назначении этой выплаты",
+      "unknown": "Я не знаю, есть ли документы о назначении этой выплаты",
+      "positiveAliases": [
+        "Назначение этой выплаты подтверждено моими документами",
+        "документы о назначении этой выплаты у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.military_linked_payment_reported",
+      "stageId": "wage_garnishment",
+      "fieldId": "military_linked_payment_reported",
+      "positive": "Эта выплата связана с моими военными обстоятельствами",
+      "negative": "Эта выплата не связана с моими военными обстоятельствами",
+      "unknown": "Я не знаю, связана ли эта выплата с военными обстоятельствами",
+      "positiveAliases": [
+        "Эта выплата поступила мне в связи с военной службой"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.wage_garnishment.disability_or_veteran_travel_compensation_reported",
+      "stageId": "wage_garnishment",
+      "fieldId": "disability_or_veteran_travel_compensation_reported",
+      "positive": "Эта выплата является компенсацией проезда инвалида",
+      "negative": "Эта выплата не является компенсацией проезда ни инвалида, ни ветерана, ни сопровождающего",
+      "unknown": "Я не знаю, является ли эта выплата компенсацией проезда инвалида, ветерана или сопровождающего",
+      "positiveAliases": [
+        "Эта выплата является компенсацией проезда ветерана",
+        "Эта выплата является компенсацией проезда сопровождающего"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.sole_dwelling_reported",
+      "stageId": "property_arrest",
+      "fieldId": "sole_dwelling_reported",
+      "positive": "Это моё единственное пригодное для проживания жильё",
+      "negative": "У меня есть другое пригодное для проживания жильё",
+      "unknown": "Я не знаю, является ли это жильё моим единственным пригодным для проживания",
+      "positiveAliases": [
+        "Другого пригодного для проживания жилья у меня нет"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.mortgage_record_available",
+      "stageId": "property_arrest",
+      "fieldId": "mortgage_record_available",
+      "positive": "У меня есть сведения о залоге этой вещи",
+      "negative": "У меня нет сведений ни о залоге, ни об ипотеке этой вещи",
+      "unknown": "Я не знаю, есть ли сведения о залоге или ипотеке этой вещи",
+      "positiveAliases": [
+        "У меня есть сведения об ипотеке этой вещи",
+        "сведения о залоге этой вещи у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.household_use_reported",
+      "stageId": "property_arrest",
+      "fieldId": "household_use_reported",
+      "positive": "Эту вещь я использую для необходимых бытовых нужд",
+      "negative": "Эту вещь я не использую для необходимых бытовых нужд",
+      "unknown": "Я не знаю, используется ли эта вещь для необходимых бытовых нужд",
+      "positiveAliases": [
+        "Эта вещь нужна мне для повседневного быта"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.valuation_notice_received",
+      "stageId": "property_arrest",
+      "fieldId": "valuation_notice_received",
+      "positive": "Я получил извещение об оценке этой вещи",
+      "negative": "Я не получил извещение об оценке этой вещи",
+      "unknown": "Я не знаю, получил ли извещение об оценке этой вещи",
+      "positiveAliases": [
+        "Извещение об оценке этой вещи мне вручили",
+        "Мне выдали извещение об оценке этой вещи"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "document"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.valuation_disputed",
+      "stageId": "property_arrest",
+      "fieldId": "valuation_disputed",
+      "positive": "Я оспариваю указанную стоимость этой вещи",
+      "negative": "Я не оспариваю указанную стоимость этой вещи",
+      "unknown": "Пока не могу сказать, согласен ли я с этой оценкой",
+      "positiveAliases": [
+        "Я не согласен с оценкой этой вещи"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.property_arrest.property_seized",
+      "stageId": "property_arrest",
+      "fieldId": "property_seized",
+      "positive": "Эту вещь у меня фактически изъяли",
+      "negative": "Эту вещь у меня не изымали",
+      "unknown": "Я не знаю, изъяли ли эту вещь",
+      "positiveAliases": [
+        "Пристав забрал эту вещь"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.prior_payment_receipt_available",
+      "stageId": "restrictions",
+      "fieldId": "prior_payment_receipt_available",
+      "positive": "У меня есть подтверждение этого ранее совершённого платежа",
+      "negative": "У меня нет подтверждения этого ранее совершённого платежа",
+      "unknown": "Я не знаю, есть ли подтверждение этого ранее совершённого платежа",
+      "positiveAliases": [
+        "Квитанция об этом платеже сохранилась",
+        "подтверждение этого ранее совершённого платежа у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.driving_income_documents_available",
+      "stageId": "restrictions",
+      "fieldId": "driving_income_documents_available",
+      "positive": "У меня есть документы о доходе от управления транспортом",
+      "negative": "У меня нет документов о доходе от управления транспортом",
+      "unknown": "Я не знаю, есть ли документы о доходе от управления транспортом",
+      "positiveAliases": [
+        "Документы о моём заработке водителем у меня есть",
+        "документы о доходе от управления транспортом у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "document"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.disability_transport_need_reported",
+      "stageId": "restrictions",
+      "fieldId": "disability_transport_need_reported",
+      "positive": "Я использую этот транспорт из-за инвалидности",
+      "negative": "Я не использую этот транспорт из-за инвалидности",
+      "unknown": "Я не знаю, связан ли этот транспорт с потребностью из-за инвалидности",
+      "positiveAliases": [
+        "Этот транспорт нужен мне в связи с инвалидностью"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.remote_transport_need_reported",
+      "stageId": "restrictions",
+      "fieldId": "remote_transport_need_reported",
+      "positive": "Я живу в месте с ограниченной транспортной доступностью",
+      "negative": "Я не живу в месте с ограниченной транспортной доступностью",
+      "unknown": "Я не знаю, ограничена ли транспортная доступность там, где я живу",
+      "positiveAliases": [
+        "Из моего места проживания трудно добраться общественным транспортом"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.installment_order_received",
+      "stageId": "restrictions",
+      "fieldId": "installment_order_received",
+      "positive": "Я получил акт об отсрочке исполнения по этому долгу",
+      "negative": "Я не получил акт ни об отсрочке, ни о рассрочке исполнения по этому долгу",
+      "unknown": "Я не знаю, получил ли акт об отсрочке или рассрочке исполнения по этому долгу",
+      "positiveAliases": [
+        "Я получил акт о рассрочке исполнения по этому долгу",
+        "Мне выдали акт об отсрочке исполнения по этому долгу"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "act"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.restrictions.restriction_copy_received",
+      "stageId": "restrictions",
+      "fieldId": "restriction_copy_received",
+      "positive": "Я получил копию постановления об этом ограничении",
+      "negative": "Я не получил копию постановления об этом ограничении",
+      "unknown": "Я не знаю, получил ли копию постановления об этом ограничении",
+      "positiveAliases": [
+        "Копия постановления об этом ограничении у меня на руках",
+        "Мне выдали копию постановления об этом ограничении"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "order"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.hardship_reported",
+      "stageId": "installment_suspension",
+      "fieldId": "hardship_reported",
+      "positive": "У меня материальные затруднения",
+      "negative": "У меня нет материальных затруднений",
+      "unknown": "Я не знаю, есть ли у меня материальные затруднения",
+      "positiveAliases": [
+        "Мне сейчас трудно платить из-за нехватки денег"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.hospital_treatment_document_available",
+      "stageId": "installment_suspension",
+      "fieldId": "hospital_treatment_document_available",
+      "positive": "У меня есть документы о моём стационарном лечении",
+      "negative": "У меня нет документов о моём стационарном лечении",
+      "unknown": "Я не знаю, есть ли документы о моём стационарном лечении",
+      "positiveAliases": [
+        "Документы о моём лечении в стационаре у меня на руках",
+        "документы о моём стационарном лечении у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "document"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.military_status_document_available",
+      "stageId": "installment_suspension",
+      "fieldId": "military_status_document_available",
+      "positive": "У меня есть документы о моём военном статусе",
+      "negative": "У меня нет документов о моём военном статусе",
+      "unknown": "Я не знаю, есть ли документы о моём военном статусе",
+      "positiveAliases": [
+        "Мой военный статус подтверждён имеющимися у меня документами",
+        "документы о моём военном статусе у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "document"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.martial_or_cto_territory_document_available",
+      "stageId": "installment_suspension",
+      "fieldId": "martial_or_cto_territory_document_available",
+      "positive": "У меня есть сведения о режиме военного положения на этой территории",
+      "negative": "У меня нет сведений ни о военном положении, ни о режиме КТО на этой территории",
+      "unknown": "Я не знаю, есть ли сведения о военном положении или режиме КТО на этой территории",
+      "positiveAliases": [
+        "У меня есть сведения о режиме КТО на этой территории",
+        "сведения о режиме военного положения на этой территории у меня есть"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "territory"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.disaster_affected_reported",
+      "stageId": "installment_suspension",
+      "fieldId": "disaster_affected_reported",
+      "positive": "Я пострадал от чрезвычайной ситуации",
+      "negative": "Я не пострадал от чрезвычайной ситуации",
+      "unknown": "Я не знаю, пострадал ли от чрезвычайной ситуации",
+      "positiveAliases": [
+        "Я пострадал от ЧС"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.installment_order_received",
+      "stageId": "installment_suspension",
+      "fieldId": "installment_order_received",
+      "positive": "Я получил акт об отсрочке исполнения по этому долгу",
+      "negative": "Я не получил акт ни об отсрочке, ни о рассрочке исполнения по этому долгу",
+      "unknown": "Я не знаю, получил ли акт об отсрочке или рассрочке исполнения по этому долгу",
+      "positiveAliases": [
+        "Я получил акт о рассрочке исполнения по этому долгу",
+        "Мне выдали акт об отсрочке исполнения по этому долгу"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "act"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.installment_suspension.installment_payment_missed_reported",
+      "stageId": "installment_suspension",
+      "fieldId": "installment_payment_missed_reported",
+      "positive": "Я пропустил платёж по этому предоставленному графику рассрочки",
+      "negative": "Я не пропускал платежей по этому предоставленному графику рассрочки",
+      "unknown": "Я не знаю, пропустил ли платёж по этому предоставленному графику рассрочки",
+      "positiveAliases": [
+        "По этому графику рассрочки я не внёс очередной платёж"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "payment"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.challenged_order_copy_received",
+      "stageId": "complaint_bailiff",
+      "fieldId": "challenged_order_copy_received",
+      "positive": "Я получил копию этого оспариваемого постановления",
+      "negative": "Я не получил копию этого оспариваемого постановления",
+      "unknown": "Я не знаю, получил ли копию этого оспариваемого постановления",
+      "positiveAliases": [
+        "Копия оспариваемого постановления у меня на руках",
+        "Мне выдали копию этого оспариваемого постановления"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "order"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.reply_received",
+      "stageId": "complaint_bailiff",
+      "fieldId": "reply_received",
+      "positive": "Я получил ответ на это обращение",
+      "negative": "Я не получил ответ на это обращение",
+      "unknown": "Я не знаю, получил ли ответ на это обращение",
+      "positiveAliases": [
+        "На это обращение мне уже ответили",
+        "Мне выдали ответ на это обращение"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "request"
+      ]
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.ongoing_harm_reported",
+      "stageId": "complaint_bailiff",
+      "fieldId": "ongoing_harm_reported",
+      "positive": "Вред от этой меры продолжает причиняться мне",
+      "negative": "Вред от этой меры больше не причиняется мне",
+      "unknown": "Я не знаю, продолжается ли вред от этой меры",
+      "positiveAliases": [
+        "Из-за этого бездействия вред мне продолжает причиняться"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": []
+    },
+    {
+      "fieldKey": "bailiffs.complaint_bailiff.superior_complaint_submitted",
+      "stageId": "complaint_bailiff",
+      "fieldId": "superior_complaint_submitted",
+      "positive": "Я подал жалобу в порядке подчинённости по этому делу",
+      "negative": "Я не подавал жалобу в порядке подчинённости по этому делу",
+      "unknown": "Я не знаю, подана ли моя жалоба в порядке подчинённости по этому делу",
+      "positiveAliases": [
+        "Мой представитель подал от моего имени жалобу вышестоящему приставу по этому делу"
+      ],
+      "negativeAliases": [],
+      "semanticRevision": "BA-owner-observation-20261026-v1",
+      "guardRequires": [],
+      "existingNext": false,
+      "requiredScope": [
+        "request"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "draft_q_ip_opened_1",
+      "fieldKey": "bailiffs.ip_opened.other_person_identifiers",
+      "stageId": "ip_opened",
+      "text": "В постановлении указаны идентификаторы другого человека — например, чужие дата рождения или СНИЛС?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "ask_next_question": {
+            "id": "draft_q_ip_opened_2_after_yes",
+            "question": "Есть отдельное постановление о взыскании исполнительского сбора?",
+            "type": "choice",
+            "field_key": "enforcement_fee_charged",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_ip_opened_identity_fee"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_ip_opened_identity"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_ip_opened_identity"
+              }
+            ]
+          }
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "ask_next_question": {
+            "id": "draft_q_ip_opened_2_after_no",
+            "question": "Есть отдельное постановление о взыскании исполнительского сбора?",
+            "type": "choice",
+            "field_key": "enforcement_fee_charged",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_ip_opened_fee"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_ip_opened_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_ip_opened_general"
+              }
+            ]
+          }
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "ask_next_question": {
+            "id": "draft_q_ip_opened_2_after_unknown",
+            "question": "Есть отдельное постановление о взыскании исполнительского сбора?",
+            "type": "choice",
+            "field_key": "enforcement_fee_charged",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_ip_opened_fee"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_ip_opened_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_ip_opened_general"
+              }
+            ]
+          }
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_ip_opened_2_after_yes",
+      "fieldKey": "bailiffs.ip_opened.enforcement_fee_charged",
+      "stageId": "ip_opened",
+      "text": "Есть отдельное постановление о взыскании исполнительского сбора?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_ip_opened_identity_fee"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_ip_opened_identity"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_ip_opened_identity"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_ip_opened_2_after_no",
+      "fieldKey": "bailiffs.ip_opened.enforcement_fee_charged",
+      "stageId": "ip_opened",
+      "text": "Есть отдельное постановление о взыскании исполнительского сбора?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_ip_opened_fee"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_ip_opened_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_ip_opened_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_ip_opened_2_after_unknown",
+      "fieldKey": "bailiffs.ip_opened.enforcement_fee_charged",
+      "stageId": "ip_opened",
+      "text": "Есть отдельное постановление о взыскании исполнительского сбора?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_ip_opened_fee"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_ip_opened_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_ip_opened_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_account_arrest_1",
+      "fieldKey": "bailiffs.account_arrest.funds_debited_or_written_off",
+      "stageId": "account_arrest",
+      "text": "В банковской выписке есть фактическое списание денег по этому взысканию?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_money_writeoff_general"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "ask_next_question": {
+            "id": "draft_q_account_arrest_2_after_no",
+            "question": "Вы получили копию постановления пристава, которое банк указал как основание этой меры?",
+            "type": "choice",
+            "field_key": "fssp_order_identified",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_account_arrest_fssp"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_account_arrest_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_account_arrest_general"
+              }
+            ]
+          }
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "ask_next_question": {
+            "id": "draft_q_account_arrest_2_after_unknown",
+            "question": "Вы получили копию постановления пристава, которое банк указал как основание этой меры?",
+            "type": "choice",
+            "field_key": "fssp_order_identified",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_account_arrest_fssp"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_account_arrest_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_account_arrest_general"
+              }
+            ]
+          }
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_account_arrest_2_after_no",
+      "fieldKey": "bailiffs.account_arrest.fssp_order_identified",
+      "stageId": "account_arrest",
+      "text": "Вы получили копию постановления пристава, которое банк указал как основание этой меры?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_account_arrest_fssp"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_account_arrest_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_account_arrest_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_account_arrest_2_after_unknown",
+      "fieldKey": "bailiffs.account_arrest.fssp_order_identified",
+      "stageId": "account_arrest",
+      "text": "Вы получили копию постановления пристава, которое банк указал как основание этой меры?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_account_arrest_fssp"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_account_arrest_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_account_arrest_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_money_writeoff_1",
+      "fieldKey": "bailiffs.money_writeoff.fssp_order_identified",
+      "stageId": "money_writeoff",
+      "text": "Вы получили копию постановления пристава, которое банк указал как основание списания?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "ask_next_question": {
+            "id": "draft_q_money_writeoff_2_after_yes",
+            "question": "Банк или ФССП подтвердили, что списанные деньги уже перечислены взыскателю?",
+            "type": "choice",
+            "field_key": "funds_transferred_to_claimant",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_money_writeoff_fssp_transferred"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_money_writeoff_fssp"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_money_writeoff_fssp"
+              }
+            ]
+          }
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "ask_next_question": {
+            "id": "draft_q_money_writeoff_2_after_no",
+            "question": "Банк или ФССП подтвердили, что списанные деньги уже перечислены взыскателю?",
+            "type": "choice",
+            "field_key": "funds_transferred_to_claimant",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_money_writeoff_transferred"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_money_writeoff_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_money_writeoff_general"
+              }
+            ]
+          }
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "ask_next_question": {
+            "id": "draft_q_money_writeoff_2_after_unknown",
+            "question": "Банк или ФССП подтвердили, что списанные деньги уже перечислены взыскателю?",
+            "type": "choice",
+            "field_key": "funds_transferred_to_claimant",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_money_writeoff_transferred"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_money_writeoff_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_money_writeoff_general"
+              }
+            ]
+          }
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_money_writeoff_2_after_yes",
+      "fieldKey": "bailiffs.money_writeoff.funds_transferred_to_claimant",
+      "stageId": "money_writeoff",
+      "text": "Банк или ФССП подтвердили, что списанные деньги уже перечислены взыскателю?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_money_writeoff_fssp_transferred"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_money_writeoff_fssp"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_money_writeoff_fssp"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_money_writeoff_2_after_no",
+      "fieldKey": "bailiffs.money_writeoff.funds_transferred_to_claimant",
+      "stageId": "money_writeoff",
+      "text": "Банк или ФССП подтвердили, что списанные деньги уже перечислены взыскателю?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_money_writeoff_transferred"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_money_writeoff_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_money_writeoff_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_money_writeoff_2_after_unknown",
+      "fieldKey": "bailiffs.money_writeoff.funds_transferred_to_claimant",
+      "stageId": "money_writeoff",
+      "text": "Банк или ФССП подтвердили, что списанные деньги уже перечислены взыскателю?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_money_writeoff_transferred"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_money_writeoff_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_money_writeoff_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_wage_garnishment_1",
+      "fieldKey": "bailiffs.wage_garnishment.withheld_by_payer",
+      "stageId": "wage_garnishment",
+      "text": "Работодатель или другой плательщик удерживает деньги до перечисления дохода на ваш счёт?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "ask_next_question": {
+            "id": "draft_q_wage_garnishment_2_after_yes",
+            "question": "После зачисления этой выплаты на счёт банк списывает из неё деньги по этому взысканию?",
+            "type": "choice",
+            "field_key": "bank_additional_withholding",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_wage_garnishment_both"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_wage_garnishment_payer"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_wage_garnishment_payer"
+              }
+            ]
+          }
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "ask_next_question": {
+            "id": "draft_q_wage_garnishment_2_after_no",
+            "question": "После зачисления этой выплаты на счёт банк списывает из неё деньги по этому взысканию?",
+            "type": "choice",
+            "field_key": "bank_additional_withholding",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_wage_garnishment_bank"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_wage_garnishment_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_wage_garnishment_general"
+              }
+            ]
+          }
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "ask_next_question": {
+            "id": "draft_q_wage_garnishment_2_after_unknown",
+            "question": "После зачисления этой выплаты на счёт банк списывает из неё деньги по этому взысканию?",
+            "type": "choice",
+            "field_key": "bank_additional_withholding",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_wage_garnishment_bank"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_wage_garnishment_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_wage_garnishment_general"
+              }
+            ]
+          }
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_wage_garnishment_2_after_yes",
+      "fieldKey": "bailiffs.wage_garnishment.bank_additional_withholding",
+      "stageId": "wage_garnishment",
+      "text": "После зачисления этой выплаты на счёт банк списывает из неё деньги по этому взысканию?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_wage_garnishment_both"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_wage_garnishment_payer"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_wage_garnishment_payer"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_wage_garnishment_2_after_no",
+      "fieldKey": "bailiffs.wage_garnishment.bank_additional_withholding",
+      "stageId": "wage_garnishment",
+      "text": "После зачисления этой выплаты на счёт банк списывает из неё деньги по этому взысканию?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_wage_garnishment_bank"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_wage_garnishment_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_wage_garnishment_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_wage_garnishment_2_after_unknown",
+      "fieldKey": "bailiffs.wage_garnishment.bank_additional_withholding",
+      "stageId": "wage_garnishment",
+      "text": "После зачисления этой выплаты на счёт банк списывает из неё деньги по этому взысканию?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_wage_garnishment_bank"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_wage_garnishment_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_wage_garnishment_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_property_arrest_1",
+      "fieldKey": "bailiffs.property_arrest.third_party_ownership_claimed",
+      "stageId": "property_arrest",
+      "text": "О праве на арестованную вещь заявляет человек или организация, которые не являются должником?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "ask_next_question": {
+            "id": "draft_q_property_arrest_2_after_yes",
+            "question": "Уже назначена дата продажи имущества или торгов?",
+            "type": "choice",
+            "field_key": "sale_scheduled",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_property_arrest_third_party_sale"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_property_arrest_third_party"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_property_arrest_third_party"
+              }
+            ]
+          }
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "ask_next_question": {
+            "id": "draft_q_property_arrest_2_after_no",
+            "question": "Уже назначена дата продажи имущества или торгов?",
+            "type": "choice",
+            "field_key": "sale_scheduled",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_property_arrest_sale"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_property_arrest_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_property_arrest_general"
+              }
+            ]
+          }
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "ask_next_question": {
+            "id": "draft_q_property_arrest_2_after_unknown",
+            "question": "Уже назначена дата продажи имущества или торгов?",
+            "type": "choice",
+            "field_key": "sale_scheduled",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_property_arrest_sale"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_property_arrest_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_property_arrest_general"
+              }
+            ]
+          }
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_property_arrest_2_after_yes",
+      "fieldKey": "bailiffs.property_arrest.sale_scheduled",
+      "stageId": "property_arrest",
+      "text": "Уже назначена дата продажи имущества или торгов?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_property_arrest_third_party_sale"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_property_arrest_third_party"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_property_arrest_third_party"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_property_arrest_2_after_no",
+      "fieldKey": "bailiffs.property_arrest.sale_scheduled",
+      "stageId": "property_arrest",
+      "text": "Уже назначена дата продажи имущества или торгов?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_property_arrest_sale"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_property_arrest_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_property_arrest_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_property_arrest_2_after_unknown",
+      "fieldKey": "bailiffs.property_arrest.sale_scheduled",
+      "stageId": "property_arrest",
+      "text": "Уже назначена дата продажи имущества или торгов?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_property_arrest_sale"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_property_arrest_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_property_arrest_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_restrictions_1",
+      "fieldKey": "bailiffs.restrictions.travel_restricted",
+      "stageId": "restrictions",
+      "text": "Есть постановление об ограничении выезда из России?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "ask_next_question": {
+            "id": "draft_q_restrictions_2_after_yes",
+            "question": "Есть отдельное постановление пристава об ограничении права управления транспортом?",
+            "type": "choice",
+            "field_key": "driving_restricted",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_restrictions_both"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_restrictions_travel"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_restrictions_travel"
+              }
+            ]
+          }
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "ask_next_question": {
+            "id": "draft_q_restrictions_2_after_no",
+            "question": "Есть отдельное постановление пристава об ограничении права управления транспортом?",
+            "type": "choice",
+            "field_key": "driving_restricted",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_restrictions_driving"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_restrictions_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_restrictions_general"
+              }
+            ]
+          }
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "ask_next_question": {
+            "id": "draft_q_restrictions_2_after_unknown",
+            "question": "Есть отдельное постановление пристава об ограничении права управления транспортом?",
+            "type": "choice",
+            "field_key": "driving_restricted",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_restrictions_driving"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_restrictions_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_restrictions_general"
+              }
+            ]
+          }
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_restrictions_2_after_yes",
+      "fieldKey": "bailiffs.restrictions.driving_restricted",
+      "stageId": "restrictions",
+      "text": "Есть отдельное постановление пристава об ограничении права управления транспортом?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_restrictions_both"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_restrictions_travel"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_restrictions_travel"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_restrictions_2_after_no",
+      "fieldKey": "bailiffs.restrictions.driving_restricted",
+      "stageId": "restrictions",
+      "text": "Есть отдельное постановление пристава об ограничении права управления транспортом?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_restrictions_driving"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_restrictions_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_restrictions_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_restrictions_2_after_unknown",
+      "fieldKey": "bailiffs.restrictions.driving_restricted",
+      "stageId": "restrictions",
+      "text": "Есть отдельное постановление пристава об ограничении права управления транспортом?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_restrictions_driving"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_restrictions_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_restrictions_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_installment_suspension_1",
+      "fieldKey": "bailiffs.installment_suspension.underlying_act_appealed",
+      "stageId": "installment_suspension",
+      "text": "На судебный акт, на основании которого взыскивают этот долг, уже подана жалоба?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "ask_next_question": {
+            "id": "draft_q_installment_suspension_2_after_yes",
+            "question": "Есть документ с назначенной датой продажи имущества или другого исполнительного действия?",
+            "type": "choice",
+            "field_key": "urgent_enforcement_scheduled",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_installment_suspension_appealed_urgent"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_installment_suspension_appealed"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_installment_suspension_appealed"
+              }
+            ]
+          }
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "ask_next_question": {
+            "id": "draft_q_installment_suspension_2_after_no",
+            "question": "Есть документ с назначенной датой продажи имущества или другого исполнительного действия?",
+            "type": "choice",
+            "field_key": "urgent_enforcement_scheduled",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_installment_suspension_urgent"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_installment_suspension_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_installment_suspension_general"
+              }
+            ]
+          }
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "ask_next_question": {
+            "id": "draft_q_installment_suspension_2_after_unknown",
+            "question": "Есть документ с назначенной датой продажи имущества или другого исполнительного действия?",
+            "type": "choice",
+            "field_key": "urgent_enforcement_scheduled",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_installment_suspension_urgent"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_installment_suspension_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_installment_suspension_general"
+              }
+            ]
+          }
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_installment_suspension_2_after_yes",
+      "fieldKey": "bailiffs.installment_suspension.urgent_enforcement_scheduled",
+      "stageId": "installment_suspension",
+      "text": "Есть документ с назначенной датой продажи имущества или другого исполнительного действия?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_installment_suspension_appealed_urgent"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_installment_suspension_appealed"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_installment_suspension_appealed"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_installment_suspension_2_after_no",
+      "fieldKey": "bailiffs.installment_suspension.urgent_enforcement_scheduled",
+      "stageId": "installment_suspension",
+      "text": "Есть документ с назначенной датой продажи имущества или другого исполнительного действия?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_installment_suspension_urgent"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_installment_suspension_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_installment_suspension_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_installment_suspension_2_after_unknown",
+      "fieldKey": "bailiffs.installment_suspension.urgent_enforcement_scheduled",
+      "stageId": "installment_suspension",
+      "text": "Есть документ с назначенной датой продажи имущества или другого исполнительного действия?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_installment_suspension_urgent"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_installment_suspension_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_installment_suspension_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_complaint_bailiff_1",
+      "fieldKey": "bailiffs.complaint_bailiff.applicant_is_claimant",
+      "stageId": "complaint_bailiff",
+      "text": "Вы указаны взыскателем в исполнительном производстве?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "ask_next_question": {
+            "id": "draft_q_complaint_bailiff_2_after_yes",
+            "question": "Вы уже подавали приставу письменное заявление с просьбой совершить конкретное действие по этому делу?",
+            "type": "choice",
+            "field_key": "specific_action_request_submitted",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_complaint_bailiff_claimant_requested"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_complaint_bailiff_claimant"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_complaint_bailiff_claimant"
+              }
+            ]
+          }
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "ask_next_question": {
+            "id": "draft_q_complaint_bailiff_2_after_no",
+            "question": "Вы уже подавали приставу письменное заявление с просьбой совершить конкретное действие по этому делу?",
+            "type": "choice",
+            "field_key": "specific_action_request_submitted",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_complaint_bailiff_requested"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_complaint_bailiff_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_complaint_bailiff_general"
+              }
+            ]
+          }
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "ask_next_question": {
+            "id": "draft_q_complaint_bailiff_2_after_unknown",
+            "question": "Вы уже подавали приставу письменное заявление с просьбой совершить конкретное действие по этому делу?",
+            "type": "choice",
+            "field_key": "specific_action_request_submitted",
+            "data": [
+              {
+                "value": true,
+                "label": "Да",
+                "go_to_variant": "draft_ba3_complaint_bailiff_requested"
+              },
+              {
+                "value": false,
+                "label": "Нет",
+                "go_to_variant": "draft_ba3_complaint_bailiff_general"
+              },
+              {
+                "value": null,
+                "label": "Не знаю",
+                "go_to_variant": "draft_ba3_complaint_bailiff_general"
+              }
+            ]
+          }
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_complaint_bailiff_2_after_yes",
+      "fieldKey": "bailiffs.complaint_bailiff.specific_action_request_submitted",
+      "stageId": "complaint_bailiff",
+      "text": "Вы уже подавали приставу письменное заявление с просьбой совершить конкретное действие по этому делу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_complaint_bailiff_claimant_requested"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_complaint_bailiff_claimant"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_complaint_bailiff_claimant"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_complaint_bailiff_2_after_no",
+      "fieldKey": "bailiffs.complaint_bailiff.specific_action_request_submitted",
+      "stageId": "complaint_bailiff",
+      "text": "Вы уже подавали приставу письменное заявление с просьбой совершить конкретное действие по этому делу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_complaint_bailiff_requested"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_complaint_bailiff_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_complaint_bailiff_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    },
+    {
+      "id": "draft_q_complaint_bailiff_2_after_unknown",
+      "fieldKey": "bailiffs.complaint_bailiff.specific_action_request_submitted",
+      "stageId": "complaint_bailiff",
+      "text": "Вы уже подавали приставу письменное заявление с просьбой совершить конкретное действие по этому делу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "go_to_variant": "draft_ba3_complaint_bailiff_requested"
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "go_to_variant": "draft_ba3_complaint_bailiff_general"
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "go_to_variant": "draft_ba3_complaint_bailiff_general"
+        }
+      ],
+      "semanticRevision": "BA24-accepted-TFU"
+    }
+  ],
+  "stages": [
+    {
+      "id": "ip_opened",
+      "phrase": "Пристав возбудил исполнительное производство",
+      "entryId": "draft_ba3_ip_opened_general",
+      "rootQuestionId": "draft_q_ip_opened_1"
+    },
+    {
+      "id": "account_arrest",
+      "phrase": "Банк арестовал мой счёт по взысканию",
+      "entryId": "draft_ba3_account_arrest_general",
+      "rootQuestionId": "draft_q_account_arrest_1"
+    },
+    {
+      "id": "money_writeoff",
+      "phrase": "Банк списал деньги по исполнительному документу",
+      "entryId": "draft_ba3_money_writeoff_general",
+      "rootQuestionId": "draft_q_money_writeoff_1"
+    },
+    {
+      "id": "wage_garnishment",
+      "phrase": "У меня удерживают из дохода по взысканию",
+      "entryId": "draft_ba3_wage_garnishment_general",
+      "rootQuestionId": "draft_q_wage_garnishment_1"
+    },
+    {
+      "id": "property_arrest",
+      "phrase": "Пристав арестовал обсуждаемую вещь",
+      "entryId": "draft_ba3_property_arrest_general",
+      "rootQuestionId": "draft_q_property_arrest_1"
+    },
+    {
+      "id": "restrictions",
+      "phrase": "Обсуждаем ограничения пристава",
+      "entryId": "draft_ba3_restrictions_general",
+      "rootQuestionId": "draft_q_restrictions_1"
+    },
+    {
+      "id": "installment_suspension",
+      "phrase": "Мне нужна рассрочка или приостановление исполнения",
+      "entryId": "draft_ba3_installment_suspension_general",
+      "rootQuestionId": "draft_q_installment_suspension_1"
+    },
+    {
+      "id": "complaint_bailiff",
+      "phrase": "Пристав не выполняет конкретное действие по делу",
+      "entryId": "draft_ba3_complaint_bailiff_general",
+      "rootQuestionId": "draft_q_complaint_bailiff_1"
+    }
+  ],
+  "scopeKeys": [
+    "person",
+    "role",
+    "proceeding",
+    "order",
+    "act",
+    "bank",
+    "account",
+    "payer",
+    "payment",
+    "asset",
+    "request",
+    "recipient",
+    "delivery",
+    "eventTime",
+    "document",
+    "territory"
+  ],
+  "crossStageFactLinks": [],
+  "DOCUMENTCapability": false,
+  "lawCurrentness": "NOT_ASSESSED",
+  "observationCount": 59,
+  "originalNextPredicateCount": 16,
+  "generalHelp": "Сохраните постановление, уведомление или выписку, связанные со взысканием, а также сведения о дате получения и уже внесённых платежах. Проверьте, кто применил меру, по какому документу, к кому она относится и какая сумма указана. Если ограничение или списание видно в банке, запросите у него основание операции и сведения об исполнительном документе. Если указан пристав, подготовьте номер производства и имеющиеся постановления. Пока обстоятельства не установлены, нельзя уверенно выбрать способ отмены меры, возврата денег или готовое заявление. Автоматически документ сейчас не предлагается. Если вопрос срочный, обратитесь за юридической помощью с имеющимися документами. Не отправляйте в чат паспортные данные, полный номер счёта и коды из сообщений.",
+  "entryRouting": {
+    "mode": "explicit_topic_or_compatible_general_candidate",
+    "contextFromEntry": false,
+    "unknownTopic": "general_help_without_variant",
+    "automaticDocuments": false
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "schemaVersion": "management-company-runtime/v1",
+  "version": "mc-category/20261028-v1",
+  "category": {
+    "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/management_company/category/management-company.editorial.v2.json",
+    "bytes": 1335692,
+    "sha256": "6a4d80ffd888582847288ae7fdccfeb2c1124e2c20cdf4f0c01846caa0cccebb"
+  },
+  "next": {
+    "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/management_company/next/candidate-NEXT.catalog.json",
+    "bytes": 358377,
+    "sha256": "8522cf7548df8dfeccd18dc749568b82d994ba539f88f6a9e9e6db01ef9f599e"
+  },
+  "normalBudget": 2,
+  "sourceMutation": false,
+  "stages": [
+    {
+      "stageId": "no_response",
+      "materialFields": [
+        "written_request_sent",
+        "delivery_confirmed",
+        "request_rejected_without_review",
+        "response_received",
+        "immediate_danger_present"
+      ],
+      "nonSelectorFields": [
+        "recipient_is_private_manager",
+        "gji_complaint_filed"
+      ],
+      "questions": [
+        {
+          "id": "mc.no_response.immediate_danger_present",
+          "field": "immediate_danger_present",
+          "text": "Сейчас есть непосредственная угроза людям или имуществу?",
+          "hint": "Отвечайте по тому, что наблюдаете с безопасного места. Не приближайтесь для проверки.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        },
+        {
+          "id": "mc.no_response.response_received",
+          "field": "response_received",
+          "text": "Вы уже получили ответ по этому обращению?",
+          "hint": "Ответ по существу учитывайте отдельно от отметки о доставке или регистрации.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        }
+      ],
+      "generalAnswerId": "management_company_no_response_v01"
+    },
+    {
+      "stageId": "poor_services",
+      "materialFields": [
+        "service_interruption_present",
+        "service_violation_documented",
+        "service_violation_ongoing"
+      ],
+      "nonSelectorFields": [
+        "heating_affected",
+        "water_supply_affected",
+        "electricity_or_gas_affected",
+        "direct_resource_supply_contract_present",
+        "recalculation_refused"
+      ],
+      "questions": [
+        {
+          "id": "mc.poor_services.service_violation_ongoing",
+          "field": "service_violation_ongoing",
+          "text": "Перерыв или признаки ненадлежащего качества услуги продолжаются сейчас?",
+          "hint": "Отвечайте по текущему наблюдению; старое сообщение само по себе не подтверждает состояние сейчас.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        },
+        {
+          "id": "mc.poor_services.service_violation_documented",
+          "field": "service_violation_documented",
+          "text": "Этот перерыв или нарушение качества уже зафиксированы актом либо измерениями?",
+          "hint": "Акт или результаты измерений могут быть на бумаге и храниться у исполнителя или другого человека. Для ответа «Да» своя копия не нужна. Одних фото нарушения или переписки недостаточно. Если неизвестно, были ли акт или измерения, выберите «Не знаю».",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        }
+      ],
+      "generalAnswerId": "management_company_poor_services_v01"
+    },
+    {
+      "stageId": "common_property",
+      "materialFields": [
+        "defect_documented",
+        "written_repair_request_sent",
+        "immediate_danger_present",
+        "specific_damage_already_caused"
+      ],
+      "nonSelectorFields": [
+        "gji_complaint_filed"
+      ],
+      "questions": [
+        {
+          "id": "mc.common_property.immediate_danger_present",
+          "field": "immediate_danger_present",
+          "text": "Дефект сейчас создаёт непосредственную угрозу людям или имуществу?",
+          "hint": "Не приближайтесь к опасному месту ради уточнения.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        },
+        {
+          "id": "mc.common_property.specific_damage_already_caused",
+          "field": "specific_damage_already_caused",
+          "text": "Из-за этого дефекта уже повреждено конкретное имущество?",
+          "hint": "Назовите только наблюдаемые повреждения; если связь с дефектом неизвестна, выберите «Не знаю».",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        }
+      ],
+      "generalAnswerId": "management_company_common_property_v01"
+    },
+    {
+      "stageId": "bills_wrong",
+      "materialFields": [],
+      "nonSelectorFields": [
+        "meter_readings_disputed",
+        "tariff_or_area_error",
+        "service_violation_documented",
+        "temporary_absence_recalculation_claimed",
+        "recalculation_refused",
+        "debt_in_court_or_enforcement"
+      ],
+      "questions": [],
+      "generalAnswerId": "management_company_bills_wrong_v01"
+    },
+    {
+      "stageId": "reports",
+      "materialFields": [
+        "annual_report_requested",
+        "management_or_work_documents_requested",
+        "written_document_request_sent",
+        "document_request_refused"
+      ],
+      "nonSelectorFields": [
+        "hoa_or_cooperative_manager"
+      ],
+      "questions": [
+        {
+          "id": "mc.reports.written_document_request_sent",
+          "field": "written_document_request_sent",
+          "text": "Вы уже отправили этот запрос письменно или электронно?",
+          "hint": "Потеря своей копии не отменяет отправку. Неотправленный черновик и устная просьба не подтверждают отправку. Доставку и ответ учитываем отдельно.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        },
+        {
+          "id": "mc.reports.document_request_refused",
+          "field": "document_request_refused",
+          "text": "По этому запросу вы получили прямой отказ в предоставлении документов?",
+          "hint": "Речь именно о прямом отказе. Отсутствие ответа само по себе не означает отказ.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        }
+      ],
+      "generalAnswerId": "management_company_reports_v01"
+    },
+    {
+      "stageId": "meetings_protocol",
+      "materialFields": [
+        "applicant_owned_premises_at_meeting",
+        "meeting_notice_received",
+        "protocol_or_vote_register_received",
+        "vote_or_signature_mismatch",
+        "decision_already_implemented"
+      ],
+      "nonSelectorFields": [],
+      "questions": [
+        {
+          "id": "mc.meetings_protocol.protocol_or_vote_register_received",
+          "field": "protocol_or_vote_register_received",
+          "text": "Вы получили копию протокола или реестра голосов этого собрания?",
+          "hint": "Неполную копию тоже сохраните; отсутствие страниц отметьте отдельно.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        },
+        {
+          "id": "mc.meetings_protocol.vote_or_signature_mismatch",
+          "field": "vote_or_signature_mismatch",
+          "text": "Запись вашего голоса или подпись в материалах собрания расходится с тем, как вы голосовали или подписывали?",
+          "hint": "Сравните конкретную запись со своим волеизъявлением. Если запись недоступна или вы не уверены, выберите «Не знаю».",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        }
+      ],
+      "generalAnswerId": "management_company_meetings_protocol_v01"
+    },
+    {
+      "stageId": "emergency_house_condition",
+      "materialFields": [
+        "immediate_danger_present",
+        "people_injured_or_trapped",
+        "emergency_service_contacted",
+        "uk_ignored_emergency"
+      ],
+      "nonSelectorFields": [
+        "formal_recognition_requested",
+        "commission_decision_received",
+        "recognition_refused"
+      ],
+      "questions": [
+        {
+          "id": "mc.emergency_house_condition.immediate_danger_present",
+          "field": "immediate_danger_present",
+          "text": "Сейчас есть непосредственная угроза жизни, здоровью или имуществу?",
+          "hint": "Оценивайте только доступные наблюдения с безопасного места; проверки в опасной зоне не нужны.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        },
+        {
+          "id": "mc.emergency_house_condition.people_injured_or_trapped",
+          "field": "people_injured_or_trapped",
+          "text": "Есть пострадавшие или люди, которые не могут безопасно выйти из опасной зоны?",
+          "hint": "Сообщайте только известное; не входите в опасную зону, чтобы ответить.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        }
+      ],
+      "generalAnswerId": "management_company_emergency_house_condition_v01"
+    },
+    {
+      "stageId": "change_uk",
+      "materialFields": [
+        "creating_hoa",
+        "repeated_breaches_documented",
+        "meeting_decision_adopted",
+        "licensed_new_uk_selected",
+        "old_manager_notified",
+        "handover_refused"
+      ],
+      "nonSelectorFields": [
+        "protocol_challenge_pending"
+      ],
+      "questions": [
+        {
+          "id": "mc.change_uk.creating_hoa",
+          "field": "creating_hoa",
+          "text": "В решении собственников указано создание ТСЖ вместо выбора новой управляющей организации?",
+          "hint": "Смотрите конкретный документ и дату. Вопрос не требует решить, какая правовая модель действует сейчас.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        },
+        {
+          "id": "mc.change_uk.licensed_new_uk_selected",
+          "field": "licensed_new_uk_selected",
+          "text": "У выбранной новой управляющей организации есть лицензия на управление многоквартирными домами?",
+          "hint": "Этот вопрос можно задавать только после подтверждения выбора конкретной новой УК. Сведения о лицензии можно проверить по актуальной официальной записи реестра; специально получать выписку не требуется. Запись о доме и завершение перехода проверяются отдельно.",
+          "meaning": {
+            "true": "Подтверждены оба слагаемых исходного licensed_new_uk_selected: новая УК выбрана и необходимая лицензия у неё есть. Текущая официальная запись может подтверждать лицензию без получения выписки; правовая модель и завершение перехода этим не устанавливаются.",
+            "false": "Хотя бы одно слагаемое достоверно false: новая УК не выбрана либо необходимой лицензии нет. false/null и null/false дают false. Это не выбор другой правовой модели и не установление других полей.",
+            "null": "Ни одно слагаемое не известно как false, но хотя бы одно неизвестно: true/null, null/true или null/null. Сохранить явный null и историю; не превращать в false или absent и не спрашивать повторно в том же деле без допустимого уточнения."
+          }
+        },
+        {
+          "id": "mc.change_uk.handover_refused",
+          "field": "handover_refused",
+          "text": "Прежний управляющий прямо отказался передать документы или ключи?",
+          "hint": "Учитывайте конкретный отказ с датой и перечнем позиций. Само ожидание передачи не считается прямым отказом.",
+          "meaning": {
+            "true": "Только указанный состав факта подтверждён пользователем/доверенным источником текущего случая.",
+            "false": "Пользователь отрицает именно этот состав факта; не устанавливает противоположную юридическую модель или иные поля.",
+            "null": "Пользователь не знает; сохранить явный null и историю ответа, не трактовать как false и не спрашивать повторно в этом проходе."
+          }
+        }
+      ],
+      "generalAnswerId": "management_company_change_uk_v01"
+    }
+  ],
+  "documents": {
+    "bindings": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/management_company/current-answer-document-binding-successor/20261027-v1/binding-successor.json",
+      "bytes": 1091378,
+      "sha256": "72dceecde6728ac57923eb006fcee15dbae29cf77a041e69e74c9613f759ebe2"
+    },
+    "templates": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/management_company/documents/DOCUMENT/legal-template-drafts.json",
+      "bytes": 940685,
+      "sha256": "e90cc522284d41f242272e49c15ad781b96c1358cbb2cb9bc99165723d125328"
+    },
+    "acceptance": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/coordination/coordinator-stage-article-handoff/20261027-v1/successor-control/deliveries/MC25-current-answer-binding-scoped-pass-accepted.json",
+      "bytes": 7096,
+      "sha256": "9862d6e49e670680d7a748d4a3f61faf68af0042862ee44cea65f6a353d2770e"
+    },
+    "activation": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/management_company/integration-recheck/20261028-v1/cms-activation.json",
+      "bytes": 1435,
+      "sha256": "0dfed54fab366eabcad535a1812904f5ca2a7cab6ac0b080d87d802fde19b734"
+    }
+  }
+}

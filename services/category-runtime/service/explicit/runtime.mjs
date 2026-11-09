@@ -1,7 +1,9 @@
+import { answerForDisplay } from "../conversation/answer-display.mjs";
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
-import { active, root, jsonFile, atomic, search } from '../storage.mjs';
+import { active, root, search } from '../storage.mjs';
+import { read as jsonFile, atomic } from '../conversation/state.mjs';
 import { bytesHash } from '../bundle/core.mjs';
 import { createExplicitEngine } from './engine.mjs';
 import { blocked } from './contract.mjs';
@@ -18,9 +20,9 @@ async function locked(key, action) {
   try { return await action(); }
   finally { release(); if (locks.get(key) === tail) locks.delete(key); }
 }
-function render(row) {
+function render(row, version) {
   if (!row) return 'Пока недостаточно подтверждённых обстоятельств. Уточните ситуацию, не угадывая неизвестные факты.';
-  const a = row.payload.answer;
+  const a = answerForDisplay(row, version);
   return [a.now, ...a.steps.map(s => '• ' + s), ...a.dont.map(s => 'Не следует: ' + s), ...a.say.map(s => 'Можно сказать: ' + s)]
     .map(escape).concat(
       a.where_to.map(d => '<a href="/documents/link/' + encodeURIComponent(d.document_link_id) + '">' + escape(d.title) + '</a>'),
@@ -32,7 +34,7 @@ export function presentExplicitAnswer(s, row, category, next) {
   const waiting = Boolean(s.pending) && s.mode !== 'chat';
   return { category,
     content: waiting ? s.pending.question.question
-      : (s.reason ? escape(s.reason) + '\n\n' : '') + (s.entry ? render(row) : 'Выберите ситуацию или опишите, что происходит.'),
+      : (s.reason ? escape(s.reason) + '\n\n' : '') + (s.entry ? render(row, s.version) : 'Выберите ситуацию или опишите, что происходит.'),
     variantId: waiting ? undefined : s.current || undefined, next };
 }
 async function load() {

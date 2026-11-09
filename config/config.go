@@ -19,16 +19,18 @@ type (
 	}
 
 	APP struct {
-		ENV         string `env:"ENV" envDefault:"dev"`
-		DatabaseDSN string `env:"DATABASE_DSN"`
-		Ports       `envPrefix:"PORTS_"`
-		Log         `envPrefix:"LOG_"`
-		Processor   `envPrefix:"PROCESSOR_"`
-		Embedding   `envPrefix:"EMBEDDING_"`
-		Vector      `envPrefix:"VECTOR_"`
-		Strategy    `envPrefix:"STRATEGY_"`
-		DB          `envPrefix:"DB_"`
-		Auth        `envPrefix:"AUTH_"`
+		ENV                   string `env:"ENV" envDefault:"dev"`
+		DatabaseDSN           string `env:"DATABASE_DSN"`
+		GuidedDataPath        string `env:"GUIDED_DATA_PATH"`
+		GuidedStageCollection string `env:"GUIDED_STAGE_COLLECTION" envDefault:"aizashchita_review_stages_20261014"`
+		Ports                 `envPrefix:"PORTS_"`
+		Log                   `envPrefix:"LOG_"`
+		Processor             `envPrefix:"PROCESSOR_"`
+		Embedding             `envPrefix:"EMBEDDING_"`
+		Vector                `envPrefix:"VECTOR_"`
+		Strategy              `envPrefix:"STRATEGY_"`
+		DB                    `envPrefix:"DB_"`
+		Auth                  `envPrefix:"AUTH_"`
 	}
 
 	Ports struct {
@@ -90,6 +92,7 @@ type (
 	}
 
 	Auth struct {
+		UserInfoURL      string `env:"USER_INFO_URL"`
 		CookieName       string `env:"COOKIE_NAME" envDefault:"aizaschita-app-session"`
 		FreeMessageLimit int    `env:"FREE_MESSAGE_LIMIT" envDefault:"5"`
 		LoginDomain      string `env:"LOGIN_DOMAIN" envDefault:"https://aizashchita.ru"`
@@ -185,6 +188,13 @@ func (c *Config) GetAuthFreeMessageLimit() int {
 
 func (c *Config) GetAuthLoginDomain() string {
 	return c.APP.Auth.LoginDomain
+}
+
+func (c *Config) GetAuthUserInfoURL() string {
+	if c.APP.Auth.UserInfoURL != "" {
+		return c.APP.Auth.UserInfoURL
+	}
+	return strings.TrimRight(c.APP.Auth.LoginDomain, "/") + "/api/auth/me"
 }
 
 func (c *Config) GetEnv() string {

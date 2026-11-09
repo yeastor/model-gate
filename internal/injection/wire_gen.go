@@ -7,17 +7,18 @@
 package injection
 
 import (
-	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
+	"github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/qdrant/go-client/qdrant"
 	"log/slog"
 	"model-gate/config"
 	"model-gate/internal/api/modelgate"
+	"model-gate/internal/pkg/chatcrypto"
 	"model-gate/internal/pkg/embedding"
 	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/model/processor"
 	processor2 "model-gate/internal/pkg/vector/processor"
-	"model-gate/internal/repository/clickhouse"
+	clickhouse2 "model-gate/internal/repository/clickhouse"
 	"model-gate/internal/repository/cookie"
 	"model-gate/internal/repository/postgres"
 	"model-gate/internal/usecase/category"
@@ -28,7 +29,7 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client, conn driver.Conn, pool *pgxpool.Pool, qdrantClient *qdrant.Client) *modelgate.API {
+func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, client *http.Client, conn clickhouse.Conn, pool *pgxpool.Pool, qdrantClient *qdrant.Client, storage *chatcrypto.Keyring) *modelgate.API {
 	logger := slog.New(logHandler)
 	dcHTTPClient := http2.NewDcHTTPClient(logger, client)
 	factory := processor.NewFactory(dcHTTPClient, cfg, logger)
@@ -38,10 +39,10 @@ func InitializeApplicationAPI(logHandler slog.Handler, cfg *config.Config, clien
 	vector := modelgate2.NewVector(processorFactory, cfg, logger, strategyFactory)
 	getCategoryVariantUseCase := category.NewGetCategoryVariantUseCase(processorFactory, cfg, logger)
 	chatUseCase := modelgate2.NewChatUseCase(factory, vector, getCategoryVariantUseCase, cfg)
-	repository := postgres.NewRepository(pool)
+	repository := postgres.NewRepository(pool, storage)
 	addChatUseCase := modelgate2.NewAddChatUseCase(repository)
 	checkChatExistsUseCase := modelgate2.NewCheckChatExistsUseCase(repository)
-	clickhouseRepository := clickhouse.NewRepository(conn)
+	clickhouseRepository := clickhouse2.NewRepository(conn, storage)
 	addMessageUseCase := modelgate2.NewAddMessageUseCase(clickhouseRepository)
 	messageListUseCase := modelgate2.NewMessageListUseCase(clickhouseRepository)
 	metadataCookieProvider := cookie.NewMetadataCookieProvider(dcHTTPClient, cfg)

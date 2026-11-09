@@ -14,8 +14,13 @@ import (
 	"model-gate/config"
 	"model-gate/internal/api/health"
 	"model-gate/internal/api/middleware"
+	modelgateAPI "model-gate/internal/api/modelgate"
 	"model-gate/internal/injection"
+	"model-gate/internal/pkg/chatcrypto"
+	"model-gate/internal/pkg/embedding"
+	"model-gate/internal/pkg/guided"
 	healthcheck "model-gate/pkg/healthcheck/pb"
+	dcHTTP "model-gate/pkg/http"
 	"model-gate/pkg/interceptor/logger/logrus/logruswithrequestid"
 	"model-gate/pkg/interceptor/xrequestid"
 	"model-gate/pkg/modelgate"
@@ -38,6 +43,11 @@ import (
 
 func main() {
 	ctx := context.Background()
+
+	storage, err := chatcrypto.Load(os.Getenv("CHAT_STORAGE_KEYS_FILE"))
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	cfg, err := config.NewConfig()
 	if err != nil {
@@ -62,12 +72,14 @@ func main() {
 
 	reflection.Register(server)
 
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", cfg.APP.Ports.GRPC))
+	lis, err := net.Listen("tcp", net.JoinHostPort(os.Getenv("APP_BIND_HOST"), cfg.APP.Ports.GRPC))
 	if err != nil {
 		panic(fmt.Sprintf("failed to listen: %v", err))
 	}
 
-	httpClient := &http.Client{}
+	httpClient := &http.Client{
+		CheckRedirect: func(_ *http.Request, _ []*http.Request) error { return http.ErrUseLastResponse },
+	}
 
 	clickHouseConnection, err := clickhouse.Open(&clickhouse.Options{
 		Addr: []string{cfg.APP.DB.ChatHost + ":" + cfg.APP.DB.ChatPort},
@@ -104,8 +116,22 @@ func main() {
 		log.Fatal(err)
 	}
 
-	api := injection.InitializeApplicationAPI(logHandler, cfg, httpClient, clickHouseConnection, postgresPool, client)
+	api := injection.InitializeApplicationAPI(logHandler, cfg, httpClient, clickHouseConnection, postgresPool, client, storage)
+	var guidedRuntime *guided.Runtime
+	if cfg.APP.GuidedDataPath != "" {
+		emb, err := embedding.NewFactory(dcHTTP.NewDcHTTPClient(logger, httpClient), cfg, logger).GetProcessor(cfg.GetEmbeddingModelName())
+		if err != nil {
+			log.Fatal(err)
+		}
+		guidedRuntime, err = guided.Load(cfg.APP.GuidedDataPath, emb, client, cfg.APP.GuidedStageCollection)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
 	modelgate.RegisterModelServiceServer(server, api)
+	retentionCtx, stopRetention := context.WithCancel(ctx)
+	defer stopRetention()
+	go api.RunChatRetention(retentionCtx, logger)
 
 	healthcheckAPI := health.NewAPI()
 	healthcheck.RegisterHealthCheckServiceServer(server, healthcheckAPI)
@@ -114,7 +140,7 @@ func main() {
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM, syscall.SIGINT)
 
-	go httpProxy(ctx, cfg.APP.Ports.GRPC, cfg.APP.Ports.HTTP, logger)
+	go httpProxy(ctx, cfg.APP.Ports.GRPC, cfg.APP.Ports.HTTP, logger, api, cfg.GetAuthCookieName(), guidedRuntime)
 
 	logger.Info("server started",
 		"port", cfg.APP.Ports.HTTP)
@@ -127,6 +153,7 @@ func main() {
 	}()
 
 	sig := <-sigChan
+	stopRetention()
 	logger.Info("Received shutdown signal", "signal", sig)
 
 	// Start graceful shutdown
@@ -139,9 +166,9 @@ func main() {
 	logger.Info("Server shutdown completed")
 }
 
-func httpProxy(ctx context.Context, grpcPort string, httpProxyPort string, logger *slog.Logger) {
+func httpProxy(ctx context.Context, grpcPort string, httpProxyPort string, logger *slog.Logger, api *modelgateAPI.API, cookieName string, guidedRuntime *guided.Runtime) {
 	const ReadTimeout = 10
-	const WriteTimeout = 20
+	const WriteTimeout = 120
 	const IdleTimeout = 120
 	const ReadHeaderTimeout = 5
 
@@ -157,6 +184,16 @@ func httpProxy(ctx context.Context, grpcPort string, httpProxyPort string, logge
 
 	opts := []grpc.DialOption{
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
+	}
+
+	if err := api.RegisterManagementHTTP(mux, cookieName); err != nil {
+		panic(fmt.Errorf("register chat management: %w", err))
+	}
+	if err := api.RegisterAccountErasureHTTP(mux, os.Getenv("ACCOUNT_ERASURE_INTERNAL_TOKEN")); err != nil {
+		panic(fmt.Errorf("register chat account erasure: %w", err))
+	}
+	if err := api.RegisterGuidedHTTP(mux, cookieName, guidedRuntime); err != nil {
+		panic(fmt.Errorf("register guided chat: %w", err))
 	}
 
 	err := modelgate.RegisterModelServiceHandlerFromEndpoint(
@@ -184,7 +221,7 @@ func httpProxy(ctx context.Context, grpcPort string, httpProxyPort string, logge
 		"grpcPort", grpcPort)
 
 	httpServer := &http.Server{
-		Addr:              fmt.Sprintf(":%s", httpProxyPort),
+		Addr:              net.JoinHostPort(os.Getenv("APP_BIND_HOST"), httpProxyPort),
 		Handler:           mux,
 		ReadTimeout:       ReadTimeout * time.Second,
 		WriteTimeout:      WriteTimeout * time.Second,

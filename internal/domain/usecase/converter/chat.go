@@ -47,12 +47,14 @@ func FromProcessorAnswerAnswerToUseCase(request *processor.Answer) *usecase.Answ
 func FromUseCaseMessagesToDescMessageListResponse(messages []*entity.Message) *desc.MessageListResponse {
 	response := &desc.MessageListResponse{}
 	for _, message := range messages {
-		response.Message = append(response.Message, &desc.Message{
-			Text:      message.Question,
-			Id:        message.ID.String(),
-			Direction: DirectionHuman,
-			Category:  fromEntityMessageCategoryToDescCategory(message.Category),
-		})
+		if message.Question != "" {
+			response.Message = append(response.Message, &desc.Message{
+				Text:      message.Question,
+				Id:        message.ID.String(),
+				Direction: DirectionHuman,
+				Category:  fromEntityMessageCategoryToDescCategory(message.Category),
+			})
+		}
 
 		response.Message = append(response.Message, &desc.Message{
 			Text:      message.Answer,

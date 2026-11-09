@@ -118,3 +118,46 @@ test('real approved file regression', {skip:!process.env.CATEGORY_V2_FIXTURE}, a
   s=e.answer(s,true);s=e.answer(s,null);assert.equal(s.current,'pps_explanation_request_v52');
   assert.equal(s.facts['pps.explanation_request.copy_requested_and_refused'],null);
 });
+
+test('full factual button captions keep Boolean facts and unknown distinct', () => {
+  const b = fixture();
+  const q = b.subcategories[0].variants[0].payload.next[0];
+  q.question = 'Как обстоит дело с доступом?';
+  const labels = ['Доступа нет', 'Доступ есть', 'Не знаю'];
+  q.data.forEach((branch, i) => { branch.label = labels[i]; });
+  const e = createExplicitEngine(b);
+  for (const value of [true, false, null]) {
+    const state = e.start('base_0');
+    assert.deepEqual(state.pending.question.data.map(a => [a.label, a.value]),
+      [['Доступа нет', true], ['Доступ есть', false], ['Не знаю', null]]);
+    const next = e.answer(state, value);
+    assert.equal(next.facts['test_category.stage_0.x'], value);
+  }
+});
+
+test('custom captions cannot duplicate choices, hide values, or introduce enum facts', () => {
+  for (const labels of [['A', 'A', 'C'], [' ', 'B', 'C'], [' A', 'B', 'C'], ['A\nB', 'B', 'C'], ['a'.repeat(101), 'B', 'C']]) {
+    const b = fixture();
+    b.subcategories[0].variants[0].payload.next[0].data.forEach((a, i) => { a.label = labels[i]; });
+    assert.throws(() => validateExplicitBundle(b));
+  }
+  const b = fixture();
+  b.subcategories[0].variants[0].payload.next[0].data[0] = { value: 'Доступа нет', label: 'Доступа нет', go_to_variant: 'base_0' };
+  assert.throws(() => validateExplicitBundle(b));
+});
+
+function disjointQuestionFixture() {
+ const b=fixture(),root=b.subcategories[0].variants[0].payload.next[0],copy=structuredClone(root.data[0].ask_next_question);
+ for(const a of copy.data)a.go_to_variant='base_0';
+ root.data[1]={value:false,label:'Нет',ask_next_question:copy};return b;
+}
+test('same NEXT question in disjoint branches preserves each branch target and tri-state',()=>{
+ const b=disjointQuestionFixture();assert.equal(validateExplicitBundle(b).status,'PASS');
+ for(const x of [true,false])for(const y of [true,false,null]){const e=createExplicitEngine(b);let s=e.start('base_0');s=e.answer(s,x);s=e.answer(s,y);assert.equal(s.current,x?(y===true?'done_0':'yes_0'):'base_0');assert.equal(s.facts['test_category.stage_0.y'],y)}
+});
+test('reused NEXT id cannot change question meaning, polarity or field across branches',()=>{
+ for(const change of [q=>q.question='Different question?',q=>q.field_key='x',q=>q.data[0].label='Нет']){const b=disjointQuestionFixture();change(b.subcategories[0].variants[0].payload.next[0].data[1].ask_next_question);assert.throws(()=>validateExplicitBundle(b),/Несогласованное/)}
+});
+test('repeating a question along the same NEXT path remains blocked',()=>{
+ const b=fixture(),root=b.subcategories[0].variants[0].payload.next[0];root.data[0].ask_next_question.id=root.id;assert.throws(()=>validateExplicitBundle(b),/одной цепочке/);
+});

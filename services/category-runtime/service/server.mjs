@@ -1,11 +1,17 @@
+import { answerDisplayVersion } from "./conversation/answer-display.mjs";
+import { questionDisplayVersion } from "./conversation/question-display.mjs";
+import { behaviourVersion } from "./conversation/issues.mjs";
 import { dialoguePackage } from "./conversation/package.mjs";
-import { conversation } from "./conversation/adapter.mjs";
+import { conversation, privateQualifiedMode, privateQualifiedTuple } from "./conversation/adapter.mjs";
 import http from "node:http";
 import { randomUUID, timingSafeEqual } from "node:crypto";
 import { validateSource } from "./validate.mjs";
 import { active, importSource, alias } from "./storage.mjs";
 import { respond } from "./runtime.mjs";
 import { checkDocumentLinks, FORMAT } from "./explicit/contract.mjs";
+import { requirePrivateStorage } from "./conversation/private-storage.mjs";
+
+requirePrivateStorage();
 
 const token = process.env.CATEGORY_INTERNAL_TOKEN;
 if (!token || token.length < 32)
@@ -29,7 +35,13 @@ const server = http.createServer(async (req, res) => {
           ok: true,
           service: "category-bundle",
           conversationPolicy: dialoguePackage.version,
+          conversationBehaviour: behaviourVersion,
+          answerDisplay: answerDisplayVersion,
+          questionDisplay: questionDisplayVersion,
           categorySha256: dialoguePackage.categorySha256,
+          privateQualifiedMode,
+          privateQualifiedTuple,
+          chatStorageEncryption: "aes-256-gcm/v1",
         }),
       );
       return;
@@ -38,6 +50,9 @@ const server = http.createServer(async (req, res) => {
       res.statusCode = 403;
       res.end("{}");
       return;
+    }
+    if (privateQualifiedMode && !["/respond","/conversation/pending","/conversation/ack","/conversation/expire"].includes(req.url)) {
+      res.statusCode=409;res.end(JSON.stringify({error:"PRIVATE_MODE_OPERATION_NOT_ALLOWED"}));return;
     }
     let size = 0;
     const chunks = [];
@@ -49,6 +64,8 @@ const server = http.createServer(async (req, res) => {
     const input = size
       ? JSON.parse(Buffer.concat(chunks).toString("utf8"))
       : {};
+    if (privateQualifiedMode && req.url==='/respond' && input.protocolVersion!==2)
+      throw Object.assign(new Error('PRIVATE_MODE_REQUIRES_PROTOCOL_V2'),{status:409});
     let result;
     if (req.url === "/state")
       result = {
@@ -98,6 +115,8 @@ const server = http.createServer(async (req, res) => {
       result = await conversation.internal(input, "ack");
     else if (req.url === "/conversation/delete")
       result = await conversation.internal(input, "delete");
+    else if (req.url === "/conversation/expire")
+      result = await conversation.internal(input, "expire");
     else if (req.url === "/respond") result = await respond(input);
     else {
       res.statusCode = 404;
@@ -111,6 +130,7 @@ const server = http.createServer(async (req, res) => {
     );
   }
 });
-server.listen(Number(process.env.CATEGORY_PORT || 18100), "127.0.0.1", () =>
-  console.log("Category bundle service: loopback"),
+const host = process.env.CATEGORY_BIND_HOST || "127.0.0.1";
+server.listen(Number(process.env.CATEGORY_PORT || 18100), host, () =>
+  console.log(`Category bundle service: ${host === "127.0.0.1" ? "loopback" : "configured bind"}`),
 );

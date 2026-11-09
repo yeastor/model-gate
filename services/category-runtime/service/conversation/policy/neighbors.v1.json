@@ -1,0 +1,1508 @@
+{
+  "schema": "neighbors-dialogue-policy/v1",
+  "version": "neighbors/20261026-state-attempt-v1",
+  "categoryId": "neighbors",
+  "defaultActivation": false,
+  "statePortVersion": "neighbors-state-port/v1",
+  "attemptVersion": "neighbors-presentation-attempt/v1",
+  "manifest": {
+    "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/variant_id-generator/work/neighbors-private-bundle-20261026-v2/manifest.json",
+    "bytes": 58962,
+    "sha256": "a036205f0b588e11f9c725509a1184f99f2edeb3f51ee91168bdde928a8552f0"
+  },
+  "source": {
+    "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/variant_id-generator/work/neighbors-private-bundle-20261026-v2/content-snapshot/neighbors.editorial.final.json",
+    "bytes": 2639454,
+    "sha256": "c3e84cbc3ad906b99391af8f326602e3e775b0e38f87c94110e55cb5f5e5b0f1"
+  },
+  "next": {
+    "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/variant_id-generator/work/neighbors-private-bundle-20261026-v2/next-package/next/neighbors.next-handoff.json",
+    "bytes": 15566452,
+    "sha256": "b80bbff2e0bd1f75c433747db661a93e7bcefa750e3dfac4b3ff2077ce04f23b"
+  },
+  "internalContract": {
+    "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/coordination/resume-stage-article/20261026-v1/B50-internal-state-attempt-contracts.json",
+    "bytes": 2175,
+    "sha256": "a3cffb102f42db5b72ffc9c7ee33edef5241b510bde4bad1003fec4f9a83c505"
+  },
+  "ordinaryQuestions": 2,
+  "absoluteQuestions": 3,
+  "thirdReason": "Завершить проверку запроса обследования и причинного отказа в уже начатом случае; общий предел три вопроса.",
+  "canonicalFields": [
+    {
+      "field_key": "neighbors.noise.noise_night",
+      "canonical_index": 0,
+      "classification": "derived_legal_time",
+      "true_semantics": "Запрещённое время установлено применимой региональной нормой, датой/временем и исключениями.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не спрашивать готовую квалификацию; «ночью» не означает запрещённое время.",
+      "dependencies": [
+        "incident_region",
+        "event_local_date",
+        "event_local_time",
+        "quiet_hours_rule",
+        "quiet_hours_exceptions"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Не спрашивать готовую квалификацию; «ночью» не означает запрещённое время."
+    },
+    {
+      "field_key": "neighbors.noise.noise_repeated",
+      "canonical_index": 1,
+      "classification": "self_report",
+      "true_semantics": "Повторение эпизодов.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не доказывает административную повторность, систематичность для выселения или состав нарушения.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.noise.noise_repeated",
+        "question_text": "Шум от этого источника повторялся в разные дни?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.noise.source_is_repairs",
+      "canonical_index": 2,
+      "classification": "self_report",
+      "true_semantics": "Фактический вид источника.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "При true основной stage repairs; смена stage не стирает факты/бюджет Next.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.noise.source_is_repairs",
+        "question_text": "Основной источник шума — ремонтные работы?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.noise.source_is_commercial_premises",
+      "canonical_index": 3,
+      "classification": "self_report",
+      "true_semantics": "Сообщённый нежилой источник.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не применять рамку жилого помещения к заведомо нежилому; не считать любой коммерческий шум санитарным нарушением.",
+      "dependencies": [
+        "source_kind"
+      ],
+      "native_next": {
+        "field_key": "neighbors.noise.source_is_commercial_premises",
+        "question_text": "Шум исходит из магазина, кафе или другого нежилого помещения?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.noise.police_called",
+      "canonical_index": 4,
+      "classification": "self_report",
+      "true_semantics": "Факт вызова.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не выводить выезд, регистрацию, бездействие или результат.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.noise.police_called",
+        "question_text": "Вы уже вызывали полицию во время этого шума?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.noise.evidence_available",
+      "canonical_index": 5,
+      "classification": "self_report",
+      "true_semantics": "Наличие хотя бы одного вида материала.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не доказывает допустимость/достаточность. False означает известное отсутствие всех видов; не добывать материалы ценой безопасности.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.noise.evidence_available",
+        "question_text": "У вас сохранились записи шума, свидетели или документы о нём?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.repairs.works_in_prohibited_time",
+      "canonical_index": 0,
+      "classification": "derived_legal_time",
+      "true_semantics": "Запрет часов/дней установлен применимой региональной нормой с исключениями.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не выводить из факта ремонта, выходного или времени суток.",
+      "dependencies": [
+        "incident_region",
+        "event_local_date",
+        "event_local_time",
+        "quiet_hours_rule",
+        "quiet_hours_exceptions"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Не выводить из факта ремонта, выходного или времени суток."
+    },
+    {
+      "field_key": "neighbors.repairs.load_bearing_changes_suspected",
+      "canonical_index": 1,
+      "classification": "technical_suspicion",
+      "true_semantics": "Конкретные наблюдения/документы вызывают подозрение о несущих конструкциях.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не требовать инженерной квалификации пользователя; признаки опасности дают осторожный safety-ответ без доказанной несущей роли стены.",
+      "dependencies": [
+        "observed_structural_signs"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Не требовать инженерной квалификации пользователя; признаки опасности дают осторожный safety-ответ без доказанной несущей роли стены."
+    },
+    {
+      "field_key": "neighbors.repairs.property_damage",
+      "canonical_index": 2,
+      "classification": "self_report",
+      "true_semantics": "Наблюдаемое повреждение.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Временная последовательность не доказывает причинность, виновника или размер возмещения.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.repairs.property_damage",
+        "question_text": "После начала работ появились повреждения в вашей квартире или общих конструкциях?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.repairs.common_property_affected",
+      "canonical_index": 3,
+      "classification": "evidence_scoped",
+      "true_semantics": "Идентифицированная общая система/часть имущества затронута.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не все трубы/стены общие; конкретный вывод требует характеристик объекта.",
+      "dependencies": [
+        "affected_element",
+        "shared_service_function"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Не все трубы/стены общие; конкретный вывод требует характеристик объекта."
+    },
+    {
+      "field_key": "neighbors.repairs.redevelopment_approved",
+      "canonical_index": 4,
+      "classification": "document_seen",
+      "true_semantics": "Предъявлен документ.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не доказательство подлинности, соответствия работ проекту или полной законности; false — не предъявлен, не обязательно отсутствует.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.repairs.redevelopment_approved",
+        "question_text": "Сосед показал документ о согласовании перепланировки?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.repairs.management_company_notified",
+      "canonical_index": 5,
+      "classification": "self_report",
+      "true_semantics": "Уведомление передано/отправлено.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не выводить доставку, осмотр, срок или отказ.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.repairs.management_company_notified",
+        "question_text": "Управляющей организации уже сообщили об этих работах?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.smells_smoking.smoking_in_common_area",
+      "canonical_index": 0,
+      "classification": "self_report",
+      "true_semantics": "Фактическое место курения сообщено.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Общая зона может быть открытой; точный вид места и исключения статьи12 обязательны для вывода о запрете.",
+      "dependencies": [
+        "smoking_location_kind",
+        "designated_smoking_area_conditions"
+      ],
+      "native_next": {
+        "field_key": "neighbors.smells_smoking.smoking_in_common_area",
+        "question_text": "Курение происходит в подъезде, лифте или другой общей зоне дома?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.smells_smoking.source_inside_neighbor_flat",
+      "canonical_index": 1,
+      "classification": "self_report",
+      "true_semantics": "Сообщаемый источник.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Частная квартира/балкон не равны общему помещению; не переносить запрет автоматически.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.smells_smoking.source_inside_neighbor_flat",
+        "question_text": "Дым или запах поступает из квартиры соседа?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.smells_smoking.ventilation_defect_suspected",
+      "canonical_index": 2,
+      "classification": "self_report",
+      "true_semantics": "Наблюдаемые признаки, не техническое заключение.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не советовать перекрывать или самостоятельно разбирать вентиляцию.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.smells_smoking.ventilation_defect_suspected",
+        "question_text": "Есть признаки неисправности вентиляции, например обратная тяга?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.smells_smoking.health_harm_present",
+      "canonical_index": 3,
+      "classification": "medical_causal_derived",
+      "true_semantics": "Подтверждены ухудшение здоровья и причинная связь в точном объёме доказательств.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Самочувствие позволяет предложить медицинскую помощь, но не устанавливает диагноз/причину.",
+      "dependencies": [
+        "reported_symptoms",
+        "medical_record",
+        "causal_scope"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Самочувствие позволяет предложить медицинскую помощь, но не устанавливает диагноз/причину."
+    },
+    {
+      "field_key": "neighbors.smells_smoking.management_company_notified",
+      "canonical_index": 4,
+      "classification": "self_report",
+      "true_semantics": "Сообщение о получении обращения.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не выводить осмотр, нарушение срока или бездействие.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.smells_smoking.management_company_notified",
+        "question_text": "Управляющая организация уже получила ваше обращение об этом?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.pets.immediate_danger",
+      "canonical_index": 0,
+      "classification": "self_report",
+      "true_semantics": "Непосредственный наблюдаемый риск.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Безопасность не ждёт доказательств породы, региона или завершения Next.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.pets.immediate_danger",
+        "question_text": "Животное прямо сейчас угрожает людям?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.pets.bite_or_injury",
+      "canonical_index": 1,
+      "classification": "self_report",
+      "true_semantics": "Сообщённая травма, включая укус.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не устанавливает тяжесть, диагноз, виновность или размер возмещения.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.pets.bite_or_injury",
+        "question_text": "Животное уже укусило или травмировало человека?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.pets.noise_night",
+      "canonical_index": 2,
+      "classification": "derived_legal_time",
+      "true_semantics": "Лай попадает в доказанное региональное запрещённое время.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не заменять вопросом о ночном лае; unknown остаётся до исходных данных.",
+      "dependencies": [
+        "incident_region",
+        "event_local_date",
+        "event_local_time",
+        "quiet_hours_rule",
+        "quiet_hours_exceptions"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Не заменять вопросом о ночном лае; unknown остаётся до исходных данных."
+    },
+    {
+      "field_key": "neighbors.pets.sanitary_conditions",
+      "canonical_index": 3,
+      "classification": "self_report",
+      "true_semantics": "Наблюдаемая помеха содержания.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не устанавливает санитарное правонарушение или необходимость изъятия животного.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.pets.sanitary_conditions",
+        "question_text": "Из-за животного остаются загрязнения или стойкий запах?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.pets.cruelty_suspected",
+      "canonical_index": 4,
+      "classification": "self_report",
+      "true_semantics": "Подозрение на основе наблюдений.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не уголовная квалификация; не проникать в жилище и не забирать животное самостоятельно.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.pets.cruelty_suspected",
+        "question_text": "Есть конкретные признаки жестокого обращения с животным или оставления его без помощи?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.pets.leash_or_muzzle_absent",
+      "canonical_index": 5,
+      "classification": "derived_applicability",
+      "true_semantics": "Отсутствует поводок/намордник, требуемый именно применимой нормой.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Вид животного, место, перечень опасных собак, исключения/регион проверяются отдельно. OR не значит отсутствие обоих.",
+      "dependencies": [
+        "animal_species",
+        "leash_observed_absent",
+        "muzzle_observed_absent",
+        "dangerous_dog_list_match",
+        "walking_location",
+        "applicable_regional_pet_rule",
+        "guide_dog_exception",
+        "enclosed_owner_land_exception"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Вид животного, место, перечень опасных собак, исключения/регион проверяются отдельно. OR не значит отсутствие обоих."
+    },
+    {
+      "field_key": "neighbors.threats_conflict.immediate_danger",
+      "canonical_index": 0,
+      "classification": "self_report",
+      "true_semantics": "Сообщённая непосредственная опасность.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не требовать видео/юридического подтверждения перед безопасным действием.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.threats_conflict.immediate_danger",
+        "question_text": "Угроза может быть реализована прямо сейчас?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.threats_conflict.weapon_present",
+      "canonical_index": 1,
+      "classification": "self_report",
+      "true_semantics": "Наблюдаемый предмет/угроза.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не устанавливает тип оружия, разрешение или состав его оборота.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.threats_conflict.weapon_present",
+        "question_text": "Сосед демонстрирует оружие или предмет, которым угрожает причинить вред?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.threats_conflict.physical_assault",
+      "canonical_index": 2,
+      "classification": "self_report",
+      "true_semantics": "Сообщение о нападении.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не выводить тяжесть вреда/правовую квалификацию.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.threats_conflict.physical_assault",
+        "question_text": "Сосед уже применил к вам физическую силу?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.threats_conflict.property_damage",
+      "canonical_index": 3,
+      "classification": "self_report",
+      "true_semantics": "Повреждение и предполагаемая связь.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Предположение о лице/умысле не превращать в доказанный факт.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.threats_conflict.property_damage",
+        "question_text": "Есть повреждения имущества, которые вы связываете с действиями соседа?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.threats_conflict.stalking_repeated",
+      "canonical_index": 4,
+      "classification": "self_report",
+      "true_semantics": "Повторяемость наблюдений.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не объявлять самостоятельный состав преследования или административную повторность.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.threats_conflict.stalking_repeated",
+        "question_text": "Преследование или конфликт с этим соседом повторялись?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.threats_conflict.evidence_available",
+      "canonical_index": 5,
+      "classification": "self_report",
+      "true_semantics": "Хотя бы один вид материала.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Отсутствие материала не запрещает обратиться за помощью; не собирать ценой безопасности.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.threats_conflict.evidence_available",
+        "question_text": "У вас есть записи, сообщения, свидетели или медицинские документы об этих событиях?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.common_areas.evacuation_blocked",
+      "canonical_index": 0,
+      "classification": "self_report_safety",
+      "true_semantics": "Наблюдаемая блокировка.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Безопасное действие возможно сразу; юридический fire-вывод требует определения эвакуационного пути и исключений.",
+      "dependencies": [
+        "evacuation_path_identified"
+      ],
+      "native_next": {
+        "field_key": "neighbors.common_areas.evacuation_blocked",
+        "question_text": "Выход из дома или проход к нему сейчас перекрыт вещами или конструкцией?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.common_areas.unauthorized_structure",
+      "canonical_index": 1,
+      "classification": "self_report",
+      "true_semantics": "Наличие конструкции по canonical name.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Слово unauthorized в ID не доказывает самовольность; ID/имя неизменны.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.common_areas.unauthorized_structure",
+        "question_text": "В общей зоне установили дверь, перегородку или кладовую?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.common_areas.exclusive_use",
+      "canonical_index": 2,
+      "classification": "self_report",
+      "true_semantics": "Фактическое ограничение пользования.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Статус имущества и права конкретного лица проверяются отдельно.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.common_areas.exclusive_use",
+        "question_text": "Сосед фактически не допускает других собственников к этой общей зоне?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.common_areas.owners_consent_exists",
+      "canonical_index": 3,
+      "classification": "document_seen",
+      "true_semantics": "Есть предъявленный/известный документ.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не доказывает кворум, полномочия, долю голосов, пожарную допустимость.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.common_areas.owners_consent_exists",
+        "question_text": "Есть документ с решением общего собрания об этой конструкции или использовании зоны?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.common_areas.removal_refused",
+      "canonical_index": 4,
+      "classification": "compound_actor",
+      "true_semantics": "Отказал сосед либо УК; точный актор и требование нужны для дальнейшей ветви.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не переносить отказ одного адресата на другого; не задавать двойной вопрос.",
+      "dependencies": [
+        "refusal_actor",
+        "request_subject",
+        "refusal_record"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Не переносить отказ одного адресата на другого; не задавать двойной вопрос."
+    },
+    {
+      "field_key": "neighbors.cameras_access.captures_inside_home",
+      "canonical_index": 0,
+      "classification": "self_report",
+      "true_semantics": "Сообщённое поле обзора/известная запись.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Направление корпуса не всегда доказывает обзор; не требовать доступа к чужой камере.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.cameras_access.captures_inside_home",
+        "question_text": "Камера захватывает внутреннее пространство вашей квартиры?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.cameras_access.audio_recording",
+      "canonical_index": 1,
+      "classification": "self_report",
+      "true_semantics": "Сообщённая аудиозапись.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Микрофон не доказывает фактическую запись/распространение.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.cameras_access.audio_recording",
+        "question_text": "Вам известно, что эта камера записывает звук?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.cameras_access.installed_on_common_property",
+      "canonical_index": 2,
+      "classification": "evidence_scoped",
+      "true_semantics": "Установка на точно определённом общем имуществе.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не все стены/площадки общие; не спрашивать юридическую квалификацию.",
+      "dependencies": [
+        "installation_location",
+        "common_property_scope"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Не все стены/площадки общие; не спрашивать юридическую квалификацию."
+    },
+    {
+      "field_key": "neighbors.cameras_access.owners_consent_exists",
+      "canonical_index": 3,
+      "classification": "document_seen",
+      "true_semantics": "Предъявлено решение, не подтверждена его действительность.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Согласие на общее имущество не равно согласию на раскрытие частной жизни.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.cameras_access.owners_consent_exists",
+        "question_text": "Вам показали решение общего собрания об установке оборудования?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.cameras_access.recording_published",
+      "canonical_index": 4,
+      "classification": "compound_distribution",
+      "true_semantics": "Передача посторонним либо публикация; способ сохранён отдельно.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Передача одному адресату не автоматически публикация; разные условия152.1/152-ФЗ.",
+      "dependencies": [
+        "recording_shared",
+        "recording_publicly_posted",
+        "identifiability",
+        "publication_context"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Передача одному адресату не автоматически публикация; разные условия152.1/152-ФЗ."
+    },
+    {
+      "field_key": "neighbors.cameras_access.building_access_blocked",
+      "canonical_index": 5,
+      "classification": "standing_and_observation",
+      "true_semantics": "Физически ограничен доступ лица с установленным основанием пользования.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Разделить наблюдаемое препятствие и право; не спрашивать «вы законный пользователь?».",
+      "dependencies": [
+        "access_obstruction",
+        "access_right_basis"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Разделить наблюдаемое препятствие и право; не спрашивать «вы законный пользователь?»."
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.source_confirmed",
+      "canonical_index": 0,
+      "classification": "evidence_scoped",
+      "true_semantics": "Квартира связана с источником относимыми сведениями.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Запах/насекомые у двери или мнение соседей не доказывают источник.",
+      "dependencies": [
+        "source_identification_evidence",
+        "source_location"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Запах/насекомые у двери или мнение соседей не доказывают источник."
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.pests_spreading",
+      "canonical_index": 1,
+      "classification": "self_report",
+      "true_semantics": "Наблюдаемое распространение.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не устанавливает исходную квартиру или виновного.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.sanitary_conditions.pests_spreading",
+        "question_text": "Насекомые или грызуны распространяются в другие помещения дома?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.waste_accumulated",
+      "canonical_index": 2,
+      "classification": "self_report",
+      "true_semantics": "Наблюдаемое накопление.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не требовать вторжения/съёмки внутреннего пространства квартиры.",
+      "dependencies": [],
+      "native_next": {
+        "field_key": "neighbors.sanitary_conditions.waste_accumulated",
+        "question_text": "В квартире или общей зоне длительно накапливаются мусор и отходы?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.health_or_fire_risk",
+      "canonical_index": 3,
+      "classification": "compound_safety",
+      "true_semantics": "Есть конкретный непосредственный риск с сохранением его вида.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "OR не определяет пожарный/медицинский случай; риск не равен диагнозу.",
+      "dependencies": [
+        "acute_health_signs",
+        "fire_danger_signs"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. OR не определяет пожарный/медицинский случай; риск не равен диагнозу."
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.child_or_vulnerable_person_present",
+      "canonical_index": 4,
+      "classification": "compound_sensitive",
+      "true_semantics": "Известно проживание ребёнка/беспомощного лица.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Само проживание не доказывает пренебрежение, основания изъятия/входа; минимизация персональных сведений.",
+      "dependencies": [
+        "child_present",
+        "helpless_person_present",
+        "specific_welfare_danger"
+      ],
+      "native_next": null,
+      "omitted_next_reason": "Не задавать юридический, технический или неоднозначный составной вывод; исходные сведения/оценка остаются отдельной зависимостью. Само проживание не доказывает пренебрежение, основания изъятия/входа; минимизация персональных сведений."
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.inspection_blocked",
+      "canonical_index": 5,
+      "classification": "self_report",
+      "true_semantics": "Известный запрос и отказ.",
+      "false_semantics": "Явное отрицание ровно указанного факта; для derivation — доказанный отрицательный результат при полных входах. Нехватка данных не false.",
+      "null_semantics": "Unknown/unreported/non-constraining mask. Отдельный известный runtime fact сохраняется; absence не равен ответу null.",
+      "restrictions": "Не означает незаконность отказа или право соседа войти силой.",
+      "dependencies": [
+        "inspection_actor",
+        "inspection_request_basis"
+      ],
+      "native_next": {
+        "field_key": "neighbors.sanitary_conditions.inspection_blocked",
+        "question_text": "Запрошенное обследование не состоялось из-за отказа в доступе?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "omitted_next_reason": null
+    }
+  ],
+  "blockedFields": [
+    "neighbors.noise.noise_night",
+    "neighbors.repairs.works_in_prohibited_time",
+    "neighbors.repairs.load_bearing_changes_suspected",
+    "neighbors.repairs.common_property_affected",
+    "neighbors.smells_smoking.health_harm_present",
+    "neighbors.pets.noise_night",
+    "neighbors.pets.leash_or_muzzle_absent",
+    "neighbors.common_areas.removal_refused",
+    "neighbors.cameras_access.installed_on_common_property",
+    "neighbors.cameras_access.recording_published",
+    "neighbors.cameras_access.building_access_blocked",
+    "neighbors.sanitary_conditions.source_confirmed"
+  ],
+  "privateFields": [
+    {
+      "stage": "pets",
+      "id": "animal_property_damage",
+      "next_key": "private_animal_property_damage",
+      "module": "P08_DAMAGE",
+      "question": "Вы заметили повреждение вещей или помещения после действий животного?",
+      "meaning": "Сообщённое наблюдение о повреждении; не доказательство причины, владельца, вины или суммы.",
+      "type": "boolean|null",
+      "storage": "separate_stage_scoped_facets",
+      "source": "explicit_case_observation_or_native_next",
+      "next_field_key": "neighbors.pets.private_animal_property_damage"
+    },
+    {
+      "stage": "threats_conflict",
+      "id": "concrete_threats",
+      "next_key": "private_concrete_threats",
+      "module": "T04_THREATS",
+      "question": "Сосед произносил конкретные угрозы или совершал действия, которые вы восприняли как угрозу?",
+      "meaning": "Сообщение о конкретных словах или действиях; не квалификация преступления и не доказательство реальности угрозы.",
+      "type": "boolean|null",
+      "storage": "separate_stage_scoped_facets",
+      "source": "explicit_case_observation_or_native_next",
+      "next_field_key": "neighbors.threats_conflict.private_concrete_threats"
+    },
+    {
+      "stage": "smells_smoking",
+      "id": "persistent_specific_impact",
+      "next_key": "private_persistent_specific_impact",
+      "module": "S06_SANITARY_IMPACT",
+      "question": "Дым или запах повторяется либо сохраняется и ощутимо мешает в конкретном месте?",
+      "meaning": "Сообщение об устойчивом конкретном воздействии; не медицинский диагноз, превышение нормы или установленный источник.",
+      "type": "boolean|null",
+      "storage": "separate_stage_scoped_facets",
+      "source": "explicit_case_observation_or_native_next",
+      "next_field_key": "neighbors.smells_smoking.private_persistent_specific_impact"
+    }
+  ],
+  "rawBooleanFields": [
+    {
+      "stage": "sanitary_conditions",
+      "id": "acute_health_signs",
+      "key": "neighbors.sanitary_conditions.acute_health_signs"
+    },
+    {
+      "stage": "sanitary_conditions",
+      "id": "fire_danger_signs",
+      "key": "neighbors.sanitary_conditions.fire_danger_signs"
+    },
+    {
+      "stage": "sanitary_conditions",
+      "id": "child_present",
+      "key": "neighbors.sanitary_conditions.child_present"
+    },
+    {
+      "stage": "sanitary_conditions",
+      "id": "helpless_person_present",
+      "key": "neighbors.sanitary_conditions.helpless_person_present"
+    }
+  ],
+  "questions": [
+    {
+      "field_key": "neighbors.noise.source_is_repairs",
+      "question_text": "Основной источник шума — ремонтные работы?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.noise.source_is_repairs",
+      "stageId": "noise"
+    },
+    {
+      "field_key": "neighbors.noise.source_is_commercial_premises",
+      "question_text": "Шум исходит из магазина, кафе или другого нежилого помещения?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.noise.source_is_commercial_premises",
+      "stageId": "noise"
+    },
+    {
+      "field_key": "neighbors.noise.noise_repeated",
+      "question_text": "Шум от этого источника повторялся отдельными эпизодами — в тот же день или в разные дни?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.noise.noise_repeated",
+      "stageId": "noise"
+    },
+    {
+      "field_key": "neighbors.noise.police_called",
+      "question_text": "Вы уже вызывали полицию во время этого шума?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.noise.police_called",
+      "stageId": "noise"
+    },
+    {
+      "field_key": "neighbors.noise.evidence_available",
+      "question_text": "У вас сохранились записи шума, свидетели или документы о нём?",
+      "answers": [],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.noise.evidence_available",
+      "stageId": "noise"
+    },
+    {
+      "field_key": "neighbors.repairs.property_damage",
+      "question_text": "После начала работ появились повреждения в вашей квартире или общих конструкциях?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.repairs.property_damage",
+      "stageId": "repairs"
+    },
+    {
+      "field_key": "neighbors.repairs.redevelopment_approved",
+      "question_text": "Сосед показал документ о согласовании перепланировки?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "document",
+      "requires": [],
+      "id": "neighbors.repairs.redevelopment_approved",
+      "stageId": "repairs"
+    },
+    {
+      "field_key": "neighbors.repairs.management_company_notified",
+      "question_text": "Управляющей организации уже сообщили об этих работах?",
+      "answers": [],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.repairs.management_company_notified",
+      "stageId": "repairs"
+    },
+    {
+      "field_key": "neighbors.smells_smoking.smoking_in_common_area",
+      "question_text": "Курение происходит в подъезде, лифте или другой общей зоне дома?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.smells_smoking.smoking_in_common_area",
+      "stageId": "smells_smoking"
+    },
+    {
+      "field_key": "neighbors.smells_smoking.private_persistent_specific_impact",
+      "question_text": "В конкретном месте вам ощутимо мешает дым или запах, который повторяется или не проходит?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "id": "neighbors.smells_smoking.private_persistent_specific_impact",
+      "stageId": "smells_smoking"
+    },
+    {
+      "field_key": "neighbors.smells_smoking.source_inside_neighbor_flat",
+      "question_text": "Дым или запах поступает из квартиры соседа?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.smells_smoking.source_inside_neighbor_flat",
+      "stageId": "smells_smoking"
+    },
+    {
+      "field_key": "neighbors.smells_smoking.ventilation_defect_suspected",
+      "question_text": "Есть признаки неисправности вентиляции, например обратная тяга?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.smells_smoking.ventilation_defect_suspected",
+      "stageId": "smells_smoking"
+    },
+    {
+      "field_key": "neighbors.smells_smoking.management_company_notified",
+      "question_text": "Управляющая организация уже получила ваше обращение об этом?",
+      "answers": [],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.smells_smoking.management_company_notified",
+      "stageId": "smells_smoking"
+    },
+    {
+      "field_key": "neighbors.pets.immediate_danger",
+      "question_text": "Животное прямо сейчас угрожает людям?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.pets.immediate_danger",
+      "stageId": "pets"
+    },
+    {
+      "field_key": "neighbors.pets.bite_or_injury",
+      "question_text": "Животное уже укусило или травмировало человека?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.pets.bite_or_injury",
+      "stageId": "pets"
+    },
+    {
+      "field_key": "neighbors.pets.private_animal_property_damage",
+      "question_text": "Вы заметили повреждение вещей или помещения после действий животного?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "id": "neighbors.pets.private_animal_property_damage",
+      "stageId": "pets"
+    },
+    {
+      "field_key": "neighbors.pets.sanitary_conditions",
+      "question_text": "Из-за животного остаются загрязнения или стойкий запах?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.pets.sanitary_conditions",
+      "stageId": "pets"
+    },
+    {
+      "field_key": "neighbors.pets.cruelty_suspected",
+      "question_text": "Есть конкретные признаки жестокого обращения с животным или оставления его без помощи?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.pets.cruelty_suspected",
+      "stageId": "pets"
+    },
+    {
+      "field_key": "neighbors.threats_conflict.immediate_danger",
+      "question_text": "Угроза может быть реализована прямо сейчас?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.threats_conflict.immediate_danger",
+      "stageId": "threats_conflict"
+    },
+    {
+      "field_key": "neighbors.threats_conflict.weapon_present",
+      "question_text": "Сосед демонстрирует оружие или предмет, которым угрожает причинить вред?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.threats_conflict.weapon_present",
+      "stageId": "threats_conflict"
+    },
+    {
+      "field_key": "neighbors.threats_conflict.physical_assault",
+      "question_text": "Сосед уже применил к вам физическую силу?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.threats_conflict.physical_assault",
+      "stageId": "threats_conflict"
+    },
+    {
+      "field_key": "neighbors.threats_conflict.private_concrete_threats",
+      "question_text": "Сосед произносил конкретные угрозы или совершал действия, которые вы восприняли как угрозу?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "id": "neighbors.threats_conflict.private_concrete_threats",
+      "stageId": "threats_conflict"
+    },
+    {
+      "field_key": "neighbors.threats_conflict.property_damage",
+      "question_text": "Есть повреждения имущества, которые вы связываете с действиями соседа?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.threats_conflict.property_damage",
+      "stageId": "threats_conflict"
+    },
+    {
+      "field_key": "neighbors.threats_conflict.stalking_repeated",
+      "question_text": "Преследование или конфликт с этим соседом повторялись?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.threats_conflict.stalking_repeated",
+      "stageId": "threats_conflict"
+    },
+    {
+      "field_key": "neighbors.threats_conflict.evidence_available",
+      "question_text": "У вас есть записи, сообщения, свидетели или медицинские документы об этих событиях?",
+      "answers": [],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.threats_conflict.evidence_available",
+      "stageId": "threats_conflict"
+    },
+    {
+      "field_key": "neighbors.common_areas.evacuation_blocked",
+      "question_text": "Выход из дома или проход к нему сейчас перекрыт вещами или конструкцией?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.common_areas.evacuation_blocked",
+      "stageId": "common_areas"
+    },
+    {
+      "field_key": "neighbors.common_areas.unauthorized_structure",
+      "question_text": "В общей зоне установили дверь, перегородку или кладовую?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.common_areas.unauthorized_structure",
+      "stageId": "common_areas"
+    },
+    {
+      "field_key": "neighbors.common_areas.exclusive_use",
+      "question_text": "Сосед препятствует другим собственникам пользоваться этой общей зоной?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.common_areas.exclusive_use",
+      "stageId": "common_areas"
+    },
+    {
+      "field_key": "neighbors.common_areas.owners_consent_exists",
+      "question_text": "Есть документ с решением общего собрания об этой конструкции или использовании зоны?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "document",
+      "requires": [],
+      "id": "neighbors.common_areas.owners_consent_exists",
+      "stageId": "common_areas"
+    },
+    {
+      "field_key": "neighbors.cameras_access.captures_inside_home",
+      "question_text": "Камера захватывает внутреннее пространство вашей квартиры?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.cameras_access.captures_inside_home",
+      "stageId": "cameras_access"
+    },
+    {
+      "field_key": "neighbors.cameras_access.audio_recording",
+      "question_text": "Эта камера записывает звук? Выбирайте «Нет», только если знаете, что запись звука не ведётся; если это неизвестно, выберите «Не знаю».",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.cameras_access.audio_recording",
+      "stageId": "cameras_access"
+    },
+    {
+      "field_key": "neighbors.cameras_access.owners_consent_exists",
+      "question_text": "Вам показали решение общего собрания об установке оборудования?",
+      "answers": [],
+      "uncertainty_kind": "document",
+      "requires": [],
+      "id": "neighbors.cameras_access.owners_consent_exists",
+      "stageId": "cameras_access"
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.pests_spreading",
+      "question_text": "Насекомые или грызуны распространяются в другие помещения дома?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.sanitary_conditions.pests_spreading",
+      "stageId": "sanitary_conditions"
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.waste_accumulated",
+      "question_text": "В квартире или общей зоне длительно накапливаются мусор и отходы?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.sanitary_conditions.waste_accumulated",
+      "stageId": "sanitary_conditions"
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.inspection_requested",
+      "question_text": "Обследование этого помещения уже запрашивали?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [],
+      "id": "neighbors.sanitary_conditions.inspection_requested",
+      "stageId": "sanitary_conditions"
+    },
+    {
+      "field_key": "neighbors.sanitary_conditions.inspection_blocked",
+      "question_text": "Отказ в доступе помешал провести это обследование?",
+      "answers": [
+        true,
+        false,
+        null
+      ],
+      "uncertainty_kind": "fact",
+      "requires": [
+        {
+          "field_key": "neighbors.sanitary_conditions.inspection_requested",
+          "value": true
+        }
+      ],
+      "id": "neighbors.sanitary_conditions.inspection_blocked",
+      "stageId": "sanitary_conditions"
+    }
+  ],
+  "proofProducer": "NOT_INSTALLED",
+  "sanitaryAssessmentProducer": "NOT_INSTALLED",
+  "specificWelfareDangerProjection": "HOLD_NO_COERCION",
+  "documents": "OPEN_NOT_EXECUTABLE",
+  "categoryClosed": false,
+  "production": false
+}

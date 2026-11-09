@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "pps-audit/v1",
+  "categoryId": "pps",
+  "categorySha256": "1f3d30732d4c00d77bbb5c63b715bdddfe97e5ecaed92bb764706541c2bd26af",
+  "labelStatus": "New diagnostic expectations frozen before first urgent run; content coverage requires review",
+  "cases": [
+    {
+      "id": "urgent.breathing-after-force",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский меня бьёт.",
+          "expect": {
+            "stage": "use_of_force",
+            "full": true
+          }
+        },
+        {
+          "text": "Мне трудно дышать.",
+          "expect": {
+            "noUnknownFallback": true,
+            "mustFacts": {
+              "pps.use_of_force.force_actually_used": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "urgent.cannot-talk",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский меня бьёт.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Не могу говорить.",
+          "expect": {
+            "noUnknownFallback": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "urgent.help-short",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский меня бьёт.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Помогите!",
+          "expect": {
+            "noUnknownFallback": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "urgent.what-now",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский меня бьёт.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Что делать сейчас?",
+          "expect": {
+            "noUnknownFallback": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "urgent.capitals",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "МЕНЯ БЬЁТ ПОЛИЦЕЙСКИЙ!!!",
+          "expect": {
+            "stage": "use_of_force",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "urgent.injury-interrupt",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский проверяет мой паспорт.",
+          "expect": {}
+        },
+        {
+          "text": "Он меня ударил, у меня идёт кровь.",
+          "expect": {
+            "stage": "use_of_force",
+            "full": true,
+            "mustFacts": {
+              "pps.use_of_force.force_actually_used": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "urgent.restriction-short",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский остановил меня на улице.",
+          "expect": {}
+        },
+        {
+          "text": "Не выпускает!",
+          "expect": {
+            "acceptableTopic": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "urgent.not-know-but-force",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский проверяет мой паспорт.",
+          "expect": {}
+        },
+        {
+          "text": "Не знаю. Он меня бьёт!",
+          "expect": {
+            "stage": "use_of_force",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "urgent.topic-after-force",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский меня бьёт.",
+          "expect": {}
+        },
+        {
+          "text": "Он просит подписать объяснение.",
+          "expect": {
+            "noUnknownFallback": true,
+            "mustFacts": {
+              "pps.use_of_force.force_actually_used": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "urgent.voice-typo",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "меня бьет полицеский",
+          "expect": {
+            "acceptableTopic": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "behavior.own-question-during-next",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский проверяет мой паспорт.",
+          "expect": {}
+        },
+        {
+          "text": "Зачем он требует паспорт?",
+          "expect": {
+            "noUnknownFallback": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "behavior.reject-question",
+      "origin": "synthetic_urgent_audit",
+      "family": "urgent-and-disruptive-behavior",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский проверяет мой паспорт.",
+          "expect": {}
+        },
+        {
+          "text": "Я не понимаю ваш вопрос.",
+          "expect": {
+            "noUnknownFallback": true
+          }
+        }
+      ]
+    }
+  ]
+}

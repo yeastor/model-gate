@@ -1,7 +1,10 @@
 package xrequestid
 
+import "github.com/google/uuid"
+
 type validator func(string) bool
 
 func DefaultValidator(xRequestID string) bool {
-	return xRequestID != ""
+	id, err := uuid.Parse(xRequestID)
+	return err == nil && id.String() == xRequestID
 }

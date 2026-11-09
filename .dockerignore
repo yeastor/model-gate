@@ -1,0 +1,9 @@
+.git
+.gocache
+.idea
+.env*
+*.exe
+wrk
+work
+**/*.private
+**/*-keys.json

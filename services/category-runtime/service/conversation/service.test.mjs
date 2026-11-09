@@ -72,6 +72,7 @@ async function fixture(t, options = {}) {
         resume: true,
         ...extra,
       });
+      if(response._historyEnvelope) await service.internal({id,userId,turnId:response._historyEnvelope.turnId},"ack");
       return response;
     },
     async state() {
@@ -105,9 +106,10 @@ test("D01/D27 shouting is not explanation or trip, irrespective of retrieval sco
     ],
   });
   const r = await f.send("На меня кричит полицейский");
-  assert.equal(r.presentation.kind, "clarification");
+  assert.equal(r.presentation.kind, "notice");
   assert.equal(r.answer.variantId, undefined);
   assert.equal((await f.state()).engine, null);
+  assert.equal((await f.state()).pending, null);
 });
 test("D02/D03/D07 force continuation resolves officer and escapes launch stage", async (t) => {
   const f = await fixture(t);
@@ -201,16 +203,25 @@ test("D10/D11 correction differs from ended event", async (t) => {
   );
   assert.equal(ended.episodes[0].dangerOngoing, false);
 });
-test("D12 release updates current restriction and keeps earlier record", async (t) => {
+test("D12 release withdraws the verbal basis without inventing physical freedom", async (t) => {
+  const key = "pps.street_stop.free_to_leave_denied";
   const f = await fixture(t);
   await f.send("Полицейский остановил меня на улице и не разрешает уйти");
+  const before = await f.state();
   await f.send("Теперь он разрешил мне уйти");
   const s = await f.state();
-  assert.equal(s.engine.facts["pps.street_stop.free_to_leave_denied"], false);
-  assert.ok(
-    s.factLedger.some((x) => x.value === true && x.status === "superseded"),
-  );
+  assert.equal(s.engine.facts[key], null);
+  assert.equal(s.caseState.id, before.caseState.id);
+  assert.ok(s.factLedger.some((x) => x.fieldKey === key && x.value === true && x.status === "superseded"));
+  assert.ok(s.factLedger.some((x) => x.fieldKey === key && x.value === null && x.operation === "withdraw" && x.status === "active"));
+  await f.send("Теперь сотрудник разрешил уйти и больше не удерживает меня.");
+  assert.equal((await f.state()).engine.facts[key], false);
+  const g = await fixture(t);
+  await g.send("Полицейский остановил меня на улице, не разрешает уйти и удерживает меня за руку.");
+  await g.send("Теперь он разрешил мне уйти");
+  assert.equal((await g.state()).engine.facts[key], true);
 });
+
 test("D13 conflict is not silent overwrite", async (t) => {
   const f = await fixture(t);
   await f.send("Полицейский меня ударил");
@@ -487,10 +498,12 @@ test("D36 all eight stage prerequisites route and explicit show can repeat advic
 
 test("unknown clarification is acknowledged instead of repeating the question", async (t) => {
   const f = await fixture(t);
+  await f.send("Полицейский остановил меня на улице");
   const a = await f.send("На меня кричит полицейский");
   const b = await f.send("не знаю");
   assert.notEqual(a.answer.content, b.answer.content);
-  assert.match(b.answer.content, /пока это неизвестно/);
+  assert.ok(b.answer.variantId?.startsWith("pps_street_stop"));
+  assert.equal((await f.state()).factLedger.findLast(x=>x.fieldKey==="pps.use_of_force.force_actually_used").value,null);
 });
 test("conflicted facts cannot leave old confirmed engine projection", async (t) => {
   const f = await fixture(t);
@@ -585,7 +598,9 @@ test("retrieval query uses user history within the current episode only", async 
   });
   await f.send("Полицейский кричит");
   await f.send("Говорит непонятно");
-  assert.match(queries.at(-1), /Полицейский кричит; Говорит непонятно/);
+  assert.ok(queries.includes("Говорит непонятно"));
+  assert.match(queries.at(-1), /Ранее пользователь написал: Полицейский кричит/);
+  assert.match(queries.at(-1), /Новое сообщение пользователя: Говорит непонятно/);
   await f.send("Другой случай: что происходит");
   assert.doesNotMatch(queries.at(-1), /Полицейский кричит/);
 });

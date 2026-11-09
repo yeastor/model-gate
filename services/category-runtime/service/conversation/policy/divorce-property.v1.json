@@ -1,0 +1,3445 @@
+{
+  "schema": "divorce-common-DM/v1",
+  "version": "divorce_property.20261028.v1",
+  "categoryId": "divorce_property",
+  "source": {
+    "path": "C:/Users/mujlo/Documents/Codex/model-category-document-generator/work/divorce-human-care-Q40-second-targeted-recheck-20261024-v1/human-daily-care-wording-fix-20261026-v1/candidate-divorce.editorial.json",
+    "bytes": 34123830,
+    "sha256": "50040a490ab304c4ea41fc705969d89181ceb264fa9a52c246449b8a2b532061"
+  },
+  "maxQuestions": 2,
+  "thirdQuestionReasons": {},
+  "stages": [
+    {
+      "id": "divorce_simple",
+      "name": "Нужно оформить развод без спора о расторжении",
+      "generalId": "divorce_property_divorce_simple_v01",
+      "questionIds": [
+        "DV-Q01",
+        "DV-Q02",
+        "DV-Q03",
+        "DV-Q04",
+        "DV-Q05"
+      ]
+    },
+    {
+      "id": "divorce_with_disputes",
+      "name": "Супруг возражает против развода или уклоняется",
+      "generalId": "divorce_property_divorce_with_disputes_v04",
+      "questionIds": [
+        "DV-Q06",
+        "DV-Q07",
+        "DV-Q08",
+        "DV-Q09",
+        "DV-Q10",
+        "DV-Q11",
+        "DV-Q12"
+      ]
+    },
+    {
+      "id": "property_division",
+      "name": "Нужно определить и разделить имущество супругов",
+      "generalId": "divorce_property_property_division_v01",
+      "questionIds": [
+        "DV-Q13",
+        "DV-Q14",
+        "DV-Q15"
+      ]
+    },
+    {
+      "id": "marriage_contract",
+      "name": "Нужно заключить, изменить, расторгнуть или оспорить брачный договор",
+      "generalId": "divorce_property_marriage_contract_v01",
+      "questionIds": [
+        "DV-Q16",
+        "DV-Q17",
+        "DV-Q18",
+        "DV-Q19",
+        "DV-Q20"
+      ]
+    },
+    {
+      "id": "housing_after_divorce",
+      "name": "Нужно определить право жить в жилье после развода",
+      "generalId": "divorce_property_housing_after_divorce_v01",
+      "questionIds": [
+        "DV-Q21",
+        "DV-Q22",
+        "DV-Q23"
+      ]
+    },
+    {
+      "id": "common_debts_mortgage",
+      "name": "Нужно распределить общие долги или ипотеку супругов",
+      "generalId": "divorce_property_common_debts_mortgage_v01",
+      "questionIds": [
+        "DV-Q24",
+        "DV-Q25",
+        "DV-Q26",
+        "DV-Q27",
+        "DV-Q28",
+        "DV-Q29",
+        "DV-Q30"
+      ]
+    },
+    {
+      "id": "agreement_mediation",
+      "name": "Нужно урегулировать семейный спор соглашением или медиацией",
+      "generalId": "divorce_property_agreement_mediation_v01",
+      "questionIds": [
+        "DV-Q31",
+        "DV-Q32",
+        "DV-Q33",
+        "DV-Q34",
+        "DV-Q35"
+      ]
+    },
+    {
+      "id": "domestic_violence",
+      "name": "Есть насилие, угрозы или преследование со стороны партнёра",
+      "generalId": "divorce_property_domestic_violence_v01",
+      "questionIds": [
+        "DV-Q36",
+        "DV-Q37",
+        "DV-Q38",
+        "DV-Q39",
+        "DV-Q40",
+        "DV-Q41",
+        "DV-Q42",
+        "DV-Q43"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "fieldKey": "divorce_property.divorce_simple.both_spouses_consent",
+      "stageId": "divorce_simple",
+      "description": "оба супруга согласны расторгнуть брак",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "оба супруга согласны расторгнуть брак",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Мы оба согласны на развод"
+      ],
+      "negative": [
+        "Мы оба не согласны на развод"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_simple.both_spouses_consent",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_simple"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "9e6d7b01bc3936c299726d2cdbd65412435e8fe6ad606002d69af0af0e3da29e",
+        "law_scope_sha256": "21f84aeb795747170a3bafa4cf16012e6f3e4262aaad007f25e2a3c9cc66bc97"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_simple.common_minor_children_present",
+      "stageId": "divorce_simple",
+      "description": "есть общие несовершеннолетние дети",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "есть общие несовершеннолетние дети",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "У нас есть общие несовершеннолетние дети",
+        "У нас есть общий несовершеннолетний ребёнок"
+      ],
+      "negative": [
+        "У нас нет общих несовершеннолетних детей",
+        "Общих несовершеннолетних детей нет",
+        "Детей нет"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_simple.common_minor_children_present",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_simple"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "9e6d7b01bc3936c299726d2cdbd65412435e8fe6ad606002d69af0af0e3da29e",
+        "law_scope_sha256": "21f84aeb795747170a3bafa4cf16012e6f3e4262aaad007f25e2a3c9cc66bc97"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_simple.spouse_avoids_registry_office",
+      "stageId": "divorce_simple",
+      "description": "согласный на развод супруг уклоняется от подачи заявления в ЗАГС",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "согласный на развод супруг уклоняется от подачи заявления в ЗАГС",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_simple.spouse_avoids_registry_office",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_simple"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "9e6d7b01bc3936c299726d2cdbd65412435e8fe6ad606002d69af0af0e3da29e",
+        "law_scope_sha256": "21f84aeb795747170a3bafa4cf16012e6f3e4262aaad007f25e2a3c9cc66bc97"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_simple.spouse_can_personally_apply",
+      "stageId": "divorce_simple",
+      "description": "второй супруг может лично участвовать в подаче заявления",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "второй супруг может лично участвовать в подаче заявления",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_simple.spouse_can_personally_apply",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_simple"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "9e6d7b01bc3936c299726d2cdbd65412435e8fe6ad606002d69af0af0e3da29e",
+        "law_scope_sha256": "21f84aeb795747170a3bafa4cf16012e6f3e4262aaad007f25e2a3c9cc66bc97"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_simple.special_unilateral_registry_ground_exists",
+      "stageId": "divorce_simple",
+      "description": "есть специальное основание для одностороннего развода через ЗАГС",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "есть специальное основание для одностороннего развода через ЗАГС",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_simple.special_unilateral_registry_ground_exists",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_simple"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "9e6d7b01bc3936c299726d2cdbd65412435e8fe6ad606002d69af0af0e3da29e",
+        "law_scope_sha256": "21f84aeb795747170a3bafa4cf16012e6f3e4262aaad007f25e2a3c9cc66bc97"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_simple.husband_files_during_pregnancy_or_first_year",
+      "stageId": "divorce_simple",
+      "description": "муж подаёт на развод во время беременности жены или до года ребёнку",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "муж подаёт на развод во время беременности жены или до года ребёнку",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_simple.husband_files_during_pregnancy_or_first_year",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_simple"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "9e6d7b01bc3936c299726d2cdbd65412435e8fe6ad606002d69af0af0e3da29e",
+        "law_scope_sha256": "21f84aeb795747170a3bafa4cf16012e6f3e4262aaad007f25e2a3c9cc66bc97"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_simple.wife_consents_to_husband_filing",
+      "stageId": "divorce_simple",
+      "description": "жена явно согласна на подачу требования мужем в период специального ограничения",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "жена явно согласна на подачу требования мужем в период специального ограничения",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_simple.wife_consents_to_husband_filing",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_simple"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "9e6d7b01bc3936c299726d2cdbd65412435e8fe6ad606002d69af0af0e3da29e",
+        "law_scope_sha256": "21f84aeb795747170a3bafa4cf16012e6f3e4262aaad007f25e2a3c9cc66bc97"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_with_disputes.spouse_objects_to_divorce",
+      "stageId": "divorce_with_disputes",
+      "description": "второй супруг возражает против расторжения брака",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "второй супруг возражает против расторжения брака",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Супруг против развода",
+        "Муж против развода",
+        "Жена против развода"
+      ],
+      "negative": [
+        "Супруг не возражает против развода"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_with_disputes.spouse_objects_to_divorce",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_with_disputes"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7fb71c244a9e9853573de633e51e84f9bcef16049409c8b7d948a7c53d815de7",
+        "law_scope_sha256": "b33ecdc5884b27c2d919889f6eb643619162975357c232a8c1f697c2c785ef9f"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_with_disputes.spouse_avoids_registry_office",
+      "stageId": "divorce_with_disputes",
+      "description": "согласный на развод супруг уклоняется от подачи заявления в ЗАГС",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "согласный на развод супруг уклоняется от подачи заявления в ЗАГС",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_with_disputes.spouse_avoids_registry_office",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_with_disputes"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "7fb71c244a9e9853573de633e51e84f9bcef16049409c8b7d948a7c53d815de7",
+        "law_scope_sha256": "b33ecdc5884b27c2d919889f6eb643619162975357c232a8c1f697c2c785ef9f"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_with_disputes.common_minor_children_present",
+      "stageId": "divorce_with_disputes",
+      "description": "есть общие несовершеннолетние дети",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "есть общие несовершеннолетние дети",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "У нас есть общие несовершеннолетние дети",
+        "У нас есть общий несовершеннолетний ребёнок"
+      ],
+      "negative": [
+        "У нас нет общих несовершеннолетних детей",
+        "Общих несовершеннолетних детей нет",
+        "Детей нет"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_with_disputes.common_minor_children_present",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_with_disputes"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7fb71c244a9e9853573de633e51e84f9bcef16049409c8b7d948a7c53d815de7",
+        "law_scope_sha256": "b33ecdc5884b27c2d919889f6eb643619162975357c232a8c1f697c2c785ef9f"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_with_disputes.husband_files_during_pregnancy_or_first_year",
+      "stageId": "divorce_with_disputes",
+      "description": "муж подаёт на развод во время беременности жены или до года ребёнку",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "муж подаёт на развод во время беременности жены или до года ребёнку",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_with_disputes.husband_files_during_pregnancy_or_first_year",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_with_disputes"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7fb71c244a9e9853573de633e51e84f9bcef16049409c8b7d948a7c53d815de7",
+        "law_scope_sha256": "b33ecdc5884b27c2d919889f6eb643619162975357c232a8c1f697c2c785ef9f"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_with_disputes.wife_consents_to_husband_filing",
+      "stageId": "divorce_with_disputes",
+      "description": "жена явно согласна на подачу требования мужем в период специального ограничения",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "жена явно согласна на подачу требования мужем в период специального ограничения",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_with_disputes.wife_consents_to_husband_filing",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_with_disputes"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7fb71c244a9e9853573de633e51e84f9bcef16049409c8b7d948a7c53d815de7",
+        "law_scope_sha256": "b33ecdc5884b27c2d919889f6eb643619162975357c232a8c1f697c2c785ef9f"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_with_disputes.respondent_address_known",
+      "stageId": "divorce_with_disputes",
+      "description": "известен актуальный адрес второго супруга",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "известен актуальный адрес второго супруга",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Я знаю адрес второго супруга"
+      ],
+      "negative": [
+        "Я не знаю адрес второго супруга"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_with_disputes.respondent_address_known",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_with_disputes"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7fb71c244a9e9853573de633e51e84f9bcef16049409c8b7d948a7c53d815de7",
+        "law_scope_sha256": "b33ecdc5884b27c2d919889f6eb643619162975357c232a8c1f697c2c785ef9f"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_with_disputes.reconciliation_requested",
+      "stageId": "divorce_with_disputes",
+      "description": "одна из сторон просит предоставить время для примирения",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "одна из сторон просит предоставить время для примирения",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_with_disputes.reconciliation_requested",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_with_disputes"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7fb71c244a9e9853573de633e51e84f9bcef16049409c8b7d948a7c53d815de7",
+        "law_scope_sha256": "b33ecdc5884b27c2d919889f6eb643619162975357c232a8c1f697c2c785ef9f"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.divorce_with_disputes.other_family_claims_joined",
+      "stageId": "divorce_with_disputes",
+      "description": "к делу одновременно заявлены требования об имуществе, детях или алиментах",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "к делу одновременно заявлены требования об имуществе, детях или алиментах",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.divorce_with_disputes.other_family_claims_joined",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.divorce_with_disputes"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7fb71c244a9e9853573de633e51e84f9bcef16049409c8b7d948a7c53d815de7",
+        "law_scope_sha256": "b33ecdc5884b27c2d919889f6eb643619162975357c232a8c1f697c2c785ef9f"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.property_division.property_acquired_during_marriage",
+      "stageId": "property_division",
+      "description": "спорное имущество приобретено в период брака",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "спорное имущество приобретено в период брака",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Этот объект куплен во время зарегистрированного брака"
+      ],
+      "negative": [
+        "Этот объект куплен до регистрации брака"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.property_division.property_acquired_during_marriage",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.property_division"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "3aceda6d7a23d0df8413432168d0cbc66c085e76ff5fd55f48360389a6539075",
+        "law_scope_sha256": "b558e686e7f25412b46eccd710386b2a37f3d7751b92ad6fda2ff8a9636cf576"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.property_division.gift_inheritance_or_premarital_source",
+      "stageId": "property_division",
+      "description": "имущество получено до брака, в дар или по наследству",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "имущество получено до брака, в дар или по наследству",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.property_division.gift_inheritance_or_premarital_source",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.property_division"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "3aceda6d7a23d0df8413432168d0cbc66c085e76ff5fd55f48360389a6539075",
+        "law_scope_sha256": "b558e686e7f25412b46eccd710386b2a37f3d7751b92ad6fda2ff8a9636cf576"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.property_division.common_funds_improved_personal_asset",
+      "stageId": "property_division",
+      "description": "зафиксированы существенные вложения общих средств или труда в личный актив",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "зафиксированы существенные вложения общих средств или труда в личный актив",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.property_division.common_funds_improved_personal_asset",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.property_division"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "3aceda6d7a23d0df8413432168d0cbc66c085e76ff5fd55f48360389a6539075",
+        "law_scope_sha256": "b558e686e7f25412b46eccd710386b2a37f3d7751b92ad6fda2ff8a9636cf576"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.property_division.marriage_contract_or_division_agreement_exists",
+      "stageId": "property_division",
+      "description": "режим имущества уже определён брачным договором или соглашением о разделе",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "режим имущества уже определён брачным договором или соглашением о разделе",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.property_division.marriage_contract_or_division_agreement_exists",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.property_division"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "3aceda6d7a23d0df8413432168d0cbc66c085e76ff5fd55f48360389a6539075",
+        "law_scope_sha256": "b558e686e7f25412b46eccd710386b2a37f3d7751b92ad6fda2ff8a9636cf576"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.property_division.maternal_capital_used",
+      "stageId": "property_division",
+      "description": "при приобретении имущества использован материнский капитал",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "при приобретении имущества использован материнский капитал",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Для покупки этого жилья использован материнский капитал"
+      ],
+      "negative": [
+        "Для покупки этого жилья материнский капитал не использован"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.property_division.maternal_capital_used",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.property_division"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "3aceda6d7a23d0df8413432168d0cbc66c085e76ff5fd55f48360389a6539075",
+        "law_scope_sha256": "b558e686e7f25412b46eccd710386b2a37f3d7751b92ad6fda2ff8a9636cf576"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.property_division.third_party_rights_present",
+      "stageId": "property_division",
+      "description": "раздел может затронуть зарегистрированные права кредитора, участника или иного третьего лица",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "раздел может затронуть зарегистрированные права кредитора, участника или иного третьего лица",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.property_division.third_party_rights_present",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.property_division"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "3aceda6d7a23d0df8413432168d0cbc66c085e76ff5fd55f48360389a6539075",
+        "law_scope_sha256": "b558e686e7f25412b46eccd710386b2a37f3d7751b92ad6fda2ff8a9636cf576"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.property_division.alienation_risk_present",
+      "stageId": "property_division",
+      "description": "есть реальный риск продажи или сокрытия спорного актива",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "есть реальный риск продажи или сокрытия спорного актива",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.property_division.alienation_risk_present",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.property_division"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "3aceda6d7a23d0df8413432168d0cbc66c085e76ff5fd55f48360389a6539075",
+        "law_scope_sha256": "b558e686e7f25412b46eccd710386b2a37f3d7751b92ad6fda2ff8a9636cf576"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.marriage_contract.marriage_not_registered_yet",
+      "stageId": "marriage_contract",
+      "description": "брак ещё не зарегистрирован",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "брак ещё не зарегистрирован",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Наш брак ещё не зарегистрирован"
+      ],
+      "negative": [
+        "Наш брак зарегистрирован"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.marriage_contract.marriage_not_registered_yet",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.marriage_contract"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cfe93d0ddb2f4c07ce4b4d672d196e91c8d09dda522f8b50334cbd8063611d79",
+        "law_scope_sha256": "1e1d0fbcb30c510c5c6dfcb597fd365edcd423b6027699d7d3d1940b7961dc94"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.marriage_contract.contract_notarized",
+      "stageId": "marriage_contract",
+      "description": "брачный договор нотариально удостоверен",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "брачный договор нотариально удостоверен",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Брачный договор удостоверен нотариусом"
+      ],
+      "negative": [
+        "Брачный договор не удостоверен нотариусом"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.marriage_contract.contract_notarized",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.marriage_contract"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cfe93d0ddb2f4c07ce4b4d672d196e91c8d09dda522f8b50334cbd8063611d79",
+        "law_scope_sha256": "1e1d0fbcb30c510c5c6dfcb597fd365edcd423b6027699d7d3d1940b7961dc94"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.marriage_contract.both_spouses_agree_to_change_or_end",
+      "stageId": "marriage_contract",
+      "description": "оба супруга согласны изменить или расторгнуть договор",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "оба супруга согласны изменить или расторгнуть договор",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.marriage_contract.both_spouses_agree_to_change_or_end",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.marriage_contract"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cfe93d0ddb2f4c07ce4b4d672d196e91c8d09dda522f8b50334cbd8063611d79",
+        "law_scope_sha256": "1e1d0fbcb30c510c5c6dfcb597fd365edcd423b6027699d7d3d1940b7961dc94"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.marriage_contract.unilateral_change_or_termination_requested",
+      "stageId": "marriage_contract",
+      "description": "один супруг требует изменить или расторгнуть договор без согласия другого",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "один супруг требует изменить или расторгнуть договор без согласия другого",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.marriage_contract.unilateral_change_or_termination_requested",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.marriage_contract"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cfe93d0ddb2f4c07ce4b4d672d196e91c8d09dda522f8b50334cbd8063611d79",
+        "law_scope_sha256": "1e1d0fbcb30c510c5c6dfcb597fd365edcd423b6027699d7d3d1940b7961dc94"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.marriage_contract.extremely_unfavorable_terms",
+      "stageId": "marriage_contract",
+      "description": "условия ставят одного супруга в крайне неблагоприятное положение",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "условия ставят одного супруга в крайне неблагоприятное положение",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.marriage_contract.extremely_unfavorable_terms",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.marriage_contract"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "cfe93d0ddb2f4c07ce4b4d672d196e91c8d09dda522f8b50334cbd8063611d79",
+        "law_scope_sha256": "1e1d0fbcb30c510c5c6dfcb597fd365edcd423b6027699d7d3d1940b7961dc94"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.marriage_contract.coercion_or_incapacity_alleged",
+      "stageId": "marriage_contract",
+      "description": "при подписании имелись принуждение или неспособность понимать значение действий",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "при подписании имелись принуждение или неспособность понимать значение действий",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.marriage_contract.coercion_or_incapacity_alleged",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.marriage_contract"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "cfe93d0ddb2f4c07ce4b4d672d196e91c8d09dda522f8b50334cbd8063611d79",
+        "law_scope_sha256": "1e1d0fbcb30c510c5c6dfcb597fd365edcd423b6027699d7d3d1940b7961dc94"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.marriage_contract.nonproperty_or_child_rights_restricted",
+      "stageId": "marriage_contract",
+      "description": "договор ограничивает личные неимущественные или родительские права",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "договор ограничивает личные неимущественные или родительские права",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.marriage_contract.nonproperty_or_child_rights_restricted",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.marriage_contract"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "cfe93d0ddb2f4c07ce4b4d672d196e91c8d09dda522f8b50334cbd8063611d79",
+        "law_scope_sha256": "1e1d0fbcb30c510c5c6dfcb597fd365edcd423b6027699d7d3d1940b7961dc94"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.marriage_contract.creditor_notified_of_contract",
+      "stageId": "marriage_contract",
+      "description": "кредитору направлено уведомление о заключении, изменении или расторжении договора",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "кредитору направлено уведомление о заключении, изменении или расторжении договора",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.marriage_contract.creditor_notified_of_contract",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.marriage_contract"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cfe93d0ddb2f4c07ce4b4d672d196e91c8d09dda522f8b50334cbd8063611d79",
+        "law_scope_sha256": "1e1d0fbcb30c510c5c6dfcb597fd365edcd423b6027699d7d3d1940b7961dc94"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.housing_after_divorce.housing_is_jointly_owned",
+      "stageId": "housing_after_divorce",
+      "description": "жилое помещение находится в общей собственности супругов",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "жилое помещение находится в общей собственности супругов",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.housing_after_divorce.housing_is_jointly_owned",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.housing_after_divorce"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "45f152fc8283d5dd5cc707ef88d9785c4fc02a4b7f87626f1a016eaa2d1f9340",
+        "law_scope_sha256": "3d0cb7f67abb0b71495e52b879b4dca80c314a844178d31e1f2cb6933998317a"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.housing_after_divorce.housing_owned_only_by_other_spouse",
+      "stageId": "housing_after_divorce",
+      "description": "жилое помещение принадлежит только другому супругу",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "жилое помещение принадлежит только другому супругу",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.housing_after_divorce.housing_owned_only_by_other_spouse",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.housing_after_divorce"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "45f152fc8283d5dd5cc707ef88d9785c4fc02a4b7f87626f1a016eaa2d1f9340",
+        "law_scope_sha256": "3d0cb7f67abb0b71495e52b879b4dca80c314a844178d31e1f2cb6933998317a"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.housing_after_divorce.social_tenancy_applies",
+      "stageId": "housing_after_divorce",
+      "description": "жильё предоставлено по договору социального найма",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "жильё предоставлено по договору социального найма",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Это жильё по договору социального найма"
+      ],
+      "negative": [
+        "Это жильё не по договору социального найма"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.housing_after_divorce.social_tenancy_applies",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.housing_after_divorce"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "45f152fc8283d5dd5cc707ef88d9785c4fc02a4b7f87626f1a016eaa2d1f9340",
+        "law_scope_sha256": "3d0cb7f67abb0b71495e52b879b4dca80c314a844178d31e1f2cb6933998317a"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.housing_after_divorce.former_spouse_had_equal_privatization_use_right",
+      "stageId": "housing_after_divorce",
+      "description": "бывший супруг имел равное право пользования при приватизации и не стал собственником",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "бывший супруг имел равное право пользования при приватизации и не стал собственником",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.housing_after_divorce.former_spouse_had_equal_privatization_use_right",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.housing_after_divorce"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "45f152fc8283d5dd5cc707ef88d9785c4fc02a4b7f87626f1a016eaa2d1f9340",
+        "law_scope_sha256": "3d0cb7f67abb0b71495e52b879b4dca80c314a844178d31e1f2cb6933998317a"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.housing_after_divorce.minor_children_live_in_housing",
+      "stageId": "housing_after_divorce",
+      "description": "в спорном жилье постоянно проживают несовершеннолетние дети",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "в спорном жилье постоянно проживают несовершеннолетние дети",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "В этом жилье постоянно живут несовершеннолетние дети"
+      ],
+      "negative": [
+        "В этом жилье несовершеннолетние дети не живут"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.housing_after_divorce.minor_children_live_in_housing",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.housing_after_divorce"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "45f152fc8283d5dd5cc707ef88d9785c4fc02a4b7f87626f1a016eaa2d1f9340",
+        "law_scope_sha256": "3d0cb7f67abb0b71495e52b879b4dca80c314a844178d31e1f2cb6933998317a"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.housing_after_divorce.right_of_use_reserved",
+      "stageId": "housing_after_divorce",
+      "description": "право проживания сохранено соглашением или судебным решением",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "право проживания сохранено соглашением или судебным решением",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.housing_after_divorce.right_of_use_reserved",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.housing_after_divorce"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-housing-right-of-use-assessment/v1",
+        "source_stage_sha256": "45f152fc8283d5dd5cc707ef88d9785c4fc02a4b7f87626f1a016eaa2d1f9340",
+        "law_scope_sha256": "3d0cb7f67abb0b71495e52b879b4dca80c314a844178d31e1f2cb6933998317a"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.housing_after_divorce.former_spouse_moved_out_voluntarily",
+      "stageId": "housing_after_divorce",
+      "description": "бывший супруг добровольно выехал и создал другое постоянное место проживания",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "бывший супруг добровольно выехал и создал другое постоянное место проживания",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.housing_after_divorce.former_spouse_moved_out_voluntarily",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.housing_after_divorce"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "45f152fc8283d5dd5cc707ef88d9785c4fc02a4b7f87626f1a016eaa2d1f9340",
+        "law_scope_sha256": "3d0cb7f67abb0b71495e52b879b4dca80c314a844178d31e1f2cb6933998317a"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.housing_after_divorce.access_or_locks_blocked",
+      "stageId": "housing_after_divorce",
+      "description": "доступ в жильё ограничен, ключи или замки изменены",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "доступ в жильё ограничен, ключи или замки изменены",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Меня не пускают в это жильё",
+        "Мне не дают ключ от этого жилья"
+      ],
+      "negative": [
+        "Мне не мешают входить в это жильё"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.housing_after_divorce.access_or_locks_blocked",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.housing_after_divorce"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "45f152fc8283d5dd5cc707ef88d9785c4fc02a4b7f87626f1a016eaa2d1f9340",
+        "law_scope_sha256": "3d0cb7f67abb0b71495e52b879b4dca80c314a844178d31e1f2cb6933998317a"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.common_debts_mortgage.debt_incurred_during_marriage",
+      "stageId": "common_debts_mortgage",
+      "description": "обязательство возникло в период брака",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "обязательство возникло в период брака",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.common_debts_mortgage.debt_incurred_during_marriage",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.common_debts_mortgage"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "f87ca02ff85a7880772a8a4886c3f2cfdbdae036df62ac6bc9c8727fb03eab49",
+        "law_scope_sha256": "0651bc20581e3136d982579a7b669c5cef6ff110372c0e20d87fec105621c104"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.common_debts_mortgage.funds_used_for_family_needs",
+      "stageId": "common_debts_mortgage",
+      "description": "заёмные деньги использованы на общие нужды семьи",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "заёмные деньги использованы на общие нужды семьи",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.common_debts_mortgage.funds_used_for_family_needs",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.common_debts_mortgage"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "f87ca02ff85a7880772a8a4886c3f2cfdbdae036df62ac6bc9c8727fb03eab49",
+        "law_scope_sha256": "0651bc20581e3136d982579a7b669c5cef6ff110372c0e20d87fec105621c104"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.common_debts_mortgage.joint_home_is_mortgaged",
+      "stageId": "common_debts_mortgage",
+      "description": "залогом является семейное жильё",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "залогом является семейное жильё",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.common_debts_mortgage.joint_home_is_mortgaged",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.common_debts_mortgage"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "f87ca02ff85a7880772a8a4886c3f2cfdbdae036df62ac6bc9c8727fb03eab49",
+        "law_scope_sha256": "0651bc20581e3136d982579a7b669c5cef6ff110372c0e20d87fec105621c104"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.common_debts_mortgage.payments_after_separation_recorded",
+      "stageId": "common_debts_mortgage",
+      "description": "зафиксированы платежи каждого супруга после прекращения общего хозяйства",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "зафиксированы платежи каждого супруга после прекращения общего хозяйства",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.common_debts_mortgage.payments_after_separation_recorded",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.common_debts_mortgage"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "f87ca02ff85a7880772a8a4886c3f2cfdbdae036df62ac6bc9c8727fb03eab49",
+        "law_scope_sha256": "0651bc20581e3136d982579a7b669c5cef6ff110372c0e20d87fec105621c104"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.common_debts_mortgage.marriage_contract_or_debt_agreement_exists",
+      "stageId": "common_debts_mortgage",
+      "description": "есть брачный договор или соглашение супругов о распределении обязательств",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "есть брачный договор или соглашение супругов о распределении обязательств",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.common_debts_mortgage.marriage_contract_or_debt_agreement_exists",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.common_debts_mortgage"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "f87ca02ff85a7880772a8a4886c3f2cfdbdae036df62ac6bc9c8727fb03eab49",
+        "law_scope_sha256": "0651bc20581e3136d982579a7b669c5cef6ff110372c0e20d87fec105621c104"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.common_debts_mortgage.creditor_consents_to_change",
+      "stageId": "common_debts_mortgage",
+      "description": "кредитор согласен изменить состав должников или условия обязательства",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "кредитор согласен изменить состав должников или условия обязательства",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.common_debts_mortgage.creditor_consents_to_change",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.common_debts_mortgage"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "f87ca02ff85a7880772a8a4886c3f2cfdbdae036df62ac6bc9c8727fb03eab49",
+        "law_scope_sha256": "0651bc20581e3136d982579a7b669c5cef6ff110372c0e20d87fec105621c104"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.common_debts_mortgage.maternal_capital_used",
+      "stageId": "common_debts_mortgage",
+      "description": "при приобретении заложенного жилья использован материнский капитал",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "при приобретении заложенного жилья использован материнский капитал",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Для покупки этого жилья использован материнский капитал"
+      ],
+      "negative": [
+        "Для покупки этого жилья материнский капитал не использован"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.common_debts_mortgage.maternal_capital_used",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.common_debts_mortgage"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "f87ca02ff85a7880772a8a4886c3f2cfdbdae036df62ac6bc9c8727fb03eab49",
+        "law_scope_sha256": "0651bc20581e3136d982579a7b669c5cef6ff110372c0e20d87fec105621c104"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.common_debts_mortgage.loan_in_default_or_enforcement",
+      "stageId": "common_debts_mortgage",
+      "description": "по кредиту уже есть просрочка, судебное взыскание или исполнительное производство",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "по кредиту уже есть просрочка, судебное взыскание или исполнительное производство",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.common_debts_mortgage.loan_in_default_or_enforcement",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.common_debts_mortgage"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "f87ca02ff85a7880772a8a4886c3f2cfdbdae036df62ac6bc9c8727fb03eab49",
+        "law_scope_sha256": "0651bc20581e3136d982579a7b669c5cef6ff110372c0e20d87fec105621c104"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.agreement_mediation.both_parties_willing_to_negotiate",
+      "stageId": "agreement_mediation",
+      "description": "обе стороны сейчас готовы обсуждать урегулирование",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "обе стороны сейчас готовы обсуждать урегулирование",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.agreement_mediation.both_parties_willing_to_negotiate",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.agreement_mediation"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7caa48082c74d6f665e010395e8fd348c69c97af7e097104e1bb0f8cfb3f2238",
+        "law_scope_sha256": "7b31054f62fd61b76f5803125f8a7e1e549e1734cc2ca53717440e9cd125d57b"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+      "stageId": "agreement_mediation",
+      "description": "переговоры проходят под давлением или при риске насилия",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "переговоры проходят под давлением или при риске насилия",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "При обсуждении соглашения на меня давят"
+      ],
+      "negative": [
+        "При обсуждении соглашения нет давления или риска насилия"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.agreement_mediation"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7caa48082c74d6f665e010395e8fd348c69c97af7e097104e1bb0f8cfb3f2238",
+        "law_scope_sha256": "7b31054f62fd61b76f5803125f8a7e1e549e1734cc2ca53717440e9cd125d57b"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.agreement_mediation.court_case_pending",
+      "stageId": "agreement_mediation",
+      "description": "имущественный спор уже рассматривается судом",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "имущественный спор уже рассматривается судом",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.agreement_mediation.court_case_pending",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.agreement_mediation"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7caa48082c74d6f665e010395e8fd348c69c97af7e097104e1bb0f8cfb3f2238",
+        "law_scope_sha256": "7b31054f62fd61b76f5803125f8a7e1e549e1734cc2ca53717440e9cd125d57b"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.agreement_mediation.real_estate_included",
+      "stageId": "agreement_mediation",
+      "description": "соглашение включает права на недвижимость",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "соглашение включает права на недвижимость",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.agreement_mediation.real_estate_included",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.agreement_mediation"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7caa48082c74d6f665e010395e8fd348c69c97af7e097104e1bb0f8cfb3f2238",
+        "law_scope_sha256": "7b31054f62fd61b76f5803125f8a7e1e549e1734cc2ca53717440e9cd125d57b"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.agreement_mediation.common_debts_included",
+      "stageId": "agreement_mediation",
+      "description": "соглашение распределяет общие кредиты или долги",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "соглашение распределяет общие кредиты или долги",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.agreement_mediation.common_debts_included",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.agreement_mediation"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7caa48082c74d6f665e010395e8fd348c69c97af7e097104e1bb0f8cfb3f2238",
+        "law_scope_sha256": "7b31054f62fd61b76f5803125f8a7e1e549e1734cc2ca53717440e9cd125d57b"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.agreement_mediation.creditor_rights_affected",
+      "stageId": "agreement_mediation",
+      "description": "условия могут изменить права кредитора или состав обязанных перед ним лиц",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "условия могут изменить права кредитора или состав обязанных перед ним лиц",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.agreement_mediation.creditor_rights_affected",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.agreement_mediation"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "7caa48082c74d6f665e010395e8fd348c69c97af7e097104e1bb0f8cfb3f2238",
+        "law_scope_sha256": "7b31054f62fd61b76f5803125f8a7e1e549e1734cc2ca53717440e9cd125d57b"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.agreement_mediation.creditor_consent_obtained",
+      "stageId": "agreement_mediation",
+      "description": "получено согласие кредитора на изменение его прав или состава должников",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "получено согласие кредитора на изменение его прав или состава должников",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.agreement_mediation.creditor_consent_obtained",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.agreement_mediation"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "7caa48082c74d6f665e010395e8fd348c69c97af7e097104e1bb0f8cfb3f2238",
+        "law_scope_sha256": "7b31054f62fd61b76f5803125f8a7e1e549e1734cc2ca53717440e9cd125d57b"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.agreement_mediation.child_property_or_maternal_capital_affected",
+      "stageId": "agreement_mediation",
+      "description": "затронуты доли ребёнка, материнский капитал или иные детские имущественные права",
+      "producer": "trusted_assessment",
+      "status": "TRUSTED_ASSESSMENT_ONLY",
+      "trueMeaning": "затронуты доли ребёнка, материнский капитал или иные детские имущественные права",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.agreement_mediation.child_property_or_maternal_capital_affected",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.agreement_mediation"
+        ],
+        "producer": "trusted_assessment",
+        "evidence_profile_id": "divorce-next-canonical-assessment/v1",
+        "source_stage_sha256": "7caa48082c74d6f665e010395e8fd348c69c97af7e097104e1bb0f8cfb3f2238",
+        "law_scope_sha256": "7b31054f62fd61b76f5803125f8a7e1e549e1734cc2ca53717440e9cd125d57b"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.domestic_violence.aggressor_nearby_or_can_reach_victim_now",
+      "stageId": "domestic_violence",
+      "description": "агрессор находится рядом или может добраться до потерпевшего сейчас",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "агрессор находится рядом или может добраться до потерпевшего сейчас",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Партнёр сейчас рядом",
+        "Муж сейчас рядом"
+      ],
+      "negative": [
+        "Партнёр не рядом и сейчас не может добраться до меня"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.domestic_violence.aggressor_nearby_or_can_reach_victim_now",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.domestic_violence"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cbe8919cf3692e42373f208e76e45f612a9d560cf28e216fd8b52b1fb21a7e18",
+        "law_scope_sha256": "547dd906a637bdb6a59e09d2e758167daf1ea4ade7baea8f6fc7cdaef8816cb8"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.domestic_violence.injuries_or_pain_present",
+      "stageId": "domestic_violence",
+      "description": "после насилия есть повреждения, боль или ухудшение самочувствия",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "после насилия есть повреждения, боль или ухудшение самочувствия",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "После насилия у меня есть боль",
+        "После насилия есть повреждения"
+      ],
+      "negative": [
+        "После насилия нет повреждений, боли или ухудшения самочувствия"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.domestic_violence.injuries_or_pain_present",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.domestic_violence"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cbe8919cf3692e42373f208e76e45f612a9d560cf28e216fd8b52b1fb21a7e18",
+        "law_scope_sha256": "547dd906a637bdb6a59e09d2e758167daf1ea4ade7baea8f6fc7cdaef8816cb8"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.domestic_violence.death_or_injury_threats_received",
+      "stageId": "domestic_violence",
+      "description": "агрессор прямо угрожал убийством или причинением вреда",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "агрессор прямо угрожал убийством или причинением вреда",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Партнёр угрожал мне убийством",
+        "Муж угрожал мне убийством"
+      ],
+      "negative": [
+        "Партнёр не угрожал мне убийством или причинением вреда"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.domestic_violence.death_or_injury_threats_received",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.domestic_violence"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cbe8919cf3692e42373f208e76e45f612a9d560cf28e216fd8b52b1fb21a7e18",
+        "law_scope_sha256": "547dd906a637bdb6a59e09d2e758167daf1ea4ade7baea8f6fc7cdaef8816cb8"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.domestic_violence.aggressor_has_weapon_access",
+      "stageId": "domestic_violence",
+      "description": "у агрессора есть оружие или быстрый доступ к нему",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "у агрессора есть оружие или быстрый доступ к нему",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.domestic_violence.aggressor_has_weapon_access",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.domestic_violence"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cbe8919cf3692e42373f208e76e45f612a9d560cf28e216fd8b52b1fb21a7e18",
+        "law_scope_sha256": "547dd906a637bdb6a59e09d2e758167daf1ea4ade7baea8f6fc7cdaef8816cb8"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.domestic_violence.children_or_dependents_in_danger",
+      "stageId": "domestic_violence",
+      "description": "дети или зависимые лица находятся в непосредственной опасности",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "дети или зависимые лица находятся в непосредственной опасности",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [],
+      "negative": [],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.domestic_violence.children_or_dependents_in_danger",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.domestic_violence"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cbe8919cf3692e42373f208e76e45f612a9d560cf28e216fd8b52b1fb21a7e18",
+        "law_scope_sha256": "547dd906a637bdb6a59e09d2e758167daf1ea4ade7baea8f6fc7cdaef8816cb8"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.domestic_violence.safe_device_available",
+      "stageId": "domestic_violence",
+      "description": "можно безопасно воспользоваться устройством, к которому агрессор не имеет доступа",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "можно безопасно воспользоваться устройством, к которому агрессор не имеет доступа",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Этим устройством пользоваться безопасно",
+        "Партнёр не имеет доступа к этому устройству и мне безопасно им пользоваться"
+      ],
+      "negative": [
+        "Этим устройством пользоваться небезопасно"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.domestic_violence.safe_device_available",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.domestic_violence"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cbe8919cf3692e42373f208e76e45f612a9d560cf28e216fd8b52b1fb21a7e18",
+        "law_scope_sha256": "547dd906a637bdb6a59e09d2e758167daf1ea4ade7baea8f6fc7cdaef8816cb8"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.domestic_violence.safe_place_available",
+      "stageId": "domestic_violence",
+      "description": "можно уйти в место, недоступное агрессору",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "можно уйти в место, недоступное агрессору",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Я знаю безопасное место, где партнёр не сможет меня найти"
+      ],
+      "negative": [
+        "Я не знаю безопасного места"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.domestic_violence.safe_place_available",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.domestic_violence"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cbe8919cf3692e42373f208e76e45f612a9d560cf28e216fd8b52b1fb21a7e18",
+        "law_scope_sha256": "547dd906a637bdb6a59e09d2e758167daf1ea4ade7baea8f6fc7cdaef8816cb8"
+      }
+    },
+    {
+      "fieldKey": "divorce_property.domestic_violence.movement_or_exit_blocked",
+      "stageId": "domestic_violence",
+      "description": "агрессор запирает помещение или физически не даёт уйти",
+      "producer": "canonical_user_answer",
+      "status": "CURRENT_USER_REPORT",
+      "trueMeaning": "агрессор запирает помещение или физически не даёт уйти",
+      "falseMeaning": "Explicit denial of this exact current scoped circumstance",
+      "nullMeaning": "Explicitly unknown; absence is not answered-null; variant null is wildcard",
+      "scope": "Current case, stage and explicitly selected object/event; no cross-stage copy",
+      "positive": [
+        "Партнёр не даёт мне выйти",
+        "Муж не даёт мне выйти"
+      ],
+      "negative": [
+        "Я могу свободно выйти"
+      ],
+      "source_contract": {
+        "namespace": "canonical",
+        "key": "divorce_property.domestic_violence.movement_or_exit_blocked",
+        "value_type": "boolean",
+        "stage_keys": [
+          "divorce_property.domestic_violence"
+        ],
+        "producer": "canonical_user_answer",
+        "evidence_profile_id": "divorce-next-session/v1",
+        "source_stage_sha256": "cbe8919cf3692e42373f208e76e45f612a9d560cf28e216fd8b52b1fb21a7e18",
+        "law_scope_sha256": "547dd906a637bdb6a59e09d2e758167daf1ea4ade7baea8f6fc7cdaef8816cb8"
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "DV-Q01",
+      "stageId": "divorce_simple",
+      "fieldKey": "divorce_property.divorce_simple.husband_files_during_pregnancy_or_first_year",
+      "text": "Муж подаёт на развод во время беременности жены или в течение первого года после родов, в том числе если ребёнок родился мёртвым или умер?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.divorce_simple.husband_files_during_pregnancy_or_first_year",
+        "question_text": "Муж подаёт на развод во время беременности жены или в течение первого года после родов, в том числе если ребёнок родился мёртвым или умер?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q02",
+      "stageId": "divorce_simple",
+      "fieldKey": "divorce_property.divorce_simple.wife_consents_to_husband_filing",
+      "text": "Жена сейчас явно согласна, чтобы муж обратился в суд с иском о расторжении брака?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.divorce_simple.husband_files_during_pregnancy_or_first_year",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.divorce_simple.wife_consents_to_husband_filing",
+        "question_text": "Жена сейчас явно согласна, чтобы муж обратился в суд с иском о расторжении брака?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": [
+          {
+            "field_key": "divorce_property.divorce_simple.husband_files_during_pregnancy_or_first_year",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q03",
+      "stageId": "divorce_simple",
+      "fieldKey": "divorce_property.divorce_simple.both_spouses_consent",
+      "text": "Вы оба сейчас согласны на расторжение брака?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.divorce_simple.special_unilateral_registry_ground_exists",
+          "value": false
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.divorce_simple.both_spouses_consent",
+        "question_text": "Вы оба сейчас согласны на расторжение брака?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": [
+          {
+            "field_key": "divorce_property.divorce_simple.special_unilateral_registry_ground_exists",
+            "value": false
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q04",
+      "stageId": "divorce_simple",
+      "fieldKey": "divorce_property.divorce_simple.common_minor_children_present",
+      "text": "У вас есть общие несовершеннолетние дети?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.divorce_simple.special_unilateral_registry_ground_exists",
+          "value": false
+        },
+        {
+          "fieldKey": "divorce_property.divorce_simple.both_spouses_consent",
+          "value": true
+        },
+        {
+          "fieldKey": "divorce_property.divorce_simple.spouse_avoids_registry_office",
+          "value": false
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.divorce_simple.common_minor_children_present",
+        "question_text": "У вас есть общие несовершеннолетние дети?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": [
+          {
+            "field_key": "divorce_property.divorce_simple.special_unilateral_registry_ground_exists",
+            "value": false
+          },
+          {
+            "field_key": "divorce_property.divorce_simple.both_spouses_consent",
+            "value": true
+          },
+          {
+            "field_key": "divorce_property.divorce_simple.spouse_avoids_registry_office",
+            "value": false
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q05",
+      "stageId": "divorce_simple",
+      "fieldKey": "divorce_property.divorce_simple.spouse_can_personally_apply",
+      "text": "Второй супруг может лично участвовать в подаче заявления в ЗАГС?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.divorce_simple.special_unilateral_registry_ground_exists",
+          "value": false
+        },
+        {
+          "fieldKey": "divorce_property.divorce_simple.both_spouses_consent",
+          "value": true
+        },
+        {
+          "fieldKey": "divorce_property.divorce_simple.spouse_avoids_registry_office",
+          "value": false
+        },
+        {
+          "fieldKey": "divorce_property.divorce_simple.common_minor_children_present",
+          "value": false
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.divorce_simple.spouse_can_personally_apply",
+        "question_text": "Второй супруг может лично участвовать в подаче заявления в ЗАГС?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": [
+          {
+            "field_key": "divorce_property.divorce_simple.special_unilateral_registry_ground_exists",
+            "value": false
+          },
+          {
+            "field_key": "divorce_property.divorce_simple.both_spouses_consent",
+            "value": true
+          },
+          {
+            "field_key": "divorce_property.divorce_simple.spouse_avoids_registry_office",
+            "value": false
+          },
+          {
+            "field_key": "divorce_property.divorce_simple.common_minor_children_present",
+            "value": false
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q06",
+      "stageId": "divorce_with_disputes",
+      "fieldKey": "divorce_property.divorce_with_disputes.husband_files_during_pregnancy_or_first_year",
+      "text": "Муж подаёт на развод во время беременности жены или в течение первого года после родов, в том числе если ребёнок родился мёртвым или умер?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.divorce_with_disputes.husband_files_during_pregnancy_or_first_year",
+        "question_text": "Муж подаёт на развод во время беременности жены или в течение первого года после родов, в том числе если ребёнок родился мёртвым или умер?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q07",
+      "stageId": "divorce_with_disputes",
+      "fieldKey": "divorce_property.divorce_with_disputes.wife_consents_to_husband_filing",
+      "text": "Жена сейчас явно согласна, чтобы муж обратился в суд с иском о расторжении брака?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.divorce_with_disputes.husband_files_during_pregnancy_or_first_year",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.divorce_with_disputes.wife_consents_to_husband_filing",
+        "question_text": "Жена сейчас явно согласна, чтобы муж обратился в суд с иском о расторжении брака?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": [
+          {
+            "field_key": "divorce_property.divorce_with_disputes.husband_files_during_pregnancy_or_first_year",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q08",
+      "stageId": "divorce_with_disputes",
+      "fieldKey": "divorce_property.divorce_with_disputes.spouse_objects_to_divorce",
+      "text": "Второй супруг сейчас возражает против расторжения брака?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.divorce_with_disputes.spouse_objects_to_divorce",
+        "question_text": "Второй супруг сейчас возражает против расторжения брака?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q09",
+      "stageId": "divorce_with_disputes",
+      "fieldKey": "divorce_property.divorce_with_disputes.common_minor_children_present",
+      "text": "У вас есть общие несовершеннолетние дети?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.divorce_with_disputes.common_minor_children_present",
+        "question_text": "У вас есть общие несовершеннолетние дети?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q10",
+      "stageId": "divorce_with_disputes",
+      "fieldKey": "divorce_property.divorce_with_disputes.respondent_address_known",
+      "text": "Вам известен актуальный адрес второго супруга?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.divorce_with_disputes.respondent_address_known",
+        "question_text": "Вам известен актуальный адрес второго супруга?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q11",
+      "stageId": "divorce_with_disputes",
+      "fieldKey": "divorce_property.divorce_with_disputes.other_family_claims_joined",
+      "text": "В этом же деле уже заявлены требования об имуществе, детях или алиментах?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.divorce_with_disputes.other_family_claims_joined",
+        "question_text": "В этом же деле уже заявлены требования об имуществе, детях или алиментах?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q12",
+      "stageId": "divorce_with_disputes",
+      "fieldKey": "divorce_property.divorce_with_disputes.reconciliation_requested",
+      "text": "Кто-либо из сторон уже просил суд предоставить время для примирения?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.divorce_with_disputes.reconciliation_requested",
+        "question_text": "Кто-либо из сторон уже просил суд предоставить время для примирения?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "memory",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q13",
+      "stageId": "property_division",
+      "fieldKey": "divorce_property.property_division.maternal_capital_used",
+      "text": "При приобретении спорного объекта использован материнский капитал?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.property_division.maternal_capital_used",
+        "question_text": "При приобретении спорного объекта использован материнский капитал?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q14",
+      "stageId": "property_division",
+      "fieldKey": "divorce_property.property_division.property_acquired_during_marriage",
+      "text": "Спорный объект приобретён в период зарегистрированного брака?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.property_division.property_acquired_during_marriage",
+        "question_text": "Спорный объект приобретён в период зарегистрированного брака?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q15",
+      "stageId": "property_division",
+      "fieldKey": "divorce_property.property_division.gift_inheritance_or_premarital_source",
+      "text": "Спорный объект или деньги, использованные для его покупки, получены до брака, в дар или по наследству?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.property_division.gift_inheritance_or_premarital_source",
+        "question_text": "Спорный объект или деньги, использованные для его покупки, получены до брака, в дар или по наследству?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q16",
+      "stageId": "marriage_contract",
+      "fieldKey": "divorce_property.marriage_contract.marriage_not_registered_yet",
+      "text": "Ваш брак ещё не зарегистрирован?",
+      "explanation": "Ответьте о регистрации именно вашего брака.",
+      "controls": [
+        {
+          "label": "Брак ещё не зарегистрирован",
+          "value": true
+        },
+        {
+          "label": "Брак уже зарегистрирован",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.marriage_contract.marriage_not_registered_yet",
+        "question_text": "Ваш брак ещё не зарегистрирован?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q17",
+      "stageId": "marriage_contract",
+      "fieldKey": "divorce_property.marriage_contract.contract_notarized",
+      "text": "Брачный договор удостоверен нотариусом?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.marriage_contract.contract_notarized",
+        "question_text": "Брачный договор удостоверен нотариусом?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q18",
+      "stageId": "marriage_contract",
+      "fieldKey": "divorce_property.marriage_contract.both_spouses_agree_to_change_or_end",
+      "text": "Вы оба сейчас согласны изменить или расторгнуть брачный договор?",
+      "explanation": "Речь об одном конкретном предложении по этому договору: оба согласны именно с ним. Согласие каждого на разные варианты не означает «Да».",
+      "controls": [
+        {
+          "label": "Оба согласны с одним предложением",
+          "value": true
+        },
+        {
+          "label": "Нет общего согласия с этим предложением",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.marriage_contract.both_spouses_agree_to_change_or_end",
+        "question_text": "Вы оба сейчас согласны изменить или расторгнуть брачный договор?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q19",
+      "stageId": "marriage_contract",
+      "fieldKey": "divorce_property.marriage_contract.unilateral_change_or_termination_requested",
+      "text": "По этому договору есть требование одного супруга об изменении или расторжении, с которым другой супруг не согласен?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.marriage_contract.unilateral_change_or_termination_requested",
+        "question_text": "По этому договору есть требование одного супруга об изменении или расторжении, с которым другой супруг не согласен?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q20",
+      "stageId": "marriage_contract",
+      "fieldKey": "divorce_property.marriage_contract.creditor_notified_of_contract",
+      "text": "Кредитору направляли уведомление о заключении, изменении или расторжении брачного договора?",
+      "explanation": "Речь об уведомлении именно этого кредитора о том событии по договору, которое вы сейчас обсуждаете. Уведомление о другом событии не считается.",
+      "controls": [
+        {
+          "label": "Об этом событии кредитор уведомлён",
+          "value": true
+        },
+        {
+          "label": "Об этом событии кредитор не уведомлён",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.marriage_contract.creditor_notified_of_contract",
+        "question_text": "Кредитору направляли уведомление о заключении, изменении или расторжении брачного договора?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q21",
+      "stageId": "housing_after_divorce",
+      "fieldKey": "divorce_property.housing_after_divorce.access_or_locks_blocked",
+      "text": "Сейчас кто-то мешает попасть в спорное жильё? Например, запрещает входить словами, преграждает вход или не даёт ключ, без которого нельзя войти.",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.housing_after_divorce.access_or_locks_blocked",
+        "question_text": "Сейчас кто-то мешает попасть в спорное жильё? Например, запрещает входить словами, преграждает вход или не даёт ключ, без которого нельзя войти.",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "observation",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q22",
+      "stageId": "housing_after_divorce",
+      "fieldKey": "divorce_property.housing_after_divorce.minor_children_live_in_housing",
+      "text": "В этом жилье постоянно проживают несовершеннолетние дети?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.housing_after_divorce.minor_children_live_in_housing",
+        "question_text": "В этом жилье постоянно проживают несовершеннолетние дети?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q23",
+      "stageId": "housing_after_divorce",
+      "fieldKey": "divorce_property.housing_after_divorce.social_tenancy_applies",
+      "text": "Это жильё предоставлено по договору социального найма?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.housing_after_divorce.social_tenancy_applies",
+        "question_text": "Это жильё предоставлено по договору социального найма?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q24",
+      "stageId": "common_debts_mortgage",
+      "fieldKey": "divorce_property.common_debts_mortgage.loan_in_default_or_enforcement",
+      "text": "По этому кредиту уже есть просрочка, судебное взыскание или исполнительное производство?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.common_debts_mortgage.loan_in_default_or_enforcement",
+        "question_text": "По этому кредиту уже есть просрочка, судебное взыскание или исполнительное производство?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q25",
+      "stageId": "common_debts_mortgage",
+      "fieldKey": "divorce_property.common_debts_mortgage.funds_used_for_family_needs",
+      "text": "По известным вам обстоятельствам, заёмные деньги фактически потрачены на общие нужды семьи?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.common_debts_mortgage.funds_used_for_family_needs",
+        "question_text": "По известным вам обстоятельствам, заёмные деньги фактически потрачены на общие нужды семьи?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q26",
+      "stageId": "common_debts_mortgage",
+      "fieldKey": "divorce_property.common_debts_mortgage.joint_home_is_mortgaged",
+      "text": "Семейное жильё указано предметом залога по этому обязательству?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.common_debts_mortgage.joint_home_is_mortgaged",
+        "question_text": "Семейное жильё указано предметом залога по этому обязательству?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q27",
+      "stageId": "common_debts_mortgage",
+      "fieldKey": "divorce_property.common_debts_mortgage.payments_after_separation_recorded",
+      "text": "Зафиксированы платежи каждого из супругов после прекращения общего хозяйства?",
+      "explanation": "Речь о платежах обоих супругов после прекращения общего хозяйства. Если платежей не было или состав сведений неясен, оставьте ответ неизвестным.",
+      "controls": [
+        {
+          "label": "Платежи обоих супругов зафиксированы",
+          "value": true
+        },
+        {
+          "label": "Известно, что зафиксированы не все платежи",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.common_debts_mortgage.payments_after_separation_recorded",
+        "question_text": "Зафиксированы платежи каждого из супругов после прекращения общего хозяйства?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q28",
+      "stageId": "common_debts_mortgage",
+      "fieldKey": "divorce_property.common_debts_mortgage.marriage_contract_or_debt_agreement_exists",
+      "text": "Есть брачный договор или соглашение супругов, в котором записано распределение этих обязательств?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.common_debts_mortgage.marriage_contract_or_debt_agreement_exists",
+        "question_text": "Есть брачный договор или соглашение супругов, в котором записано распределение этих обязательств?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q29",
+      "stageId": "common_debts_mortgage",
+      "fieldKey": "divorce_property.common_debts_mortgage.creditor_consents_to_change",
+      "text": "Кредитор уже сообщил о согласии изменить состав должников или условия этого обязательства?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.common_debts_mortgage.creditor_consents_to_change",
+        "question_text": "Кредитор уже сообщил о согласии изменить состав должников или условия этого обязательства?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q30",
+      "stageId": "common_debts_mortgage",
+      "fieldKey": "divorce_property.common_debts_mortgage.maternal_capital_used",
+      "text": "При приобретении этого заложенного жилья использован материнский капитал?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.common_debts_mortgage.joint_home_is_mortgaged",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.common_debts_mortgage.maternal_capital_used",
+        "question_text": "При приобретении этого заложенного жилья использован материнский капитал?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": [
+          {
+            "field_key": "divorce_property.common_debts_mortgage.joint_home_is_mortgaged",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q31",
+      "stageId": "agreement_mediation",
+      "fieldKey": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+      "text": "Обсуждение соглашения сейчас проходит под давлением или при риске насилия?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+        "question_text": "Обсуждение соглашения сейчас проходит под давлением или при риске насилия?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "observation",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q32",
+      "stageId": "agreement_mediation",
+      "fieldKey": "divorce_property.agreement_mediation.court_case_pending",
+      "text": "Этот имущественный спор уже рассматривается судом?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+          "value": false
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.agreement_mediation.court_case_pending",
+        "question_text": "Этот имущественный спор уже рассматривается судом?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": [
+          {
+            "field_key": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+            "value": false
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q33",
+      "stageId": "agreement_mediation",
+      "fieldKey": "divorce_property.agreement_mediation.real_estate_included",
+      "text": "В обсуждаемый проект соглашения включены права на недвижимость?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+          "value": false
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.agreement_mediation.real_estate_included",
+        "question_text": "В обсуждаемый проект соглашения включены права на недвижимость?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": [
+          {
+            "field_key": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+            "value": false
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q34",
+      "stageId": "agreement_mediation",
+      "fieldKey": "divorce_property.agreement_mediation.common_debts_included",
+      "text": "В проекте соглашения предусмотрено распределение общих кредитов или долгов?",
+      "explanation": "Ответ относится к содержанию этого проекта. Он не подтверждает общий характер долга или согласие кредитора. При сомнении выберите «Не знаю».",
+      "controls": [
+        {
+          "label": "В проекте предусмотрено распределение общих долгов",
+          "value": true
+        },
+        {
+          "label": "В проекте такого распределения нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+          "value": false
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.agreement_mediation.common_debts_included",
+        "question_text": "В проекте соглашения предусмотрено распределение общих кредитов или долгов?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": [
+          {
+            "field_key": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+            "value": false
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q35",
+      "stageId": "agreement_mediation",
+      "fieldKey": "divorce_property.agreement_mediation.creditor_consent_obtained",
+      "text": "Получено согласие кредитора на обсуждаемое изменение его прав или состава должников?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+          "value": false
+        },
+        {
+          "fieldKey": "divorce_property.agreement_mediation.creditor_rights_affected",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.agreement_mediation.creditor_consent_obtained",
+        "question_text": "Получено согласие кредитора на обсуждаемое изменение его прав или состава должников?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "document",
+        "requires": [
+          {
+            "field_key": "divorce_property.agreement_mediation.coercion_or_safety_risk_present",
+            "value": false
+          },
+          {
+            "field_key": "divorce_property.agreement_mediation.creditor_rights_affected",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q36",
+      "stageId": "domestic_violence",
+      "fieldKey": "divorce_property.domestic_violence.safe_device_available",
+      "text": "Сейчас можно безопасно пользоваться устройством, к которому партнёр не имеет доступа?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [],
+      "source_question": {
+        "field_key": "divorce_property.domestic_violence.safe_device_available",
+        "question_text": "Сейчас можно безопасно пользоваться устройством, к которому партнёр не имеет доступа?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "observation",
+        "requires": []
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q37",
+      "stageId": "domestic_violence",
+      "fieldKey": "divorce_property.domestic_violence.aggressor_nearby_or_can_reach_victim_now",
+      "text": "Партнёр находится рядом или может добраться до вас сейчас?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.domestic_violence.safe_device_available",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.domestic_violence.aggressor_nearby_or_can_reach_victim_now",
+        "question_text": "Партнёр находится рядом или может добраться до вас сейчас?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "observation",
+        "requires": [
+          {
+            "field_key": "divorce_property.domestic_violence.safe_device_available",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q38",
+      "stageId": "domestic_violence",
+      "fieldKey": "divorce_property.domestic_violence.movement_or_exit_blocked",
+      "text": "Партнёр сейчас физически не даёт вам уйти или оставил помещение запертым так, что вы не можете выйти?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.domestic_violence.safe_device_available",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.domestic_violence.movement_or_exit_blocked",
+        "question_text": "Партнёр сейчас физически не даёт вам уйти или оставил помещение запертым так, что вы не можете выйти?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "observation",
+        "requires": [
+          {
+            "field_key": "divorce_property.domestic_violence.safe_device_available",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q39",
+      "stageId": "domestic_violence",
+      "fieldKey": "divorce_property.domestic_violence.injuries_or_pain_present",
+      "text": "После насилия есть повреждения, боль или ухудшение самочувствия?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.domestic_violence.safe_device_available",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.domestic_violence.injuries_or_pain_present",
+        "question_text": "После насилия есть повреждения, боль или ухудшение самочувствия?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "observation",
+        "requires": [
+          {
+            "field_key": "divorce_property.domestic_violence.safe_device_available",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q40",
+      "stageId": "domestic_violence",
+      "fieldKey": "divorce_property.domestic_violence.children_or_dependents_in_danger",
+      "text": "Дети или люди, которым нужна помощь другого человека в повседневном уходе за собой, сейчас в непосредственной опасности? Например, помощь с едой, передвижением или гигиеной.",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.domestic_violence.safe_device_available",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.domestic_violence.children_or_dependents_in_danger",
+        "question_text": "Дети или люди, которым нужна помощь другого человека в повседневном уходе за собой, сейчас в непосредственной опасности? Например, помощь с едой, передвижением или гигиеной.",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "observation",
+        "requires": [
+          {
+            "field_key": "divorce_property.domestic_violence.safe_device_available",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q41",
+      "stageId": "domestic_violence",
+      "fieldKey": "divorce_property.domestic_violence.death_or_injury_threats_received",
+      "text": "Партнёр прямо угрожал вам убийством или причинением вреда?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.domestic_violence.safe_device_available",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.domestic_violence.death_or_injury_threats_received",
+        "question_text": "Партнёр прямо угрожал вам убийством или причинением вреда?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "memory",
+        "requires": [
+          {
+            "field_key": "divorce_property.domestic_violence.safe_device_available",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q42",
+      "stageId": "domestic_violence",
+      "fieldKey": "divorce_property.domestic_violence.safe_place_available",
+      "text": "Вам уже известно место, куда можно безопасно уйти и где партнёр не сможет до вас добраться?",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.domestic_violence.safe_device_available",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.domestic_violence.safe_place_available",
+        "question_text": "Вам уже известно место, куда можно безопасно уйти и где партнёр не сможет до вас добраться?",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "observation",
+        "requires": [
+          {
+            "field_key": "divorce_property.domestic_violence.safe_device_available",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    },
+    {
+      "id": "DV-Q43",
+      "stageId": "domestic_violence",
+      "fieldKey": "divorce_property.domestic_violence.aggressor_has_weapon_access",
+      "text": "По уже известным вам сведениям, у партнёра есть оружие или быстрый доступ к нему? Не проверяйте это ради ответа.",
+      "explanation": "",
+      "controls": [
+        {
+          "label": "Да",
+          "value": true
+        },
+        {
+          "label": "Нет",
+          "value": false
+        },
+        {
+          "label": "Не знаю",
+          "value": null
+        }
+      ],
+      "requires": [
+        {
+          "fieldKey": "divorce_property.domestic_violence.safe_device_available",
+          "value": true
+        }
+      ],
+      "source_question": {
+        "field_key": "divorce_property.domestic_violence.aggressor_has_weapon_access",
+        "question_text": "По уже известным вам сведениям, у партнёра есть оружие или быстрый доступ к нему? Не проверяйте это ради ответа.",
+        "answers": [
+          true,
+          false,
+          null
+        ],
+        "uncertainty_kind": "fact",
+        "requires": [
+          {
+            "field_key": "divorce_property.domestic_violence.safe_device_available",
+            "value": true
+          }
+        ]
+      },
+      "source": "EXISTING_NEXT"
+    }
+  ],
+  "semanticScope": "Existing accepted bounded content and exact Q40; finite literal observations and current question answers; trusted legal assessments never inferred",
+  "lawCurrentness": null,
+  "production": false,
+  "documentTechnicalRepairs": false
+}

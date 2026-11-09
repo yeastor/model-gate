@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { blocked, validateExplicitBundle } from './contract.mjs';
 
 const own = (o, k) => Object.hasOwn(o, k);
-export function createExplicitEngine(bundle) {
+export function createExplicitEngine(bundle, options = {}) {
   validateExplicitBundle(bundle);
   const data = structuredClone(bundle);
   function freeze(o) { if (o && typeof o === 'object') { Object.values(o).forEach(freeze); Object.freeze(o); } }
@@ -26,6 +26,11 @@ export function createExplicitEngine(bundle) {
       s.reason = 'Для этого варианта не подтверждены нужные обстоятельства. Неизвестное не означает «Нет».';
       return;
     }
+    const targetHold = options.targetHold?.({ id, state: s, row: rowFor(id).row, stage: rowFor(id).stage });
+    if (targetHold) {
+      s.status = 'hold'; s.reason = targetHold;
+      return;
+    }
     s.current = id;
     s.stageId = rowFor(id).stage.stage.id;
     s.status = 'answer';
@@ -38,6 +43,12 @@ export function createExplicitEngine(bundle) {
       if (visited.has(q.id)) blocked('Цикл NEXT.');
       visited.add(q.id);
       const key = keyFor(stage, q.field_key);
+      // A qualified question must not be bypassed by a legacy or caller-supplied fact.
+      const questionHold = options.questionHold?.({ question: q, stage, state: s });
+      if (questionHold) {
+        s.pending = null; s.status = 'hold'; s.reason = questionHold;
+        return;
+      }
       if (own(s.facts, key)) {
         const a = q.data.find(a => a.value === s.facts[key]);
         if (!a) blocked('Недопустимый сохранённый факт.');
@@ -47,7 +58,7 @@ export function createExplicitEngine(bundle) {
       }
       const reason = data.metadata.next_policy?.third_question_reasons?.[q.id];
       const alreadyOffered = s.askedQuestionIds?.includes(q.id);
-      if (!alreadyOffered && (s.presented >= 3 || (s.presented >= 2 && !(typeof reason === 'string' && reason.trim())))) {
+      if (!alreadyOffered && (s.presented >= (options.maxQuestions ?? 3) || (s.presented >= 2 && !(typeof reason === 'string' && reason.trim())))) {
         s.pending = null; s.status = 'hold'; s.reason = 'Лимит уточнений достигнут. Ниже доступный общий ответ.';
         return;
       }

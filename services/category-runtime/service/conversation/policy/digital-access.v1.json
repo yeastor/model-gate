@@ -1,0 +1,2840 @@
+{
+  "schemaVersion": "private-digital-access-runtime/v1",
+  "version": "da-mvp-reserved-ids/20261028-v1",
+  "categoryId": "digital_access",
+  "defaultActivation": false,
+  "maxQuestionsPerCase": 2,
+  "thirdQuestionReasons": {},
+  "supplementalQuestions": [],
+  "stages": [
+    {
+      "stageId": "account_hacked",
+      "source": {
+        "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/stages/01-account_hacked.json",
+        "bytes": 481076,
+        "sha256": "2eb1b8f6ff3cd1e72df40b086a69fff0a60a7d5230c2cbf5ab85751059980999"
+      },
+      "generalId": "digital_access_account_hacked_v65"
+    },
+    {
+      "stageId": "account_blocked",
+      "source": {
+        "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/stages/02-account_blocked.json",
+        "bytes": 96936,
+        "sha256": "2405735ffd0541092e0f8ec63d3a0c23480155ee42a07e0cdcffcee48fa0dc01"
+      },
+      "generalId": "digital_access_account_blocked_v17"
+    },
+    {
+      "stageId": "sim_swap",
+      "source": {
+        "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/stages/03-sim_swap.json",
+        "bytes": 89833,
+        "sha256": "d8485dc15942767d0dce198076f991d06a9c832521c1592203dbd8734d399b9c"
+      },
+      "generalId": "digital_access_sim_swap_v17"
+    },
+    {
+      "stageId": "email_compromised",
+      "source": {
+        "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/stages/04-email_compromised.json",
+        "bytes": 18991,
+        "sha256": "f1ed7e23fc4d10a2fe6a2a4f2efbb758fc40161005c2addd33e6c755963fb6d9"
+      },
+      "generalId": "digital_access_email_compromised_v04"
+    },
+    {
+      "stageId": "messenger_takeover",
+      "source": {
+        "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/stages/05-messenger_takeover.json",
+        "bytes": 366166,
+        "sha256": "d4e6e0c838d106dbb9a1616a923247b3b9ada6277385fff57ba392d284ee137b"
+      },
+      "generalId": "digital_access_messenger_takeover_v65"
+    },
+    {
+      "stageId": "lost_device",
+      "source": {
+        "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/stages/06-lost_device.json",
+        "bytes": 373314,
+        "sha256": "d628534b2a0bd2f99dbbdd3fc0d54c9753693662e80c4772c9541bc999b1eadd"
+      },
+      "generalId": "digital_access_lost_device_v65"
+    },
+    {
+      "stageId": "device_malware",
+      "source": {
+        "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/stages/07-device_malware.json",
+        "bytes": 179672,
+        "sha256": "27b4f23a7c6192ff72b0b20f4443e5648d33b0c981b3a311b7e88cdcea2d9f77"
+      },
+      "generalId": "digital_access_device_malware_v33"
+    },
+    {
+      "stageId": "secure_after",
+      "source": {
+        "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/stages/08-secure_after.json",
+        "bytes": 195425,
+        "sha256": "85cbd70909a6d47b141c0c56e9e8b8ce4c1ec2cb9ace50da763793d520da7a01"
+      },
+      "generalId": "digital_access_secure_after_v33"
+    }
+  ],
+  "sources": {
+    "NEXT": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/next-content.json",
+      "bytes": 1047079,
+      "sha256": "4f01169ca924afe1e71f9c2af26c07b5aaabebbb2c11cf2f3b44f59f3f770895"
+    },
+    "questions": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/question-catalog.json",
+      "bytes": 22540,
+      "sha256": "a0048b19dd2f47f1fdf8dea677c861095a735a1cc88358257493f01a74c1101a"
+    },
+    "decision": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/decision-contract.json",
+      "bytes": 6281,
+      "sha256": "cf4961e84f9e754ab902d81fae7123d79a872afdf9a494d5f9927edf73b510be"
+    },
+    "helper": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/independent-facts.mjs",
+      "bytes": 2815,
+      "sha256": "740daa5cc020d211408810f1bae2ec939e6c0ff9e3b6466e4564933ed31649d2"
+    },
+    "presentation": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/answer-presentation.mjs",
+      "bytes": 2863,
+      "sha256": "347e4a98e2568ba301797e525a5350563728c551b49205c7ec0cf4335befc777"
+    },
+    "current_static": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/full291-current-answer-lookup.json",
+      "bytes": 173563,
+      "sha256": "1314e98e90a2acde7edfa1ee91c2daf1dde5a4d3990dafb2640d83ecfe4da421"
+    },
+    "current_dynamic": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/current/full2529-current-dynamic-display-lookup.json",
+      "bytes": 3712853,
+      "sha256": "031af26b49943e776e025d7a41c9dfff2cded2d2703fbff8a32183ca85ed6506"
+    },
+    "full_evidence": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/full-current-answer-preservation.json",
+      "bytes": 30273637,
+      "sha256": "6f69db66a42c7d5be2648c9ffb710667ea082beddcaf4d002e0ca606e5b06bbe"
+    },
+    "accepted_bindings": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_access/mvp-release/20261028-v1/release/next-current-composition-binding.json",
+      "bytes": 6744430,
+      "sha256": "a3667d29960a95f8160d64eae95dd0d2622973e78f5c2ad099a64a6f3df65743"
+    }
+  },
+  "fields": [
+    {
+      "fieldKey": "digital_access.account_hacked.access_lost",
+      "stageId": "account_hacked",
+      "fieldId": "access_lost",
+      "group": "digital_access.account_hacked.access_lost",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Я полностью потерял доступ к этому аккаунту",
+      "negative": "Доступ к этому аккаунту у меня сохранён",
+      "unknown": "Не знаю: Я полностью потерял доступ к этому аккаунту",
+      "meaning": "Полная утрата текущего доступа, не отдельная ошибка входа/недоступный способ. Позднее восстановление сохраняет историю утраты; не переносить между аккаунтами.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_hacked.access_lost",
+        "question": "Доступ к аккаунту полностью утрачен?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_hacked.recovery_contacts_changed",
+      "stageId": "account_hacked",
+      "fieldId": "recovery_contacts_changed",
+      "group": "digital_access.account_hacked.recovery_contacts_changed",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В этом аккаунте посторонний изменил почту или номер восстановления",
+      "negative": "Почта и номер восстановления этого аккаунта посторонним не изменены",
+      "unknown": "Не знаю: В этом аккаунте посторонний изменил почту или номер восстановления",
+      "meaning": "Изменение посторонним почты ИЛИ номера; не утверждать смену обоих. Нужна связь с конкретным аккаунтом и наблюдаемым изменением.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_hacked.recovery_contacts_changed",
+        "question": "Злоумышленник сменил почту или номер для восстановления?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_hacked.twofa_lost",
+      "stageId": "account_hacked",
+      "fieldId": "twofa_lost",
+      "group": "digital_access.account_hacked.twofa_lost",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Для этого аккаунта мне недоступен второй фактор или резервные коды",
+      "negative": "Для этого аккаунта мне доступны и второй фактор, и резервные коды",
+      "unknown": "Не знаю: Для этого аккаунта мне недоступен второй фактор или резервные коды",
+      "meaning": "В account_hacked/email_compromised: недоступен хотя бы один из второго фактора/резервных кодов, не оба автоматически. В messenger_takeover: посторонний сменил/установил облачный пароль; эти значения не являются взаимозаменяемыми.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_hacked.twofa_lost",
+        "question": "Хотя бы один способ входа сейчас недоступен вам: второй фактор или резервные коды? Если доступны оба, ответьте «Нет».",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_hacked.unauthorized_actions_found",
+      "stageId": "account_hacked",
+      "fieldId": "unauthorized_actions_found",
+      "group": "digital_access.account_hacked.unauthorized_actions_found",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В этом аккаунте я увидел публикацию или действие постороннего",
+      "negative": "В этом аккаунте я проверил действия и публикации и не обнаружил чужих",
+      "unknown": "Не знаю: В этом аккаунте я увидел публикацию или действие постороннего",
+      "meaning": "Наблюдаемые чужие действия/публикации с привязкой к аккаунту; не юридическое установление виновного.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_hacked.unauthorized_actions_found",
+        "question": "Обнаружены действия или публикации злоумышленника?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_hacked.payment_data_linked",
+      "stageId": "account_hacked",
+      "fieldId": "payment_data_linked",
+      "group": "digital_access.account_hacked.payment_data_linked",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В этом аккаунте есть денежный остаток или платёжные данные",
+      "negative": "В этом аккаунте нет ни денежного остатка, ни платёжных данных",
+      "unknown": "Не знаю: В этом аккаунте есть денежный остаток или платёжные данные",
+      "meaning": "Остаток ИЛИ сохранённые платёжные данные. Не доказывает конкретное списание, согласие, банк или применимость возврата.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_hacked.payment_data_linked",
+        "question": "В аккаунте есть денежный остаток или сохранены платёжные данные?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_hacked.service_is_google",
+      "stageId": "account_hacked",
+      "fieldId": "service_is_google",
+      "group": "digital_access.account_hacked.service_is_google",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Этот аккаунт относится к сервису Гугл",
+      "negative": "Этот аккаунт не относится к сервису Гугл",
+      "unknown": "Не знаю: Этот аккаунт относится к сервису Гугл",
+      "meaning": "Явно идентифицирован именно затронутый аккаунт/почтовый ящик. Открытая Google-страница, article/URL не доказывают провайдера. False не идентифицирует другого провайдера.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_hacked.service_is_google",
+        "question": "Затронутый аккаунт относится к сервису «Гугл»?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_hacked.unauthorized_debit_confirmed",
+      "stageId": "account_hacked",
+      "fieldId": "unauthorized_debit_confirmed",
+      "group": "digital_access.account_hacked.unauthorized_debit_confirmed",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "operationId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "positive": "По этой операции с моего счёта списали деньги без моего добровольного согласия",
+      "negative": "По этой операции с моего счёта деньги списаны с моим добровольным согласием",
+      "unknown": "Не знаю: По этой операции с моего счёта списали деньги без моего добровольного согласия",
+      "meaning": "Qualified HOLD для автоматического вывода: нужны конкретная операция, владелец/счёт, добровольное согласие, время и источник. Raw сообщение сохранить; не выводить из payment_data_linked/money_lost.",
+      "dependencies": [],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.account_hacked.financial_fraud_suspected",
+      "stageId": "account_hacked",
+      "fieldId": "financial_fraud_suspected",
+      "group": "digital_access.account_hacked.financial_fraud_suspected",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "operationId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "positive": "Я подозреваю финансовое мошенничество в этом аккаунте",
+      "negative": "Я не подозреваю финансового мошенничества в этом аккаунте",
+      "unknown": "Не знаю: Я подозреваю финансовое мошенничество в этом аккаунте",
+      "meaning": "Qualified HOLD для автоматического вывода: хранить конкретные признаки отдельно, без вывода о преступлении и без переноса в банковский producer.",
+      "dependencies": [],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.account_hacked.support_refused",
+      "stageId": "account_hacked",
+      "fieldId": "support_refused",
+      "group": "digital_access.account_hacked.support_refused",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "requestId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В ответе на это обращение поддержка отказала восстановить этот аккаунт",
+      "negative": "В ответе на это обращение поддержка согласилась восстановить этот аккаунт",
+      "unknown": "Не знаю: В ответе на это обращение поддержка отказала восстановить этот аккаунт",
+      "meaning": "Фактический ответ поддержки на конкретный запрос, аккаунт/провайдер/время. Молчание, невозможность входа и отказ третьего сервиса не равны отказу.",
+      "dependencies": [
+        "same_service_request",
+        "observed_response"
+      ],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.account_blocked.account_hacked",
+      "stageId": "account_blocked",
+      "fieldId": "account_hacked",
+      "group": "digital_access.account_blocked.account_hacked",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Перед этой блокировкой я обнаружил посторонний доступ к этому аккаунту",
+      "negative": "Перед этой блокировкой я не обнаруживал признаков постороннего доступа к этому аккаунту",
+      "unknown": "Не знаю: Перед этой блокировкой я обнаружил посторонний доступ к этому аккаунту",
+      "meaning": "Наблюдаемые признаки взлома до конкретной блокировки; не заключение о преступлении и не доказательство оснований самой блокировки.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_blocked.account_hacked",
+        "question": "Перед блокировкой были признаки взлома аккаунта?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_blocked.block_reason_given",
+      "stageId": "account_blocked",
+      "fieldId": "block_reason_given",
+      "group": "digital_access.account_blocked.block_reason_given",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Платформа сообщила мне конкретную причину этой блокировки",
+      "negative": "Платформа прямо сообщила, что конкретную причину этой блокировки не предоставляет",
+      "unknown": "Не знаю: Платформа сообщила мне конкретную причину этой блокировки",
+      "meaning": "Платформа сообщила конкретную причину; это не принятие её истинности или законности.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_blocked.block_reason_given",
+        "question": "Платформа сообщила конкретную причину блокировки?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_blocked.paid_service",
+      "stageId": "account_blocked",
+      "fieldId": "paid_service",
+      "group": "digital_access.account_blocked.paid_service",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Этот аккаунт я использовал для платной услуги или бизнеса",
+      "negative": "Этот аккаунт я не использовал ни для платной услуги, ни для бизнеса",
+      "unknown": "Не знаю: Этот аккаунт я использовал для платной услуги или бизнеса",
+      "meaning": "Платное использование ИЛИ бизнес. Raw цель/оплата не доказывает статус потребителя, применимый договор, нарушение либо обязанность возврата.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_blocked.paid_service",
+        "question": "Аккаунт использовался для платной услуги или бизнеса?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_blocked.funds_or_assets_held",
+      "stageId": "account_blocked",
+      "fieldId": "funds_or_assets_held",
+      "group": "digital_access.account_blocked.funds_or_assets_held",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В этом аккаунте остались деньги или оплаченные цифровые ценности",
+      "negative": "В этом аккаунте нет ни денег, ни оплаченных цифровых ценностей",
+      "unknown": "Не знаю: В этом аккаунте остались деньги или оплаченные цифровые ценности",
+      "meaning": "Конкретный остаток/оплаченная ценность в этом аккаунте. Не банковский депозит, не доказанное списание/ущерб/виновность.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.account_blocked.funds_or_assets_held",
+        "question": "На аккаунте остались деньги или оплаченные цифровые ценности?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.account_blocked.appeal_refused",
+      "stageId": "account_blocked",
+      "fieldId": "appeal_refused",
+      "group": "digital_access.account_blocked.appeal_refused",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "requestId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В ответе на эту апелляцию платформа отказала",
+      "negative": "В ответе на эту апелляцию платформа удовлетворила мою просьбу",
+      "unknown": "Не знаю: В ответе на эту апелляцию платформа отказала",
+      "meaning": "Результат уже отправленной конкретной апелляции, отличать отправку/доставку/ответ/отказ. Не создавать новую жалобу автоматически.",
+      "dependencies": [
+        "same_appeal_request",
+        "observed_response"
+      ],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.sim_swap.sim_swap_confirmed",
+      "stageId": "sim_swap",
+      "fieldId": "sim_swap_confirmed",
+      "group": "digital_access.sim_swap.sim_swap_confirmed",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Оператор сообщил мне, что эту SIM перевыпустили без меня",
+      "negative": "Оператор сообщил мне, что эту SIM без меня не перевыпускали",
+      "unknown": "Не знаю: Оператор сообщил мне, что эту SIM перевыпустили без меня",
+      "meaning": "Атрибутированное подтверждение оператора о перевыпуске без владельца. Потеря связи, неисправность SIM и слух не устанавливают этот факт.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.sim_swap.sim_swap_confirmed",
+        "question": "Оператор подтвердил перевыпуск сим-карты без владельца?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.sim_swap.number_recovered",
+      "stageId": "sim_swap",
+      "fieldId": "number_recovered",
+      "group": "digital_access.sim_swap.number_recovered",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Контроль над этим номером я уже восстановил",
+      "negative": "Контроль над этим номером я ещё не восстановил",
+      "unknown": "Не знаю: Контроль над этим номером я уже восстановил",
+      "meaning": "Восстановлен контроль именно этого номера; поданная заявка/новая SIM без рабочего контроля не достаточны. Не означает, что аккаунты уже защищены.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.sim_swap.number_recovered",
+        "question": "Контроль над номером уже восстановлен?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.sim_swap.accounts_compromised",
+      "stageId": "sim_swap",
+      "fieldId": "accounts_compromised",
+      "group": "digital_access.sim_swap.accounts_compromised",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Через этот номер посторонний вошёл в мои связанные аккаунты",
+      "negative": "Я проверил связанные с этим номером аккаунты и не обнаружил чужого доступа",
+      "unknown": "Не знаю: Через этот номер посторонний вошёл в мои связанные аккаунты",
+      "meaning": "Явно связанные аккаунты и событие. Для sim_swap нужна связь через номер; для lost_device — обнаруженный чужой доступ после утраты. Нельзя создавать факты в других stage по общему имени.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.sim_swap.accounts_compromised",
+        "question": "Через ваш номер посторонний получил доступ к связанным аккаунтам?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.sim_swap.money_lost",
+      "stageId": "sim_swap",
+      "fieldId": "money_lost",
+      "group": "digital_access.sim_swap.money_lost",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "operationId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После перевыпуска этой SIM я обнаружил пропажу денег",
+      "negative": "После перевыпуска этой SIM я проверил деньги и не обнаружил пропажи",
+      "unknown": "Не знаю: После перевыпуска этой SIM я обнаружил пропажу денег",
+      "meaning": "В sim_swap/lost_device принятый NEXT спрашивает наблюдаемую пропажу после события; не автоматически отсутствие согласия или банковский refund trigger. В device_malware вопрос отдельно о добровольном согласии, собственный обманный перевод не классифицируется по нажатию кнопки.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.sim_swap.money_lost",
+        "question": "После перевыпуска SIM-карты вы заметили пропажу денег?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.sim_swap.operator_refused",
+      "stageId": "sim_swap",
+      "fieldId": "operator_refused",
+      "group": "digital_access.sim_swap.operator_refused",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "requestId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В ответе на это обращение оператор отказался восстановить номер или дать сведения",
+      "negative": "В ответе на это обращение оператор согласился восстановить номер и дать сведения",
+      "unknown": "Не знаю: В ответе на это обращение оператор отказался восстановить номер или дать сведения",
+      "meaning": "Конкретный оператор/номер/запрос и наблюдаемый отказ восстановить номер либо дать сведения. Не выводить отказ из ожидания или отсутствия связи.",
+      "dependencies": [
+        "same_operator_request",
+        "observed_response"
+      ],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.email_compromised.access_lost",
+      "stageId": "email_compromised",
+      "fieldId": "access_lost",
+      "group": "digital_access.email_compromised.access_lost",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Я полностью потерял доступ к этому почтовому ящику",
+      "negative": "Доступ к этому почтовому ящику у меня сохранён",
+      "unknown": "Не знаю: Я полностью потерял доступ к этому почтовому ящику",
+      "meaning": "Полная утрата текущего доступа, не отдельная ошибка входа/недоступный способ. Позднее восстановление сохраняет историю утраты; не переносить между аккаунтами.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.email_compromised.access_lost",
+        "question": "Доступ к почтовому ящику полностью утрачен?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.email_compromised.recovery_contacts_changed",
+      "stageId": "email_compromised",
+      "fieldId": "recovery_contacts_changed",
+      "group": "digital_access.email_compromised.recovery_contacts_changed",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В этом ящике посторонний изменил данные восстановления",
+      "negative": "В этом ящике посторонний не изменял данные восстановления",
+      "unknown": "Не знаю: В этом ящике посторонний изменил данные восстановления",
+      "meaning": "Изменение посторонним почты ИЛИ номера; не утверждать смену обоих. Нужна связь с конкретным аккаунтом и наблюдаемым изменением.",
+      "dependencies": [],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.email_compromised.twofa_lost",
+      "stageId": "email_compromised",
+      "fieldId": "twofa_lost",
+      "group": "digital_access.email_compromised.twofa_lost",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Для этого ящика мне недоступен второй фактор или резервные коды",
+      "negative": "Для этого ящика мне доступны и второй фактор, и резервные коды",
+      "unknown": "Не знаю: Для этого ящика мне недоступен второй фактор или резервные коды",
+      "meaning": "В account_hacked/email_compromised: недоступен хотя бы один из второго фактора/резервных кодов, не оба автоматически. В messenger_takeover: посторонний сменил/установил облачный пароль; эти значения не являются взаимозаменяемыми.",
+      "dependencies": [],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.email_compromised.forwarding_rule_found",
+      "stageId": "email_compromised",
+      "fieldId": "forwarding_rule_found",
+      "group": "digital_access.email_compromised.forwarding_rule_found",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В настройках этого ящика я увидел чужую переадресацию или делегированный доступ",
+      "negative": "Я проверил настройки этого ящика и не обнаружил ни чужой переадресации, ни делегированного доступа",
+      "unknown": "Не знаю: В настройках этого ящика я увидел чужую переадресацию или делегированный доступ",
+      "meaning": "Наблюдаемая чужая переадресация/делегированный доступ именно этого mailbox. Не утверждать пересылку всех писем или взлом других аккаунтов.",
+      "dependencies": [],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.email_compromised.other_accounts_compromised",
+      "stageId": "email_compromised",
+      "fieldId": "other_accounts_compromised",
+      "group": "digital_access.email_compromised.other_accounts_compromised",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Через этот ящик посторонний получил доступ к моим другим аккаунтам",
+      "negative": "Я проверил другие аккаунты, связанные с этим ящиком, и не обнаружил чужого доступа",
+      "unknown": "Не знаю: Через этот ящик посторонний получил доступ к моим другим аккаунтам",
+      "meaning": "Независимо названные связанные аккаунты и события; нельзя размножить факт по всем аккаунтам владельца.",
+      "dependencies": [],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.email_compromised.service_is_google",
+      "stageId": "email_compromised",
+      "fieldId": "service_is_google",
+      "group": "digital_access.email_compromised.service_is_google",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Этот почтовый ящик относится к сервису Гугл",
+      "negative": "Этот почтовый ящик не относится к сервису Гугл",
+      "unknown": "Не знаю: Этот почтовый ящик относится к сервису Гугл",
+      "meaning": "Явно идентифицирован именно затронутый аккаунт/почтовый ящик. Открытая Google-страница, article/URL не доказывают провайдера. False не идентифицирует другого провайдера.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.email_compromised.service_is_google",
+        "question": "Этот почтовый ящик относится к сервису «Гугл»?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.email_compromised.support_refused",
+      "stageId": "email_compromised",
+      "fieldId": "support_refused",
+      "group": "digital_access.email_compromised.support_refused",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "requestId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В ответе на это обращение почтовый сервис отказал в восстановлении",
+      "negative": "В ответе на это обращение почтовый сервис согласился восстановить доступ",
+      "unknown": "Не знаю: В ответе на это обращение почтовый сервис отказал в восстановлении",
+      "meaning": "Фактический ответ поддержки на конкретный запрос, аккаунт/провайдер/время. Молчание, невозможность входа и отказ третьего сервиса не равны отказу.",
+      "dependencies": [
+        "same_service_request",
+        "observed_response"
+      ],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.messenger_takeover.access_lost",
+      "stageId": "messenger_takeover",
+      "fieldId": "access_lost",
+      "group": "digital_access.messenger_takeover.access_lost",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Я полностью потерял доступ к этому мессенджеру",
+      "negative": "Доступ к этому мессенджеру у меня сохранён",
+      "unknown": "Не знаю: Я полностью потерял доступ к этому мессенджеру",
+      "meaning": "Полная утрата текущего доступа, не отдельная ошибка входа/недоступный способ. Позднее восстановление сохраняет историю утраты; не переносить между аккаунтами.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.messenger_takeover.access_lost",
+        "question": "Доступ к мессенджеру полностью утрачен?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.messenger_takeover.sim_access_available",
+      "stageId": "messenger_takeover",
+      "fieldId": "sim_access_available",
+      "group": "digital_access.messenger_takeover.sim_access_available",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Доступ к номеру этого мессенджера у меня сохранён",
+      "negative": "Доступ к номеру этого мессенджера у меня утрачен",
+      "unknown": "Не знаю: Доступ к номеру этого мессенджера у меня сохранён",
+      "meaning": "Доступ к привязанному номеру данного мессенджера; физическое наличие телефона/чужая SIM не доказывают доступ.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.messenger_takeover.sim_access_available",
+        "question": "Доступ к привязанному номеру телефона сохранён?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.messenger_takeover.twofa_lost",
+      "stageId": "messenger_takeover",
+      "fieldId": "twofa_lost",
+      "group": "digital_access.messenger_takeover.twofa_lost",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В этом мессенджере посторонний сменил или установил облачный пароль",
+      "negative": "В этом мессенджере посторонний не менял и не устанавливал облачный пароль",
+      "unknown": "Не знаю: В этом мессенджере посторонний сменил или установил облачный пароль",
+      "meaning": "В account_hacked/email_compromised: недоступен хотя бы один из второго фактора/резервных кодов, не оба автоматически. В messenger_takeover: посторонний сменил/установил облачный пароль; эти значения не являются взаимозаменяемыми.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.messenger_takeover.twofa_lost",
+        "question": "В вашем мессенджере посторонний сменил или установил облачный пароль — отдельный пароль, который сервис запрашивает при входе?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.messenger_takeover.unauthorized_sessions_active",
+      "stageId": "messenger_takeover",
+      "fieldId": "unauthorized_sessions_active",
+      "group": "digital_access.messenger_takeover.unauthorized_sessions_active",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В списке сеансов этого мессенджера я вижу чужой активный сеанс",
+      "negative": "Я проверил список сеансов этого мессенджера и чужих активных сеансов там нет",
+      "unknown": "Не знаю: В списке сеансов этого мессенджера я вижу чужой активный сеанс",
+      "meaning": "Наблюдаемые чужие текущие сеансы. История входа не равна активному сеансу; завершение позднее меняет состояние, сохраняя историю.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.messenger_takeover.unauthorized_sessions_active",
+        "question": "В аккаунте остаются чужие активные сессии?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.messenger_takeover.attacker_messages_sent",
+      "stageId": "messenger_takeover",
+      "fieldId": "attacker_messages_sent",
+      "group": "digital_access.messenger_takeover.attacker_messages_sent",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В этом мессенджере посторонний уже отправил сообщения от моего имени",
+      "negative": "В этом мессенджере посторонний не отправлял сообщения от моего имени",
+      "unknown": "Не знаю: В этом мессенджере посторонний уже отправил сообщения от моего имени",
+      "meaning": "Уже отправленные посторонним сообщения конкретного аккаунта; черновик/угроза/план не являются отправкой.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.messenger_takeover.attacker_messages_sent",
+        "question": "От вашего имени посторонний уже отправлял сообщения в этом мессенджере?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.messenger_takeover.contacts_lost_money",
+      "stageId": "messenger_takeover",
+      "fieldId": "contacts_lost_money",
+      "group": "digital_access.messenger_takeover.contacts_lost_money",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "operationId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Мой контакт сообщил, что уже перевёл деньги постороннему из-за сообщения этого мессенджера",
+      "negative": "Мой контакт сообщил, что не переводил деньги из-за сообщения этого мессенджера",
+      "unknown": "Не знаю: Мой контакт сообщил, что уже перевёл деньги постороннему из-за сообщения этого мессенджера",
+      "meaning": "Перевод контактом в связи с этим сообщением. Отдельный участник/операция/время; не собственное списание владельца аккаунта.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.messenger_takeover.contacts_lost_money",
+        "question": "Контакты уже перевели деньги злоумышленнику?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.lost_device.device_stolen",
+      "stageId": "lost_device",
+      "fieldId": "device_stolen",
+      "group": "digital_access.lost_device.device_stolen",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Я видел, как посторонний забрал это устройство без моего согласия",
+      "negative": "Это устройство я потерял, а не отдал постороннему",
+      "unknown": "Не знаю: Я видел, как посторонний забрал это устройство без моего согласия",
+      "meaning": "Собственное сообщение о хищении с наблюдаемыми обстоятельствами; неопределённое исчезновение не превращать в доказанную кражу.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.lost_device.device_stolen",
+        "question": "Телефон был похищен, а не потерян?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.lost_device.device_unprotected",
+      "stageId": "lost_device",
+      "fieldId": "device_unprotected",
+      "group": "digital_access.lost_device.device_unprotected",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "До утраты это устройство открывалось смахиванием без кода, пароля и биометрии",
+      "negative": "До утраты это устройство требовало код, пароль, отпечаток или лицо для открытия",
+      "unknown": "Не знаю: До утраты это устройство открывалось смахиванием без кода, пароля и биометрии",
+      "meaning": "До утраты настроено открытие без кода/пароля/биометрии. True=без подтверждения; false=требовалось подтверждение; неизвестно=null. Открытый в момент утраты экран, качество PIN и гарантия безопасности не выводятся.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.lost_device.device_unprotected",
+        "question": "До утраты устройства экран разблокировался без кода, пароля, отпечатка или распознавания лица?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.lost_device.sim_blocked",
+      "stageId": "lost_device",
+      "fieldId": "sim_blocked",
+      "group": "digital_access.lost_device.sim_blocked",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Оператор сообщил мне, что SIM этого устройства уже заблокирована",
+      "negative": "Оператор сообщил мне, что SIM этого устройства ещё не заблокирована",
+      "unknown": "Не знаю: Оператор сообщил мне, что SIM этого устройства уже заблокирована",
+      "meaning": "Оператор уже заблокировал конкретную SIM. Нажатие кнопки/отправка заявки/обещание не равны результату.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.lost_device.sim_blocked",
+        "question": "Сим-карта уже заблокирована оператором?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.lost_device.remote_lock_completed",
+      "stageId": "lost_device",
+      "fieldId": "remote_lock_completed",
+      "group": "digital_access.lost_device.remote_lock_completed",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Удалённую блокировку или стирание этого устройства я уже запустил",
+      "negative": "Удалённую блокировку и стирание этого устройства я ещё не запускал",
+      "unknown": "Не знаю: Удалённую блокировку или стирание этого устройства я уже запустил",
+      "meaning": "Несмотря на имя, принятый вопрос и label означают «блокировка или стирание уже запущены». Хранить вид команды, request/action/result отдельно. Запуск не доказывает доставку/завершение, отсутствие сети не равно стиранию; DM не запускает команду.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.lost_device.remote_lock_completed",
+        "question": "Удалённая блокировка или стирание устройства уже запущены?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.lost_device.accounts_compromised",
+      "stageId": "lost_device",
+      "fieldId": "accounts_compromised",
+      "group": "digital_access.lost_device.accounts_compromised",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После утраты этого устройства я обнаружил чужой доступ к моим аккаунтам",
+      "negative": "После утраты этого устройства я проверил аккаунты и не обнаружил чужого доступа",
+      "unknown": "Не знаю: После утраты этого устройства я обнаружил чужой доступ к моим аккаунтам",
+      "meaning": "Явно связанные аккаунты и событие. Для sim_swap нужна связь через номер; для lost_device — обнаруженный чужой доступ после утраты. Нельзя создавать факты в других stage по общему имени.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.lost_device.accounts_compromised",
+        "question": "После утраты устройства вы обнаружили чужой доступ к своим аккаунтам?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.lost_device.money_lost",
+      "stageId": "lost_device",
+      "fieldId": "money_lost",
+      "group": "digital_access.lost_device.money_lost",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "operationId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После утраты этого устройства я обнаружил пропажу денег",
+      "negative": "После утраты этого устройства я проверил деньги и не обнаружил пропажи",
+      "unknown": "Не знаю: После утраты этого устройства я обнаружил пропажу денег",
+      "meaning": "В sim_swap/lost_device принятый NEXT спрашивает наблюдаемую пропажу после события; не автоматически отсутствие согласия или банковский refund trigger. В device_malware вопрос отдельно о добровольном согласии, собственный обманный перевод не классифицируется по нажатию кнопки.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.lost_device.money_lost",
+        "question": "После утраты устройства вы обнаружили пропажу денег?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.device_malware.remote_access_active",
+      "stageId": "device_malware",
+      "fieldId": "remote_access_active",
+      "group": "digital_access.device_malware.remote_access_active",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "На этом устройстве я сейчас вижу активный сеанс удалённого доступа",
+      "negative": "На этом устройстве я проверил сеансы и активного удалённого доступа нет",
+      "unknown": "Не знаю: На этом устройстве я сейчас вижу активный сеанс удалённого доступа",
+      "meaning": "Текущее наблюдаемое управление/сеанс удалённого доступа; установка программы или подозрение на malware не доказывают активный доступ.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.device_malware.remote_access_active",
+        "question": "На устройстве сохраняется активный удалённый доступ?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.device_malware.remote_access_installed_by_request",
+      "stageId": "device_malware",
+      "fieldId": "remote_access_installed_by_request",
+      "group": "digital_access.device_malware.remote_access_installed_by_request",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "На это устройство я установил программу удалённого доступа по просьбе неизвестного",
+      "negative": "На это устройство я не устанавливал программу удалённого доступа по просьбе неизвестного",
+      "unknown": "Не знаю: На это устройство я установил программу удалённого доступа по просьбе неизвестного",
+      "meaning": "Наблюдаемая установка по просьбе неизвестного; не означает активный сеанс, заражение или передачу конкретных данных.",
+      "dependencies": [],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.device_malware.credentials_entered_after_infection",
+      "stageId": "device_malware",
+      "fieldId": "credentials_entered_after_infection",
+      "group": "digital_access.device_malware.credentials_entered_after_infection",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После обнаруженного заражения этого устройства я вводил на нём пароли или коды",
+      "negative": "После обнаруженного заражения этого устройства я не вводил на нём пароли и коды",
+      "unknown": "Не знаю: После обнаруженного заражения этого устройства я вводил на нём пароли или коды",
+      "meaning": "Нужна временная связь ввода с тем же установленным/сообщённым эпизодом компрометации. Не диагностировать заражение по одному торможению; при неясном времени держать raw.",
+      "dependencies": [
+        "same_compromise_episode",
+        "event_order_established"
+      ],
+      "question": {
+        "key": "digital_access.device_malware.credentials_entered_after_infection",
+        "question": "После заражения на устройстве вводили пароли или коды?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.device_malware.banking_used_after_infection",
+      "stageId": "device_malware",
+      "fieldId": "banking_used_after_infection",
+      "group": "digital_access.device_malware.banking_used_after_infection",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После обнаруженного заражения этого устройства я открывал банковское или криптоприложение",
+      "negative": "После обнаруженного заражения этого устройства я не открывал ни банковского, ни криптоприложения",
+      "unknown": "Не знаю: После обнаруженного заражения этого устройства я открывал банковское или криптоприложение",
+      "meaning": "Банковское ИЛИ криптоприложение после того же эпизода; не выводить, какое именно, и не применять банковскую норму к crypto автоматически.",
+      "dependencies": [
+        "same_compromise_episode",
+        "event_order_established"
+      ],
+      "question": {
+        "key": "digital_access.device_malware.banking_used_after_infection",
+        "question": "После заражения открывали банковское или криптоприложение?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.device_malware.money_lost",
+      "stageId": "device_malware",
+      "fieldId": "money_lost",
+      "group": "digital_access.device_malware.money_lost",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId",
+        "operationId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "В этом эпизоде я обнаружил операции с деньгами без моего добровольного согласия",
+      "negative": "В этом эпизоде я проверил операции с деньгами и все они были с моим добровольным согласием",
+      "unknown": "Не знаю: В этом эпизоде я обнаружил операции с деньгами без моего добровольного согласия",
+      "meaning": "В sim_swap/lost_device принятый NEXT спрашивает наблюдаемую пропажу после события; не автоматически отсутствие согласия или банковский refund trigger. В device_malware вопрос отдельно о добровольном согласии, собственный обманный перевод не классифицируется по нажатию кнопки.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.device_malware.money_lost",
+        "question": "Вы обнаружили операции с деньгами без вашего добровольного согласия? Собственный перевод под обманом оценивайте по согласию, а не по тому, кто нажал кнопку перевода. Если обстоятельства неясны, выберите «Не знаю».",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.device_malware.device_isolated",
+      "stageId": "device_malware",
+      "fieldId": "device_isolated",
+      "group": "digital_access.device_malware.device_isolated",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Это устройство я уже отключил от сети и других устройств",
+      "negative": "Это устройство я ещё не отключил от сети и других устройств",
+      "unknown": "Не знаю: Это устройство я уже отключил от сети и других устройств",
+      "meaning": "Уже отключено от сети И других устройств, не только закрыто приложение или дано намерение отключить.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.device_malware.device_isolated",
+        "question": "Устройство уже отключено от сети и других устройств?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.password_changed",
+      "stageId": "secure_after",
+      "fieldId": "password_changed",
+      "group": "digital_access.secure_after.password_changed",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После этого происшествия я уже изменил пароль этого аккаунта",
+      "negative": "После этого происшествия я ещё не изменил пароль этого аккаунта",
+      "unknown": "Не знаю: После этого происшествия я уже изменил пароль этого аккаунта",
+      "meaning": "Реальное изменение пароля после связанного взлома конкретного аккаунта; совет/попытка не исполнение.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.secure_after.password_changed",
+        "question": "Пароль после первого взлома уже изменён?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.all_sessions_ended",
+      "stageId": "secure_after",
+      "fieldId": "all_sessions_ended",
+      "group": "digital_access.secure_after.all_sessions_ended",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После этого происшествия я уже завершил все прежние сеансы этого аккаунта",
+      "negative": "После этого происшествия я ещё не завершил все прежние сеансы этого аккаунта",
+      "unknown": "Не знаю: После этого происшествия я уже завершил все прежние сеансы этого аккаунта",
+      "meaning": "Все прежние активные сессии этого аккаунта завершены. Выход с одного устройства не достаточен; поздний новый чужой сеанс не стирает прошлое завершение.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.secure_after.all_sessions_ended",
+        "question": "Все прежние активные сессии завершены?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.recovery_contacts_verified",
+      "stageId": "secure_after",
+      "fieldId": "recovery_contacts_verified",
+      "group": "digital_access.secure_after.recovery_contacts_verified",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "DERIVED_ONLY",
+      "positive": null,
+      "negative": null,
+      "unknown": null,
+      "meaning": "DERIVED_ONLY: все четыре независимых checked/owned true. Любой false даёт false, явный null без false даёт null, неполнота без null остаётся missing. Исторический aggregate true не разворачивать в листья.",
+      "dependencies": [
+        "recovery_email_checked",
+        "recovery_email_owned",
+        "recovery_phone_checked",
+        "recovery_phone_owned"
+      ],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.secure_after.twofa_reset",
+      "stageId": "secure_after",
+      "fieldId": "twofa_reset",
+      "group": "digital_access.secure_after.twofa_reset",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "DERIVED_ONLY",
+      "positive": null,
+      "negative": null,
+      "unknown": null,
+      "meaning": "DERIVED_ONLY из independent factor/codes с applicability. backup_codes_supported=false -> codes NOT_APPLICABLE, не false и не автоматически aggregate=true. Новые коды=true подтверждают applicability без записи другого reader fact. supported=false + codes=true -> конфликт.",
+      "dependencies": [
+        "additional_factor_reset",
+        "backup_codes_supported",
+        "backup_codes_reset"
+      ],
+      "question": null
+    },
+    {
+      "fieldKey": "digital_access.secure_after.device_checked",
+      "stageId": "secure_after",
+      "fieldId": "device_checked",
+      "group": "digital_access.secure_after.device_checked",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После этого происшествия я уже проверил все используемые мной устройства на вредоносное ПО",
+      "negative": "После этого происшествия я ещё не проверил все используемые мной устройства на вредоносное ПО",
+      "unknown": "Не знаю: После этого происшествия я уже проверил все используемые мной устройства на вредоносное ПО",
+      "meaning": "Проверены все используемые в этом восстановлении устройства; сканирование одного не равно всем. Проверка не сертификат отсутствия malware.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.secure_after.device_checked",
+        "question": "Все используемые устройства проверены на вредоносное ПО?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.recovery_email_checked",
+      "stageId": "secure_after",
+      "fieldId": "recovery_email_checked",
+      "group": "digital_access.secure_after.recovery_email_checked",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Я проверил фактический адрес почты восстановления в настройках этого аккаунта",
+      "negative": "Я ещё не проверил адрес почты восстановления в настройках этого аккаунта",
+      "unknown": "Не знаю: Я проверил фактический адрес почты восстановления в настройках этого аккаунта",
+      "meaning": "Проверен фактический recovery email в настройках этого аккаунта; письмо, открытая почта или наличие email в профиле не доказательство.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.secure_after.recovery_email_checked",
+        "question": "Вы проверили адрес почты, указанный для восстановления этого аккаунта?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.recovery_email_owned",
+      "stageId": "secure_after",
+      "fieldId": "recovery_email_owned",
+      "group": "digital_access.secure_after.recovery_email_owned",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Проверенный адрес почты восстановления этого аккаунта принадлежит мне",
+      "negative": "Проверенный адрес почты восстановления этого аккаунта принадлежит постороннему",
+      "unknown": "Не знаю: Проверенный адрес почты восстановления этого аккаунта принадлежит мне",
+      "meaning": "Только после checked=true и для того же показанного адреса. Нет адреса/нет доступа/не проверял != owned=false. Смена адреса аннулирует зависимое ownership.",
+      "dependencies": [
+        "recovery_email_checked=true",
+        "same_recovery_email_setting"
+      ],
+      "question": {
+        "key": "digital_access.secure_after.recovery_email_owned",
+        "question": "Указанная в настройках почта для восстановления принадлежит вам?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.recovery_phone_checked",
+      "stageId": "secure_after",
+      "fieldId": "recovery_phone_checked",
+      "group": "digital_access.secure_after.recovery_phone_checked",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Я проверил фактический номер восстановления в настройках этого аккаунта",
+      "negative": "Я ещё не проверил номер восстановления в настройках этого аккаунта",
+      "unknown": "Не знаю: Я проверил фактический номер восстановления в настройках этого аккаунта",
+      "meaning": "Проверен фактический recovery phone в настройках этого аккаунта; доступ к SIM сам по себе не доказательство просмотра настройки.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.secure_after.recovery_phone_checked",
+        "question": "Вы проверили номер телефона, указанный для восстановления этого аккаунта?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.recovery_phone_owned",
+      "stageId": "secure_after",
+      "fieldId": "recovery_phone_owned",
+      "group": "digital_access.secure_after.recovery_phone_owned",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Проверенный номер восстановления этого аккаунта принадлежит мне",
+      "negative": "Проверенный номер восстановления этого аккаунта принадлежит постороннему",
+      "unknown": "Не знаю: Проверенный номер восстановления этого аккаунта принадлежит мне",
+      "meaning": "Только после checked=true для того же номера. Общий ответ о контактах не доказательство; смена номера аннулирует зависимое ownership.",
+      "dependencies": [
+        "recovery_phone_checked=true",
+        "same_recovery_phone_setting"
+      ],
+      "question": {
+        "key": "digital_access.secure_after.recovery_phone_owned",
+        "question": "Указанный в настройках номер для восстановления принадлежит вам?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.additional_factor_reset",
+      "stageId": "secure_after",
+      "fieldId": "additional_factor_reset",
+      "group": "digital_access.secure_after.additional_factor_reset",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После этого происшествия я заново настроил дополнительное подтверждение входа в этот аккаунт",
+      "negative": "После этого происшествия я ещё не настроил заново дополнительное подтверждение входа в этот аккаунт",
+      "unknown": "Не знаю: После этого происшествия я заново настроил дополнительное подтверждение входа в этот аккаунт",
+      "meaning": "Дополнительное подтверждение входа реально заново настроено после этого происшествия. Наличие старой 2FA не равно reset; не означает новые коды.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.secure_after.additional_factor_reset",
+        "question": "После происшествия вы заново настроили дополнительное подтверждение входа?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.backup_codes_supported",
+      "stageId": "secure_after",
+      "fieldId": "backup_codes_supported",
+      "group": "digital_access.secure_after.backup_codes_supported",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "Этот сервис предоставляет резервные коды для входа в этот аккаунт",
+      "negative": "Этот сервис не предоставляет резервные коды для входа в этот аккаунт",
+      "unknown": "Не знаю: Этот сервис предоставляет резервные коды для входа в этот аккаунт",
+      "meaning": "Возможность именно этого сервиса/аккаунта на текущее время. False=N/A; не отсутствие выполненного действия и не общий вывод о бренде.",
+      "dependencies": [],
+      "question": {
+        "key": "digital_access.secure_after.backup_codes_supported",
+        "question": "Ваш сервис позволяет получить резервные коды для входа?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    },
+    {
+      "fieldKey": "digital_access.secure_after.backup_codes_reset",
+      "stageId": "secure_after",
+      "fieldId": "backup_codes_reset",
+      "group": "digital_access.secure_after.backup_codes_reset",
+      "scopeKeys": [
+        "actorId",
+        "subjectId",
+        "eventId"
+      ],
+      "status": "BOUNDED_OBSERVATION",
+      "positive": "После этого происшествия я получил новые резервные коды этого аккаунта",
+      "negative": "После этого происшествия я ещё не получил новые резервные коды этого аккаунта",
+      "unknown": "Не знаю: После этого происшествия я получил новые резервные коды этого аккаунта",
+      "meaning": "Реально получены новые коды после этого происшествия. Не просить секретные значения кодов; хранить только наблюдение о выпуске/времени. Предварительное условие вопроса supported=true.",
+      "dependencies": [
+        "backup_codes_supported=true OR independently reported new-code issue; false conflicts"
+      ],
+      "question": {
+        "key": "digital_access.secure_after.backup_codes_reset",
+        "question": "После происшествия вы получили новые резервные коды?",
+        "buttons": [
+          [
+            true,
+            "Да"
+          ],
+          [
+            false,
+            "Нет"
+          ],
+          [
+            null,
+            "Не знаю"
+          ]
+        ],
+        "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+      }
+    }
+  ],
+  "questions": [
+    {
+      "key": "digital_access.account_hacked.access_lost",
+      "question": "Доступ к аккаунту полностью утрачен?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.account_hacked.recovery_contacts_changed",
+      "question": "Злоумышленник сменил почту или номер для восстановления?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.account_hacked.twofa_lost",
+      "question": "Хотя бы один способ входа сейчас недоступен вам: второй фактор или резервные коды? Если доступны оба, ответьте «Нет».",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.account_hacked.unauthorized_actions_found",
+      "question": "Обнаружены действия или публикации злоумышленника?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.account_hacked.payment_data_linked",
+      "question": "В аккаунте есть денежный остаток или сохранены платёжные данные?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.account_hacked.service_is_google",
+      "question": "Затронутый аккаунт относится к сервису «Гугл»?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.account_blocked.account_hacked",
+      "question": "Перед блокировкой были признаки взлома аккаунта?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.account_blocked.block_reason_given",
+      "question": "Платформа сообщила конкретную причину блокировки?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.account_blocked.paid_service",
+      "question": "Аккаунт использовался для платной услуги или бизнеса?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.account_blocked.funds_or_assets_held",
+      "question": "На аккаунте остались деньги или оплаченные цифровые ценности?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.sim_swap.sim_swap_confirmed",
+      "question": "Оператор подтвердил перевыпуск сим-карты без владельца?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.sim_swap.number_recovered",
+      "question": "Контроль над номером уже восстановлен?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.sim_swap.accounts_compromised",
+      "question": "Через ваш номер посторонний получил доступ к связанным аккаунтам?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.sim_swap.money_lost",
+      "question": "После перевыпуска SIM-карты вы заметили пропажу денег?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.email_compromised.access_lost",
+      "question": "Доступ к почтовому ящику полностью утрачен?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.email_compromised.service_is_google",
+      "question": "Этот почтовый ящик относится к сервису «Гугл»?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.messenger_takeover.access_lost",
+      "question": "Доступ к мессенджеру полностью утрачен?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.messenger_takeover.sim_access_available",
+      "question": "Доступ к привязанному номеру телефона сохранён?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.messenger_takeover.twofa_lost",
+      "question": "В вашем мессенджере посторонний сменил или установил облачный пароль — отдельный пароль, который сервис запрашивает при входе?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.messenger_takeover.unauthorized_sessions_active",
+      "question": "В аккаунте остаются чужие активные сессии?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.messenger_takeover.attacker_messages_sent",
+      "question": "От вашего имени посторонний уже отправлял сообщения в этом мессенджере?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.messenger_takeover.contacts_lost_money",
+      "question": "Контакты уже перевели деньги злоумышленнику?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.lost_device.device_stolen",
+      "question": "Телефон был похищен, а не потерян?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.lost_device.device_unprotected",
+      "question": "До утраты устройства экран разблокировался без кода, пароля, отпечатка или распознавания лица?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.lost_device.sim_blocked",
+      "question": "Сим-карта уже заблокирована оператором?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.lost_device.remote_lock_completed",
+      "question": "Удалённая блокировка или стирание устройства уже запущены?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.lost_device.accounts_compromised",
+      "question": "После утраты устройства вы обнаружили чужой доступ к своим аккаунтам?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.lost_device.money_lost",
+      "question": "После утраты устройства вы обнаружили пропажу денег?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.device_malware.remote_access_active",
+      "question": "На устройстве сохраняется активный удалённый доступ?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.device_malware.credentials_entered_after_infection",
+      "question": "После заражения на устройстве вводили пароли или коды?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.device_malware.banking_used_after_infection",
+      "question": "После заражения открывали банковское или криптоприложение?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.device_malware.money_lost",
+      "question": "Вы обнаружили операции с деньгами без вашего добровольного согласия? Собственный перевод под обманом оценивайте по согласию, а не по тому, кто нажал кнопку перевода. Если обстоятельства неясны, выберите «Не знаю».",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.device_malware.device_isolated",
+      "question": "Устройство уже отключено от сети и других устройств?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.password_changed",
+      "question": "Пароль после первого взлома уже изменён?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.all_sessions_ended",
+      "question": "Все прежние активные сессии завершены?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.device_checked",
+      "question": "Все используемые устройства проверены на вредоносное ПО?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.recovery_email_checked",
+      "question": "Вы проверили адрес почты, указанный для восстановления этого аккаунта?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.recovery_email_owned",
+      "question": "Указанная в настройках почта для восстановления принадлежит вам?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.recovery_phone_checked",
+      "question": "Вы проверили номер телефона, указанный для восстановления этого аккаунта?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.recovery_phone_owned",
+      "question": "Указанный в настройках номер для восстановления принадлежит вам?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.additional_factor_reset",
+      "question": "После происшествия вы заново настроили дополнительное подтверждение входа?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.backup_codes_supported",
+      "question": "Ваш сервис позволяет получить резервные коды для входа?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    },
+    {
+      "key": "digital_access.secure_after.backup_codes_reset",
+      "question": "После происшествия вы получили новые резервные коды?",
+      "buttons": [
+        [
+          true,
+          "Да"
+        ],
+        [
+          false,
+          "Нет"
+        ],
+        [
+          null,
+          "Не знаю"
+        ]
+      ],
+      "meaning": "Direct button value updates exactly this one field; no independent sibling inferred."
+    }
+  ],
+  "modelFingerprint": "dac6beed4d19c55b3b354c5ab78407122d10c6b5acd002d89c658127f8f9ce26",
+  "priority": {
+    "account_hacked": [
+      "access_lost",
+      "service_is_google",
+      "recovery_contacts_changed",
+      "twofa_lost",
+      "unauthorized_actions_found",
+      "payment_data_linked"
+    ],
+    "account_blocked": [
+      "account_hacked",
+      "funds_or_assets_held",
+      "paid_service",
+      "block_reason_given"
+    ],
+    "sim_swap": [
+      "sim_swap_confirmed",
+      "number_recovered",
+      "money_lost",
+      "accounts_compromised"
+    ],
+    "email_compromised": [
+      "service_is_google",
+      "access_lost"
+    ],
+    "messenger_takeover": [
+      "access_lost",
+      "sim_access_available",
+      "unauthorized_sessions_active",
+      "twofa_lost",
+      "attacker_messages_sent",
+      "contacts_lost_money"
+    ],
+    "lost_device": [
+      "sim_blocked",
+      "remote_lock_completed",
+      "device_stolen",
+      "device_unprotected",
+      "accounts_compromised",
+      "money_lost"
+    ],
+    "device_malware": [
+      "device_isolated",
+      "remote_access_active",
+      "credentials_entered_after_infection",
+      "banking_used_after_infection",
+      "money_lost"
+    ],
+    "secure_after": [
+      "all_sessions_ended",
+      "recovery_email_checked",
+      "recovery_email_owned",
+      "recovery_phone_checked",
+      "recovery_phone_owned",
+      "password_changed",
+      "additional_factor_reset",
+      "backup_codes_supported",
+      "backup_codes_reset",
+      "device_checked"
+    ]
+  }
+}

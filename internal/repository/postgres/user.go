@@ -19,23 +19,41 @@ func NewUserRepository(pool *pgxpool.Pool) *UserRepository {
 
 func (r *UserRepository) CreateUser(ctx context.Context, user *entity.User) error {
 	query := `
-		INSERT INTO chat.user (id, email)
+		INSERT INTO chat.site_user (id, email)
 		VALUES ($1, $2)
+		ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email
+		WHERE chat.site_user.email IS NOT NULL
+		  AND chat.site_user.email IS DISTINCT FROM EXCLUDED.email
 	`
 
-	_, err := r.pool.Exec(ctx, query, user.ID, user.Email)
+	result, err := r.pool.Exec(ctx, query, user.ID, user.Email)
 	if err != nil {
 		return fmt.Errorf("failed to create user: %w", err)
+	}
+	if result.RowsAffected() == 0 {
+		var erased bool
+		if err := r.pool.QueryRow(ctx, "SELECT email IS NULL FROM chat.site_user WHERE id=$1", user.ID).Scan(&erased); err != nil {
+			return err
+		}
+		if erased {
+			return repository.ErrUserErased
+		}
 	}
 
 	return nil
 }
 
+func (r *UserRepository) DisableErasedUser(ctx context.Context, userID int) error {
+	_, err := r.pool.Exec(ctx, `INSERT INTO chat.site_user (id, email) VALUES ($1, NULL)
+		ON CONFLICT (id) DO UPDATE SET email=NULL`, userID)
+	return err
+}
+
 func (r *UserRepository) UserExists(ctx context.Context, id int) (bool, error) {
 	query := `
 		SELECT count(*)
-		FROM chat.user
-		WHERE id = $1
+		FROM chat.site_user
+		WHERE id = $1 AND email IS NOT NULL
 	`
 
 	var count int64
@@ -49,8 +67,8 @@ func (r *UserRepository) UserExists(ctx context.Context, id int) (bool, error) {
 func (r *UserRepository) GetUser(ctx context.Context, id int) (*entity.User, error) {
 	query := `
 		SELECT id, email
-		FROM chat.user
-		WHERE id = $1
+		FROM chat.site_user
+		WHERE id = $1 AND email IS NOT NULL
 		LIMIT 1
 	`
 

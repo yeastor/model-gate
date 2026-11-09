@@ -26,12 +26,12 @@ export async function atomic(file, data) {
   await rename(temp, file);
 }
 export const active = () => jsonFile(path.join(root, "active.json"));
-export async function api(base, route, body, method) {
+export async function api(base, route, body, method, signal) {
   const response = await fetch(base + route, {
     method: method || (body ? "POST" : "GET"),
     headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
-    signal: AbortSignal.timeout(180000),
+    signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(180000)]) : AbortSignal.timeout(180000),
   });
   if (!response.ok)
     throw new Error(
@@ -39,14 +39,14 @@ export async function api(base, route, body, method) {
     );
   return response.json();
 }
-export const q = (route, body, method) => api(qdrant, route, body, method);
-export async function embed(text) {
+export const q = (route, body, method, signal) => api(qdrant, route, body, method, signal);
+export async function embed(text, signal) {
   const result = await api(ollama, "/api/embed", {
     model: "bge-m3",
     input: text,
     truncate: false,
     keep_alive: "10m",
-  });
+  }, undefined, signal);
   if (
     !result.embeddings?.length ||
     result.embeddings.some(
@@ -134,20 +134,23 @@ export async function search(question, options) {
   const stageId = typeof options === 'string' ? options : options?.hardStageId;
   const categoryId = typeof options === 'object' ? options?.categoryId : undefined;
   const current = await active();
+  const requestedLimit = typeof options === "object" ? options?.limit : undefined;
+  const limit = Number.isInteger(requestedLimit) ? Math.max(8, Math.min(64, requestedLimit)) : 8;
   if (!current) throw new Error("Сначала импортируйте пакет.");
   const key = bytesHash(Buffer.from(question)) + '.json';
   const cached = await jsonFile(path.join(root, 'embedding-cache', current.model_digest, key));
-  const [vector] = cached ? [cached] : await embed(question);
+  const signal = typeof options === "object" ? options?.signal : undefined;
+  const [vector] = cached ? [cached] : await embed(question, signal);
   return (
     await q(`/collections/${alias}/points/search`, {
       vector,
-      limit: 8,
+      limit,
       with_payload: true,
       ...((stageId || categoryId) ? { filter: {must: [
         ...(stageId ? [{key:'stage.id',match:{value:stageId}}] : []),
         ...(categoryId ? [{key:'category.id',match:{value:categoryId}}] : [])
       ]}} : {}),
-    })
+    }, undefined, signal)
   ).result;
 }
 export function assertImportPolicy(bundle, previous = null) {

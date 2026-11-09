@@ -1,0 +1,2437 @@
+{
+  "schema": "digital-threats-bounded-profile/v1",
+  "version": "digital_threats.20261026.v1",
+  "categoryId": "digital_threats",
+  "defaultActivation": false,
+  "source": {
+    "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_threats/stage-next-finite-successor/20261026-v1/corrected-full-stage.json",
+    "bytes": 13846083,
+    "sha256": "c055728c86c29d4943591b4f0a42ea0f603e9c9af64089429df5d761c3670dcc"
+  },
+  "components": {
+    "current-answer-lookup.json": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_threats/stage-next-finite-successor/20261026-v1/current-answer-lookup.json",
+      "bytes": 30987347,
+      "sha256": "b6f994b8120e9be8d304562a87bcc44548a5c892a6735ad02c41f0cfb2f64366"
+    },
+    "current-stage-help.json": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_threats/stage-next-finite-successor/20261026-v1/current-stage-help.json",
+      "bytes": 31800,
+      "sha256": "3103bf510a26ae467632376fa98e2a151dbad7df5845a46c0677e840e0257072"
+    },
+    "presentation.mjs": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_threats/stage-next-finite-successor/20261026-v1/presentation.mjs",
+      "bytes": 24854,
+      "sha256": "4e41bfeab996a8b29b030fbc17cf0c4fba75252b157e066e1b16d14dfcd06a11"
+    },
+    "presentation-service.mjs": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_threats/stage-next-finite-successor/20261026-v1/presentation-service.mjs",
+      "bytes": 2693,
+      "sha256": "612ae75759bf8294f891d3cfd6e88963fcfc5e0ae2879e8a361a6ea9ed909639"
+    }
+  },
+  "owner": {
+    "owner-decision.json": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_threats/owner-question-and-length-decisions/20261026-v1/owner-decision.json",
+      "bytes": 1157,
+      "sha256": "c7217c237857e3fa4de5e9d94eb01ee0420804043b1bb45ba58707612e381aae"
+    },
+    "effective-question-plan.json": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_threats/owner-question-and-length-decisions/20261026-v1/effective-question-plan.json",
+      "bytes": 53066,
+      "sha256": "114e277c4e1f14a9c98dbb1e08da1a4e9bceaa530e8072d94948234c9083c713"
+    },
+    "length-exception.json": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/digital_threats/owner-question-and-length-decisions/20261026-v1/length-exception.json",
+      "bytes": 629941,
+      "sha256": "af9c3a3a7ca388e3f2d0dfac7b4b24a23091819f304587e40889e3cd8de8fa17"
+    }
+  },
+  "stages": [
+    {
+      "id": "blackmail",
+      "name": "Шантажируют публикацией или рассылкой",
+      "phrase": "Шантажируют публикацией или рассылкой"
+    },
+    {
+      "id": "data_leak",
+      "name": "Сервис или организация допустили утечку данных",
+      "phrase": "Сервис или организация допустили утечку данных"
+    },
+    {
+      "id": "doxxing",
+      "name": "Адрес, контакты или данные раскрыли для давления",
+      "phrase": "Адрес, контакты или данные раскрыли для давления"
+    },
+    {
+      "id": "online_threats",
+      "name": "Угрожают убийством, насилием или иным вредом онлайн",
+      "phrase": "Угрожают убийством, насилием или иным вредом онлайн"
+    },
+    {
+      "id": "defamation",
+      "name": "Публикуют ложные порочащие сведения",
+      "phrase": "Публикуют ложные порочащие сведения"
+    },
+    {
+      "id": "fake_profiles",
+      "name": "Создали фальшивый профиль от моего имени",
+      "phrase": "Создали фальшивый профиль от моего имени"
+    },
+    {
+      "id": "online_harassment",
+      "name": "Систематически травят или преследуют онлайн",
+      "phrase": "Систематически травят или преследуют онлайн"
+    },
+    {
+      "id": "intimate_content",
+      "name": "Интимный материал распространяют без согласия",
+      "phrase": "Интимный материал распространяют без согласия"
+    }
+  ],
+  "fields": [
+    {
+      "fieldKey": "digital_threats.blackmail.threatened_publication_or_distribution",
+      "stageId": "blackmail",
+      "fieldId": "threatened_publication_or_distribution",
+      "definition": "угроза состоит в публикации, рассылке или передаче материала третьим лицам",
+      "sourcePointer": "/subcategories/0/context_fields/0",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Угроза состоит в публикации, рассылке или передаче материала третьим лицам",
+      "negative": "В этом эпизоде неверно, что угроза состоит в публикации, рассылке или передаче материала третьим лицам",
+      "unknown": "Не знаю, угроза состоит в публикации, рассылке или передаче материала третьим лицам",
+      "dependencies": [
+        {
+          "fieldKey": "digital_threats.blackmail.money_or_property_demanded",
+          "value": true
+        }
+      ],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.blackmail.content_published",
+      "stageId": "blackmail",
+      "fieldId": "content_published",
+      "definition": "угрожающий публикацией контент уже размещён или разослан",
+      "sourcePointer": "/subcategories/0/context_fields/1",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Угрожающий публикацией контент уже размещён или разослан",
+      "negative": "В этом эпизоде неверно, что угрожающий публикацией контент уже размещён или разослан",
+      "unknown": "Не знаю, угрожающий публикацией контент уже размещён или разослан",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.blackmail.money_or_property_demanded",
+      "stageId": "blackmail",
+      "fieldId": "money_or_property_demanded",
+      "definition": "шантажист требует деньги, имущество или имущественное право",
+      "sourcePointer": "/subcategories/0/context_fields/2",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Шантажист требует деньги, имущество или имущественное право",
+      "negative": "В этом эпизоде неверно, что шантажист требует деньги, имущество или имущественное право",
+      "unknown": "Не знаю, шантажист требует деньги, имущество или имущественное право",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.blackmail.nonproperty_action_demanded",
+      "stageId": "blackmail",
+      "fieldId": "nonproperty_action_demanded",
+      "definition": "шантажист требует совершить действие неимущественного характера",
+      "sourcePointer": "/subcategories/0/context_fields/3",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Шантажист требует совершить действие неимущественного характера",
+      "negative": "В этом эпизоде неверно, что шантажист требует совершить действие неимущественного характера",
+      "unknown": "Не знаю, шантажист требует совершить действие неимущественного характера",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.blackmail.payment_or_demand_performed",
+      "stageId": "blackmail",
+      "fieldId": "payment_or_demand_performed",
+      "definition": "потерпевший уже передал деньги или выполнил требование",
+      "sourcePointer": "/subcategories/0/context_fields/4",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Потерпевший уже передал деньги или выполнил требование",
+      "negative": "В этом эпизоде неверно, что потерпевший уже передал деньги или выполнил требование",
+      "unknown": "Не знаю, потерпевший уже передал деньги или выполнил требование",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.blackmail.physical_harm_threatened",
+      "stageId": "blackmail",
+      "fieldId": "physical_harm_threatened",
+      "definition": "одновременно угрожают физическим насилием",
+      "sourcePointer": "/subcategories/0/context_fields/5",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Одновременно угрожают физическим насилием",
+      "negative": "В этом эпизоде неверно, что одновременно угрожают физическим насилием",
+      "unknown": "Не знаю, одновременно угрожают физическим насилием",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.blackmail.intimate_content_involved",
+      "stageId": "blackmail",
+      "fieldId": "intimate_content_involved",
+      "definition": "угроза связана с интимными материалами",
+      "sourcePointer": "/subcategories/0/context_fields/6",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Угроза связана с интимными материалами",
+      "negative": "В этом эпизоде неверно, что угроза связана с интимными материалами",
+      "unknown": "Не знаю, угроза связана с интимными материалами",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.blackmail.minor_or_dependent_person_affected",
+      "stageId": "blackmail",
+      "fieldId": "minor_or_dependent_person_affected",
+      "definition": "угроза или материал затрагивают несовершеннолетнего либо зависимое лицо",
+      "sourcePointer": "/subcategories/0/context_fields/7",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Угроза или материал затрагивают несовершеннолетнего либо зависимое лицо",
+      "negative": "В этом эпизоде неверно, что угроза или материал затрагивают несовершеннолетнего либо зависимое лицо",
+      "unknown": "Не знаю, угроза или материал затрагивают несовершеннолетнего либо зависимое лицо",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.data_leak.source_operator_known",
+      "stageId": "data_leak",
+      "fieldId": "source_operator_known",
+      "definition": "известна организация или оператор, из системы которого произошла утечка",
+      "sourcePointer": "/subcategories/1/context_fields/0",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Известна организация или оператор, из системы которого произошла утечка",
+      "negative": "В этом эпизоде неверно, что известна организация или оператор, из системы которого произошла утечка",
+      "unknown": "Не знаю, известна организация или оператор, из системы которого произошла утечка",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.data_leak.identity_document_data_exposed",
+      "stageId": "data_leak",
+      "fieldId": "identity_document_data_exposed",
+      "definition": "раскрыты паспортные данные или реквизиты другого документа, удостоверяющего личность",
+      "sourcePointer": "/subcategories/1/context_fields/1",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Раскрыты паспортные данные или реквизиты другого документа, удостоверяющего личность",
+      "negative": "В этом эпизоде неверно, что раскрыты паспортные данные или реквизиты другого документа, удостоверяющего личность",
+      "unknown": "Не знаю, раскрыты паспортные данные или реквизиты другого документа, удостоверяющего личность",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.data_leak.bank_or_payment_data_exposed",
+      "stageId": "data_leak",
+      "fieldId": "bank_or_payment_data_exposed",
+      "definition": "раскрыты банковские реквизиты, данные карты или иные платёжные сведения",
+      "sourcePointer": "/subcategories/1/context_fields/2",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Раскрыты банковские реквизиты, данные карты или иные платёжные сведения",
+      "negative": "В этом эпизоде неверно, что раскрыты банковские реквизиты, данные карты или иные платёжные сведения",
+      "unknown": "Не знаю, раскрыты банковские реквизиты, данные карты или иные платёжные сведения",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.data_leak.special_category_or_biometric_data_exposed",
+      "stageId": "data_leak",
+      "fieldId": "special_category_or_biometric_data_exposed",
+      "definition": "раскрыты специальные категории или биометрические персональные данные",
+      "sourcePointer": "/subcategories/1/context_fields/3",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Раскрыты специальные категории или биометрические персональные данные",
+      "negative": "В этом эпизоде неверно, что раскрыты специальные категории или биометрические персональные данные",
+      "unknown": "Не знаю, раскрыты специальные категории или биометрические персональные данные",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.data_leak.credentials_or_authentication_data_exposed",
+      "stageId": "data_leak",
+      "fieldId": "credentials_or_authentication_data_exposed",
+      "definition": "раскрыты пароль, токен, код или иные данные аутентификации",
+      "sourcePointer": "/subcategories/1/context_fields/4",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Раскрыты пароль, токен, код или иные данные аутентификации",
+      "negative": "В этом эпизоде неверно, что раскрыты пароль, токен, код или иные данные аутентификации",
+      "unknown": "Не знаю, раскрыты пароль, токен, код или иные данные аутентификации",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.data_leak.data_publicly_accessible",
+      "stageId": "data_leak",
+      "fieldId": "data_publicly_accessible",
+      "definition": "утекшие данные доступны неопределённому кругу лиц",
+      "sourcePointer": "/subcategories/1/context_fields/5",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Утекшие данные доступны неопределённому кругу лиц",
+      "negative": "В этом эпизоде неверно, что утекшие данные доступны неопределённому кругу лиц",
+      "unknown": "Не знаю, утекшие данные доступны неопределённому кругу лиц",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.data_leak.unauthorized_use_detected",
+      "stageId": "data_leak",
+      "fieldId": "unauthorized_use_detected",
+      "definition": "после утечки данные уже использовали без согласия",
+      "sourcePointer": "/subcategories/1/context_fields/6",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "После утечки данные уже использовали без согласия",
+      "negative": "В этом эпизоде неверно, что после утечки данные уже использовали без согласия",
+      "unknown": "Не знаю, после утечки данные уже использовали без согласия",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.data_leak.account_takeover_fraud_or_credit_event_recorded",
+      "stageId": "data_leak",
+      "fieldId": "account_takeover_fraud_or_credit_event_recorded",
+      "definition": "после утечки зафиксированы захват аккаунта, мошенничество или оформление обязательства",
+      "sourcePointer": "/subcategories/1/context_fields/7",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "После утечки зафиксированы захват аккаунта, мошенничество или оформление обязательства",
+      "negative": "В этом эпизоде неверно, что после утечки зафиксированы захват аккаунта, мошенничество или оформление обязательства",
+      "unknown": "Не знаю, после утечки зафиксированы захват аккаунта, мошенничество или оформление обязательства",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.doxxing.home_address_or_live_location_published",
+      "stageId": "doxxing",
+      "fieldId": "home_address_or_live_location_published",
+      "definition": "опубликованы домашний адрес или текущее местонахождение",
+      "sourcePointer": "/subcategories/2/context_fields/0",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Опубликованы домашний адрес или текущее местонахождение",
+      "negative": "В этом эпизоде неверно, что опубликованы домашний адрес или текущее местонахождение",
+      "unknown": "Не знаю, опубликованы домашний адрес или текущее местонахождение",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.doxxing.family_or_minor_data_published",
+      "stageId": "doxxing",
+      "fieldId": "family_or_minor_data_published",
+      "definition": "опубликованы данные родственников или несовершеннолетних",
+      "sourcePointer": "/subcategories/2/context_fields/1",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Опубликованы данные родственников или несовершеннолетних",
+      "negative": "В этом эпизоде неверно, что опубликованы данные родственников или несовершеннолетних",
+      "unknown": "Не знаю, опубликованы данные родственников или несовершеннолетних",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.doxxing.identity_document_data_published",
+      "stageId": "doxxing",
+      "fieldId": "identity_document_data_published",
+      "definition": "опубликованы изображение или реквизиты документа, удостоверяющего личность",
+      "sourcePointer": "/subcategories/2/context_fields/2",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Опубликованы изображение или реквизиты документа, удостоверяющего личность",
+      "negative": "В этом эпизоде неверно, что опубликованы изображение или реквизиты документа, удостоверяющего личность",
+      "unknown": "Не знаю, опубликованы изображение или реквизиты документа, удостоверяющего личность",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.doxxing.publication_still_accessible",
+      "stageId": "doxxing",
+      "fieldId": "publication_still_accessible",
+      "definition": "публикация по-прежнему доступна",
+      "sourcePointer": "/subcategories/2/context_fields/3",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Публикация по-прежнему доступна",
+      "negative": "В этом эпизоде неверно, что публикация по-прежнему доступна",
+      "unknown": "Не знаю, публикация по-прежнему доступна",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.doxxing.harassment_call_accompanies_publication",
+      "stageId": "doxxing",
+      "fieldId": "harassment_call_accompanies_publication",
+      "definition": "публикация сопровождается призывом преследовать или атаковать человека",
+      "sourcePointer": "/subcategories/2/context_fields/4",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Публикация сопровождается призывом преследовать или атаковать человека",
+      "negative": "В этом эпизоде неверно, что публикация сопровождается призывом преследовать или атаковать человека",
+      "unknown": "Не знаю, публикация сопровождается призывом преследовать или атаковать человека",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.doxxing.threats_or_stalking_followed",
+      "stageId": "doxxing",
+      "fieldId": "threats_or_stalking_followed",
+      "definition": "после публикации начались угрозы или преследование",
+      "sourcePointer": "/subcategories/2/context_fields/5",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "После публикации начались угрозы или преследование",
+      "negative": "В этом эпизоде неверно, что после публикации начались угрозы или преследование",
+      "unknown": "Не знаю, после публикации начались угрозы или преследование",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.doxxing.publisher_identity_known",
+      "stageId": "doxxing",
+      "fieldId": "publisher_identity_known",
+      "definition": "личность распространителя установлена",
+      "sourcePointer": "/subcategories/2/context_fields/6",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Личность распространителя установлена",
+      "negative": "В этом эпизоде неверно, что личность распространителя установлена",
+      "unknown": "Не знаю, личность распространителя установлена",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.doxxing.immediate_safety_risk_present",
+      "stageId": "doxxing",
+      "fieldId": "immediate_safety_risk_present",
+      "definition": "публикация создаёт непосредственный риск для жизни или здоровья",
+      "sourcePointer": "/subcategories/2/context_fields/7",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Публикация создаёт непосредственный риск для жизни или здоровья",
+      "negative": "В этом эпизоде неверно, что публикация создаёт непосредственный риск для жизни или здоровья",
+      "unknown": "Не знаю, публикация создаёт непосредственный риск для жизни или здоровья",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_threats.specific_harm_threatened",
+      "stageId": "online_threats",
+      "fieldId": "specific_harm_threatened",
+      "definition": "сообщение содержит конкретную угрозу убийством, тяжким вредом или повреждением имущества",
+      "sourcePointer": "/subcategories/3/context_fields/0",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Сообщение содержит конкретную угрозу убийством, тяжким вредом или повреждением имущества",
+      "negative": "В этом эпизоде неверно, что сообщение содержит конкретную угрозу убийством, тяжким вредом или повреждением имущества",
+      "unknown": "Не знаю, сообщение содержит конкретную угрозу убийством, тяжким вредом или повреждением имущества",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_threats.threat_is_imminent",
+      "stageId": "online_threats",
+      "fieldId": "threat_is_imminent",
+      "definition": "угрожающий указал ближайшее время или уже направляется к потерпевшему",
+      "sourcePointer": "/subcategories/3/context_fields/1",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Угрожающий указал ближайшее время или уже направляется к потерпевшему",
+      "negative": "В этом эпизоде неверно, что угрожающий указал ближайшее время или уже направляется к потерпевшему",
+      "unknown": "Не знаю, угрожающий указал ближайшее время или уже направляется к потерпевшему",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_threats.threats_repeated",
+      "stageId": "online_threats",
+      "fieldId": "threats_repeated",
+      "definition": "угрозы поступают неоднократно",
+      "sourcePointer": "/subcategories/3/context_fields/2",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Угрозы поступают неоднократно",
+      "negative": "В этом эпизоде неверно, что угрозы поступают неоднократно",
+      "unknown": "Не знаю, угрозы поступают неоднократно",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_threats.threatener_identity_known",
+      "stageId": "online_threats",
+      "fieldId": "threatener_identity_known",
+      "definition": "личность отправителя угроз установлена",
+      "sourcePointer": "/subcategories/3/context_fields/3",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Личность отправителя угроз установлена",
+      "negative": "В этом эпизоде неверно, что личность отправителя угроз установлена",
+      "unknown": "Не знаю, личность отправителя угроз установлена",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_threats.victim_location_known_to_threatener",
+      "stageId": "online_threats",
+      "fieldId": "victim_location_known_to_threatener",
+      "definition": "угрожающему известны адрес или текущее местонахождение потерпевшего",
+      "sourcePointer": "/subcategories/3/context_fields/4",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Угрожающему известны адрес или текущее местонахождение потерпевшего",
+      "negative": "В этом эпизоде неверно, что угрожающему известны адрес или текущее местонахождение потерпевшего",
+      "unknown": "Не знаю, угрожающему известны адрес или текущее местонахождение потерпевшего",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_threats.threatener_used_violence_or_has_weapon_access",
+      "stageId": "online_threats",
+      "fieldId": "threatener_used_violence_or_has_weapon_access",
+      "definition": "угрожающий ранее применял насилие либо имеет доступ к оружию",
+      "sourcePointer": "/subcategories/3/context_fields/5",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Угрожающий ранее применял насилие либо имеет доступ к оружию",
+      "negative": "В этом эпизоде неверно, что угрожающий ранее применял насилие либо имеет доступ к оружию",
+      "unknown": "Не знаю, угрожающий ранее применял насилие либо имеет доступ к оружию",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_threats.money_or_property_demanded",
+      "stageId": "online_threats",
+      "fieldId": "money_or_property_demanded",
+      "definition": "одновременно требуют деньги или имущество",
+      "sourcePointer": "/subcategories/3/context_fields/6",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Одновременно требуют деньги или имущество",
+      "negative": "В этом эпизоде неверно, что одновременно требуют деньги или имущество",
+      "unknown": "Не знаю, одновременно требуют деньги или имущество",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_threats.nonproperty_action_demanded",
+      "stageId": "online_threats",
+      "fieldId": "nonproperty_action_demanded",
+      "definition": "одновременно требуют конкретное неимущественное действие",
+      "sourcePointer": "/subcategories/3/context_fields/7",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Одновременно требуют конкретное неимущественное действие",
+      "negative": "В этом эпизоде неверно, что одновременно требуют конкретное неимущественное действие",
+      "unknown": "Не знаю, одновременно требуют конкретное неимущественное действие",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+      "stageId": "defamation",
+      "fieldId": "statement_asserts_checkable_fact",
+      "definition": "публикация содержит проверяемое утверждение о факте, а не только мнение",
+      "sourcePointer": "/subcategories/4/context_fields/0",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Публикация содержит проверяемое утверждение о факте, а не только мнение",
+      "negative": "В этом эпизоде неверно, что публикация содержит проверяемое утверждение о факте, а не только мнение",
+      "unknown": "Не знаю, публикация содержит проверяемое утверждение о факте, а не только мнение",
+      "dependencies": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        }
+      ],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.defamation.statement_is_false",
+      "stageId": "defamation",
+      "fieldId": "statement_is_false",
+      "definition": "распространённое утверждение не соответствует действительности",
+      "sourcePointer": "/subcategories/4/context_fields/1",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Распространённое утверждение не соответствует действительности",
+      "negative": "В этом эпизоде неверно, что распространённое утверждение не соответствует действительности",
+      "unknown": "Не знаю, распространённое утверждение не соответствует действительности",
+      "dependencies": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+          "value": true
+        }
+      ],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+      "stageId": "defamation",
+      "fieldId": "statement_shared_with_third_parties",
+      "definition": "сведения сообщены хотя бы одному третьему лицу",
+      "sourcePointer": "/subcategories/4/context_fields/2",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Сведения сообщены хотя бы одному третьему лицу",
+      "negative": "В этом эпизоде неверно, что сведения сообщены хотя бы одному третьему лицу",
+      "unknown": "Не знаю, сведения сообщены хотя бы одному третьему лицу",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.defamation.author_identity_known",
+      "stageId": "defamation",
+      "fieldId": "author_identity_known",
+      "definition": "личность автора или распространителя установлена",
+      "sourcePointer": "/subcategories/4/context_fields/3",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Личность автора или распространителя установлена",
+      "negative": "В этом эпизоде неверно, что личность автора или распространителя установлена",
+      "unknown": "Не знаю, личность автора или распространителя установлена",
+      "dependencies": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_is_false",
+          "value": true
+        }
+      ],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.defamation.publication_still_accessible",
+      "stageId": "defamation",
+      "fieldId": "publication_still_accessible",
+      "definition": "оспариваемая публикация остаётся доступной",
+      "sourcePointer": "/subcategories/4/context_fields/4",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Оспариваемая публикация остаётся доступной",
+      "negative": "В этом эпизоде неверно, что оспариваемая публикация остаётся доступной",
+      "unknown": "Не знаю, оспариваемая публикация остаётся доступной",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.defamation.business_reputation_affected",
+      "stageId": "defamation",
+      "fieldId": "business_reputation_affected",
+      "definition": "публикация затрагивает деловую репутацию гражданина или организации",
+      "sourcePointer": "/subcategories/4/context_fields/5",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Публикация затрагивает деловую репутацию гражданина или организации",
+      "negative": "В этом эпизоде неверно, что публикация затрагивает деловую репутацию гражданина или организации",
+      "unknown": "Не знаю, публикация затрагивает деловую репутацию гражданина или организации",
+      "dependencies": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_is_false",
+          "value": true
+        }
+      ],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.defamation.financial_loss_documented",
+      "stageId": "defamation",
+      "fieldId": "financial_loss_documented",
+      "definition": "финансовые потери вследствие публикации документально подтверждены",
+      "sourcePointer": "/subcategories/4/context_fields/6",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Финансовые потери вследствие публикации документально подтверждены",
+      "negative": "В этом эпизоде неверно, что финансовые потери вследствие публикации документально подтверждены",
+      "unknown": "Не знаю, финансовые потери вследствие публикации документально подтверждены",
+      "dependencies": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_is_false",
+          "value": true
+        }
+      ],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.defamation.obscene_or_degrading_form_present",
+      "stageId": "defamation",
+      "fieldId": "obscene_or_degrading_form_present",
+      "definition": "публикация содержит унизительную или неприличную форму",
+      "sourcePointer": "/subcategories/4/context_fields/7",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Публикация содержит унизительную или неприличную форму",
+      "negative": "В этом эпизоде неверно, что публикация содержит унизительную или неприличную форму",
+      "unknown": "Не знаю, публикация содержит унизительную или неприличную форму",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.fake_profiles.identity_attributes_copied",
+      "stageId": "fake_profiles",
+      "fieldId": "identity_attributes_copied",
+      "definition": "скопированы имя, фото, логотип, биография или иные признаки личности",
+      "sourcePointer": "/subcategories/5/context_fields/0",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Скопированы имя, фото, логотип, биография или иные признаки личности",
+      "negative": "В этом эпизоде неверно, что скопированы имя, фото, логотип, биография или иные признаки личности",
+      "unknown": "Не знаю, скопированы имя, фото, логотип, биография или иные признаки личности",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.fake_profiles.profile_still_active",
+      "stageId": "fake_profiles",
+      "fieldId": "profile_still_active",
+      "definition": "фальшивый профиль по-прежнему доступен",
+      "sourcePointer": "/subcategories/5/context_fields/1",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Фальшивый профиль по-прежнему доступен",
+      "negative": "В этом эпизоде неверно, что фальшивый профиль по-прежнему доступен",
+      "unknown": "Не знаю, фальшивый профиль по-прежнему доступен",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.fake_profiles.contacts_received_messages",
+      "stageId": "fake_profiles",
+      "fieldId": "contacts_received_messages",
+      "definition": "самозванец уже писал контактам от имени заявителя",
+      "sourcePointer": "/subcategories/5/context_fields/2",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Самозванец уже писал контактам от имени заявителя",
+      "negative": "В этом эпизоде неверно, что самозванец уже писал контактам от имени заявителя",
+      "unknown": "Не знаю, самозванец уже писал контактам от имени заявителя",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.fake_profiles.money_or_data_solicited",
+      "stageId": "fake_profiles",
+      "fieldId": "money_or_data_solicited",
+      "definition": "через профиль запрашивали деньги, коды или персональные данные",
+      "sourcePointer": "/subcategories/5/context_fields/3",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Через профиль запрашивали деньги, коды или персональные данные",
+      "negative": "В этом эпизоде неверно, что через профиль запрашивали деньги, коды или персональные данные",
+      "unknown": "Не знаю, через профиль запрашивали деньги, коды или персональные данные",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.fake_profiles.harmful_posts_or_statements_published",
+      "stageId": "fake_profiles",
+      "fieldId": "harmful_posts_or_statements_published",
+      "definition": "поддельный профиль публикует вредящие сообщения или сведения",
+      "sourcePointer": "/subcategories/5/context_fields/4",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Поддельный профиль публикует вредящие сообщения или сведения",
+      "negative": "В этом эпизоде неверно, что поддельный профиль публикует вредящие сообщения или сведения",
+      "unknown": "Не знаю, поддельный профиль публикует вредящие сообщения или сведения",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.fake_profiles.personal_or_intimate_data_used",
+      "stageId": "fake_profiles",
+      "fieldId": "personal_or_intimate_data_used",
+      "definition": "в поддельном профиле использованы персональные или интимные данные",
+      "sourcePointer": "/subcategories/5/context_fields/5",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "В поддельном профиле использованы персональные или интимные данные",
+      "negative": "В этом эпизоде неверно, что в поддельном профиле использованы персональные или интимные данные",
+      "unknown": "Не знаю, в поддельном профиле использованы персональные или интимные данные",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.fake_profiles.platform_report_submitted",
+      "stageId": "fake_profiles",
+      "fieldId": "platform_report_submitted",
+      "definition": "жалоба на подмену личности уже направлена платформе",
+      "sourcePointer": "/subcategories/5/context_fields/6",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Жалоба на подмену личности уже направлена платформе",
+      "negative": "В этом эпизоде неверно, что жалоба на подмену личности уже направлена платформе",
+      "unknown": "Не знаю, жалоба на подмену личности уже направлена платформе",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.fake_profiles.real_account_access_lost",
+      "stageId": "fake_profiles",
+      "fieldId": "real_account_access_lost",
+      "definition": "заявитель одновременно потерял доступ к своему настоящему аккаунту",
+      "sourcePointer": "/subcategories/5/context_fields/7",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Заявитель одновременно потерял доступ к своему настоящему аккаунту",
+      "negative": "В этом эпизоде неверно, что заявитель одновременно потерял доступ к своему настоящему аккаунту",
+      "unknown": "Не знаю, заявитель одновременно потерял доступ к своему настоящему аккаунту",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_harassment.harassment_repeated",
+      "stageId": "online_harassment",
+      "fieldId": "harassment_repeated",
+      "definition": "нежелательные сообщения или оскорбления повторяются",
+      "sourcePointer": "/subcategories/6/context_fields/0",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Нежелательные сообщения или оскорбления повторяются",
+      "negative": "В этом эпизоде неверно, что нежелательные сообщения или оскорбления повторяются",
+      "unknown": "Не знаю, нежелательные сообщения или оскорбления повторяются",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_harassment.public_insults_published",
+      "stageId": "online_harassment",
+      "fieldId": "public_insults_published",
+      "definition": "оскорбления размещены публично в неприличной форме",
+      "sourcePointer": "/subcategories/6/context_fields/1",
+      "status": "RETIRED_NO_NEW_PRODUCER",
+      "positive": "Оскорбления размещены публично в неприличной форме",
+      "negative": "В этом эпизоде неверно, что оскорбления размещены публично в неприличной форме",
+      "unknown": "Не знаю, оскорбления размещены публично в неприличной форме",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_harassment.harasser_identity_known",
+      "stageId": "online_harassment",
+      "fieldId": "harasser_identity_known",
+      "definition": "личность инициатора или участников установлена",
+      "sourcePointer": "/subcategories/6/context_fields/2",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Личность инициатора или участников установлена",
+      "negative": "В этом эпизоде неверно, что личность инициатора или участников установлена",
+      "unknown": "Не знаю, личность инициатора или участников установлена",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_harassment.threats_present",
+      "stageId": "online_harassment",
+      "fieldId": "threats_present",
+      "definition": "травля сопровождается конкретными угрозами причинить вред",
+      "sourcePointer": "/subcategories/6/context_fields/3",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Травля сопровождается конкретными угрозами причинить вред",
+      "negative": "В этом эпизоде неверно, что травля сопровождается конкретными угрозами причинить вред",
+      "unknown": "Не знаю, травля сопровождается конкретными угрозами причинить вред",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_harassment.personal_data_published",
+      "stageId": "online_harassment",
+      "fieldId": "personal_data_published",
+      "definition": "в ходе травли раскрыты адрес, телефон или иные персональные данные",
+      "sourcePointer": "/subcategories/6/context_fields/4",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "В ходе травли раскрыты адрес, телефон или иные персональные данные",
+      "negative": "В этом эпизоде неверно, что в ходе травли раскрыты адрес, телефон или иные персональные данные",
+      "unknown": "Не знаю, в ходе травли раскрыты адрес, телефон или иные персональные данные",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_harassment.intimate_or_private_content_used",
+      "stageId": "online_harassment",
+      "fieldId": "intimate_or_private_content_used",
+      "definition": "в ходе травли используется интимный или иной частный контент",
+      "sourcePointer": "/subcategories/6/context_fields/5",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "В ходе травли используется интимный или иной частный контент",
+      "negative": "В этом эпизоде неверно, что в ходе травли используется интимный или иной частный контент",
+      "unknown": "Не знаю, в ходе травли используется интимный или иной частный контент",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_harassment.offline_contact_or_immediate_safety_risk_present",
+      "stageId": "online_harassment",
+      "fieldId": "offline_contact_or_immediate_safety_risk_present",
+      "definition": "травля перешла в офлайн-контакт либо создаёт непосредственный риск безопасности",
+      "sourcePointer": "/subcategories/6/context_fields/6",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Травля перешла в офлайн-контакт либо создаёт непосредственный риск безопасности",
+      "negative": "В этом эпизоде неверно, что травля перешла в офлайн-контакт либо создаёт непосредственный риск безопасности",
+      "unknown": "Не знаю, травля перешла в офлайн-контакт либо создаёт непосредственный риск безопасности",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.online_harassment.minor_targeted",
+      "stageId": "online_harassment",
+      "fieldId": "minor_targeted",
+      "definition": "потерпевшим является несовершеннолетний",
+      "sourcePointer": "/subcategories/6/context_fields/7",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Потерпевшим является несовершеннолетний",
+      "negative": "В этом эпизоде неверно, что потерпевшим является несовершеннолетний",
+      "unknown": "Не знаю, потерпевшим является несовершеннолетний",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.intimate_content.distribution_threatened",
+      "stageId": "intimate_content",
+      "fieldId": "distribution_threatened",
+      "definition": "зафиксирована угроза опубликовать или разослать материал",
+      "sourcePointer": "/subcategories/7/context_fields/0",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Зафиксирована угроза опубликовать или разослать материал",
+      "negative": "В этом эпизоде неверно, что зафиксирована угроза опубликовать или разослать материал",
+      "unknown": "Не знаю, зафиксирована угроза опубликовать или разослать материал",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.intimate_content.content_published",
+      "stageId": "intimate_content",
+      "fieldId": "content_published",
+      "definition": "интимный материал уже опубликован или разослан",
+      "sourcePointer": "/subcategories/7/context_fields/1",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Интимный материал уже опубликован или разослан",
+      "negative": "В этом эпизоде неверно, что интимный материал уже опубликован или разослан",
+      "unknown": "Не знаю, интимный материал уже опубликован или разослан",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.intimate_content.recording_made_without_consent",
+      "stageId": "intimate_content",
+      "fieldId": "recording_made_without_consent",
+      "definition": "интимный материал создан без согласия изображённого лица",
+      "sourcePointer": "/subcategories/7/context_fields/2",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Интимный материал создан без согласия изображённого лица",
+      "negative": "В этом эпизоде неверно, что интимный материал создан без согласия изображённого лица",
+      "unknown": "Не знаю, интимный материал создан без согласия изображённого лица",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.intimate_content.distribution_exceeded_consent_scope",
+      "stageId": "intimate_content",
+      "fieldId": "distribution_exceeded_consent_scope",
+      "definition": "распространение не согласовано либо вышло за пределы согласованного получателя или способа использования",
+      "sourcePointer": "/subcategories/7/context_fields/3",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Распространение не согласовано либо вышло за пределы согласованного получателя или способа использования",
+      "negative": "В этом эпизоде неверно, что распространение не согласовано либо вышло за пределы согласованного получателя или способа использования",
+      "unknown": "Не знаю, распространение не согласовано либо вышло за пределы согласованного получателя или способа использования",
+      "dependencies": [
+        {
+          "fieldKey": "digital_threats.intimate_content.content_published",
+          "value": true
+        }
+      ],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.intimate_content.synthetic_or_deepfake_content",
+      "stageId": "intimate_content",
+      "fieldId": "synthetic_or_deepfake_content",
+      "definition": "материал является сексуализированным дипфейком или иной подделкой",
+      "sourcePointer": "/subcategories/7/context_fields/4",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "Материал является сексуализированным дипфейком или иной подделкой",
+      "negative": "В этом эпизоде неверно, что материал является сексуализированным дипфейком или иной подделкой",
+      "unknown": "Не знаю, материал является сексуализированным дипфейком или иной подделкой",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.intimate_content.money_or_property_demanded",
+      "stageId": "intimate_content",
+      "fieldId": "money_or_property_demanded",
+      "definition": "за отказ от публикации требуют деньги или имущество",
+      "sourcePointer": "/subcategories/7/context_fields/5",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "За отказ от публикации требуют деньги или имущество",
+      "negative": "В этом эпизоде неверно, что за отказ от публикации требуют деньги или имущество",
+      "unknown": "Не знаю, за отказ от публикации требуют деньги или имущество",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    },
+    {
+      "fieldKey": "digital_threats.intimate_content.nonproperty_action_demanded",
+      "stageId": "intimate_content",
+      "fieldId": "nonproperty_action_demanded",
+      "definition": "за отказ от публикации требуют конкретное неимущественное действие",
+      "sourcePointer": "/subcategories/7/context_fields/6",
+      "status": "BOUNDED_USER_REPORT",
+      "positive": "За отказ от публикации требуют конкретное неимущественное действие",
+      "negative": "В этом эпизоде неверно, что за отказ от публикации требуют конкретное неимущественное действие",
+      "unknown": "Не знаю, за отказ от публикации требуют конкретное неимущественное действие",
+      "dependencies": [],
+      "scope": [
+        "case",
+        "episode",
+        "person",
+        "item",
+        "stage"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "q_digital_threats_blackmail_physical_harm_threatened",
+      "fieldKey": "digital_threats.blackmail.physical_harm_threatened",
+      "stageId": "blackmail",
+      "text": "Одновременно угрожают применить физическое насилие?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_blackmail_payment_or_demand_performed",
+      "fieldKey": "digital_threats.blackmail.payment_or_demand_performed",
+      "stageId": "blackmail",
+      "text": "Человек, которому предъявили требование, уже передал деньги или выполнил его?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_blackmail_content_published",
+      "fieldKey": "digital_threats.blackmail.content_published",
+      "stageId": "blackmail",
+      "text": "Материал, публикацией которого угрожают, уже разместили или разослали?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_blackmail_minor_or_dependent_person_affected",
+      "fieldKey": "digital_threats.blackmail.minor_or_dependent_person_affected",
+      "stageId": "blackmail",
+      "text": "Угроза или материал затрагивают человека младше 18 лет либо человека в зависимом положении?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_blackmail_money_or_property_demanded",
+      "fieldKey": "digital_threats.blackmail.money_or_property_demanded",
+      "stageId": "blackmail",
+      "text": "Требуют передать деньги, имущество или право на имущество?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_blackmail_nonproperty_action_demanded",
+      "fieldKey": "digital_threats.blackmail.nonproperty_action_demanded",
+      "stageId": "blackmail",
+      "text": "Требуют совершить конкретное действие, кроме передачи денег, имущества или права на имущество?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_blackmail_intimate_content_involved",
+      "fieldKey": "digital_threats.blackmail.intimate_content_involved",
+      "stageId": "blackmail",
+      "text": "Угроза связана с интимными материалами?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_blackmail_threatened_publication_or_distribution",
+      "fieldKey": "digital_threats.blackmail.threatened_publication_or_distribution",
+      "stageId": "blackmail",
+      "text": "Угрожают опубликовать, разослать или передать материал другим людям?",
+      "requires": [
+        {
+          "fieldKey": "digital_threats.blackmail.money_or_property_demanded",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_data_leak_credentials_or_authentication_data_exposed",
+      "fieldKey": "digital_threats.data_leak.credentials_or_authentication_data_exposed",
+      "stageId": "data_leak",
+      "text": "Раскрыты пароль, токен, код или другие данные для входа и подтверждения действий?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_data_leak_bank_or_payment_data_exposed",
+      "fieldKey": "digital_threats.data_leak.bank_or_payment_data_exposed",
+      "stageId": "data_leak",
+      "text": "Раскрыты банковские реквизиты, данные карты или другие платёжные сведения?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_data_leak_identity_document_data_exposed",
+      "fieldKey": "digital_threats.data_leak.identity_document_data_exposed",
+      "stageId": "data_leak",
+      "text": "Раскрыты паспортные данные или реквизиты другого документа, удостоверяющего личность?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_data_leak_data_publicly_accessible",
+      "fieldKey": "digital_threats.data_leak.data_publicly_accessible",
+      "stageId": "data_leak",
+      "text": "Утекшие данные сейчас доступны любому, а не только определённым получателям?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_data_leak_special_category_or_biometric_data_exposed",
+      "fieldKey": "digital_threats.data_leak.special_category_or_biometric_data_exposed",
+      "stageId": "data_leak",
+      "text": "Раскрыты сведения о здоровье, интимной жизни, расовой или национальной принадлежности, политических взглядах, религиозных или философских убеждениях либо признаки тела, используемые для установления личности?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_data_leak_unauthorized_use_detected",
+      "fieldKey": "digital_threats.data_leak.unauthorized_use_detected",
+      "stageId": "data_leak",
+      "text": "После утечки данные уже использовали без согласия человека, к которому они относятся?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_data_leak_source_operator_known",
+      "fieldKey": "digital_threats.data_leak.source_operator_known",
+      "stageId": "data_leak",
+      "text": "Известна организация или оператор, из системы которого произошла утечка?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_doxxing_immediate_safety_risk_present",
+      "fieldKey": "digital_threats.doxxing.immediate_safety_risk_present",
+      "stageId": "doxxing",
+      "text": "Публикация создаёт непосредственный риск для жизни или здоровья?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_doxxing_threats_or_stalking_followed",
+      "fieldKey": "digital_threats.doxxing.threats_or_stalking_followed",
+      "stageId": "doxxing",
+      "text": "После публикации начались угрозы или преследование?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_doxxing_harassment_call_accompanies_publication",
+      "fieldKey": "digital_threats.doxxing.harassment_call_accompanies_publication",
+      "stageId": "doxxing",
+      "text": "Публикация сопровождается призывом преследовать или атаковать человека?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_doxxing_home_address_or_live_location_published",
+      "fieldKey": "digital_threats.doxxing.home_address_or_live_location_published",
+      "stageId": "doxxing",
+      "text": "Опубликованы домашний адрес или текущее местонахождение?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_doxxing_family_or_minor_data_published",
+      "fieldKey": "digital_threats.doxxing.family_or_minor_data_published",
+      "stageId": "doxxing",
+      "text": "Опубликованы данные родственников или несовершеннолетних?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_doxxing_identity_document_data_published",
+      "fieldKey": "digital_threats.doxxing.identity_document_data_published",
+      "stageId": "doxxing",
+      "text": "Опубликованы изображение или реквизиты документа, удостоверяющего личность?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_doxxing_publication_still_accessible",
+      "fieldKey": "digital_threats.doxxing.publication_still_accessible",
+      "stageId": "doxxing",
+      "text": "Публикация по-прежнему доступна?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_online_threats_threat_is_imminent",
+      "fieldKey": "digital_threats.online_threats.threat_is_imminent",
+      "stageId": "online_threats",
+      "text": "Угрожающий назвал ближайшее время причинения вреда или уже направляется к человеку, которому угрожает?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_online_threats_money_or_property_demanded",
+      "fieldKey": "digital_threats.online_threats.money_or_property_demanded",
+      "stageId": "online_threats",
+      "text": "Одновременно требуют деньги или имущество?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_defamation_statement_shared_with_third_parties",
+      "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+      "stageId": "defamation",
+      "text": "Спорное утверждение сообщили хотя бы одному человеку, кроме того, о ком оно сказано?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_defamation_statement_asserts_checkable_fact",
+      "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+      "stageId": "defamation",
+      "text": "В публикации утверждают, что произошло конкретное событие или существует обстоятельство, которое можно проверить, а не только высказывают мнение?",
+      "requires": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_defamation_statement_is_false",
+      "fieldKey": "digital_threats.defamation.statement_is_false",
+      "stageId": "defamation",
+      "text": "Распространённое утверждение о факте не соответствует тому, что произошло в действительности?",
+      "requires": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_defamation_obscene_or_degrading_form_present",
+      "fieldKey": "digital_threats.defamation.obscene_or_degrading_form_present",
+      "stageId": "defamation",
+      "text": "В публикации человека унижают либо используют непристойные слова, изображения или жесты?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_defamation_author_identity_known",
+      "fieldKey": "digital_threats.defamation.author_identity_known",
+      "stageId": "defamation",
+      "text": "Известно, кто именно написал или распространил спорное утверждение?",
+      "requires": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_is_false",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_defamation_business_reputation_affected",
+      "fieldKey": "digital_threats.defamation.business_reputation_affected",
+      "stageId": "defamation",
+      "text": "Публикация затрагивает репутацию человека или организации в их деловой деятельности?",
+      "requires": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_is_false",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_defamation_financial_loss_documented",
+      "fieldKey": "digital_threats.defamation.financial_loss_documented",
+      "stageId": "defamation",
+      "text": "Есть документы, подтверждающие финансовые потери из-за этой публикации?",
+      "requires": [
+        {
+          "fieldKey": "digital_threats.defamation.statement_shared_with_third_parties",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_asserts_checkable_fact",
+          "value": true
+        },
+        {
+          "fieldKey": "digital_threats.defamation.statement_is_false",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_fake_profiles_real_account_access_lost",
+      "fieldKey": "digital_threats.fake_profiles.real_account_access_lost",
+      "stageId": "fake_profiles",
+      "text": "Заявитель одновременно потерял доступ к своему настоящему аккаунту?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_fake_profiles_money_or_data_solicited",
+      "fieldKey": "digital_threats.fake_profiles.money_or_data_solicited",
+      "stageId": "fake_profiles",
+      "text": "Через профиль запрашивали деньги, коды или персональные данные?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_fake_profiles_contacts_received_messages",
+      "fieldKey": "digital_threats.fake_profiles.contacts_received_messages",
+      "stageId": "fake_profiles",
+      "text": "Самозванец уже писал контактам от имени заявителя?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_fake_profiles_personal_or_intimate_data_used",
+      "fieldKey": "digital_threats.fake_profiles.personal_or_intimate_data_used",
+      "stageId": "fake_profiles",
+      "text": "В поддельном профиле использованы персональные или интимные данные?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_fake_profiles_harmful_posts_or_statements_published",
+      "fieldKey": "digital_threats.fake_profiles.harmful_posts_or_statements_published",
+      "stageId": "fake_profiles",
+      "text": "Поддельный профиль публикует вредящие сообщения или сведения?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_fake_profiles_profile_still_active",
+      "fieldKey": "digital_threats.fake_profiles.profile_still_active",
+      "stageId": "fake_profiles",
+      "text": "Фальшивый профиль по-прежнему доступен?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_online_harassment_offline_contact_or_immediate_safety_risk_present",
+      "fieldKey": "digital_threats.online_harassment.offline_contact_or_immediate_safety_risk_present",
+      "stageId": "online_harassment",
+      "text": "Травля перешла в офлайн-контакт либо создаёт непосредственный риск безопасности?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_online_harassment_threats_present",
+      "fieldKey": "digital_threats.online_harassment.threats_present",
+      "stageId": "online_harassment",
+      "text": "Травля сопровождается конкретными угрозами причинить вред?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_online_harassment_intimate_or_private_content_used",
+      "fieldKey": "digital_threats.online_harassment.intimate_or_private_content_used",
+      "stageId": "online_harassment",
+      "text": "В ходе травли используется интимный или иной частный контент?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_online_harassment_personal_data_published",
+      "fieldKey": "digital_threats.online_harassment.personal_data_published",
+      "stageId": "online_harassment",
+      "text": "В ходе травли раскрыты адрес, телефон или иные персональные данные?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_online_harassment_minor_targeted",
+      "fieldKey": "digital_threats.online_harassment.minor_targeted",
+      "stageId": "online_harassment",
+      "text": "Человеку, против которого направлены нежелательные сообщения или действия, меньше 18 лет?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_online_harassment_harassment_repeated",
+      "fieldKey": "digital_threats.online_harassment.harassment_repeated",
+      "stageId": "online_harassment",
+      "text": "Нежелательные сообщения или оскорбления повторяются?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_intimate_content_distribution_exceeded_consent_scope",
+      "fieldKey": "digital_threats.intimate_content.distribution_exceeded_consent_scope",
+      "stageId": "intimate_content",
+      "text": "Материал распространили за пределами согласия человека, которого он касается? Например, передали без согласия, получателю, которому передачу не разрешали, или способом, на который согласия не было.",
+      "requires": [
+        {
+          "fieldKey": "digital_threats.intimate_content.content_published",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_intimate_content_recording_made_without_consent",
+      "fieldKey": "digital_threats.intimate_content.recording_made_without_consent",
+      "stageId": "intimate_content",
+      "text": "Интимный материал создан без согласия изображённого лица?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_intimate_content_money_or_property_demanded",
+      "fieldKey": "digital_threats.intimate_content.money_or_property_demanded",
+      "stageId": "intimate_content",
+      "text": "За отказ от публикации требуют деньги или имущество?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_intimate_content_nonproperty_action_demanded",
+      "fieldKey": "digital_threats.intimate_content.nonproperty_action_demanded",
+      "stageId": "intimate_content",
+      "text": "За отказ от публикации требуют совершить конкретное действие, кроме передачи денег или имущества?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    },
+    {
+      "id": "q_digital_threats_intimate_content_distribution_threatened",
+      "fieldKey": "digital_threats.intimate_content.distribution_threatened",
+      "stageId": "intimate_content",
+      "text": "Угрожают опубликовать или разослать интимный материал?",
+      "requires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ]
+    }
+  ],
+  "maxQuestionsPerCase": 2,
+  "thirdQuestion": {
+    "id": "q_digital_threats_doxxing_harassment_call_accompanies_publication",
+    "requires": {
+      "digital_threats.doxxing.immediate_safety_risk_present": false,
+      "digital_threats.doxxing.threats_or_stalking_followed": false
+    },
+    "reason": "Existing accepted doxxing third pair: known no immediate risk and no resulting threats/stalking, publication call still unknown."
+  },
+  "supplementalQuestions": []
+}

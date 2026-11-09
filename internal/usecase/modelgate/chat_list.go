@@ -31,7 +31,7 @@ func NewChatListUseCase(
 func (u *ChatListUseCase) ChatList(ctx context.Context) ([]*entity.Chat, error) {
 	user, err := u.authUseCase.GetAuthUserId(ctx)
 	if err != nil {
-		u.logger.DebugContext(ctx, "user not authenticated for chat list", "error", err)
+		u.logger.DebugContext(ctx, "user not authenticated for chat list")
 		return []*entity.Chat{}, nil
 	}
 

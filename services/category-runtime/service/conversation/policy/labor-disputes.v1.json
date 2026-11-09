@@ -1,0 +1,2133 @@
+{
+  "schemaVersion": "labor-private-dm/v1",
+  "categoryId": "labor_disputes",
+  "version": "labor-bounded-DM/20261026-r28-v2",
+  "defaultActivation": false,
+  "maxQuestionsPerCase": 2,
+  "thirdQuestionReasons": {},
+  "urgentHandler": null,
+  "sources": {
+    "category": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/category/labor_disputes.accepted-diagnostic.not-for-import.json",
+      "bytes": 21159325,
+      "sha256": "2efc29be2fe859ffd763ceeba0b3d2f06153be07658585ee6631f5f7091395e5"
+    },
+    "NEXT": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/next/current-NEXT.json",
+      "bytes": 2846485,
+      "sha256": "6659dd9c2a6bd64cb45db3e4f23003c72313fcd603b91c41a73cfeb9191ba71f"
+    },
+    "catalog": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/cace0b8da69e538d20e2/current-question-catalog.json",
+      "bytes": 85351,
+      "sha256": "bc0aae412a14cc622bf4fe2562e0536ea71246da488a7d20cebaa43db1beae90"
+    },
+    "authority": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+      "bytes": 233532,
+      "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+    },
+    "migration": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/4183d35714ba5973d16a/old-report-migration.json",
+      "bytes": 4750,
+      "sha256": "f6f593ad81d83cb62f9bb0b0a7aa34e4c63f680d1cc89871511823cc4c436877"
+    },
+    "private10": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/9135e0f27d48f3187dd0/private10-reported-fact-registry.json",
+      "bytes": 43387,
+      "sha256": "100a8b940d3bb111ea60b9f136db8c0f39112dfce4dbdd33e01cf864d2702a00"
+    },
+    "lookup": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/7bb5132589a22ece0393/current-answer-lookup.json",
+      "bytes": 12680079,
+      "sha256": "a9f1640c57f4a58d36768996d50d81088e7abe9f1973094fe6fbfcabcec110b9"
+    },
+    "bindings": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/_work/labor_disputes/dialogue-manager-analysis/20261026-v1/current-answer-bindings.json",
+      "bytes": 1807732,
+      "sha256": "13a717fc5ee16a5c115f2c7f724fdd0e2fa85ca587233cfe12bdb2ce0ebfacb3"
+    },
+    "accepted_uses": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/d360d90350a49f0f024e/next-question-use-evidence.json",
+      "bytes": 18519569,
+      "sha256": "53be1f2328919dfc6453e1ea4db97f84430b3590d094ad707708371e0d9dd4b3"
+    },
+    "accepted_current_branches": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/2fed05db3d392d203b36/next-question-branch-matrix.json",
+      "bytes": 438149,
+      "sha256": "9f3a18bc7a8c04040a462d7b33d9ea9107c8822d036b681936542722cce4752e"
+    },
+    "accepted_resolver": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/ec1e71d5ff508cac0c12/detached-resolver.mjs",
+      "bytes": 25953,
+      "sha256": "61aeafec648204d0e4e99222b4ae3bf23270c752a730a637faf0627ebb12bd08"
+    },
+    "accepted_display_adapter": {
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/639d13edfaf3e7d4b055/current-display-adapter.mjs",
+      "bytes": 7875,
+      "sha256": "fb50337af24c6bdb7240aa866249a12f64192a39187dc8b0f0f0293b871e055f"
+    }
+  },
+  "stages": [
+    {
+      "id": "dismissal",
+      "entryId": "labor_disputes_dismissal_v01",
+      "phrase": "Мой вопрос об увольнении"
+    },
+    {
+      "id": "salary_delay",
+      "entryId": "labor_disputes_salary_delay_v01",
+      "phrase": "Мой вопрос о задержке зарплаты"
+    },
+    {
+      "id": "no_contract",
+      "entryId": "labor_disputes_no_contract_v01",
+      "phrase": "Мой вопрос о работе без договора"
+    },
+    {
+      "id": "overtime",
+      "entryId": "labor_disputes_overtime_v01",
+      "phrase": "Мой вопрос о дополнительной работе"
+    },
+    {
+      "id": "vacation_sick",
+      "entryId": "labor_disputes_vacation_sick_v01",
+      "phrase": "Мой вопрос об отпуске и больничном"
+    },
+    {
+      "id": "disciplinary",
+      "entryId": "labor_disputes_disciplinary_v01",
+      "phrase": "Мой вопрос о дисциплинарном взыскании"
+    },
+    {
+      "id": "workplace_injury",
+      "entryId": "labor_disputes_workplace_injury_v01",
+      "phrase": "Мой вопрос о травме на работе"
+    },
+    {
+      "id": "terms_changed",
+      "entryId": "labor_disputes_terms_changed_v01",
+      "phrase": "Мой вопрос об изменении условий работы"
+    }
+  ],
+  "fields": [
+    {
+      "fieldKey": "labor_disputes.dismissal.dismissal_order_or_record_received",
+      "stageId": "dismissal",
+      "fieldId": "dismissal_order_or_record_received",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Отделяет ситуацию с уже полученным документом от отсутствия сведений о получении. Не определяет дату получения или срок.",
+      "group": "dismissal",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/0"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.dismissal.dismissal_receipt_date_known",
+      "stageId": "dismissal",
+      "fieldId": "dismissal_receipt_date_known",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Поле выводится только проверенным evaluator; пользовательский Boolean не является доказательством.",
+      "group": "dismissal",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/1"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.dismissal.forced_resignation",
+      "stageId": "dismissal",
+      "fieldId": "forced_resignation",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет сообщённый факт давления отдельно от основания, указанного в документах. Не устанавливает юридическую квалификацию принуждения.",
+      "group": "dismissal",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/2"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.dismissal.redundancy_ground",
+      "stageId": "dismissal",
+      "fieldId": "redundancy_ground",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Собирает буквальное содержание известного документа, но не подтверждает законность основания. Если получена только книжка, а приказ неизвестен, допустим только неизвестный ответ или пропуск.",
+      "group": "dismissal",
+      "requires": [
+        {
+          "field_key": "labor_disputes.dismissal.dismissal_order_or_record_received",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.dismissal.dismissal_order_or_record_received",
+          "value": true
+        }
+      ],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/3"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.dismissal.disciplinary_ground",
+      "stageId": "dismissal",
+      "fieldId": "disciplinary_ground",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Основание увольнения нуждается в точной записи приказа; краткий Boolean о дисциплинарном основании подменял бы юридическую квалификацию.",
+      "group": "dismissal",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/4"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.dismissal.leave_or_sick_at_dismissal",
+      "stageId": "dismissal",
+      "fieldId": "leave_or_sick_at_dismissal",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Отмечает сообщённое обстоятельство на дату события. Для ответа «Нет» должно быть известно отсутствие обоих обстоятельств.",
+      "group": "dismissal",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/5"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.salary_delay.contract_absent",
+      "stageId": "salary_delay",
+      "fieldId": "contract_absent",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет наличие подписанного договора, не признавая отношения трудовыми автоматически.",
+      "group": "salary_delay",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/6"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.salary_delay.written_suspension_notice_sent",
+      "stageId": "salary_delay",
+      "fieldId": "written_suspension_notice_sent",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Сообщение о фактическом получении письменного извещения работодателем. Одного направления недостаточно; при неизвестном получении ответ Не знаю. Не устанавливает дату получения, условия статьи142 или законность приостановления.",
+      "group": "salary_delay",
+      "requires": [
+        {
+          "field_key": "labor_disputes.salary_delay.employment_ended",
+          "value": false
+        }
+      ],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/7"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.salary_delay.martial_emergency_or_special_measures_period",
+      "stageId": "salary_delay",
+      "fieldId": "martial_emergency_or_special_measures_period",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Наличие применимого особого режима требует authority/time scope; не является пользовательским юридическим chip.",
+      "group": "salary_delay",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/8"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.salary_delay.defense_security_rescue_fire_or_law_enforcement_work",
+      "stageId": "salary_delay",
+      "fieldId": "defense_security_rescue_fire_or_law_enforcement_work",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Составное юридическое исключение для приостановления работы требует проверки конкретной функции.",
+      "group": "salary_delay",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/9"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.salary_delay.state_service_worker",
+      "stageId": "salary_delay",
+      "fieldId": "state_service_worker",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Юридический статус государственной службы не выводится из названия работодателя или бытовой оценки.",
+      "group": "salary_delay",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/10"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.salary_delay.particularly_hazardous_production_or_equipment_work",
+      "stageId": "salary_delay",
+      "fieldId": "particularly_hazardous_production_or_equipment_work",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Применимость исключения об опасных производствах требует отдельной проверки.",
+      "group": "salary_delay",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/11"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.salary_delay.essential_population_services_work",
+      "stageId": "salary_delay",
+      "fieldId": "essential_population_services_work",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Применимость исключения жизнеобеспечения требует проверки конкретных обязанностей, не общего названия профессии.",
+      "group": "salary_delay",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/12"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.salary_delay.employment_ended",
+      "stageId": "salary_delay",
+      "fieldId": "employment_ended",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Отделяет текущую работу от ситуации после прекращения отношений; не определяет дату увольнения и не разрешает приостановление работы.",
+      "group": "salary_delay",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/13"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.salary_delay.unofficial_salary_part_claimed",
+      "stageId": "salary_delay",
+      "fieldId": "unofficial_salary_part_claimed",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Неофициальная часть требует более точного определения состава выплаты и договорённости; не включать неоднозначный Boolean в короткую цепочку.",
+      "group": "salary_delay",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/14"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.no_contract.actual_work_started",
+      "stageId": "no_contract",
+      "fieldId": "actual_work_started",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Отделяет фактическое выполнение работы от переговоров о будущем оформлении.",
+      "group": "no_contract",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/15"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.no_contract.employer_controlled_schedule",
+      "stageId": "no_contract",
+      "fieldId": "employer_controlled_schedule",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет наблюдаемую организацию работы, не устанавливая наличие трудовых отношений.",
+      "group": "no_contract",
+      "requires": [
+        {
+          "field_key": "labor_disputes.no_contract.actual_work_started",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.no_contract.actual_work_started",
+          "value": true
+        }
+      ],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/16"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.no_contract.regular_payment_received",
+      "stageId": "no_contract",
+      "fieldId": "regular_payment_received",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Отделяет сообщённую периодичность выплат от правовой квалификации договора.",
+      "group": "no_contract",
+      "requires": [
+        {
+          "field_key": "labor_disputes.no_contract.actual_work_started",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.no_contract.actual_work_started",
+          "value": true
+        }
+      ],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/17"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.no_contract.civil_contract_or_self_employed_status",
+      "stageId": "no_contract",
+      "fieldId": "civil_contract_or_self_employed_status",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Составной статус договора/самозанятости лучше разбирать по точной записи; не устанавливает природу отношений.",
+      "group": "no_contract",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/18"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.no_contract.employer_denies_employment",
+      "stageId": "no_contract",
+      "fieldId": "employer_denies_employment",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "В короткой цепочке приоритет имеют фактическое начало и организация работы; позиция работодателя не доказывает квалификацию отношений.",
+      "group": "no_contract",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/19"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.overtime.employer_required_extra_work",
+      "stageId": "overtime",
+      "fieldId": "employer_required_extra_work",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Отделяет поручение работодателя от самостоятельного пребывания на работе; не квалифицирует часы как подтверждённые сверхурочные.",
+      "group": "overtime",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/20"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.overtime.written_consent_given",
+      "stageId": "overtime",
+      "fieldId": "written_consent_given",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Собирает факт письменного согласия. Отсутствие согласия само по себе не определяет наличие исключения или незаконность работы.",
+      "group": "overtime",
+      "requires": [
+        {
+          "field_key": "labor_disputes.overtime.employer_required_extra_work",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.overtime.employer_required_extra_work",
+          "value": true
+        }
+      ],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/21"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.overtime.emergency_exception_present",
+      "stageId": "overtime",
+      "fieldId": "emergency_exception_present",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Поле выводится только проверенным evaluator; пользовательский Boolean не является доказательством.",
+      "group": "overtime",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/22"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.overtime.work_on_weekend_or_holiday",
+      "stageId": "overtime",
+      "fieldId": "work_on_weekend_or_holiday",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет вид сообщённого дня работы. Не рассчитывает оплату и не подтверждает применимость специальной нормы.",
+      "group": "overtime",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/23"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.overtime.night_work_involved",
+      "stageId": "overtime",
+      "fieldId": "night_work_involved",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет наблюдаемое время работы отдельно от количества часов и расчёта доплаты.",
+      "group": "overtime",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/24"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.overtime.time_off_instead_of_pay_agreed",
+      "stageId": "overtime",
+      "fieldId": "time_off_instead_of_pay_agreed",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "В коротком уточнении используется более простой факт просьбы об отдыхе; соглашение не выводится из просьбы.",
+      "group": "overtime",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/25"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.overtime.unused_day_off_at_termination_recorded",
+      "stageId": "overtime",
+      "fieldId": "unused_day_off_at_termination_recorded",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Составное условие увольнения и неиспользованного отдыха требует документов и не является первым коротким уточнением.",
+      "group": "overtime",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/26"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.vacation_sick.annual_leave_issue",
+      "stageId": "vacation_sick",
+      "fieldId": "annual_leave_issue",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Определяет заявленную тему дальнейшего уточнения, не устанавливая право на отпуск.",
+      "group": "vacation_sick",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/27"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.vacation_sick.leave_in_approved_schedule",
+      "stageId": "vacation_sick",
+      "fieldId": "leave_in_approved_schedule",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет содержание графика, не подтверждая автоматически дату начала или нарушение работодателя.",
+      "group": "vacation_sick",
+      "requires": [
+        {
+          "field_key": "labor_disputes.vacation_sick.annual_leave_issue",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.vacation_sick.annual_leave_issue",
+          "value": true
+        }
+      ],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/28"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.vacation_sick.leave_denied_or_postponed",
+      "stageId": "vacation_sick",
+      "fieldId": "leave_denied_or_postponed",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет сообщённое действие работодателя. Ответ «Нет» требует известного отсутствия обоих действий; незаконность не выводится.",
+      "group": "vacation_sick",
+      "requires": [
+        {
+          "field_key": "labor_disputes.vacation_sick.annual_leave_issue",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.vacation_sick.annual_leave_issue",
+          "value": true
+        }
+      ],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/29"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.vacation_sick.vacation_pay_not_received_on_time",
+      "stageId": "vacation_sick",
+      "fieldId": "vacation_pay_not_received_on_time",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Поле выводится только проверенным evaluator; пользовательский Boolean не является доказательством.",
+      "group": "vacation_sick",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/30"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.vacation_sick.sick_leave_issue",
+      "stageId": "vacation_sick",
+      "fieldId": "sick_leave_issue",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Выбирает полезную ветку уточнений, не отождествляя все виды пособий.",
+      "group": "vacation_sick",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/31"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.vacation_sick.electronic_sick_note_issued",
+      "stageId": "vacation_sick",
+      "fieldId": "electronic_sick_note_issued",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Само наличие электронного листка не отвечает на вопрос о виде пособия и полноте сведений; не приоритет первого/второго уточнения.",
+      "group": "vacation_sick",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/32"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.vacation_sick.sickness_during_annual_leave",
+      "stageId": "vacation_sick",
+      "fieldId": "sickness_during_annual_leave",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Поле выводится только проверенным evaluator; пользовательский Boolean не является доказательством.",
+      "group": "vacation_sick",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/33"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.vacation_sick.sick_benefit_denied",
+      "stageId": "vacation_sick",
+      "fieldId": "sick_benefit_denied",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Точный отрицательный исход надо читать из решения; не смешивать отсутствие решения, неполную выплату и отказ.",
+      "group": "vacation_sick",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/34"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.vacation_sick.sick_benefit_underpaid",
+      "stageId": "vacation_sick",
+      "fieldId": "sick_benefit_underpaid",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Недоплата требует проверенного расчёта; несогласие пользователя с суммой не доказывает её.",
+      "group": "vacation_sick",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/35"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.disciplinary.written_explanation_requested",
+      "stageId": "disciplinary",
+      "fieldId": "written_explanation_requested",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Сообщение о полученном письменном запросе самого работодателя. Устная просьба написать объяснение не означает такой письменный запрос или его получение. Не устанавливает сроки и не делает правового вывода об обязательной форме запроса.",
+      "group": "disciplinary",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/36"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.disciplinary.written_explanation_submitted",
+      "stageId": "disciplinary",
+      "fieldId": "written_explanation_submitted",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Сообщение о передаче письменного объяснения именно по текущему полученному письменному запросу. Нужна действующая предпосылка received_written_employer_explanation_request-v2; старый ответ о другом/устном запросе автоматически не переносится.",
+      "group": "disciplinary",
+      "requires": [
+        {
+          "field_key": "labor_disputes.disciplinary.written_explanation_requested",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.disciplinary.written_explanation_requested",
+          "value": true
+        }
+      ],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/37"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.disciplinary.disciplinary_order_issued",
+      "stageId": "disciplinary",
+      "fieldId": "disciplinary_order_issued",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Отделяет уже оформленное взыскание от стадии выяснения обстоятельств.",
+      "group": "disciplinary",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/38"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.disciplinary.disciplinary_order_copy_received",
+      "stageId": "disciplinary",
+      "fieldId": "disciplinary_order_copy_received",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет получение копии после известного издания приказа, не определяя сроки ознакомления.",
+      "group": "disciplinary",
+      "requires": [
+        {
+          "field_key": "labor_disputes.disciplinary.disciplinary_order_issued",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.disciplinary.disciplinary_order_issued",
+          "value": true
+        }
+      ],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/39"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.disciplinary.second_penalty_for_same_misconduct",
+      "stageId": "disciplinary",
+      "fieldId": "second_penalty_for_same_misconduct",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Поле выводится только проверенным evaluator; пользовательский Boolean не является доказательством.",
+      "group": "disciplinary",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/40"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.workplace_injury.injury_during_work_duties",
+      "stageId": "workplace_injury",
+      "fieldId": "injury_during_work_duties",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Собирает наблюдаемое обстоятельство. Ответ «Нет» не исключает иные основания связи с работой.",
+      "group": "workplace_injury",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/41"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.workplace_injury.medical_record_mentions_work",
+      "stageId": "workplace_injury",
+      "fieldId": "medical_record_mentions_work",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет буквальное содержание записи, не признавая случай производственным или страховым.",
+      "group": "workplace_injury",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/42"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.workplace_injury.employer_notified",
+      "stageId": "workplace_injury",
+      "fieldId": "employer_notified",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет сообщённое действие. Не подтверждает получение сообщения или дату осведомлённости работодателя.",
+      "group": "workplace_injury",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/43"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.workplace_injury.investigation_commission_created",
+      "stageId": "workplace_injury",
+      "fieldId": "investigation_commission_created",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Дополнительный организационный факт не приоритетнее извещения и медицинской записи в двух парах; не означает правильный состав комиссии.",
+      "group": "workplace_injury",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/44"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.workplace_injury.n1_act_issued",
+      "stageId": "workplace_injury",
+      "fieldId": "n1_act_issued",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет наличие акта, а не факт вручения копии. Акт не заменяет решение страховщика.",
+      "group": "workplace_injury",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/45"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.workplace_injury.severe_group_or_fatal_case",
+      "stageId": "workplace_injury",
+      "fieldId": "severe_group_or_fatal_case",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Поле выводится только проверенным evaluator; пользовательский Boolean не является доказательством.",
+      "group": "workplace_injury",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/46"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.workplace_injury.employer_demands_concealment",
+      "stageId": "workplace_injury",
+      "fieldId": "employer_demands_concealment",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет сообщённое давление без требования повторно контактировать с работодателем или выполнять опасную проверку.",
+      "group": "workplace_injury",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/47"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.workplace_injury.nonproduction_classification_received",
+      "stageId": "workplace_injury",
+      "fieldId": "nonproduction_classification_received",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Требуется точная запись завершённого акта и её отдельная проверка; краткая формулировка может смешать получение и квалификацию.",
+      "group": "workplace_injury",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/48"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.terms_changed.labor_function_changed",
+      "stageId": "terms_changed",
+      "fieldId": "labor_function_changed",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Юридическую трудовую функцию нельзя автоматически приравнять к любому изменению поручения; нужен точный текст условий.",
+      "group": "terms_changed",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/49"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.terms_changed.pay_schedule_or_workplace_changed",
+      "stageId": "terms_changed",
+      "fieldId": "pay_schedule_or_workplace_changed",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Поле выводится только проверенным evaluator; пользовательский Boolean не является доказательством.",
+      "group": "terms_changed",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/50"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.terms_changed.two_month_notice_received",
+      "stageId": "terms_changed",
+      "fieldId": "two_month_notice_received",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Поле выводится только проверенным evaluator; пользовательский Boolean не является доказательством.",
+      "group": "terms_changed",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/51"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.terms_changed.organizational_changes_documented",
+      "stageId": "terms_changed",
+      "fieldId": "organizational_changes_documented",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Документальное обоснование организационных/технологических изменений требует проверки содержания.",
+      "group": "terms_changed",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/52"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.terms_changed.supplemental_agreement_signed",
+      "stageId": "terms_changed",
+      "fieldId": "supplemental_agreement_signed",
+      "status": "BOUNDED_OBSERVATION",
+      "meaning": "Уточняет наличие подписи без вывода о добровольности, действительности соглашения или законности изменений.",
+      "group": "terms_changed",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/53"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.terms_changed.alternative_jobs_offered",
+      "stageId": "terms_changed",
+      "fieldId": "alternative_jobs_offered",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Предложение вакансий важно в конкретной ветке отказа; сначала уточняются атомарные изменения и наличие документа.",
+      "group": "terms_changed",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/54"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.terms_changed.change_already_implemented",
+      "stageId": "terms_changed",
+      "fieldId": "change_already_implemented",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Не приоритетнее определения самого изменения в ограничении двух пар; даты отдельно проверяются в sidecar.",
+      "group": "terms_changed",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/55"
+      }
+    },
+    {
+      "fieldKey": "labor_disputes.terms_changed.termination_under_refusal_ground_issued",
+      "stageId": "terms_changed",
+      "fieldId": "termination_under_refusal_ground_issued",
+      "status": "HELD_NONBRIDGE",
+      "meaning": "Составное юридическое основание увольнения требует точного приказа, не пользовательской квалификации.",
+      "group": "terms_changed",
+      "requires": [],
+      "guardRequires": [],
+      "sourceRefs": {
+        "pin": {
+          "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/category_next_document_json/labor_disputes/support/raw/bac3684e8bed9fe907ea/field-authority-routing-contract.json",
+          "bytes": 233532,
+          "sha256": "59ec21b97a86215105655798b0959dbdca10f340f66e46c9440f81746e524fb4"
+        },
+        "pointer": "/public_fields/56"
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "labor_next_dismissal_dismissal_order_or_record_received",
+      "fieldKey": "labor_disputes.dismissal.dismissal_order_or_record_received",
+      "stageId": "dismissal",
+      "text": "Вы уже получили хотя бы один из этих документов: копию приказа об увольнении, трудовую книжку или сведения о трудовой деятельности?",
+      "priority": 1,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я получил копию приказа об увольнении",
+      "negative": "Я не получил ни копии приказа об увольнении, ни трудовой книжки, ни сведений о трудовой деятельности",
+      "unknown": "Я не знаю, получен ли хотя бы один из перечисленных документов.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_dismissal_forced_resignation",
+      "fieldKey": "labor_disputes.dismissal.forced_resignation",
+      "stageId": "dismissal",
+      "text": "Работодатель требовал, чтобы вы написали заявление об увольнении по собственному желанию против вашей воли?",
+      "priority": 3,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Работодатель требовал заявление об увольнении против моей воли",
+      "negative": "Работодатель не требовал заявление об увольнении против моей воли",
+      "unknown": "Я не могу определить, было ли именно такое требование.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_dismissal_leave_or_sick_at_dismissal",
+      "fieldKey": "labor_disputes.dismissal.leave_or_sick_at_dismissal",
+      "stageId": "dismissal",
+      "text": "На дату увольнения вы находились в отпуске или на больничном?",
+      "priority": 4,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "На дату увольнения я был в отпуске",
+      "negative": "На дату увольнения я не был ни в отпуске, ни на больничном",
+      "unknown": "Я не знаю своего статуса на дату этого увольнения.",
+      "positiveAliases": [
+        "На дату увольнения я был на больничном"
+      ],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_dismissal_redundancy_ground",
+      "fieldKey": "labor_disputes.dismissal.redundancy_ground",
+      "stageId": "dismissal",
+      "text": "В приказе об увольнении прямо указано сокращение численности или штата?",
+      "priority": 5,
+      "semanticRevision": "observation-v1",
+      "requires": [
+        {
+          "field_key": "labor_disputes.dismissal.dismissal_order_or_record_received",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.dismissal.dismissal_order_or_record_received",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "В приказе об увольнении прямо указано сокращение штата",
+      "negative": "В приказе об увольнении не указано сокращение численности или штата",
+      "unknown": "Я не знаю, указано ли в приказе такое основание.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_salary_delay_employment_ended",
+      "fieldKey": "labor_disputes.salary_delay.employment_ended",
+      "stageId": "salary_delay",
+      "text": "Ваши трудовые отношения с этим работодателем уже прекращены?",
+      "priority": 1,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Мои трудовые отношения с этим работодателем прекращены",
+      "negative": "Мои трудовые отношения с этим работодателем ещё не прекращены",
+      "unknown": "Я не знаю, прекращены ли эти отношения.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_salary_delay_contract_absent",
+      "fieldKey": "labor_disputes.salary_delay.contract_absent",
+      "stageId": "salary_delay",
+      "text": "Вы работаете или работали у этого работодателя без подписанного трудового договора?",
+      "priority": 2,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я работал у этого работодателя без подписанного трудового договора",
+      "negative": "У меня был подписанный трудовой договор с этим работодателем",
+      "unknown": "Я не знаю, был ли подписанный трудовой договор для рассматриваемого периода.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_salary_delay_written_suspension_notice_sent",
+      "fieldKey": "labor_disputes.salary_delay.written_suspension_notice_sent",
+      "stageId": "salary_delay",
+      "text": "Работодатель уже получил ваше письменное извещение о приостановлении работы?",
+      "priority": 3,
+      "semanticRevision": "employer_received_written_suspension_notice-v2",
+      "requires": [
+        {
+          "field_key": "labor_disputes.salary_delay.employment_ended",
+          "value": false
+        }
+      ],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Работодатель получил моё письменное извещение о приостановлении работы",
+      "negative": "Работодатель ещё не получил моё письменное извещение о приостановлении работы",
+      "unknown": "Я не знаю, получил ли работодатель моё письменное извещение.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_no_contract_actual_work_started",
+      "fieldKey": "labor_disputes.no_contract.actual_work_started",
+      "stageId": "no_contract",
+      "text": "Вы уже фактически приступили к работе?",
+      "priority": 1,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я фактически приступил к этой работе",
+      "negative": "Я ещё не приступил к этой работе",
+      "unknown": "Я не знаю, можно ли описанные мной действия считать фактическим началом работы.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_no_contract_employer_controlled_schedule",
+      "fieldKey": "labor_disputes.no_contract.employer_controlled_schedule",
+      "stageId": "no_contract",
+      "text": "Работодатель определял ваш рабочий график?",
+      "priority": 2,
+      "semanticRevision": "observation-v1",
+      "requires": [
+        {
+          "field_key": "labor_disputes.no_contract.actual_work_started",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.no_contract.actual_work_started",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Работодатель определял мой рабочий график",
+      "negative": "Работодатель не определял мой рабочий график",
+      "unknown": "Я не знаю, кто определял мой рабочий график в этот период.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_no_contract_regular_payment_received",
+      "fieldKey": "labor_disputes.no_contract.regular_payment_received",
+      "stageId": "no_contract",
+      "text": "Вы получали оплату за работу регулярно?",
+      "priority": 4,
+      "semanticRevision": "observation-v1",
+      "requires": [
+        {
+          "field_key": "labor_disputes.no_contract.actual_work_started",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.no_contract.actual_work_started",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я регулярно получал оплату за эту работу",
+      "negative": "Я не получал регулярной оплаты за эту работу",
+      "unknown": "Я не знаю, можно ли считать поступления регулярной оплатой этой работы.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_overtime_employer_required_extra_work",
+      "fieldKey": "labor_disputes.overtime.employer_required_extra_work",
+      "stageId": "overtime",
+      "text": "Работодатель поручал вам работать сверх установленного для вас времени?",
+      "priority": 1,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Работодатель поручал мне работу сверх установленного для меня времени",
+      "negative": "Работодатель не поручал мне работу сверх установленного для меня времени",
+      "unknown": "Я не знаю, было ли такое поручение работодателя.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_overtime_work_on_weekend_or_holiday",
+      "fieldKey": "labor_disputes.overtime.work_on_weekend_or_holiday",
+      "stageId": "overtime",
+      "text": "Вы работали в день, который по вашему графику был выходным или праздничным?",
+      "priority": 2,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я работал в выходной по моему графику",
+      "negative": "Я не работал ни в выходной по моему графику, ни в праздничный день",
+      "unknown": "Я не знаю, относится ли обсуждаемый день моей работы к выходному или праздничному.",
+      "positiveAliases": [
+        "Я работал в праздничный день"
+      ],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_overtime_night_work_involved",
+      "fieldKey": "labor_disputes.overtime.night_work_involved",
+      "stageId": "overtime",
+      "text": "Вы работали в промежутке с 22:00 до 06:00?",
+      "priority": 3,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я работал между 22:00 и 06:00",
+      "negative": "Я не работал между 22:00 и 06:00",
+      "unknown": "Я не знаю, приходились ли мои рабочие часы на промежуток 22:00–06:00.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_overtime_written_consent_given",
+      "fieldKey": "labor_disputes.overtime.written_consent_given",
+      "stageId": "overtime",
+      "text": "Вы давали письменное согласие на эту дополнительную работу?",
+      "priority": 4,
+      "semanticRevision": "observation-v1",
+      "requires": [
+        {
+          "field_key": "labor_disputes.overtime.employer_required_extra_work",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.overtime.employer_required_extra_work",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я дал письменное согласие на эту дополнительную работу",
+      "negative": "Я не давал письменного согласия на эту дополнительную работу",
+      "unknown": "Я не знаю, давал ли письменное согласие именно на эту дополнительную работу.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_vacation_sick_annual_leave_issue",
+      "fieldKey": "labor_disputes.vacation_sick.annual_leave_issue",
+      "stageId": "vacation_sick",
+      "text": "Ваш вопрос касается ежегодного оплачиваемого отпуска?",
+      "priority": 1,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Мой вопрос касается ежегодного оплачиваемого отпуска",
+      "negative": "Мой вопрос не касается ежегодного оплачиваемого отпуска",
+      "unknown": "Я не знаю, относится ли мой вопрос к ежегодному оплачиваемому отпуску.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_vacation_sick_leave_in_approved_schedule",
+      "fieldKey": "labor_disputes.vacation_sick.leave_in_approved_schedule",
+      "stageId": "vacation_sick",
+      "text": "Этот отпуск указан в утверждённом графике отпусков?",
+      "priority": 2,
+      "semanticRevision": "observation-v1",
+      "requires": [
+        {
+          "field_key": "labor_disputes.vacation_sick.annual_leave_issue",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.vacation_sick.annual_leave_issue",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Этот отпуск указан в утверждённом графике отпусков",
+      "negative": "Этот отпуск не указан в утверждённом графике отпусков",
+      "unknown": "Я не знаю, указан ли этот отпуск в утверждённом графике.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_vacation_sick_sick_leave_issue",
+      "fieldKey": "labor_disputes.vacation_sick.sick_leave_issue",
+      "stageId": "vacation_sick",
+      "text": "Ваш вопрос касается больничного или пособия по нему?",
+      "priority": 3,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Мой вопрос касается больничного или пособия по нему",
+      "negative": "Мой вопрос не касается ни больничного, ни пособия по нему",
+      "unknown": "Я не знаю, относится ли мой вопрос к больничному или пособию по нему.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_vacation_sick_leave_denied_or_postponed",
+      "fieldKey": "labor_disputes.vacation_sick.leave_denied_or_postponed",
+      "stageId": "vacation_sick",
+      "text": "Работодатель отказал в этом отпуске или перенёс его?",
+      "priority": 6,
+      "semanticRevision": "observation-v1",
+      "requires": [
+        {
+          "field_key": "labor_disputes.vacation_sick.annual_leave_issue",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.vacation_sick.annual_leave_issue",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Работодатель отказал мне в этом отпуске",
+      "negative": "Работодатель не отказал в этом отпуске и не перенёс его",
+      "unknown": "Я не знаю, отказал ли работодатель в этом отпуске или перенёс его.",
+      "positiveAliases": [
+        "Работодатель перенёс этот отпуск"
+      ],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_disciplinary_disciplinary_order_issued",
+      "fieldKey": "labor_disputes.disciplinary.disciplinary_order_issued",
+      "stageId": "disciplinary",
+      "text": "Приказ о дисциплинарном взыскании уже издан?",
+      "priority": 1,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Приказ о дисциплинарном взыскании уже издан",
+      "negative": "Приказ о дисциплинарном взыскании ещё не издан",
+      "unknown": "Я не знаю, издан ли приказ по этому событию.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_disciplinary_written_explanation_requested",
+      "fieldKey": "labor_disputes.disciplinary.written_explanation_requested",
+      "stageId": "disciplinary",
+      "text": "Вы получили письменный запрос работодателя о предоставлении объяснения?",
+      "priority": 2,
+      "semanticRevision": "received_written_employer_explanation_request-v2",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я получил письменный запрос работодателя о предоставлении объяснения",
+      "negative": "Я не получил письменного запроса работодателя о предоставлении объяснения",
+      "unknown": "Я не знаю, получал ли письменный запрос работодателя по этому событию.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_disciplinary_disciplinary_order_copy_received",
+      "fieldKey": "labor_disputes.disciplinary.disciplinary_order_copy_received",
+      "stageId": "disciplinary",
+      "text": "Вы получили копию приказа о дисциплинарном взыскании?",
+      "priority": 3,
+      "semanticRevision": "observation-v1",
+      "requires": [
+        {
+          "field_key": "labor_disputes.disciplinary.disciplinary_order_issued",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.disciplinary.disciplinary_order_issued",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я получил копию этого приказа о дисциплинарном взыскании",
+      "negative": "Я не получил копию этого приказа о дисциплинарном взыскании",
+      "unknown": "Я не знаю, получил ли копию этого приказа.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_disciplinary_written_explanation_submitted",
+      "fieldKey": "labor_disputes.disciplinary.written_explanation_submitted",
+      "stageId": "disciplinary",
+      "text": "Вы предоставили письменное объяснение по этому запросу?",
+      "priority": 4,
+      "semanticRevision": "written_explanation_for_current_written_request-v2",
+      "requires": [
+        {
+          "field_key": "labor_disputes.disciplinary.written_explanation_requested",
+          "value": true
+        }
+      ],
+      "guardRequires": [
+        {
+          "field_key": "labor_disputes.disciplinary.written_explanation_requested",
+          "value": true
+        }
+      ],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я предоставил письменное объяснение по этому запросу",
+      "negative": "Я не предоставил письменного объяснения по этому запросу",
+      "unknown": "Я не знаю, предоставил ли письменное объяснение по этому запросу.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_workplace_injury_employer_notified",
+      "fieldKey": "labor_disputes.workplace_injury.employer_notified",
+      "stageId": "workplace_injury",
+      "text": "Вы уже сообщили работодателю о травме?",
+      "priority": 1,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я сообщил работодателю об этой травме",
+      "negative": "Я ещё не сообщил работодателю об этой травме",
+      "unknown": "Я не знаю, было ли моё сообщение об этой травме передано работодателю.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_workplace_injury_medical_record_mentions_work",
+      "fieldKey": "labor_disputes.workplace_injury.medical_record_mentions_work",
+      "stageId": "workplace_injury",
+      "text": "В медицинской записи указано, что травма связана с работой?",
+      "priority": 2,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "В медицинской записи указана связь этой травмы с работой",
+      "negative": "В медицинской записи не указана связь этой травмы с работой",
+      "unknown": "Я не знаю, указана ли связь с работой в медицинской записи по этой травме.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_workplace_injury_injury_during_work_duties",
+      "fieldKey": "labor_disputes.workplace_injury.injury_during_work_duties",
+      "stageId": "workplace_injury",
+      "text": "Травма произошла во время выполнения порученной вам работы?",
+      "priority": 3,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Эта травма произошла при выполнении порученной мне работы",
+      "negative": "Эта травма произошла не при выполнении порученной мне работы",
+      "unknown": "Я не знаю, была ли травма получена во время выполнения порученной мне работы.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_workplace_injury_n1_act_issued",
+      "fieldKey": "labor_disputes.workplace_injury.n1_act_issued",
+      "stageId": "workplace_injury",
+      "text": "По этому случаю уже составлен акт формы Н-1?",
+      "priority": 4,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "По этому случаю составлен акт формы Н-1",
+      "negative": "По этому случаю акт формы Н-1 ещё не составлен",
+      "unknown": "Я не знаю, составлен ли по этому случаю акт формы Н-1.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_workplace_injury_employer_demands_concealment",
+      "fieldKey": "labor_disputes.workplace_injury.employer_demands_concealment",
+      "stageId": "workplace_injury",
+      "text": "Работодатель просил вас скрыть, что травма произошла на работе?",
+      "priority": 5,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Работодатель просил меня скрыть связь этой травмы с работой",
+      "negative": "Работодатель не просил меня скрыть связь этой травмы с работой",
+      "unknown": "Я не знаю, содержалось ли в словах работодателя такое требование.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    },
+    {
+      "id": "labor_next_terms_changed_supplemental_agreement_signed",
+      "fieldKey": "labor_disputes.terms_changed.supplemental_agreement_signed",
+      "stageId": "terms_changed",
+      "text": "Вы подписали дополнительное соглашение об этих изменениях?",
+      "priority": 5,
+      "semanticRevision": "observation-v1",
+      "requires": [],
+      "guardRequires": [],
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "positive": "Я подписал дополнительное соглашение об этих изменениях",
+      "negative": "Я не подписывал дополнительного соглашения об этих изменениях",
+      "unknown": "Я не знаю, подписывал ли именно такое дополнительное соглашение.",
+      "positiveAliases": [],
+      "negativeAliases": []
+    }
+  ],
+  "scopePolicy": "Explicit self/employer/current topic required; salary/overtime/vacation period literal required for specialization. Scope changes preserve case receipts. New request/order/notice/act changes retire old subject and child lineage. No automatic cross-stage copying.",
+  "producerPolicy": "29 nonbridge fields have no native producer; disabled. private10 raw voluntary reports are nonidentity and never selectors/evaluator inputs. No medical/legal evaluator."
+}

@@ -20,6 +20,8 @@ type AddMessageUseCase interface {
 }
 
 type MessageListUseCase interface {
+	ExportMessages(ctx context.Context, chatID uuid.UUID) ([]*entity.Message, error)
+	DeleteMessages(ctx context.Context, chatID uuid.UUID) error
 	MessageList(ctx context.Context, chatID uuid.UUID) ([]*entity.Message, error)
 }
 

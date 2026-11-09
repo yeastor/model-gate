@@ -3,8 +3,6 @@ package http
 import (
 	"bytes"
 	"crypto/tls"
-	"fmt"
-	"io"
 	"net/http"
 )
 
@@ -138,118 +136,37 @@ func (c *DcHTTPClient) doRequestWithBody(url string, data []byte, method string)
 	return res, nil
 }
 
-func (c *DcHTTPClient) DeleteWithLog(url string, logArgs ...any) (*http.Response, error) {
-	logMessadge := fmt.Sprintf("[Request] url: %v header: %v", url, c.GetHeaders())
-	c.logger.Info(logMessadge)
-
-	res, err := c.Delete(url)
+func (c *DcHTTPClient) logResult(res *http.Response, err error) (*http.Response, error) {
 	if err != nil {
-		logMessadge = fmt.Sprintf("[Response DoError] error: %v", err.Error())
-		c.logger.Info(logMessadge)
-		return res, err
+		c.logger.Error("upstream HTTP request failed", "code", "UPSTREAM_REQUEST_FAILED")
+	} else if res != nil {
+		c.logger.Info("upstream HTTP response", "status", res.StatusCode)
 	}
-
-	bodyBytes, err := io.ReadAll(res.Body)
-	if err != nil {
-		logMessadge = fmt.Sprintf("[Response ReadBodyError] error: %v", err.Error())
-		c.logger.Info(logMessadge)
-		return res, err
-	}
-
-	logMessadge = fmt.Sprintf("[Response] status: %v data: %v", res.StatusCode, string(bodyBytes))
-	c.logger.Info(logMessadge)
-
-	res.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
-
-	return res, nil
+	return res, err
 }
 
-func (c *DcHTTPClient) GetWithLog(url string, logArgs ...any) (*http.Response, error) {
-	logMessage := fmt.Sprintf("[Request] url: %v header: %v", url, c.GetHeaders())
-	c.logger.Info(logMessage, logArgs)
+func (c *DcHTTPClient) DeleteWithLog(url string, _ ...any) (*http.Response, error) {
+	return c.logResult(c.Delete(url))
+}
 
-	res, err := c.client.Get(url)
-	if err != nil {
-		logMessage = fmt.Sprintf("[Response DoError] error: %v", err.Error())
-		c.logger.Info(logMessage, logArgs)
-		return res, err
-	}
-
-	bodyBytes, err := io.ReadAll(res.Body)
-	if err != nil {
-		logMessage = fmt.Sprintf("[Response ReadBodyError] error: %v", err.Error())
-		c.logger.Info(logMessage, logArgs)
-		return res, err
-	}
-
-	logMessage = fmt.Sprintf("[Response] status: %v data: %v", res.StatusCode, string(bodyBytes))
-	c.logger.Info(logMessage, logArgs)
-
-	res.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
-
-	return res, nil
+func (c *DcHTTPClient) GetWithLog(url string, _ ...any) (*http.Response, error) {
+	return c.logResult(c.client.Get(url))
 }
 
 func (c *DcHTTPClient) Do(req *http.Request) (*http.Response, error) {
 	return c.client.Do(req)
 }
 
-func (c *DcHTTPClient) DoWithLog(req *http.Request, logArgs ...any) (*http.Response, error) {
-	logMessage := fmt.Sprintf("[Request] url: %v, data: %v", req.URL, req.Body)
-	c.logger.Info(logMessage)
-	return c.client.Do(req)
+func (c *DcHTTPClient) DoWithLog(req *http.Request, _ ...any) (*http.Response, error) {
+	return c.logResult(c.Do(req))
 }
 
-func (c *DcHTTPClient) PostWithLog(url string, data []byte, logArgs ...any) (*http.Response, error) {
-	logMessage := fmt.Sprintf("[Request] url: %v header: %v data: %v", url, c.GetHeaders(), string(data))
-	c.logger.Info(logMessage)
-
-	res, err := c.Post(url, data)
-	if err != nil {
-		logMessage = fmt.Sprintf("[Response DoError] error: %v", err.Error())
-		c.logger.Info(logMessage, logArgs)
-		return res, err
-	}
-
-	bodyBytes, err := io.ReadAll(res.Body)
-	if err != nil {
-		logMessage = fmt.Sprintf("[Response ReadBodyError] error: %v", err.Error())
-		c.logger.Info(logMessage, logArgs)
-		return res, err
-	}
-
-	logMessage = fmt.Sprintf("[Response] status: %v data: %v", res.StatusCode, string(bodyBytes))
-	c.logger.Info(logMessage, logArgs)
-
-	res.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
-
-	return res, nil
+func (c *DcHTTPClient) PostWithLog(url string, data []byte, _ ...any) (*http.Response, error) {
+	return c.logResult(c.Post(url, data))
 }
 
-func (c *DcHTTPClient) PutWithLog(url string, data []byte, logArgs ...any) (*http.Response, error) {
-	logMessage := fmt.Sprintf("[Request] url: %v header: %v data: %v", url, c.GetHeaders(), string(data))
-	c.logger.Info(logMessage, logArgs)
-
-	res, err := c.Put(url, data)
-	if err != nil {
-		logMessage = fmt.Sprintf("[Response DoError] error: %v", err.Error())
-		c.logger.Info(logMessage, logArgs)
-		return res, err
-	}
-
-	bodyBytes, err := io.ReadAll(res.Body)
-	if err != nil {
-		logMessage = fmt.Sprintf("[Response ReadBodyError] error: %v", err.Error())
-		c.logger.Info(logMessage, logArgs)
-		return res, err
-	}
-
-	logMessage = fmt.Sprintf("[Response] status: %v data: %v", res.StatusCode, string(bodyBytes))
-	c.logger.Info(logMessage, logArgs)
-
-	res.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
-
-	return res, nil
+func (c *DcHTTPClient) PutWithLog(url string, data []byte, _ ...any) (*http.Response, error) {
+	return c.logResult(c.Put(url, data))
 }
 
 func (c *DcHTTPClient) mapToHeaders() http.Header {

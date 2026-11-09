@@ -16,7 +16,7 @@ func HandleRequestID(ctx context.Context, validator validator) string {
 	}
 
 	header, ok := mb[DefaultKey]
-	if !ok {
+	if !ok || len(header) != 1 {
 		return NewRequestID()
 	}
 

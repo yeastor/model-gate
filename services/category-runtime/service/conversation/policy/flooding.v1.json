@@ -1,0 +1,3581 @@
+{
+  "schemaVersion": "flooding-native-profile/v1",
+  "categoryId": "flooding",
+  "version": "flooding.20261028.content-closure.v2",
+  "source": {
+    "path": "_work/flooding/content-closure-and-qdrant/20261028-v1/package/category.json",
+    "bytes": 242066,
+    "sha256": "1992127e28dda36969b7ac9ea6750ed715634a607d31be1faf5381538d6b23ea"
+  },
+  "components": {
+    "NEXT": {
+      "path": "category_next_document_json/flooding/next/human-option2/candidate-NEXT.catalog.json",
+      "bytes": 23867,
+      "sha256": "ee7d03433c483fc08aba2c1fd6d03218e9c6f87c270be69764434f0d5667850f"
+    },
+    "lookup": {
+      "path": "_work/flooding/content-closure-and-qdrant/20261028-v1/package/answer-lookup.json",
+      "bytes": 225890,
+      "sha256": "94768a8dabf0e6b1f78b565d488a6767ed300d09106e1c5f65769c26345d7b21"
+    },
+    "native": {
+      "path": "_work/flooding/content-closure-and-qdrant/20261028-v1/package/native-requests.json",
+      "bytes": 47934,
+      "sha256": "ad9ac952355af0f360bed5831550a40fb4fdcb0a8e3fca00dce4013254e74d2d"
+    },
+    "bindings": {
+      "path": "_work/flooding/content-closure-and-qdrant/20261028-v1/package/full-bindings.json",
+      "bytes": 282135,
+      "sha256": "46debe6b276b50f7c28e39bfccadc7a8756828fa48c5b1c431db3b6f47d2739e"
+    },
+    "targets": {
+      "path": "_work/flooding/content-closure-and-qdrant/20261028-v1/package/full-targets.json",
+      "bytes": 3005936,
+      "sha256": "39595d7b484faabd30b81ad370eb47cdf2cc4880516c2f8fee35dc1b2766f6d1"
+    },
+    "NEXT_acceptance": {
+      "path": "category_next_document_json/flooding/evidence/c-r47-control1526-human-option2-success-currentNEXT8-acceptance-20261024.json",
+      "bytes": 2387,
+      "sha256": "7176fb5361df705e62edef2b6565a81cc954f54e7373fecb6b50f7804af3c2b4"
+    },
+    "language_acceptance": {
+      "path": "category_next_document_json/flooding/evidence/c-r41-control1301-current-language-pass-acceptance.json",
+      "bytes": 2499,
+      "sha256": "003e7d3a90f763ae78fd8e4f6dc94cb4b70993e55e2a2b2308aed8088aaf6242"
+    },
+    "source_priority": {
+      "path": "category_next_document_json/flooding/evidence/source-priority.json",
+      "bytes": 10007,
+      "sha256": "708630030b8871b65ad9e428c06ee6a041504d81b7566a2ce9772446090be4c8"
+    }
+  },
+  "maxQuestionsPerCase": 2,
+  "thirdQuestionReasons": {},
+  "supplementalQuestions": [],
+  "fields": [
+    {
+      "fieldKey": "flooding.immediate_actions.emergency_stopped",
+      "stageId": "immediate_actions",
+      "group": "immediate_actions:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "emergency_stopped",
+        "name": "поступление воды уже остановлено"
+      },
+      "admissions": {
+        "field": "emergency_stopped",
+        "text": "Поступление воды уже прекратилось?",
+        "uncertainty": "observation",
+        "true_iff": "По уже имеющимся сведениям вода больше не поступает.",
+        "false_iff": "Известно, что вода продолжает поступать.",
+        "use": "Уточнить сообщение диспетчеру о состоянии течи; прекращение не устанавливает причину.",
+        "material_steps": [
+          0
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.immediate_actions.electrical_hazard",
+      "stageId": "immediate_actions",
+      "group": "immediate_actions:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "electrical_hazard",
+        "name": "вода попала на проводку, розетки или электрооборудование"
+      },
+      "admissions": {
+        "field": "electrical_hazard",
+        "text": "Вода попала на проводку, розетки или электрооборудование?",
+        "uncertainty": "observation",
+        "true_iff": "По уже имеющимся безопасно полученным сведениям вода попала хотя бы на один из перечисленных объектов.",
+        "false_iff": "Есть сведения, что вода не попала ни на один из перечисленных объектов. Не превращать отсутствие наблюдения в Нет.",
+        "use": "Выделить уже предусмотренные меры безопасности у электрики; помощь и полный общий ответ доступны до вопроса.",
+        "material_steps": [],
+        "material_now": true,
+        "note": "Не требовать подходить к воде, трогать приборы или проверять напряжение ради ответа."
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.immediate_actions.source_in_common_property",
+      "stageId": "immediate_actions",
+      "group": "immediate_actions:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "source_in_common_property",
+        "name": "вероятный источник находится в стояке, крыше или другом общем имуществе"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "immediate_actions",
+        "field": "source_in_common_property",
+        "reason": "Место у стояка/крыши не доказывает принадлежность к общему имуществу; простой вопрос требовал бы технической или правовой квалификации.",
+        "preserved_action": "В общем ответе сохранены сообщение видимых следов и отделение наблюдения от версии источника/причины.",
+        "material_steps": [
+          1
+        ]
+      }
+    },
+    {
+      "fieldKey": "flooding.immediate_actions.upstairs_neighbor_unavailable",
+      "stageId": "immediate_actions",
+      "group": "immediate_actions:flatId,sourceFlatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "sourceFlatId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "upstairs_neighbor_unavailable",
+        "name": "нет доступа в квартиру предполагаемого источника залива"
+      },
+      "admissions": {
+        "field": "upstairs_neighbor_unavailable",
+        "text": "Как сейчас обстоит дело с доступом в предполагаемую квартиру-источник?",
+        "uncertainty": "fact",
+        "requires": [
+          {
+            "field": "emergency_stopped",
+            "value": false
+          }
+        ],
+        "true_iff": "Для известной предполагаемой квартиры-источника фактически нет доступа.",
+        "false_iff": "Доступ к этой квартире есть. Неизвестный источник или неизвестная доступность дают null.",
+        "use": "Передать службе сведения о недоступной квартире и попытках связи; не предлагать самостоятельное вскрытие.",
+        "material_steps": [
+          2
+        ],
+        "answer_labels": {
+          "true": "Доступа нет",
+          "false": "Доступ есть",
+          "null": "Не знаю"
+        }
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.immediate_actions.emergency_service_called",
+      "stageId": "immediate_actions",
+      "group": "immediate_actions:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "emergency_service_called",
+        "name": "аварийная служба или управляющая организация уже вызвана"
+      },
+      "admissions": {
+        "field": "emergency_service_called",
+        "text": "В аварийную службу или управляющую организацию уже передали вызов по этому заливу?",
+        "uncertainty": "memory",
+        "true_iff": "Вызов передан хотя бы одному из двух адресатов именно по этому заливу.",
+        "false_iff": "Известно, что вызов не передавали ни одному из них; неизвестный звонок другого участника не считать отсутствующим.",
+        "use": "Не повторять сделанный вызов автоматически; сохранить его время и данные либо использовать имеющееся указание о вызове.",
+        "material_steps": [
+          3
+        ],
+        "material_now": true
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.immediate_actions.photo_video_saved",
+      "stageId": "immediate_actions",
+      "group": "immediate_actions:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "photo_video_saved",
+        "name": "первичные последствия зафиксированы на фото или видео"
+      },
+      "admissions": {
+        "field": "photo_video_saved",
+        "text": "Первичные последствия этого залива зафиксированы на фото или видео?",
+        "uncertainty": "document",
+        "true_iff": "Известно, что первичные последствия этого залива были зафиксированы хотя бы на фото или видео. Недоступность исходника или наличие только копии не отменяют сам факт фиксации.",
+        "false_iff": "Известно, что первичные последствия этого залива не фиксировали ни на фото, ни на видео. Утрата исходника или копии сама по себе не означает отсутствие состоявшейся фиксации; если факт фиксации неизвестен, ответ null.",
+        "use": "Уточнить факт первичной фото- или видеофиксации без подмены его сохранностью исходника; рекомендации по сохранению материалов и безопасной дополнительной фиксации остаются в полном ответе.",
+        "material_steps": [
+          4
+        ],
+        "material_now": true,
+        "note": "Наличие исходного файла и юридическая достаточность материала этим полем не устанавливаются. Только поздняя съёмка без первичной фиксации не даёт ответ Да. Ответ «Нужно проверить» (null) выбирается только если сам факт первичной фиксации нельзя подтвердить или опровергнуть. Недоступность исходника и всех копий при известном факте съёмки сама по себе не даёт null."
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.act_management.inspection_refused",
+      "stageId": "act_management",
+      "group": "act_management:flatId,organizationId,inspectionRequestId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "organizationId",
+        "inspectionRequestId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "inspection_refused",
+        "name": "управляющая организация отказалась проводить осмотр"
+      },
+      "admissions": {
+        "field": "inspection_refused",
+        "text": "Управляющая организация прямо отказалась проводить осмотр по этому заливу?",
+        "uncertainty": "fact",
+        "true_iff": "Есть фактический отказ УК проводить осмотр именно по этому обращению.",
+        "false_iff": "Известно, что отказа проводить осмотр не было. Молчание, ожидание и неизвестный ответ сами не означают ни отказ, ни его опровержение.",
+        "use": "Различить зафиксированный отказ и выяснение фактического состояния обращения; не выдавать неизвестное за отказ.",
+        "material_steps": [
+          0
+        ],
+        "material_now": true
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.act_management.act_copy_received",
+      "stageId": "act_management",
+      "group": "act_management:flatId,actId,recipientId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "actId",
+        "recipientId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "act_copy_received",
+        "name": "потерпевший получил копию акта"
+      },
+      "admissions": {
+        "field": "act_copy_received",
+        "text": "Потерпевший уже получил копию акта по этому заливу?",
+        "uncertainty": "document",
+        "true_iff": "Копия именно этого акта получена потерпевшим. Последующая утрата копии не меняет факт получения.",
+        "false_iff": "Известно, что копия не получена. Это не означает, что акт не составляли.",
+        "use": "Выбрать получение копии либо сохранение и сверку уже полученного документа.",
+        "material_steps": [
+          1
+        ],
+        "material_now": true
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.act_management.cause_missing_in_act",
+      "stageId": "act_management",
+      "group": "act_management:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "cause_missing_in_act",
+        "name": "В акте не указаны причина или предполагаемый источник залива"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "act_management",
+        "field": "cause_missing_in_act",
+        "reason": "Формулировка существующего поля не определяет частичный случай: в акте есть предполагаемый источник, но нет причины, либо наоборот. Вопрос с OR либо с Ни...ни молча выбрал бы новое значение Boolean. До уточнения точного предиката не предлагать кнопки.",
+        "preserved_action": "Общий ответ сохраняет проверку сведений о причине/источнике и конкретные дополнения к акту по исходным материалам.",
+        "material_steps": [
+          2
+        ],
+        "predicate_clarification_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.act_management.damage_incomplete",
+      "stageId": "act_management",
+      "group": "act_management:flatId,actId,recipientId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "actId",
+        "recipientId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "damage_incomplete",
+        "name": "В акте перечислены не все повреждения"
+      },
+      "admissions": {
+        "field": "damage_incomplete",
+        "text": "В полученной копии акта пропущены какие-либо фактически обнаруженные повреждения?",
+        "uncertainty": "document",
+        "requires": [
+          {
+            "field": "act_copy_received",
+            "value": true
+          }
+        ],
+        "true_iff": "Известно конкретное обнаруженное повреждение, отсутствующее в доступном перечне акта.",
+        "false_iff": "Доступный перечень сопоставлен с известными повреждениями и пропусков среди них нет; неизвестная полнота осмотра даёт null.",
+        "use": "Привязать конкретное дополнение к акту к наблюдению и исходному материалу; не предписывать повтор уже выполненного.",
+        "material_steps": [
+          2
+        ],
+        "material_now": true
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.act_management.objections_recorded",
+      "stageId": "act_management",
+      "group": "act_management:flatId,actId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "actId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "objections_recorded",
+        "name": "замечания к акту внесены письменно"
+      },
+      "admissions": {
+        "field": "objections_recorded",
+        "text": "Замечания к акту уже изложены письменно?",
+        "uncertainty": "document",
+        "true_iff": "Замечания по этому акту существуют в письменном виде.",
+        "false_iff": "Известно, что письменных замечаний ещё нет. Не выводить из этого отсутствие устных возражений.",
+        "use": "Сохранить написанные замечания и передачу; дополнение готовить лишь по необходимости.",
+        "material_steps": [
+          3
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.act_management.independent_evidence_available",
+      "stageId": "act_management",
+      "group": "act_management:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "independent_evidence_available",
+        "name": "есть свидетели, фото, видео или независимый акт осмотра"
+      },
+      "admissions": {
+        "field": "independent_evidence_available",
+        "text": "Есть свидетели, фото, видео или независимый акт осмотра по этому заливу?",
+        "uncertainty": "fact",
+        "true_iff": "Есть хотя бы один из перечисленных источников по этому заливу: свидетель, фото, видео или независимый акт осмотра. Фото или видео, доступные только в копии, тоже означают наличие материала; это не оценка его достоверности или достаточности.",
+        "false_iff": "Известно отсутствие всех перечисленных источников: свидетелей, фото, видео и независимого акта осмотра. Отсутствие исходника при наличии копии не означает Нет. Если нет ни одного установленного положительного источника и наличие хотя бы одного из перечисленных источников остаётся неизвестным, ответ null. Если хотя бы один источник достоверно есть, ответ Да независимо от неизвестности остальных.",
+        "use": "Определить имеющиеся материалы для фактических замечаний; не объявлять их достаточными доказательствами ответственности.",
+        "material_steps": [
+          4
+        ],
+        "note": "Несколько копий одного источника не становятся несколькими независимыми источниками. Наличие материала не подтверждает ответственность или допустимость доказательства."
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.accused_of_flooding.source_inside_apartment",
+      "stageId": "accused_of_flooding",
+      "group": "accused_of_flooding:flatId,actorId,inspectionId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "actorId",
+        "inspectionId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "source_inside_apartment",
+        "name": "источник протечки находится внутри квартиры обвиняемого"
+      },
+      "admissions": {
+        "field": "source_inside_apartment",
+        "text": "По уже имеющимся результатам осмотра источник протечки находится внутри квартиры лица, которому предъявлены требования?",
+        "uncertainty": "observation",
+        "true_iff": "Уже имеющиеся сведения об осмотре устанавливают физическое место источника внутри именно этой квартиры.",
+        "false_iff": "По этим сведениям физический источник расположен вне этой квартиры. Направление воды или предположение не являются подтверждением.",
+        "use": "Сохранить подтверждение физического места источника, отдельно от причины и ответственности.",
+        "material_steps": [
+          0
+        ],
+        "note": "Ответ не определяет принадлежность узла, границу имущества или виновность. Без сведений о месте — null; новый осмотр ради кнопки не требуется."
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.accused_of_flooding.source_in_common_property",
+      "stageId": "accused_of_flooding",
+      "group": "accused_of_flooding:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "source_in_common_property",
+        "name": "источник относится к общему имуществу дома"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "accused_of_flooding",
+        "field": "source_in_common_property",
+        "reason": "Физическое место источника не устанавливает принадлежность узла к общему имуществу. Требуется отдельная проверка границы и объекта.",
+        "preserved_action": "Сохранены хронология и возражения; ответственность не признаётся по расположению узла.",
+        "material_steps": [
+          0
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.accused_of_flooding.act_names_responsible",
+      "stageId": "accused_of_flooding",
+      "group": "accused_of_flooding:flatId,actorId,actId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "actorId",
+        "actId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "act_names_responsible",
+        "name": "В акте управляющей организации обвиняемый указан ответственным"
+      },
+      "admissions": {
+        "field": "act_names_responsible",
+        "text": "В акте управляющей организации лицо, которому предъявлены требования, прямо указано ответственным за залив?",
+        "uncertainty": "document",
+        "true_iff": "В доступном тексте акта прямо названо ответственным именно лицо текущего обращения.",
+        "false_iff": "Акт доступен, проверен и такого указания о данном лице нет. Отсутствующий или непрочитанный акт даёт null.",
+        "use": "Работать с реальным выводом акта и фактическими возражениями, не признавая сам вывод истинным.",
+        "material_steps": [
+          1
+        ],
+        "material_now": true
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.accused_of_flooding.inspection_invitation_received",
+      "stageId": "accused_of_flooding",
+      "group": "accused_of_flooding:flatId,actorId,inspectionId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "actorId",
+        "inspectionId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "inspection_invitation_received",
+        "name": "получено уведомление об осмотре или независимой оценке"
+      },
+      "admissions": {
+        "field": "inspection_invitation_received",
+        "text": "Получено уведомление об осмотре или независимой оценке по этому заливу?",
+        "uncertainty": "document",
+        "true_iff": "Уведомление хотя бы об одном из двух действий получено относящимся к требованиям лицом.",
+        "false_iff": "Известно, что уведомлений ни об осмотре, ни об оценке не получали; неизвестная переписка даёт null.",
+        "use": "Сохранить реальное уведомление, дату, место и канал; не приписывать участие или обязательную процедуру.",
+        "material_steps": [
+          2
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.accused_of_flooding.contractor_worked_recently",
+      "stageId": "accused_of_flooding",
+      "group": "accused_of_flooding:flatId,componentId,contractorId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "componentId",
+        "contractorId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "contractor_worked_recently",
+        "name": "перед заливом сантехнические работы выполнял подрядчик"
+      },
+      "admissions": {
+        "field": "contractor_worked_recently",
+        "text": "Перед заливом сантехнические работы у предполагаемого источника протечки выполнял подрядчик?",
+        "uncertainty": "memory",
+        "true_iff": "Известно о таких предшествующих работах подрядчика в относящейся к этому заливу системе.",
+        "false_iff": "Известно, что подрядчик таких работ перед заливом не выполнял; неизвестные работы дают null.",
+        "use": "Собрать существующие договор, заказ, чеки и хронологию работ без вывода об ответственности подрядчика.",
+        "material_steps": [
+          3
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.accused_of_flooding.liability_insured",
+      "stageId": "accused_of_flooding",
+      "group": "accused_of_flooding:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "liability_insured",
+        "name": "гражданская ответственность за залив была застрахована"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "accused_of_flooding",
+        "field": "liability_insured",
+        "reason": "Наличие полиса или пункта о гражданской ответственности не подтверждает страхование ответственности за этот случай. Нужна проверка договора и события.",
+        "preserved_action": "Сохранены оговорки о полисе и отсутствие обещания выплаты или допустимости страхового маршрута.",
+        "material_steps": [],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.who_responsible.source_in_common_property",
+      "stageId": "who_responsible",
+      "group": "who_responsible:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "source_in_common_property",
+        "name": "источник находится в стояке, крыше или другом общем имуществе"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "who_responsible",
+        "field": "source_in_common_property",
+        "reason": "Принадлежность источника к общему имуществу не следует из видимого расположения; не спрашивать пользователя итог квалификации.",
+        "preserved_action": "Общий ответ сохраняет проверку объекта, границы имущества и обязанности содержания.",
+        "material_steps": [
+          1
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.who_responsible.source_inside_neighbor_property",
+      "stageId": "who_responsible",
+      "group": "who_responsible:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "source_inside_neighbor_property",
+        "name": "источник находится после границы ответственности в квартире соседа"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "who_responsible",
+        "field": "source_inside_neighbor_property",
+        "reason": "Поле включает нахождение после границы ответственности. Простое наблюдение воды в квартире не подтверждает эту составную границу.",
+        "preserved_action": "Сохранены фиксация элемента и отдельная проверка границы и участников.",
+        "material_steps": [
+          1
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.who_responsible.contractor_worked_recently",
+      "stageId": "who_responsible",
+      "group": "who_responsible:flatId,componentId,contractorId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "componentId",
+        "contractorId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "contractor_worked_recently",
+        "name": "незадолго до залива работы выполнял подрядчик"
+      },
+      "admissions": {
+        "field": "contractor_worked_recently",
+        "text": "Незадолго до залива у предполагаемого источника воды работы выполнял подрядчик?",
+        "uncertainty": "memory",
+        "true_iff": "Известны предшествующие заливу работы подрядчика на относящемся к происшествию объекте.",
+        "false_iff": "Известно, что таких работ подрядчика не было; отсутствие доступного договора само не доказывает Нет.",
+        "use": "Уточнить набор договоров и хронологию вмешательств; сам факт работ не назначает плательщика.",
+        "material_steps": [
+          2
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.who_responsible.flat_rented_out",
+      "stageId": "who_responsible",
+      "group": "who_responsible:flatId,sourceFlatId,occupantId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "sourceFlatId",
+        "occupantId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "flat_rented_out",
+        "name": "квартирой предполагаемого виновника пользовался наниматель"
+      },
+      "admissions": {
+        "field": "flat_rented_out",
+        "text": "На момент залива квартирой предполагаемого источника пользовался человек по договору найма?",
+        "uncertainty": "document",
+        "true_iff": "Известны фактическое пользование этой квартирой нанимателем и относящийся к периоду найма договор.",
+        "false_iff": "Известно, что в этот период квартирой не пользовался наниматель; проживание неизвестного человека или название договора без сведений о пользовании дают null.",
+        "use": "Сохранить период пользования, договор и сообщения участников без назначения ответственного по одному найму.",
+        "material_steps": [
+          2
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.who_responsible.act_made",
+      "stageId": "who_responsible",
+      "group": "who_responsible:flatId,actId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "actId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "act_made",
+        "name": "акт о заливе и предполагаемой причине составлен"
+      },
+      "admissions": {
+        "field": "act_made",
+        "text": "Уже составлен акт, в котором описаны этот залив и его предполагаемая причина?",
+        "uncertainty": "document",
+        "true_iff": "Такой акт составлен, а его существование и относящееся к вопросу содержание известны.",
+        "false_iff": "Известно, что такого акта не составляли. Отсутствие копии или незнание содержания — null.",
+        "use": "Сохранить полный существующий акт с версиями и приложениями либо отметить реальный пробел в материалах.",
+        "material_steps": [
+          3
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.who_responsible.expert_conclusion_available",
+      "stageId": "who_responsible",
+      "group": "who_responsible:flatId,assessmentId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "assessmentId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "expert_conclusion_available",
+        "name": "есть заключение специалиста о причине залива"
+      },
+      "admissions": {
+        "field": "expert_conclusion_available",
+        "text": "Есть заключение специалиста о причине этого залива?",
+        "uncertainty": "document",
+        "true_iff": "Имеется именно заключение о причине данного залива.",
+        "false_iff": "Известно, что такого заключения нет. Оценка стоимости без исследования причины не подтверждает этот факт.",
+        "use": "Сохранить заключение целиком с исходными данными и сопоставить с другими материалами.",
+        "material_steps": [
+          4
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.damage_estimate.act_made",
+      "stageId": "damage_estimate",
+      "group": "damage_estimate:flatId,actId,damageId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "actId",
+        "damageId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "act_made",
+        "name": "акт о заливе с перечнем повреждений составлен"
+      },
+      "admissions": {
+        "field": "act_made",
+        "text": "Составлен акт об этом заливе с перечнем повреждений?",
+        "uncertainty": "document",
+        "true_iff": "Такой акт составлен и наличие в нём перечня повреждений известно.",
+        "false_iff": "Известно, что акт с таким содержанием не составляли; неизвестное содержание или отсутствие копии — null.",
+        "use": "Сопоставить полный акт с датированным перечнем повреждений и сохранить расхождения.",
+        "material_steps": [
+          0
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.damage_estimate.hidden_damage_present",
+      "stageId": "damage_estimate",
+      "group": "damage_estimate:flatId,damageId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "damageId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "hidden_damage_present",
+        "name": "после высыхания проявились скрытые повреждения"
+      },
+      "admissions": {
+        "field": "hidden_damage_present",
+        "text": "После высыхания обнаружились повреждения, которые раньше не были видны?",
+        "uncertainty": "observation",
+        "true_iff": "Такие позднее проявившиеся повреждения фактически обнаружены на этом объекте.",
+        "false_iff": "Известно, что после высыхания новых проявлений не обнаружено; до высыхания или при отсутствии сведений — null.",
+        "use": "Связать новые проявления с датой, помещением и прежними кадрами без вывода о причине.",
+        "material_steps": [
+          1
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.damage_estimate.estimate_ready",
+      "stageId": "damage_estimate",
+      "group": "damage_estimate:flatId,damageId,assessmentId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "damageId",
+        "assessmentId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "estimate_ready",
+        "name": "независимая оценка или заключение уже подготовлены"
+      },
+      "admissions": {
+        "field": "estimate_ready",
+        "text": "Независимая оценка ущерба или заключение уже подготовлены?",
+        "uncertainty": "document",
+        "true_iff": "Готова относящаяся к этому ущербу независимая оценка либо заключение; это факт готовности документа.",
+        "false_iff": "Известно, что ни такая оценка, ни заключение ещё не подготовлены.",
+        "use": "Сохранить и проверить готовый документ целиком либо использовать предусмотренный общий порядок расчёта; не объявлять оценщика обязательным.",
+        "material_steps": [
+          2
+        ],
+        "material_now": true
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.damage_estimate.other_party_invited",
+      "stageId": "damage_estimate",
+      "group": "damage_estimate:flatId,inspectionId,addresseeId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "inspectionId",
+        "addresseeId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "other_party_invited",
+        "name": "предполагаемый виновник был заранее приглашён на осмотр"
+      },
+      "admissions": {
+        "field": "other_party_invited",
+        "text": "Сторону, к которой предъявляются требования о возмещении, заранее пригласили на осмотр?",
+        "uncertainty": "document",
+        "true_iff": "Известно, что этой стороне заранее направили или лично передали приглашение на относящийся к оценке осмотр. Юридическая достаточность и подтверждение доставки проверяются отдельно.",
+        "false_iff": "Известно, что заранее её не приглашали. Неизвестные отправление, время или адресат — null.",
+        "use": "Сохранить приглашение и фактических участников; не выводить согласие из неявки и не переносить приглашение на новый осмотр.",
+        "material_steps": [
+          3
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.damage_estimate.purchase_receipts_available",
+      "stageId": "damage_estimate",
+      "group": "damage_estimate:flatId,damageId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "damageId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "purchase_receipts_available",
+        "name": "сохранились документы о стоимости повреждённых вещей"
+      },
+      "admissions": {
+        "field": "purchase_receipts_available",
+        "text": "Сохранились документы о стоимости повреждённых вещей?",
+        "uncertainty": "document",
+        "true_iff": "Сохранились относящиеся к повреждённым вещам документы с данными о стоимости.",
+        "false_iff": "Известно, что таких документов нет; неизвестные архивы другого участника — null.",
+        "use": "Связать документы с вещами либо отметить сведения о модели, возрасте и источнике цены для проверки.",
+        "material_steps": [
+          4
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.damage_estimate.repairs_started",
+      "stageId": "damage_estimate",
+      "group": "damage_estimate:flatId,damageId,assessmentId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "damageId",
+        "assessmentId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "repairs_started",
+        "name": "ремонт уже начат до завершения оценки"
+      },
+      "admissions": {
+        "field": "repairs_started",
+        "text": "До завершения оценки повреждений уже начали ремонт?",
+        "uncertainty": "fact",
+        "true_iff": "Ремонт повреждений начался до завершения относящейся к ним оценки.",
+        "false_iff": "Известно, что до завершения оценки ремонт не начинали. Неизвестная последовательность событий — null.",
+        "use": "Выделить сохранение кадров до работ и фиксацию хода ремонта, без требования откладывать неотложные меры.",
+        "material_steps": [
+          5
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.pretrial_claim.estimate_ready",
+      "stageId": "pretrial_claim",
+      "group": "pretrial_claim:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "estimate_ready",
+        "name": "размер ущерба подтверждён оценкой или документами"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "pretrial_claim",
+        "field": "estimate_ready",
+        "reason": "Здесь поле означает подтверждённость размера ущерба, а не готовность файла оценки. Вопрос о наличии документа подменил бы смысл и не проверил расчёт.",
+        "preserved_action": "Общий ответ сохраняет проверку повреждений, объёма, цен, расходов, источников и готовой оценки.",
+        "material_steps": [
+          0
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.pretrial_claim.claim_sent",
+      "stageId": "pretrial_claim",
+      "group": "pretrial_claim:flatId,claimId,addresseeId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "claimId",
+        "addresseeId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "claim_sent",
+        "name": "письменная претензия уже направлена"
+      },
+      "admissions": {
+        "field": "claim_sent",
+        "text": "Письменная претензия по этому заливу уже направлена адресату?",
+        "uncertainty": "memory",
+        "true_iff": "Именно письменная претензия направлена установленному адресату; черновик и намерение не считаются отправкой.",
+        "false_iff": "Известно, что письменная претензия ещё не направлена; неизвестная отправка другим участником — null.",
+        "use": "Не отправлять уже направленный текст автоматически повторно; сохранить текст, приложения и способ передачи.",
+        "material_steps": [
+          1
+        ],
+        "material_now": true
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.pretrial_claim.delivery_confirmed",
+      "stageId": "pretrial_claim",
+      "group": "pretrial_claim:flatId,claimId,addresseeId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "claimId",
+        "addresseeId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "delivery_confirmed",
+        "name": "получение претензии адресатом подтверждено"
+      },
+      "admissions": {
+        "field": "delivery_confirmed",
+        "text": "Есть подтверждение, что адресат получил эту претензию?",
+        "uncertainty": "document",
+        "requires": [
+          {
+            "field": "claim_sent",
+            "value": true
+          }
+        ],
+        "true_iff": "Есть подтверждение получения конкретной претензии конкретным адресатом.",
+        "false_iff": "Известно отсутствие подтверждения получения. Это не утверждение, что адресат её не получил.",
+        "use": "Связать доставку с отправлением и датой, не считать отправку доставкой или получение признанием долга.",
+        "material_steps": [
+          2
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.pretrial_claim.responsible_is_company",
+      "stageId": "pretrial_claim",
+      "group": "pretrial_claim:flatId,addresseeId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "addresseeId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "responsible_is_company",
+        "name": "ответчиком является управляющая организация или иное юридическое лицо"
+      },
+      "admissions": {
+        "field": "responsible_is_company",
+        "text": "Требование о возмещении предъявляется управляющей организации или другому юридическому лицу?",
+        "uncertainty": "document",
+        "true_iff": "Лицо, к которому в текущем обращении предъявлено требование, установлено как УК или другое юридическое лицо.",
+        "false_iff": "Установлено, что это физическое лицо. Если сама сторона не установлена, один бренд, обозначение ИП или имя представителя не заменяют её определение: null.",
+        "use": "Сверить данные выбранной стороны; статус организации сам не доказывает ответственность или потребительское основание.",
+        "material_steps": [
+          3
+        ],
+        "note": "Вопрос о статусе уже указанной стороны, не о том, кто юридически обязан возместить вред. Не назначает надлежащего ответчика."
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.pretrial_claim.partial_payment_received",
+      "stageId": "pretrial_claim",
+      "group": "pretrial_claim:flatId,paymentId,recipientId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "paymentId",
+        "recipientId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "partial_payment_received",
+        "name": "часть ущерба уже возмещена"
+      },
+      "admissions": {
+        "field": "partial_payment_received",
+        "text": "По этому заливу уже получена частичная компенсация ущерба?",
+        "uncertainty": "document",
+        "true_iff": "Получен подтверждённый платёж в счёт частичного возмещения именно этого ущерба.",
+        "false_iff": "Известно, что частичного возмещения не получено; неизвестный платёж не считать отсутствующим.",
+        "use": "Учесть полученную сумму при проверке остатка без дублей; не считать платёж признанием всего требования.",
+        "material_steps": [
+          4
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.pretrial_claim.insurance_available",
+      "stageId": "pretrial_claim",
+      "group": "pretrial_claim:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "insurance_available",
+        "name": "ущерб или ответственность покрываются действующей страховкой"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "pretrial_claim",
+        "field": "insurance_available",
+        "reason": "Покрытие ущерба или ответственности требует сопоставления договора, события и роли. Наличие полиса не допускает true.",
+        "preserved_action": "Сохранён запрет предполагать покрытие и создавать неподтверждённый маршрут к страховщику.",
+        "material_steps": [
+          5
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.court.act_made",
+      "stageId": "court",
+      "group": "court:flatId,actId,damageId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "actId",
+        "damageId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "act_made",
+        "name": "акт о заливе и повреждениях составлен"
+      },
+      "admissions": {
+        "field": "act_made",
+        "text": "Составлен акт об этом заливе и повреждениях?",
+        "uncertainty": "document",
+        "true_iff": "Существование акта с таким содержанием известно.",
+        "false_iff": "Известно, что такого акта не составляли; отсутствие копии не равно отсутствию акта.",
+        "use": "Сохранить полный текст и приложения и сопоставить с другими доказательствами, не объявляя его достаточным.",
+        "material_steps": [
+          0
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.court.source_and_responsible_actor_identified",
+      "stageId": "court",
+      "group": "court:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "source_and_responsible_actor_identified",
+        "name": "известны источник воды и лицо или организация, отвечающие за эту квартиру либо систему"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "court",
+        "field": "source_and_responsible_actor_identified",
+        "reason": "Поле соединяет технический источник и лицо, отвечающее за квартиру/систему. Одним простым вопросом без проверки этих оснований его не установить.",
+        "preserved_action": "Сохранены проверка источника, обязанности, связи с вредом и надлежащего ответчика; до проверки — черновик.",
+        "material_steps": [
+          1
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.court.estimate_ready",
+      "stageId": "court",
+      "group": "court:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "estimate_ready",
+        "name": "размер ущерба подтверждён оценкой или заключением"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "court",
+        "field": "estimate_ready",
+        "reason": "Подтверждённость размера оценкой/заключением не равна наличию готового документа. Нужна проверка расчёта и связи с ущербом.",
+        "preserved_action": "Общий ответ сохраняет проверку готового отчёта либо собственного расчёта без дублей.",
+        "material_steps": [
+          2
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.court.pretrial_claim_sent",
+      "stageId": "court",
+      "group": "court:flatId,claimId,addresseeId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "claimId",
+        "addresseeId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "pretrial_claim_sent",
+        "name": "ответчику направлена досудебная претензия"
+      },
+      "admissions": {
+        "field": "pretrial_claim_sent",
+        "text": "Досудебная претензия по этому заливу уже направлена указанному ответчику?",
+        "uncertainty": "memory",
+        "true_iff": "Именно этому ответчику направлена соответствующая претензия.",
+        "false_iff": "Известно, что такой претензии этому ответчику не направляли; черновик, иной адресат или неизвестная отправка не подтверждают Да.",
+        "use": "Проверить имеющиеся претензию, приложения, даты и ответ; отправка не доказывает соблюдение досудебного порядка.",
+        "material_steps": [
+          3
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.court.defendant_is_company",
+      "stageId": "court",
+      "group": "court:flatId,addresseeId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "addresseeId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "defendant_is_company",
+        "name": "ответчиком является управляющая организация или иное юридическое лицо"
+      },
+      "admissions": {
+        "field": "defendant_is_company",
+        "text": "Указанный ответчик — управляющая организация или другое юридическое лицо?",
+        "uncertainty": "document",
+        "true_iff": "Текущий названный ответчик установлен как УК или другое юридическое лицо.",
+        "false_iff": "Установлено, что ответчик — физическое лицо. Если сама сторона не установлена, одно обозначение ИП или представитель вместо стороны не заменяют её определение: null.",
+        "use": "Сверить реквизиты ответчика; статус компании не даёт потребительского основания и не определяет подсудность.",
+        "material_steps": [
+          4
+        ],
+        "note": "Роль и конкретное лицо уже заданы текущим обращением; надлежащий ответчик и виновность этим вопросом не определяются."
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.court.cause_or_fault_disputed",
+      "stageId": "court",
+      "group": "court:flatId,addresseeId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "addresseeId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "cause_or_fault_disputed",
+        "name": "ответчик оспаривает причину залива или свою ответственность"
+      },
+      "admissions": {
+        "field": "cause_or_fault_disputed",
+        "text": "Ответчик оспаривает причину залива или свою ответственность?",
+        "uncertainty": "document",
+        "true_iff": "В реальных доступных возражениях ответчика оспаривается причина либо ответственность, либо обе.",
+        "false_iff": "Известно, что ни причина, ни ответственность ответчиком не оспариваются. Неизвестная позиция и молчание сами не подтверждают Нет.",
+        "use": "Сопоставить конкретный спорный вопрос с материалами прежде, чем просить экспертизу; не приписывать возражения.",
+        "material_steps": [
+          5,
+          6
+        ]
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.insurance.policy_active",
+      "stageId": "insurance",
+      "group": "insurance:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "policy_active",
+        "name": "на дату залива действовал страховой полис"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "insurance",
+        "field": "policy_active",
+        "reason": "Даты и наличие полиса не исчерпывают действие договора на дату события; нельзя спрашивать вместо этого о наличии бумаги.",
+        "preserved_action": "Сохранена проверка полного договора, периода, объекта, риска и роли; действие полиса не гарантирует покрытие.",
+        "material_steps": [
+          0
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.insurance.loss_reported_on_time",
+      "stageId": "insurance",
+      "group": "insurance:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "loss_reported_on_time",
+        "name": "О страховом случае сообщили в договорный срок"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "insurance",
+        "field": "loss_reported_on_time",
+        "reason": "Соблюдение договорного срока требует конкретных условий, способа, дат события/известности и уведомления. Один вопрос о том, уведомляли ли страховщика, не устанавливает этот предикат.",
+        "preserved_action": "Сохранены незамедлительное уведомление с учётом договора и хранение дат/канала/доставки, без объявления пропуска или его последствий.",
+        "material_steps": [
+          1
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.insurance.documents_complete",
+      "stageId": "insurance",
+      "group": "insurance:flatId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId"
+      ],
+      "status": "HELD_QUALIFIED_PRODUCER",
+      "definition": {
+        "id": "documents_complete",
+        "name": "страховщику передан полный запрошенный комплект документов"
+      },
+      "admissions": null,
+      "omission": {
+        "stage": "insurance",
+        "field": "documents_complete",
+        "reason": "Полнота требует применимого перечня и подтверждённой передачи. Отсутствие нового запроса и уверенность пользователя не доказывают полный комплект.",
+        "preserved_action": "Сохранены сверка применимых условий, комплекта и доставки, досылка недостающего без повторения выполненного.",
+        "material_steps": [
+          2
+        ],
+        "assessment_needed": true
+      }
+    },
+    {
+      "fieldKey": "flooding.insurance.written_refusal_received",
+      "stageId": "insurance",
+      "group": "insurance:flatId,insurerId,insuranceClaimId,recipientId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "insurerId",
+        "insuranceClaimId",
+        "recipientId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "written_refusal_received",
+        "name": "получен письменный отказ в страховой выплате"
+      },
+      "admissions": {
+        "field": "written_refusal_received",
+        "text": "Получен письменный отказ страховщика в выплате по этому заливу?",
+        "uncertainty": "document",
+        "true_iff": "Получен письменный документ страховщика с отказом в выплате по этому случаю.",
+        "false_iff": "Известно, что письменного отказа не получали. Молчание или неизвестный документ не объявлять отказом.",
+        "use": "Работать с реально полученным отказом и проверкой его оснований; не называть его незаконным по одному факту получения.",
+        "material_steps": [],
+        "specific_material_field": "written_refusal_received"
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.insurance.payment_understated",
+      "stageId": "insurance",
+      "group": "insurance:flatId,insurerId,insuranceClaimId,paymentId,recipientId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "insurerId",
+        "insuranceClaimId",
+        "paymentId",
+        "recipientId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "payment_understated",
+        "name": "выплата произведена, но её размер оспаривается"
+      },
+      "admissions": {
+        "field": "payment_understated",
+        "text": "Есть спор о размере уже полученной страховой выплаты по этому заливу?",
+        "uncertainty": "document",
+        "true_iff": "Обе части известны: выплата произведена и её размер оспаривается в текущем страховом споре.",
+        "false_iff": "Известно, что выплаты ещё нет, либо что произведённая выплата по размеру не оспаривается. Если обе части достоверно не установлены — null.",
+        "use": "Уточнить спор о сумме существующей выплаты, не утверждая доказанную недоплату и не придумывая размер.",
+        "material_steps": [],
+        "specific_material_field": "payment_understated"
+      },
+      "omission": null
+    },
+    {
+      "fieldKey": "flooding.insurance.financial_ombudsman_applied",
+      "stageId": "insurance",
+      "group": "insurance:flatId,insurerId,insuranceClaimId,recipientId",
+      "scopeKeys": [
+        "role",
+        "actorId",
+        "flatId",
+        "insurerId",
+        "insuranceClaimId",
+        "recipientId"
+      ],
+      "status": "SUPPORTED_BOUNDED",
+      "definition": {
+        "id": "financial_ombudsman_applied",
+        "name": "обращение финансовому уполномоченному уже подано"
+      },
+      "admissions": {
+        "field": "financial_ombudsman_applied",
+        "text": "Обращение по этому страховому спору уже подано финансовому уполномоченному?",
+        "uncertainty": "document",
+        "true_iff": "Есть сведения о фактической подаче обращения по этому спору финансовому уполномоченному.",
+        "false_iff": "Известно, что обращение ему не подавали. Обращение страховщику или подготовленный черновик не считаются такой подачей.",
+        "use": "Различить уже поданное обращение и подготовку дальнейших действий, не объявляя подачу принятием или допустимостью.",
+        "material_steps": [],
+        "specific_material_field": "financial_ombudsman_applied",
+        "note": "Не подтверждает компетенцию уполномоченного, соблюдение досудебного порядка или право на иск."
+      },
+      "omission": null
+    }
+  ],
+  "questions": [
+    {
+      "id": "FLOOD-immediate_actions-electrical_hazard",
+      "fieldKey": "flooding.immediate_actions.electrical_hazard",
+      "stageId": "immediate_actions",
+      "text": "Вода попала на проводку, розетки или электрооборудование?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не могу определить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/0/variants/0/payload/answer/now",
+          "role": "Retained full general guidance before NEXT"
+        }
+      ],
+      "uncertaintyKind": "observation"
+    },
+    {
+      "id": "FLOOD-immediate_actions-emergency_stopped",
+      "fieldKey": "flooding.immediate_actions.emergency_stopped",
+      "stageId": "immediate_actions",
+      "text": "Поступление воды уже прекратилось?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не могу определить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/0/variants/0/payload/answer/steps/0",
+          "text_sha256": "7709037cc28ec27d4b35d800ad923aece0114c46056fb85b5d9c21b03dd40712"
+        }
+      ],
+      "uncertaintyKind": "observation"
+    },
+    {
+      "id": "FLOOD-immediate_actions-emergency_service_called",
+      "fieldKey": "flooding.immediate_actions.emergency_service_called",
+      "stageId": "immediate_actions",
+      "text": "В аварийную службу или управляющую организацию уже передали вызов по этому заливу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не помню"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/0/variants/0/payload/answer/now",
+          "role": "Retained full general guidance before NEXT"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/0/variants/0/payload/answer/steps/3",
+          "text_sha256": "92f6af5b61a87fd127e8f80287fd781c4d40696dc4b423199aa53684c905a5bd"
+        }
+      ],
+      "uncertaintyKind": "memory"
+    },
+    {
+      "id": "FLOOD-immediate_actions-upstairs_neighbor_unavailable",
+      "fieldKey": "flooding.immediate_actions.upstairs_neighbor_unavailable",
+      "stageId": "immediate_actions",
+      "text": "Как сейчас обстоит дело с доступом в предполагаемую квартиру-источник?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Доступа нет"
+        },
+        {
+          "value": false,
+          "label": "Доступ есть"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "requires": [
+        {
+          "field_key": "flooding.immediate_actions.emergency_stopped",
+          "value": false
+        }
+      ],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/0/variants/0/payload/answer/steps/2",
+          "text_sha256": "f0580b3e4ca80882753490eab11c39ad31498347f7099c982794408ad4f24894"
+        }
+      ],
+      "uncertaintyKind": "fact"
+    },
+    {
+      "id": "FLOOD-immediate_actions-photo_video_saved",
+      "fieldKey": "flooding.immediate_actions.photo_video_saved",
+      "stageId": "immediate_actions",
+      "text": "Первичные последствия этого залива зафиксированы на фото или видео?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/0/variants/0/payload/answer/now",
+          "role": "Retained full general guidance before NEXT"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/0/variants/0/payload/answer/steps/4",
+          "text_sha256": "42e2768c7ac67be5a0e409306e3bc7e8fab626cdb1f220b0a65fe4881fa2d76d"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-act_management-inspection_refused",
+      "fieldKey": "flooding.act_management.inspection_refused",
+      "stageId": "act_management",
+      "text": "Управляющая организация прямо отказалась проводить осмотр по этому заливу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/1/variants/0/payload/answer/now",
+          "role": "Retained full general guidance before NEXT"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/1/variants/0/payload/answer/steps/0",
+          "text_sha256": "77d93cf6ea37740b98d1c299dc1a408c2a28d483c0a4329ac6c7a3b3a7d40aa1"
+        }
+      ],
+      "uncertaintyKind": "fact"
+    },
+    {
+      "id": "FLOOD-act_management-act_copy_received",
+      "fieldKey": "flooding.act_management.act_copy_received",
+      "stageId": "act_management",
+      "text": "Потерпевший уже получил копию акта по этому заливу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/1/variants/0/payload/answer/now",
+          "role": "Retained full general guidance before NEXT"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/1/variants/0/payload/answer/steps/1",
+          "text_sha256": "ebbf0da65ec4fc5d128e6ab124816214af6dfa2679b1d354e25dbf360a828efa"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-act_management-damage_incomplete",
+      "fieldKey": "flooding.act_management.damage_incomplete",
+      "stageId": "act_management",
+      "text": "В полученной копии акта пропущены какие-либо фактически обнаруженные повреждения?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [
+        {
+          "field_key": "flooding.act_management.act_copy_received",
+          "value": true
+        }
+      ],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/1/variants/0/payload/answer/now",
+          "role": "Retained full general guidance before NEXT"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/1/variants/0/payload/answer/steps/2",
+          "text_sha256": "ad261a46215db74b2b755b3842bf15daee3421e292d2ca857bd18995280fc83e"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-act_management-objections_recorded",
+      "fieldKey": "flooding.act_management.objections_recorded",
+      "stageId": "act_management",
+      "text": "Замечания к акту уже изложены письменно?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/1/variants/0/payload/answer/steps/3",
+          "text_sha256": "95d4a4b3e0c003bc7baaaeb70e8f43fa351eedbdbcec1209b32e65a9b91abe2b"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-act_management-independent_evidence_available",
+      "fieldKey": "flooding.act_management.independent_evidence_available",
+      "stageId": "act_management",
+      "text": "Есть свидетели, фото, видео или независимый акт осмотра по этому заливу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/1/variants/0/payload/answer/steps/4",
+          "text_sha256": "d3fcb1057eb268e4571a6ee05af109a5b73aea68df0bb4fe25d13f4fae21d0c4"
+        }
+      ],
+      "uncertaintyKind": "fact"
+    },
+    {
+      "id": "FLOOD-accused_of_flooding-act_names_responsible",
+      "fieldKey": "flooding.accused_of_flooding.act_names_responsible",
+      "stageId": "accused_of_flooding",
+      "text": "В акте управляющей организации лицо, которому предъявлены требования, прямо указано ответственным за залив?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/2/variants/0/payload/answer/now",
+          "role": "Retained full general guidance before NEXT"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/2/variants/0/payload/answer/steps/1",
+          "text_sha256": "367c37bd8f6d4de7b3d6316e0bd1fea0a9bff9e65363f27b4b445daaa9fa1aff"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-accused_of_flooding-inspection_invitation_received",
+      "fieldKey": "flooding.accused_of_flooding.inspection_invitation_received",
+      "stageId": "accused_of_flooding",
+      "text": "Получено уведомление об осмотре или независимой оценке по этому заливу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/2/variants/0/payload/answer/steps/2",
+          "text_sha256": "4e2840f34245e593d78de8fe35293821c2ba812ee086c146a6c08e3dec9e4384"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-accused_of_flooding-source_inside_apartment",
+      "fieldKey": "flooding.accused_of_flooding.source_inside_apartment",
+      "stageId": "accused_of_flooding",
+      "text": "По уже имеющимся результатам осмотра источник протечки находится внутри квартиры лица, которому предъявлены требования?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не могу определить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/2/variants/0/payload/answer/steps/0",
+          "text_sha256": "81aa0e6cd60bbdc7532f101bc4fcc1b91ac72e71890ef38113613b0bf77a4396"
+        }
+      ],
+      "uncertaintyKind": "observation"
+    },
+    {
+      "id": "FLOOD-accused_of_flooding-contractor_worked_recently",
+      "fieldKey": "flooding.accused_of_flooding.contractor_worked_recently",
+      "stageId": "accused_of_flooding",
+      "text": "Перед заливом сантехнические работы у предполагаемого источника протечки выполнял подрядчик?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не помню"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/2/variants/0/payload/answer/steps/3",
+          "text_sha256": "0e84d610fe29589e678cfe19bed8319bcd732e1c57a507817d4dc84b8d7169fe"
+        }
+      ],
+      "uncertaintyKind": "memory"
+    },
+    {
+      "id": "FLOOD-who_responsible-act_made",
+      "fieldKey": "flooding.who_responsible.act_made",
+      "stageId": "who_responsible",
+      "text": "Уже составлен акт, в котором описаны этот залив и его предполагаемая причина?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/3/variants/0/payload/answer/steps/3",
+          "text_sha256": "634a02c57c102bb3384ada543c2a4f6987da1cf115c98232fa91b972235dba07"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-who_responsible-expert_conclusion_available",
+      "fieldKey": "flooding.who_responsible.expert_conclusion_available",
+      "stageId": "who_responsible",
+      "text": "Есть заключение специалиста о причине этого залива?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/3/variants/0/payload/answer/steps/4",
+          "text_sha256": "8a0d31bf28d100e8c6767bb25f99c060c651aee05be4504ab54478528f561e6b"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-who_responsible-contractor_worked_recently",
+      "fieldKey": "flooding.who_responsible.contractor_worked_recently",
+      "stageId": "who_responsible",
+      "text": "Незадолго до залива у предполагаемого источника воды работы выполнял подрядчик?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не помню"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/3/variants/0/payload/answer/steps/2",
+          "text_sha256": "4d3358875e2bc0b0da4792c498c74abd4c12ca3b316a22520cb86785cc9fd1b1"
+        }
+      ],
+      "uncertaintyKind": "memory"
+    },
+    {
+      "id": "FLOOD-who_responsible-flat_rented_out",
+      "fieldKey": "flooding.who_responsible.flat_rented_out",
+      "stageId": "who_responsible",
+      "text": "На момент залива квартирой предполагаемого источника пользовался человек по договору найма?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/3/variants/0/payload/answer/steps/2",
+          "text_sha256": "4d3358875e2bc0b0da4792c498c74abd4c12ca3b316a22520cb86785cc9fd1b1"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-damage_estimate-repairs_started",
+      "fieldKey": "flooding.damage_estimate.repairs_started",
+      "stageId": "damage_estimate",
+      "text": "До завершения оценки повреждений уже начали ремонт?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не знаю"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/4/variants/0/payload/answer/steps/5",
+          "text_sha256": "927e45bb28b8098cad600b6869c64a70f5376323a44e366566d75b7244e27419"
+        }
+      ],
+      "uncertaintyKind": "fact"
+    },
+    {
+      "id": "FLOOD-damage_estimate-estimate_ready",
+      "fieldKey": "flooding.damage_estimate.estimate_ready",
+      "stageId": "damage_estimate",
+      "text": "Независимая оценка ущерба или заключение уже подготовлены?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/4/variants/0/payload/answer/now",
+          "role": "Retained full general guidance before NEXT"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/4/variants/0/payload/answer/steps/2",
+          "text_sha256": "1d144a70d9299f511152d192792c09599a0c54cc07baabe1bf6d0a66989105e9"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-damage_estimate-act_made",
+      "fieldKey": "flooding.damage_estimate.act_made",
+      "stageId": "damage_estimate",
+      "text": "Составлен акт об этом заливе с перечнем повреждений?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/4/variants/0/payload/answer/steps/0",
+          "text_sha256": "474ebe81c30551d1a7d27a49912dc63298104159687d4a0a920986f7cd923665"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-damage_estimate-hidden_damage_present",
+      "fieldKey": "flooding.damage_estimate.hidden_damage_present",
+      "stageId": "damage_estimate",
+      "text": "После высыхания обнаружились повреждения, которые раньше не были видны?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не могу определить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/4/variants/0/payload/answer/steps/1",
+          "text_sha256": "0c946128ee5ce728c72cb5f4071fe9998d54a7769151ac199a8a3ec5ef75dd6e"
+        }
+      ],
+      "uncertaintyKind": "observation"
+    },
+    {
+      "id": "FLOOD-damage_estimate-other_party_invited",
+      "fieldKey": "flooding.damage_estimate.other_party_invited",
+      "stageId": "damage_estimate",
+      "text": "Сторону, к которой предъявляются требования о возмещении, заранее пригласили на осмотр?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/4/variants/0/payload/answer/steps/3",
+          "text_sha256": "912af5f641d482ff6c5c1e7bffc137ce3c326ad16685a315f3a8bf3a7edcfccc"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-damage_estimate-purchase_receipts_available",
+      "fieldKey": "flooding.damage_estimate.purchase_receipts_available",
+      "stageId": "damage_estimate",
+      "text": "Сохранились документы о стоимости повреждённых вещей?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/4/variants/0/payload/answer/steps/4",
+          "text_sha256": "2f3cc5cc360f35d4418d9e482ea4db5417d41d76880d7a3e662d6bf7fd9cb8bd"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-pretrial_claim-claim_sent",
+      "fieldKey": "flooding.pretrial_claim.claim_sent",
+      "stageId": "pretrial_claim",
+      "text": "Письменная претензия по этому заливу уже направлена адресату?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не помню"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/5/variants/0/payload/answer/now",
+          "role": "Retained full general guidance before NEXT"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/5/variants/0/payload/answer/steps/1",
+          "text_sha256": "f12577a8e20936096185990c52b641a7441a8fb165456d61cded8fd64a08c79f"
+        }
+      ],
+      "uncertaintyKind": "memory"
+    },
+    {
+      "id": "FLOOD-pretrial_claim-delivery_confirmed",
+      "fieldKey": "flooding.pretrial_claim.delivery_confirmed",
+      "stageId": "pretrial_claim",
+      "text": "Есть подтверждение, что адресат получил эту претензию?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [
+        {
+          "field_key": "flooding.pretrial_claim.claim_sent",
+          "value": true
+        }
+      ],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/5/variants/0/payload/answer/steps/2",
+          "text_sha256": "4f1d5806880da189f6bde7b3986ca57456172bd3e02bee8ee1e4da702c5d4295"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-pretrial_claim-partial_payment_received",
+      "fieldKey": "flooding.pretrial_claim.partial_payment_received",
+      "stageId": "pretrial_claim",
+      "text": "По этому заливу уже получена частичная компенсация ущерба?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/5/variants/0/payload/answer/steps/4",
+          "text_sha256": "1099e0c526cf52c3667c186112b5116f1ab7ef2c152f7e60fb946d748c99780a"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-pretrial_claim-responsible_is_company",
+      "fieldKey": "flooding.pretrial_claim.responsible_is_company",
+      "stageId": "pretrial_claim",
+      "text": "Требование о возмещении предъявляется управляющей организации или другому юридическому лицу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/5/variants/0/payload/answer/steps/3",
+          "text_sha256": "f91ecc284e5ccfc10eedd2ba7bfcfd1ecb23242463e50ecb72f46f86d66c5cb2"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-court-cause_or_fault_disputed",
+      "fieldKey": "flooding.court.cause_or_fault_disputed",
+      "stageId": "court",
+      "text": "Ответчик оспаривает причину залива или свою ответственность?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/6/variants/0/payload/answer/steps/5",
+          "text_sha256": "d502e0b6fd62342448aa0c06f624890d864b47880d8e35d35412ca81e119fefa"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/6/variants/0/payload/answer/steps/6",
+          "text_sha256": "ccd2eef19d53b2c5152447abfed63af4e0f3094ed2e1011bed3141259e64ce0e"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-court-pretrial_claim_sent",
+      "fieldKey": "flooding.court.pretrial_claim_sent",
+      "stageId": "court",
+      "text": "Досудебная претензия по этому заливу уже направлена указанному ответчику?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Не помню"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/6/variants/0/payload/answer/steps/3",
+          "text_sha256": "cb91e032c136f0a60724e6fe5941ba2f83b8f74a9674c369343fbabb3e43f64f"
+        }
+      ],
+      "uncertaintyKind": "memory"
+    },
+    {
+      "id": "FLOOD-court-act_made",
+      "fieldKey": "flooding.court.act_made",
+      "stageId": "court",
+      "text": "Составлен акт об этом заливе и повреждениях?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/6/variants/0/payload/answer/steps/0",
+          "text_sha256": "b517a63c373434f6e5782258a24203c625e29d570dc0979c04ca9d70ad822c9f"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-court-defendant_is_company",
+      "fieldKey": "flooding.court.defendant_is_company",
+      "stageId": "court",
+      "text": "Указанный ответчик — управляющая организация или другое юридическое лицо?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/6/variants/0/payload/answer/steps/4",
+          "text_sha256": "124d0377332b720441e7b845ad153a5e93861a85840efb11692841f14b9fddd5"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-insurance-financial_ombudsman_applied",
+      "fieldKey": "flooding.insurance.financial_ombudsman_applied",
+      "stageId": "insurance",
+      "text": "Обращение по этому страховому спору уже подано финансовому уполномоченному?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/4/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v05",
+          "answer_sha256": "06f9dbf9656cbd39e4e7768c52851dafd639ec467a14d03a8b6d5c058aa70ace"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/8/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v09",
+          "answer_sha256": "7642e1a74c68dc8abd09eb507d98c8546976e35ede98070120b090d9ca7e0d8a"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/11/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v12",
+          "answer_sha256": "d77af271ce126cee875e5fa731a8debca8f16adbb995f8c89ae6ba13a306ee77"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/13/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v14",
+          "answer_sha256": "46945a08c0c755183afaac437e116c2fd8ede50f03d16374fb5e8a382626ce53"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/15/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v16",
+          "answer_sha256": "fe58b4a7c867fa103c1860bca003c2343db2c45ffda48314902f99be7c04b516"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/17/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v18",
+          "answer_sha256": "cc4f8ebf207c3aed574c451dbec767ae09148ad478fc93fe00b30635e9f76728"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/19/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v20",
+          "answer_sha256": "fded4210fdca98503ac4c91c56d6218ba9318d7e6045a6de6aef5780f439c495"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/21/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v22",
+          "answer_sha256": "6ff50847615dbb7e73a8f32319e59e9e4a777d3e693948c818d676915c28f9fb"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/22/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v23",
+          "answer_sha256": "4a0a44b8d440b9d28143e54f58868e4b714c885cc2d7a240b4bace8c260d506e"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/24/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v25",
+          "answer_sha256": "ebfd910d501494433f8905d5c2247d418e643af9d8fd5a8060cf8e28fcd36e1a"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/25/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v26",
+          "answer_sha256": "13d761de011ad976412ae99223d7caf06037064c62fefafffe7b1e4e7d3896ff"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/26/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v27",
+          "answer_sha256": "13f6f59c6b4c6633fc4461def4e43d8fe1b1b644518894488c5977baaf7a6b7e"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/28/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v29",
+          "answer_sha256": "5ce8fc992b9f3182bddc1c8c511b0dd054bc9bb53adebfc34c3b1a3672506abe"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/29/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v30",
+          "answer_sha256": "9ed2a234ee35d7b1fd9472ddc229581c682e8a6b089c104692a8c994330d37b5"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/30/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v31",
+          "answer_sha256": "987730662ec9bd2a96551e6b5085b3999f6648d006ffed2d07c37a192036fc07"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/31/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v32",
+          "answer_sha256": "47982e3b8d29d90f2d9c99cf2e708566f896ea19bbfae31504dc291d093e6918"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-insurance-written_refusal_received",
+      "fieldKey": "flooding.insurance.written_refusal_received",
+      "stageId": "insurance",
+      "text": "Получен письменный отказ страховщика в выплате по этому заливу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/5/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v06",
+          "answer_sha256": "db76bab01738ff9fb76342f8cf7d7efcd9c72916b08fc2a95b7a120500a0336e"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/9/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v10",
+          "answer_sha256": "4b11b1de15ce1fab2af934c10214e73c98db9aaf9a155c9a631d4effbd5f8519"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/12/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v13",
+          "answer_sha256": "c704454c30c61141f0603570a428fcfe144b756ee85e288d18b47cbcef7bbf10"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/14/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v15",
+          "answer_sha256": "9ae6d564966e3b92b3619a732d257bd536b8766fd67e0a784722b136e77f4bf8"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/15/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v16",
+          "answer_sha256": "fe58b4a7c867fa103c1860bca003c2343db2c45ffda48314902f99be7c04b516"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/18/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v19",
+          "answer_sha256": "dd7824a332c27b03e72b44c57a8bb241e0473315ce4f893740ca5f65bdd44b12"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/20/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v21",
+          "answer_sha256": "ad251df6cb6e89d7e45063a78052aca29abfdfd12ae652af3ced221fb5571812"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/21/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v22",
+          "answer_sha256": "6ff50847615dbb7e73a8f32319e59e9e4a777d3e693948c818d676915c28f9fb"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/23/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v24",
+          "answer_sha256": "ba8f92e7faaca12219767504d8809df923d267d08059efe82bb0da52a5f10c40"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/24/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v25",
+          "answer_sha256": "ebfd910d501494433f8905d5c2247d418e643af9d8fd5a8060cf8e28fcd36e1a"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/25/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v26",
+          "answer_sha256": "13d761de011ad976412ae99223d7caf06037064c62fefafffe7b1e4e7d3896ff"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/27/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v28",
+          "answer_sha256": "10be107fa85141aff301e3a2edc9d15d3e57a4df3b303d8167521305e91bfbd4"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/28/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v29",
+          "answer_sha256": "5ce8fc992b9f3182bddc1c8c511b0dd054bc9bb53adebfc34c3b1a3672506abe"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/29/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v30",
+          "answer_sha256": "9ed2a234ee35d7b1fd9472ddc229581c682e8a6b089c104692a8c994330d37b5"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/30/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v31",
+          "answer_sha256": "987730662ec9bd2a96551e6b5085b3999f6648d006ffed2d07c37a192036fc07"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/31/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v32",
+          "answer_sha256": "47982e3b8d29d90f2d9c99cf2e708566f896ea19bbfae31504dc291d093e6918"
+        }
+      ],
+      "uncertaintyKind": "document"
+    },
+    {
+      "id": "FLOOD-insurance-payment_understated",
+      "fieldKey": "flooding.insurance.payment_understated",
+      "stageId": "insurance",
+      "text": "Есть спор о размере уже полученной страховой выплаты по этому заливу?",
+      "controls": [
+        {
+          "value": true,
+          "label": "Да"
+        },
+        {
+          "value": false,
+          "label": "Нет"
+        },
+        {
+          "value": null,
+          "label": "Нужно проверить"
+        }
+      ],
+      "requires": [],
+      "materialActionRefs": [
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/1/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v02",
+          "answer_sha256": "f88ad0e0716944bee30305c87f72956c49427e7f23bfe987783d173d1563acfc"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/6/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v07",
+          "answer_sha256": "f77cc6691a86045d7256b1c42176dc83fba359c5a4e86d34040f22c7f27ed680"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/7/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v08",
+          "answer_sha256": "ce66aad676dfbf522126b31c1a45adc41c8a64dd4959b73ebc7aec2e78410b7d"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/8/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v09",
+          "answer_sha256": "7642e1a74c68dc8abd09eb507d98c8546976e35ede98070120b090d9ca7e0d8a"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/9/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v10",
+          "answer_sha256": "4b11b1de15ce1fab2af934c10214e73c98db9aaf9a155c9a631d4effbd5f8519"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/16/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v17",
+          "answer_sha256": "6ec107c772f6abe8e399fb6126c29c5c48d1c6105019b72581541ecd36a8b5f0"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/17/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v18",
+          "answer_sha256": "cc4f8ebf207c3aed574c451dbec767ae09148ad478fc93fe00b30635e9f76728"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/18/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v19",
+          "answer_sha256": "dd7824a332c27b03e72b44c57a8bb241e0473315ce4f893740ca5f65bdd44b12"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/19/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v20",
+          "answer_sha256": "fded4210fdca98503ac4c91c56d6218ba9318d7e6045a6de6aef5780f439c495"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/20/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v21",
+          "answer_sha256": "ad251df6cb6e89d7e45063a78052aca29abfdfd12ae652af3ced221fb5571812"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/21/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v22",
+          "answer_sha256": "6ff50847615dbb7e73a8f32319e59e9e4a777d3e693948c818d676915c28f9fb"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/26/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v27",
+          "answer_sha256": "13f6f59c6b4c6633fc4461def4e43d8fe1b1b644518894488c5977baaf7a6b7e"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/27/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v28",
+          "answer_sha256": "10be107fa85141aff301e3a2edc9d15d3e57a4df3b303d8167521305e91bfbd4"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/28/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v29",
+          "answer_sha256": "5ce8fc992b9f3182bddc1c8c511b0dd054bc9bb53adebfc34c3b1a3672506abe"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/29/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v30",
+          "answer_sha256": "9ed2a234ee35d7b1fd9472ddc229581c682e8a6b089c104692a8c994330d37b5"
+        },
+        {
+          "source": {
+            "path": "C:/Users/mujlo/Documents/Codex/2026-10-16/variant-generator-4/work/flooding-finite-outcomes-editorial-fix-20261018-v2/flooding-eight-stages.private.candidate.json",
+            "bytes": 692092,
+            "sha256": "0061f8e6b961764cede0c9c4498de70fba40b2beb1c5339fead3e3a603ea410b"
+          },
+          "pointer": "/subcategories/7/variants/31/payload/answer",
+          "variant_id": "review_flooding_20261018_r3_stage08_v32",
+          "answer_sha256": "47982e3b8d29d90f2d9c99cf2e708566f896ea19bbfae31504dc291d093e6918"
+        }
+      ],
+      "uncertaintyKind": "document"
+    }
+  ],
+  "stages": [
+    {
+      "stageId": "immediate_actions",
+      "generalId": "review_flooding_20261018_r7_stage01_v01",
+      "questionIds": [
+        "FLOOD-immediate_actions-electrical_hazard",
+        "FLOOD-immediate_actions-emergency_stopped",
+        "FLOOD-immediate_actions-emergency_service_called",
+        "FLOOD-immediate_actions-upstairs_neighbor_unavailable",
+        "FLOOD-immediate_actions-photo_video_saved"
+      ]
+    },
+    {
+      "stageId": "act_management",
+      "generalId": "review_flooding_20261018_r7_stage02_v01",
+      "questionIds": [
+        "FLOOD-act_management-inspection_refused",
+        "FLOOD-act_management-act_copy_received",
+        "FLOOD-act_management-damage_incomplete",
+        "FLOOD-act_management-objections_recorded",
+        "FLOOD-act_management-independent_evidence_available"
+      ]
+    },
+    {
+      "stageId": "accused_of_flooding",
+      "generalId": "review_flooding_20261018_r7_stage03_v01",
+      "questionIds": [
+        "FLOOD-accused_of_flooding-act_names_responsible",
+        "FLOOD-accused_of_flooding-inspection_invitation_received",
+        "FLOOD-accused_of_flooding-source_inside_apartment",
+        "FLOOD-accused_of_flooding-contractor_worked_recently"
+      ]
+    },
+    {
+      "stageId": "who_responsible",
+      "generalId": "review_flooding_20261018_r7_stage04_v01",
+      "questionIds": [
+        "FLOOD-who_responsible-act_made",
+        "FLOOD-who_responsible-expert_conclusion_available",
+        "FLOOD-who_responsible-contractor_worked_recently",
+        "FLOOD-who_responsible-flat_rented_out"
+      ]
+    },
+    {
+      "stageId": "damage_estimate",
+      "generalId": "review_flooding_20261018_r7_stage05_v01",
+      "questionIds": [
+        "FLOOD-damage_estimate-repairs_started",
+        "FLOOD-damage_estimate-estimate_ready",
+        "FLOOD-damage_estimate-act_made",
+        "FLOOD-damage_estimate-hidden_damage_present",
+        "FLOOD-damage_estimate-other_party_invited",
+        "FLOOD-damage_estimate-purchase_receipts_available"
+      ]
+    },
+    {
+      "stageId": "pretrial_claim",
+      "generalId": "review_flooding_20261018_r7_stage06_v01",
+      "questionIds": [
+        "FLOOD-pretrial_claim-claim_sent",
+        "FLOOD-pretrial_claim-delivery_confirmed",
+        "FLOOD-pretrial_claim-partial_payment_received",
+        "FLOOD-pretrial_claim-responsible_is_company"
+      ]
+    },
+    {
+      "stageId": "court",
+      "generalId": "review_flooding_20261018_r7_stage07_v01",
+      "questionIds": [
+        "FLOOD-court-cause_or_fault_disputed",
+        "FLOOD-court-pretrial_claim_sent",
+        "FLOOD-court-act_made",
+        "FLOOD-court-defendant_is_company"
+      ]
+    },
+    {
+      "stageId": "insurance",
+      "generalId": "review_flooding_20261018_r2_stage08_v01",
+      "questionIds": [
+        "FLOOD-insurance-financial_ombudsman_applied",
+        "FLOOD-insurance-written_refusal_received",
+        "FLOOD-insurance-payment_understated"
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "variantId": "review_flooding_20261018_r7_stage01_v01",
+      "stageId": "immediate_actions",
+      "context": {
+        "emergency_stopped": null,
+        "electrical_hazard": null,
+        "source_in_common_property": null,
+        "upstairs_neighbor_unavailable": null,
+        "emergency_service_called": null,
+        "photo_video_saved": null
+      },
+      "required": [],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage01_v02",
+      "stageId": "immediate_actions",
+      "context": {
+        "emergency_stopped": null,
+        "electrical_hazard": true,
+        "source_in_common_property": null,
+        "upstairs_neighbor_unavailable": null,
+        "emergency_service_called": null,
+        "photo_video_saved": null
+      },
+      "required": [
+        {
+          "field_key": "flooding.immediate_actions.electrical_hazard",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage02_v01",
+      "stageId": "act_management",
+      "context": {
+        "inspection_refused": null,
+        "act_copy_received": null,
+        "cause_missing_in_act": null,
+        "damage_incomplete": null,
+        "objections_recorded": null,
+        "independent_evidence_available": null
+      },
+      "required": [],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage02_v02",
+      "stageId": "act_management",
+      "context": {
+        "inspection_refused": true,
+        "act_copy_received": null,
+        "cause_missing_in_act": null,
+        "damage_incomplete": null,
+        "objections_recorded": null,
+        "independent_evidence_available": null
+      },
+      "required": [
+        {
+          "field_key": "flooding.act_management.inspection_refused",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage03_v01",
+      "stageId": "accused_of_flooding",
+      "context": {
+        "source_inside_apartment": null,
+        "source_in_common_property": null,
+        "act_names_responsible": null,
+        "inspection_invitation_received": null,
+        "contractor_worked_recently": null,
+        "liability_insured": null
+      },
+      "required": [],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage03_v03",
+      "stageId": "accused_of_flooding",
+      "context": {
+        "source_inside_apartment": null,
+        "source_in_common_property": null,
+        "act_names_responsible": true,
+        "inspection_invitation_received": null,
+        "contractor_worked_recently": null,
+        "liability_insured": null
+      },
+      "required": [
+        {
+          "field_key": "flooding.accused_of_flooding.act_names_responsible",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage04_v01",
+      "stageId": "who_responsible",
+      "context": {
+        "source_in_common_property": null,
+        "source_inside_neighbor_property": null,
+        "contractor_worked_recently": null,
+        "flat_rented_out": null,
+        "act_made": null,
+        "expert_conclusion_available": null
+      },
+      "required": [],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage05_v01",
+      "stageId": "damage_estimate",
+      "context": {
+        "act_made": null,
+        "hidden_damage_present": null,
+        "estimate_ready": null,
+        "other_party_invited": null,
+        "purchase_receipts_available": null,
+        "repairs_started": null
+      },
+      "required": [],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage06_v01",
+      "stageId": "pretrial_claim",
+      "context": {
+        "estimate_ready": null,
+        "claim_sent": null,
+        "delivery_confirmed": null,
+        "responsible_is_company": null,
+        "partial_payment_received": null,
+        "insurance_available": null
+      },
+      "required": [],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage07_v01",
+      "stageId": "court",
+      "context": {
+        "act_made": null,
+        "source_and_responsible_actor_identified": null,
+        "estimate_ready": null,
+        "pretrial_claim_sent": null,
+        "defendant_is_company": null,
+        "cause_or_fault_disputed": null
+      },
+      "required": [],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r7_stage07_v02",
+      "stageId": "court",
+      "context": {
+        "act_made": null,
+        "source_and_responsible_actor_identified": null,
+        "estimate_ready": null,
+        "pretrial_claim_sent": null,
+        "defendant_is_company": null,
+        "cause_or_fault_disputed": true
+      },
+      "required": [
+        {
+          "field_key": "flooding.court.cause_or_fault_disputed",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r2_stage08_v01",
+      "stageId": "insurance",
+      "context": {
+        "policy_active": null,
+        "loss_reported_on_time": null,
+        "documents_complete": null,
+        "written_refusal_received": null,
+        "payment_understated": null,
+        "financial_ombudsman_applied": null
+      },
+      "required": [],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r3_stage08_v02",
+      "stageId": "insurance",
+      "context": {
+        "policy_active": null,
+        "loss_reported_on_time": null,
+        "documents_complete": null,
+        "written_refusal_received": null,
+        "payment_understated": true,
+        "financial_ombudsman_applied": null
+      },
+      "required": [
+        {
+          "field_key": "flooding.insurance.payment_understated",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r3_stage08_v05",
+      "stageId": "insurance",
+      "context": {
+        "policy_active": null,
+        "loss_reported_on_time": null,
+        "documents_complete": null,
+        "written_refusal_received": null,
+        "payment_understated": null,
+        "financial_ombudsman_applied": true
+      },
+      "required": [
+        {
+          "field_key": "flooding.insurance.financial_ombudsman_applied",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r3_stage08_v06",
+      "stageId": "insurance",
+      "context": {
+        "policy_active": null,
+        "loss_reported_on_time": null,
+        "documents_complete": null,
+        "written_refusal_received": true,
+        "payment_understated": null,
+        "financial_ombudsman_applied": null
+      },
+      "required": [
+        {
+          "field_key": "flooding.insurance.written_refusal_received",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r3_stage08_v09",
+      "stageId": "insurance",
+      "context": {
+        "policy_active": null,
+        "loss_reported_on_time": null,
+        "documents_complete": null,
+        "written_refusal_received": null,
+        "payment_understated": true,
+        "financial_ombudsman_applied": true
+      },
+      "required": [
+        {
+          "field_key": "flooding.insurance.payment_understated",
+          "value": true
+        },
+        {
+          "field_key": "flooding.insurance.financial_ombudsman_applied",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r3_stage08_v10",
+      "stageId": "insurance",
+      "context": {
+        "policy_active": null,
+        "loss_reported_on_time": null,
+        "documents_complete": null,
+        "written_refusal_received": true,
+        "payment_understated": true,
+        "financial_ombudsman_applied": null
+      },
+      "required": [
+        {
+          "field_key": "flooding.insurance.written_refusal_received",
+          "value": true
+        },
+        {
+          "field_key": "flooding.insurance.payment_understated",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r3_stage08_v16",
+      "stageId": "insurance",
+      "context": {
+        "policy_active": null,
+        "loss_reported_on_time": null,
+        "documents_complete": null,
+        "written_refusal_received": true,
+        "payment_understated": null,
+        "financial_ombudsman_applied": true
+      },
+      "required": [
+        {
+          "field_key": "flooding.insurance.written_refusal_received",
+          "value": true
+        },
+        {
+          "field_key": "flooding.insurance.financial_ombudsman_applied",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    },
+    {
+      "variantId": "review_flooding_20261018_r3_stage08_v22",
+      "stageId": "insurance",
+      "context": {
+        "policy_active": null,
+        "loss_reported_on_time": null,
+        "documents_complete": null,
+        "written_refusal_received": true,
+        "payment_understated": true,
+        "financial_ombudsman_applied": true
+      },
+      "required": [
+        {
+          "field_key": "flooding.insurance.written_refusal_received",
+          "value": true
+        },
+        {
+          "field_key": "flooding.insurance.payment_understated",
+          "value": true
+        },
+        {
+          "field_key": "flooding.insurance.financial_ombudsman_applied",
+          "value": true
+        }
+      ],
+      "qualifiedDependencies": []
+    }
+  ],
+  "counts": {
+    "stages": 8,
+    "variants": 19,
+    "ordered_context_fields": 48,
+    "unique_NEXT": 35,
+    "native_requests": 19,
+    "native_question_uses": 74,
+    "catalog_plus_native_uses": 109,
+    "branch_rows": 105,
+    "target_composition_occurrences": 206,
+    "omitted_qualified_fields": 13,
+    "rows_held_without_omission_producers": 0,
+    "rows_without_these_dependencies_not_proven_runtime_ready": 19
+  },
+  "links": [],
+  "limits": [
+    "13 qualified omissions remain HOLD; no legal qualification oracle",
+    "Bounded literal/current-question interpretation only; no full NLU",
+    "Local opt-in profile, no production/UI/API/forms activation"
+  ]
+}

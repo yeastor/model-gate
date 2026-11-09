@@ -10,6 +10,7 @@ import (
 	"model-gate/internal/domain/repository"
 	"model-gate/internal/domain/usecase"
 	categoryInterface "model-gate/internal/domain/usecase/category"
+	"model-gate/internal/pkg/chatcrypto"
 	"model-gate/internal/pkg/embedding"
 	"model-gate/internal/pkg/formater/answer"
 	"model-gate/internal/pkg/model/processor"
@@ -36,6 +37,7 @@ func InitializeApplicationAPI(
 	conn clickhousego.Conn,
 	pool *pgxpool.Pool,
 	qdrantClient *qdrant.Client,
+	storage *chatcrypto.Keyring,
 ) *modelgateApi.API {
 	wire.Build(
 

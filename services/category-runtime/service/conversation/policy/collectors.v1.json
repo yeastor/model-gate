@@ -1,0 +1,3603 @@
+{
+  "schemaVersion": "collectors-private-dialogue/v1",
+  "version": "collectors-private/20261026-v1",
+  "categoryId": "collectors",
+  "defaultActivation": false,
+  "maxQuestionsPerCase": 2,
+  "thirdQuestionReasons": {},
+  "sourceManifest": {
+    "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate-component-manifest.json",
+    "bytes": 10950,
+    "sha256": "2977fd546847ac0f5f68f8a8a9d6561eb8196798afe6e7f4eabd2783c60b8085"
+  },
+  "componentSnapshotId": "2977fd546847ac0f5f68f8a8a9d6561eb8196798afe6e7f4eabd2783c60b8085",
+  "components": [
+    {
+      "id": "candidate/stages/01-calls_messages.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/stages/01-calls_messages.json",
+      "bytes": 94191,
+      "sha256": "d78b0d0a0c689fc2e72559f89c6039b58c8674c79b6037f5533e0a5414d4c152"
+    },
+    {
+      "id": "candidate/stages/02-threats_pressure.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/stages/02-threats_pressure.json",
+      "bytes": 20167,
+      "sha256": "19476b911103c5b3f36edcc681eb752a3c5d6e2d23ab6713f73a497e3cfb3c33"
+    },
+    {
+      "id": "candidate/stages/03-contact_relatives_work.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/stages/03-contact_relatives_work.json",
+      "bytes": 20151,
+      "sha256": "717b7c18fa9083fc85b9c81ac191f9345015229a85c6c8689d25998f8eed5704"
+    },
+    {
+      "id": "candidate/stages/04-home_visits.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/stages/04-home_visits.json",
+      "bytes": 28263,
+      "sha256": "4574411b3a384cd9498d0446a4f1435a91d16348e7c86e672652bcb50aa02d84"
+    },
+    {
+      "id": "candidate/stages/05-check_legality.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/stages/05-check_legality.json",
+      "bytes": 24717,
+      "sha256": "5c7059c42d1db1854f2b8c15927f01d21822ae2f29d69f87d6f6591113f3dec5"
+    },
+    {
+      "id": "candidate/stages/06-complaints.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/stages/06-complaints.json",
+      "bytes": 25840,
+      "sha256": "7d05c4a7182435b91ff4985161cc57d6e546b2b87ff6262b98010b2585e32130"
+    },
+    {
+      "id": "candidate/stages/07-interaction_refusal.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/stages/07-interaction_refusal.json",
+      "bytes": 21578,
+      "sha256": "268ec10783e55ec2b41ef2e58a943f809f99a8f15ef4bd4c5af0a07d3614d483"
+    },
+    {
+      "id": "candidate/stages/08-debt_not_mine.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/stages/08-debt_not_mine.json",
+      "bytes": 23859,
+      "sha256": "e8cd522e2daefd300f6980a6797f3f3c39431dc2fa13f0a7e348d3d89071d83e"
+    },
+    {
+      "id": "candidate/next/next-content.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/next/next-content.json",
+      "bytes": 31003,
+      "sha256": "d3867c94ca3151bb4965aebf01619785bb9560e8305d5fa3ec6521515e569c95"
+    },
+    {
+      "id": "candidate/next/next-content-index.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/next/next-content-index.json",
+      "bytes": 6441,
+      "sha256": "ef02bbf477c7de51a6d2fe840c449cae7ceef1032899d3d799cf92e8406fedf3"
+    },
+    {
+      "id": "candidate/semantic-document-map.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/semantic-document-map.json",
+      "bytes": 109754,
+      "sha256": "7a2e17abea7de31821907ad7f6e8b7cb7be3404a07415d1cc516103d311e4660"
+    },
+    {
+      "id": "candidate/documents/current15-editorial-catalog.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/documents/current15-editorial-catalog.json",
+      "bytes": 492578,
+      "sha256": "15edb32ec3380d3a12da3d55d767619f7bb2d1c1e5cc53d837745ff4f7a506d1"
+    },
+    {
+      "id": "candidate/documents/current15-native-projection.json",
+      "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/candidate/documents/current15-native-projection.json",
+      "bytes": 291361,
+      "sha256": "1b5cb6a163e65c5f793547ae4de1647bf1598bb453b73e668d6cfcda9403581a"
+    }
+  ],
+  "lookup": {
+    "path": "C:/Users/mujlo/Documents/Codex/2026-06-20/model-category-document-generator/work/collectors-human-authorized-counting-fix-20261026-v1/full23-current-answer-lookup.json",
+    "bytes": 284262,
+    "sha256": "59e6c64417a77fc5ac0c1299cdba91c03b4eefb74346e772822db96d599d3c0d"
+  },
+  "fields": [
+    {
+      "field_key": "collectors.calls_messages.night_calls",
+      "field_id": "night_calls",
+      "stage_id": "calls_messages",
+      "canonical_definition": "звонки или сообщения поступают в запрещённое ночное время",
+      "classification": "EXISTING_NEXT_OBSERVATION",
+      "observations": "Existence of at least one contact in the exact stated local-time intervals/calendar categories in this selected contact set.",
+      "limits": "Trusted offered NEXT receipt, exact TFU button value; conservative direct user observation only when same fact, person/event and polarity are explicit. Night observation does not certify legal violation or legal time attribution.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "Verified existing NEXT response / narrow explicit observation with persisted quote and scope",
+      "scope": "selected obligation/contact set/initiator/channel/calendar period",
+      "true": "Explicit affirmative observation of the entire existing question in bound scope.",
+      "false": "Explicit negative of entire existing question in bound scope; no inference from absent message or empty mask.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same selected contact set",
+        "collectors.calls_messages.immediate_danger=false for offering night NEXT"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_calls_messages_v02",
+          "value": true
+        },
+        {
+          "variant_id": "collectors_calls_messages_v04",
+          "value": true
+        },
+        {
+          "variant_id": "collectors_calls_messages_v06",
+          "value": true
+        },
+        {
+          "variant_id": "collectors_calls_messages_v08",
+          "value": true
+        }
+      ],
+      "next_question_uses": [
+        "q_collectors_calls_messages_v01_night_danger_no",
+        "q_collectors_calls_messages_v02_night_danger_no",
+        "q_collectors_calls_messages_v03_night_danger_no",
+        "q_collectors_calls_messages_v04_night_danger_no",
+        "q_collectors_calls_messages_v05_night_danger_no",
+        "q_collectors_calls_messages_v06_night_danger_no",
+        "q_collectors_calls_messages_v07_night_danger_no",
+        "q_collectors_calls_messages_v08_night_danger_no"
+      ]
+    },
+    {
+      "field_key": "collectors.calls_messages.call_frequency_exceeded",
+      "field_id": "call_frequency_exceeded",
+      "stage_id": "calls_messages",
+      "canonical_definition": "разговоры происходят чаще одного раза в сутки, двух раз в неделю или восьми раз в месяц",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "One obligation; creditor-initiated completed conversations, human and robot together, calendar day/week/month; exact spoken information OR explicit refusal to continue; agreement exceptions.",
+      "limits": "Raw call log or report of frequent calls cannot produce a legal threshold flag. Require separately approved counting producer, event classification, period/time scope and exception contract.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "selected obligation/contact set/initiator/channel/calendar period",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_calls_messages_v03",
+          "value": true
+        },
+        {
+          "variant_id": "collectors_calls_messages_v04",
+          "value": true
+        },
+        {
+          "variant_id": "collectors_calls_messages_v07",
+          "value": true
+        },
+        {
+          "variant_id": "collectors_calls_messages_v08",
+          "value": true
+        }
+      ],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.calls_messages.message_frequency_exceeded",
+      "field_id": "message_frequency_exceeded",
+      "stage_id": "calls_messages",
+      "canonical_definition": "сообщения поступают чаще двух раз в сутки, четырёх раз в неделю или шестнадцати раз в месяц",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "One obligation; messages separate from conversations; connected text split independently of sender, initiative after reply, same-day termination, calendar windows, Gosuslugi distinct channel and agreement.",
+      "limits": "No producer approved for message grouping/initiative/calendar exceptions; raw message count is insufficient.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "selected obligation/contact set/initiator/channel/calendar period",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_calls_messages_v05",
+          "value": true
+        },
+        {
+          "variant_id": "collectors_calls_messages_v06",
+          "value": true
+        },
+        {
+          "variant_id": "collectors_calls_messages_v07",
+          "value": true
+        },
+        {
+          "variant_id": "collectors_calls_messages_v08",
+          "value": true
+        }
+      ],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.calls_messages.contacts_after_refusal",
+      "field_id": "contacts_after_refusal",
+      "stage_id": "calls_messages",
+      "canonical_definition": "контакты продолжаются после действующего отказа от взаимодействия",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Formal refusal for this debt and recipient; sent/received dates, overdue start and executive-document event plus later contact chronology.",
+      "limits": "Do not turn refusal_sent or an oral refusal to continue a call into an effective statutory refusal; no approved deadline/status producer.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "selected obligation/contact set/initiator/channel/calendar period",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.calls_messages.contact_log_saved",
+      "field_id": "contact_log_saved",
+      "stage_id": "calls_messages",
+      "canonical_definition": "сохранены детализация, записи или снимки сообщений",
+      "classification": "RAW_ONLY",
+      "observations": "User explicitly reports retaining original log, recording or message capture for this contact set.",
+      "limits": "Existence of material does not prove counted contact or breach.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "selected obligation/contact set/initiator/channel/calendar period",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "field_id": "immediate_danger",
+      "stage_id": "calls_messages",
+      "canonical_definition": "сейчас есть угроза немедленного вреда человеку или близким",
+      "classification": "EXISTING_NEXT_OBSERVATION",
+      "observations": "Explicit current threat of immediate harm to reader/close persons; no crime classification required.",
+      "limits": "Trusted offered NEXT receipt, exact TFU button value; conservative direct user observation only when same fact, person/event and polarity are explicit. Night observation does not certify legal violation or legal time attribution.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "Verified existing NEXT response / narrow explicit observation with persisted quote and scope",
+      "scope": "current person/incident; unknown debt and actor permitted for help",
+      "true": "Explicit affirmative observation of the entire existing question in bound scope.",
+      "false": "Explicit negative of entire existing question in bound scope; no inference from absent message or empty mask.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same current incident and explicit user/close-person reference"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_calls_messages_v09",
+          "value": true
+        }
+      ],
+      "next_question_uses": [
+        "q_collectors_calls_messages_v01_safety",
+        "q_collectors_calls_messages_v02_safety",
+        "q_collectors_calls_messages_v03_safety",
+        "q_collectors_calls_messages_v04_safety",
+        "q_collectors_calls_messages_v05_safety",
+        "q_collectors_calls_messages_v06_safety",
+        "q_collectors_calls_messages_v07_safety",
+        "q_collectors_calls_messages_v08_safety",
+        "q_collectors_calls_messages_v09_safety"
+      ]
+    },
+    {
+      "field_key": "collectors.threats_pressure.immediate_danger",
+      "field_id": "immediate_danger",
+      "stage_id": "threats_pressure",
+      "canonical_definition": "угроза может быть реализована немедленно",
+      "classification": "EXISTING_NEXT_OBSERVATION",
+      "observations": "Explicit current threat of immediate harm to reader/close persons; no crime classification required.",
+      "limits": "Trusted offered NEXT receipt, exact TFU button value; conservative direct user observation only when same fact, person/event and polarity are explicit. Night observation does not certify legal violation or legal time attribution.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "Verified existing NEXT response / narrow explicit observation with persisted quote and scope",
+      "scope": "current person/incident; unknown debt and actor permitted for help",
+      "true": "Explicit affirmative observation of the entire existing question in bound scope.",
+      "false": "Explicit negative of entire existing question in bound scope; no inference from absent message or empty mask.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same current incident and explicit user/close-person reference"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_threats_pressure_v02",
+          "value": true
+        }
+      ],
+      "next_question_uses": [
+        "q_collectors_threats_pressure_v01_safety",
+        "q_collectors_threats_pressure_v02_safety"
+      ]
+    },
+    {
+      "field_key": "collectors.threats_pressure.blackmail",
+      "field_id": "blackmail",
+      "stage_id": "threats_pressure",
+      "canonical_definition": "деньги требуют под угрозой разглашения сведений",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Exact demand and threatened disclosure in the same contact, actor and addressee.",
+      "limits": "Keep words as reported; demand alone or disclosure alone does not establish conjunction or offence.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.threats_pressure.false_authority_claims",
+      "field_id": "false_authority_claims",
+      "stage_id": "threats_pressure",
+      "canonical_definition": "коллектор ложно представляется приставом или угрожает уголовным преследованием",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Exact claimed official role and independent falsity evidence OR exact threatened criminal prosecution.",
+      "limits": "Do not infer false official identity from a collector label; preserve independent OR, no guilt conclusion.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.threats_pressure.property_damage",
+      "field_id": "property_damage",
+      "stage_id": "threats_pressure",
+      "canonical_definition": "имущество уже повреждено",
+      "classification": "RAW_ONLY",
+      "observations": "User reports already completed damage to a specific object in this incident.",
+      "limits": "Fear of future damage is not completed damage; attribution remains reported.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.threats_pressure.collector_identified",
+      "field_id": "collector_identified",
+      "stage_id": "threats_pressure",
+      "canonical_definition": "известны организация и личность звонившего",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Organization AND caller identity, each with source and verification status.",
+      "limits": "Reported name, code, caller number or organization alone is not established identity.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.threats_pressure.evidence_saved",
+      "field_id": "evidence_saved",
+      "stage_id": "threats_pressure",
+      "canonical_definition": "угрозы сохранены в записи, сообщениях или показаниях свидетелей",
+      "classification": "RAW_ONLY",
+      "observations": "Retained threat recording/message or identified witness of this incident.",
+      "limits": "Missing attachment is not absence of evidence; do not postpone urgent help.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.contact_relatives_work.debtor_consent_active",
+      "field_id": "debtor_consent_active",
+      "stage_id": "contact_relatives_work",
+      "canonical_definition": "согласие должника на взаимодействие с третьими лицами действует и не отозвано",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Separate debtor consent, recipient, form, scope, date, withdrawal and receipt for ordinary initiated contact.",
+      "limits": "Consent of third party cannot establish debtor consent; unknown withdrawal/status is not active or absent.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.contact_relatives_work.third_party_consent_given",
+      "field_id": "third_party_consent_given",
+      "stage_id": "contact_relatives_work",
+      "canonical_definition": "само третье лицо давало согласие на такое взаимодействие",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "This third party explicitly gave its own consent for this recipient and interaction.",
+      "limits": "Family/employment relationship and debtor consent do not prove this consent; validity requires separate contract.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.contact_relatives_work.third_party_refused",
+      "field_id": "third_party_refused",
+      "stage_id": "contact_relatives_work",
+      "canonical_definition": "третье лицо потребовало прекратить взаимодействие",
+      "classification": "RAW_ONLY",
+      "observations": "Exact demand from this third party to stop, recipient, channel and date.",
+      "limits": "Not a debtor refusal and not proof of received withdrawal or expired deadline.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.contact_relatives_work.debt_disclosed",
+      "field_id": "debt_disclosed",
+      "stage_id": "contact_relatives_work",
+      "canonical_definition": "третьему лицу сообщили сведения о долге",
+      "classification": "RAW_ONLY",
+      "observations": "Specific debt information conveyed to this third person, exact content and source.",
+      "limits": "Merely contacting a person is not disclosure; recipient role must be explicit.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.contact_relatives_work.employer_contacted",
+      "field_id": "employer_contacted",
+      "stage_id": "contact_relatives_work",
+      "canonical_definition": "коллектор связался с работодателем или коллегами",
+      "classification": "RAW_ONLY",
+      "observations": "Contact with specified employer or colleague, actor, recipient role and date.",
+      "limits": "Employer/colleague as private individual differs from organization contact and does not prove disclosure.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.contact_relatives_work.contacts_continue",
+      "field_id": "contacts_continue",
+      "stage_id": "contact_relatives_work",
+      "canonical_definition": "контакты продолжаются после требования прекратить их",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Contact after the same third party demand; ordered events, recipient and dates.",
+      "limits": "Chronology alone is not expired statutory deadline or unlawful contact; no cross-debt/recipient join.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.contact_relatives_work.immediate_danger",
+      "field_id": "immediate_danger",
+      "stage_id": "contact_relatives_work",
+      "canonical_definition": "сейчас есть угроза немедленного вреда человеку или близким",
+      "classification": "EXISTING_NEXT_OBSERVATION",
+      "observations": "Explicit current threat of immediate harm to reader/close persons; no crime classification required.",
+      "limits": "Trusted offered NEXT receipt, exact TFU button value; conservative direct user observation only when same fact, person/event and polarity are explicit. Night observation does not certify legal violation or legal time attribution.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "Verified existing NEXT response / narrow explicit observation with persisted quote and scope",
+      "scope": "current person/incident; unknown debt and actor permitted for help",
+      "true": "Explicit affirmative observation of the entire existing question in bound scope.",
+      "false": "Explicit negative of entire existing question in bound scope; no inference from absent message or empty mask.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same current incident and explicit user/close-person reference"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_contact_relatives_work_v02",
+          "value": true
+        }
+      ],
+      "next_question_uses": [
+        "q_collectors_contact_relatives_work_v01_safety",
+        "q_collectors_contact_relatives_work_v02_safety"
+      ]
+    },
+    {
+      "field_key": "collectors.home_visits.attempted_forced_entry",
+      "field_id": "attempted_forced_entry",
+      "stage_id": "home_visits",
+      "canonical_definition": "коллектор пытается войти в жильё без согласия",
+      "classification": "EXISTING_NEXT_OBSERVATION",
+      "observations": "Current attempt to enter this dwelling without consent; actual attempt, not announced future visit.",
+      "limits": "Trusted offered NEXT receipt, exact TFU button value; conservative direct user observation only when same fact, person/event and polarity are explicit. Night observation does not certify legal violation or legal time attribution.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "Verified existing NEXT response / narrow explicit observation with persisted quote and scope",
+      "scope": "current person/incident; unknown debt and actor permitted for help",
+      "true": "Explicit affirmative observation of the entire existing question in bound scope.",
+      "false": "Explicit negative of entire existing question in bound scope; no inference from absent message or empty mask.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same current incident and explicit user/close-person reference"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_home_visits_v02",
+          "value": true
+        }
+      ],
+      "next_question_uses": [
+        "q_collectors_home_visits_v01_safety",
+        "q_collectors_home_visits_v02_safety"
+      ]
+    },
+    {
+      "field_key": "collectors.home_visits.threats",
+      "field_id": "threats",
+      "stage_id": "home_visits",
+      "canonical_definition": "во время визита звучат угрозы или применяется давление",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Exact threats OR pressure during the current visit, separately sourced alternatives.",
+      "limits": "Pressure is qualitative; no inference of attempted entry or completed crime.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.home_visits.property_damage",
+      "field_id": "property_damage",
+      "stage_id": "home_visits",
+      "canonical_definition": "во время визита повреждено имущество или оставлены надписи",
+      "classification": "RAW_ONLY",
+      "observations": "Damage or inscriptions already observed during this visit to this property.",
+      "limits": "Do not infer cause or completed damage from threats.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.home_visits.collector_identified",
+      "field_id": "collector_identified",
+      "stage_id": "home_visits",
+      "canonical_definition": "посетитель назвал организацию и предъявил данные о полномочиях",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Visitor named organization AND presented authority information.",
+      "limits": "Both observable components are required; presentation is not verified legal authority.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.home_visits.evidence_saved",
+      "field_id": "evidence_saved",
+      "stage_id": "home_visits",
+      "canonical_definition": "визит зафиксирован камерой, записью или свидетелями",
+      "classification": "RAW_ONLY",
+      "observations": "Retained visit recording/camera material or witness for this location and episode.",
+      "limits": "Evidence completeness is not required before safety help.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.check_legality.organization_named",
+      "field_id": "organization_named",
+      "stage_id": "check_legality",
+      "canonical_definition": "звонивший назвал полное наименование организации",
+      "classification": "RAW_ONLY",
+      "observations": "Full organization name actually spoken by this caller.",
+      "limits": "Reported name is not verified organization or current creditor.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.check_legality.caller_identified",
+      "field_id": "caller_identified",
+      "stage_id": "check_legality",
+      "canonical_definition": "звонивший сообщил имя и индивидуальный код либо ФИО при отсутствии кода",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Reported name AND individual code OR full name when no code; exact branch and source.",
+      "limits": "Do not collapse AND/OR or infer verified identity; no approved compound parser.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.check_legality.original_creditor_named",
+      "field_id": "original_creditor_named",
+      "stage_id": "check_legality",
+      "canonical_definition": "назван первоначальный кредитор",
+      "classification": "RAW_ONLY",
+      "observations": "Original creditor explicitly named by caller for this obligation.",
+      "limits": "Current creditor or representative alone does not establish original creditor.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.check_legality.debt_documents_provided",
+      "field_id": "debt_documents_provided",
+      "stage_id": "check_legality",
+      "canonical_definition": "предоставлены договор и расчёт взыскиваемого долга",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Contract AND debt calculation actually provided for this obligation.",
+      "limits": "Requesting documents, one document or a template is insufficient; receipt does not prove validity.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.check_legality.assignment_notice_received",
+      "field_id": "assignment_notice_received",
+      "stage_id": "check_legality",
+      "canonical_definition": "получено уведомление об уступке права требования",
+      "classification": "RAW_ONLY",
+      "observations": "User reports actual receipt of notice of transfer for this debt, including date/source.",
+      "limits": "No notice in chat is not explicit nonreceipt; absence does not extinguish debt.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.check_legality.organization_in_fssp_registry",
+      "field_id": "organization_in_fssp_registry",
+      "stage_id": "check_legality",
+      "canonical_definition": "организация найдена в государственном реестре коллекторов ФССП",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Exact organization identified by name/INN in correct register, record/date and source.",
+      "limits": "No live lookup/approved registry producer; bank/MFO list must not be conflated with collector register.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.check_legality.immediate_danger",
+      "field_id": "immediate_danger",
+      "stage_id": "check_legality",
+      "canonical_definition": "сейчас есть угроза немедленного вреда человеку или близким",
+      "classification": "EXISTING_NEXT_OBSERVATION",
+      "observations": "Explicit current threat of immediate harm to reader/close persons; no crime classification required.",
+      "limits": "Trusted offered NEXT receipt, exact TFU button value; conservative direct user observation only when same fact, person/event and polarity are explicit. Night observation does not certify legal violation or legal time attribution.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "Verified existing NEXT response / narrow explicit observation with persisted quote and scope",
+      "scope": "current person/incident; unknown debt and actor permitted for help",
+      "true": "Explicit affirmative observation of the entire existing question in bound scope.",
+      "false": "Explicit negative of entire existing question in bound scope; no inference from absent message or empty mask.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same current incident and explicit user/close-person reference"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_check_legality_v02",
+          "value": true
+        }
+      ],
+      "next_question_uses": [
+        "q_collectors_check_legality_v01_safety",
+        "q_collectors_check_legality_v02_safety"
+      ]
+    },
+    {
+      "field_key": "collectors.complaints.collector_identified",
+      "field_id": "collector_identified",
+      "stage_id": "complaints",
+      "canonical_definition": "нарушитель и его организация установлены",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Specific actor and organization established with linked sources for complained incident.",
+      "limits": "Reported name/number is not established offender identity.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.complaints.evidence_available",
+      "field_id": "evidence_available",
+      "stage_id": "complaints",
+      "canonical_definition": "сохранились записи, сообщения, детализация или свидетели",
+      "classification": "RAW_ONLY",
+      "observations": "Actual available recording, message, log or witness of the described episodes.",
+      "limits": "No uploaded file is not false and must not block police safety guidance.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.complaints.written_demand_sent",
+      "field_id": "written_demand_sent",
+      "stage_id": "complaints",
+      "canonical_definition": "ранее направлялось письменное требование прекратить нарушение",
+      "classification": "RAW_ONLY",
+      "observations": "User reports sending a specific written demand to this recipient, date/channel.",
+      "limits": "Sending is not receipt or validity and does not automatically trigger complaint document.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.complaints.violation_continues",
+      "field_id": "violation_continues",
+      "stage_id": "complaints",
+      "canonical_definition": "нарушение продолжается после требования",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Same reviewed violation trigger and later events after same demand.",
+      "limits": "Unapproved legal predicate; cannot derive from repetitive contact or demand_sent.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.complaints.threats_or_crime",
+      "field_id": "threats_or_crime",
+      "stage_id": "complaints",
+      "canonical_definition": "В действиях есть угрозы, насилие или повреждение имущества",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Exact observed threat OR violence OR damage for this incident.",
+      "limits": "Keep alternatives; do not ask whether a crime occurred or derive legal guilt from heading.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.complaints.personal_data_disclosed",
+      "field_id": "personal_data_disclosed",
+      "stage_id": "complaints",
+      "canonical_definition": "сведения о долге раскрыты посторонним лицам",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Debt details, third-party recipient/role and disclosure evidence.",
+      "limits": "Broad claim of personal data misuse alone is insufficient for this exact field.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.complaints.immediate_danger",
+      "field_id": "immediate_danger",
+      "stage_id": "complaints",
+      "canonical_definition": "сейчас есть угроза немедленного вреда человеку или близким",
+      "classification": "EXISTING_NEXT_OBSERVATION",
+      "observations": "Explicit current threat of immediate harm to reader/close persons; no crime classification required.",
+      "limits": "Trusted offered NEXT receipt, exact TFU button value; conservative direct user observation only when same fact, person/event and polarity are explicit. Night observation does not certify legal violation or legal time attribution.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "Verified existing NEXT response / narrow explicit observation with persisted quote and scope",
+      "scope": "current person/incident; unknown debt and actor permitted for help",
+      "true": "Explicit affirmative observation of the entire existing question in bound scope.",
+      "false": "Explicit negative of entire existing question in bound scope; no inference from absent message or empty mask.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same current incident and explicit user/close-person reference"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_complaints_v02",
+          "value": true
+        }
+      ],
+      "next_question_uses": [
+        "q_collectors_complaints_v01_safety",
+        "q_collectors_complaints_v02_safety"
+      ]
+    },
+    {
+      "field_key": "collectors.interaction_refusal.refusal_sent",
+      "field_id": "refusal_sent",
+      "stage_id": "interaction_refusal",
+      "canonical_definition": "заявление об отказе от взаимодействия уже направлено",
+      "classification": "RAW_ONLY",
+      "observations": "Actual formal refusal sent for specified debt/recipient, date, channel and copy if available.",
+      "limits": "Oral stop request is not this statement; no effectiveness conclusion.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.interaction_refusal.delivery_confirmed",
+      "field_id": "delivery_confirmed",
+      "stage_id": "interaction_refusal",
+      "canonical_definition": "есть подтверждение получения заявления кредитором или коллектором",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Confirmation of recipient receiving that exact refusal, delivery date and linked statement.",
+      "limits": "Dispatch proof or generic notification does not establish matching receipt.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.interaction_refusal.contacts_continue",
+      "field_id": "contacts_continue",
+      "stage_id": "interaction_refusal",
+      "canonical_definition": "прямые контакты продолжаются после получения заявления",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Direct contacts after receipt of the same statement, recipient/debt/event chronology.",
+      "limits": "No automatic legal breach; receipt and timing/exception prerequisites need approved producer.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.interaction_refusal.court_act_in_force",
+      "field_id": "court_act_in_force",
+      "stage_id": "interaction_refusal",
+      "canonical_definition": "по долгу уже вступил в силу судебный акт",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Entry into force of judicial act for this debt, exact event type and date.",
+      "limits": "Issuance is not entry into force; notarial writ and other executive document are distinct events, no fabricated date.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.interaction_refusal.advocate_representative_selected",
+      "field_id": "advocate_representative_selected",
+      "stage_id": "interaction_refusal",
+      "canonical_definition": "для взаимодействия выбран представитель со статусом адвоката",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Chosen representative with actual advocate status and communication details/status evidence.",
+      "limits": "Ordinary lawyer selection alone is insufficient; no live status verification.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.interaction_refusal.immediate_danger",
+      "field_id": "immediate_danger",
+      "stage_id": "interaction_refusal",
+      "canonical_definition": "сейчас есть угроза немедленного вреда человеку или близким",
+      "classification": "EXISTING_NEXT_OBSERVATION",
+      "observations": "Explicit current threat of immediate harm to reader/close persons; no crime classification required.",
+      "limits": "Trusted offered NEXT receipt, exact TFU button value; conservative direct user observation only when same fact, person/event and polarity are explicit. Night observation does not certify legal violation or legal time attribution.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "Verified existing NEXT response / narrow explicit observation with persisted quote and scope",
+      "scope": "current person/incident; unknown debt and actor permitted for help",
+      "true": "Explicit affirmative observation of the entire existing question in bound scope.",
+      "false": "Explicit negative of entire existing question in bound scope; no inference from absent message or empty mask.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same current incident and explicit user/close-person reference"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_interaction_refusal_v02",
+          "value": true
+        }
+      ],
+      "next_question_uses": [
+        "q_collectors_interaction_refusal_v01_safety",
+        "q_collectors_interaction_refusal_v02_safety"
+      ]
+    },
+    {
+      "field_key": "collectors.debt_not_mine.never_was_borrower",
+      "field_id": "never_was_borrower",
+      "stage_id": "debt_not_mine",
+      "canonical_definition": "человек никогда не заключал договор по указанному долгу",
+      "classification": "RAW_ONLY",
+      "observations": "Explicit denial of ever contracting the particular alleged obligation.",
+      "limits": "Denial is reported, not proof of nullity; do not conflate with paid own debt.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.debt_not_mine.debt_already_paid",
+      "field_id": "debt_already_paid",
+      "stage_id": "debt_not_mine",
+      "canonical_definition": "требуемый долг ранее полностью погашен",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Same obligation, complete repayment, amounts/dates and matching creditor records.",
+      "limits": "Payment receipt alone or any partial payment cannot produce fully repaid fact.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.debt_not_mine.phone_number_recently_acquired",
+      "field_id": "phone_number_recently_acquired",
+      "stage_id": "debt_not_mine",
+      "canonical_definition": "телефонный номер раньше принадлежал другому человеку",
+      "classification": "RAW_ONLY",
+      "observations": "User reports the number previously belonged to a different person.",
+      "limits": "Canonical name means prior owner; merely recent acquisition is insufficient.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.debt_not_mine.identity_theft_suspected",
+      "field_id": "identity_theft_suspected",
+      "stage_id": "debt_not_mine",
+      "canonical_definition": "есть признаки оформления займа по чужим персональным данным",
+      "classification": "QUALIFIED_HOLD",
+      "observations": "Reported concrete indications of a loan taken using another persons personal data.",
+      "limits": "Suspicion remains suspicion; not proven identity theft, not automatically wrong-number route.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.debt_not_mine.credit_history_contains_debt",
+      "field_id": "credit_history_contains_debt",
+      "stage_id": "debt_not_mine",
+      "canonical_definition": "спорный долг отражён в кредитной истории",
+      "classification": "RAW_ONLY",
+      "observations": "Specific disputed obligation appears in a dated credit report identified by user.",
+      "limits": "A credit-history entry does not prove user contracted the debt.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.debt_not_mine.written_correction_sent",
+      "field_id": "written_correction_sent",
+      "stage_id": "debt_not_mine",
+      "canonical_definition": "кредитору или коллектору направлено требование исправить ошибку",
+      "classification": "RAW_ONLY",
+      "observations": "Correction demand actually sent to specific creditor/collector about this error, date/channel.",
+      "limits": "Draft/template or intention to send is not sent; not proof of receipt.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "NONE in minimal STEP3; preserve raw source only",
+      "scope": "debt/actor/recipient/incident or referenced document event; exact components in observations",
+      "true": "Only an approved future producer may promote the full described observation; raw report alone remains raw in this plan.",
+      "false": "No Boolean admission in minimal plan. Future false requires explicit disproval of this exact fact, not missing evidence.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same exact scope",
+        "producer prerequisites described in observations and limits; no new canonical dependencies asserted"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [],
+      "next_question_uses": []
+    },
+    {
+      "field_key": "collectors.debt_not_mine.immediate_danger",
+      "field_id": "immediate_danger",
+      "stage_id": "debt_not_mine",
+      "canonical_definition": "сейчас есть угроза немедленного вреда человеку или близким",
+      "classification": "EXISTING_NEXT_OBSERVATION",
+      "observations": "Explicit current threat of immediate harm to reader/close persons; no crime classification required.",
+      "limits": "Trusted offered NEXT receipt, exact TFU button value; conservative direct user observation only when same fact, person/event and polarity are explicit. Night observation does not certify legal violation or legal time attribution.",
+      "currently_implemented_trusted_producer": null,
+      "proposed_producer": "Verified existing NEXT response / narrow explicit observation with persisted quote and scope",
+      "scope": "current person/incident; unknown debt and actor permitted for help",
+      "true": "Explicit affirmative observation of the entire existing question in bound scope.",
+      "false": "Explicit negative of entire existing question in bound scope; no inference from absent message or empty mask.",
+      "null": "Missing is unasked; offered answer null is answered-unknown receipt; neither false nor a reason to erase known Boolean. Mask null is non-constraining, not evidence.",
+      "dependencies": [
+        "same current incident and explicit user/close-person reference"
+      ],
+      "update_policy": "Keep source and supersession chain. Explicit correction/withdrawal must name the same fact/scope; contradictory assertions become conflict, not last-write-wins. No budget refund.",
+      "material_masks": [
+        {
+          "variant_id": "collectors_debt_not_mine_v02",
+          "value": true
+        }
+      ],
+      "next_question_uses": [
+        "q_collectors_debt_not_mine_v01_safety",
+        "q_collectors_debt_not_mine_v02_safety"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "variant_id": "collectors_calls_messages_v01",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v01_safety",
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v09",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": false
+          },
+          "target": null,
+          "next_question_id": "q_collectors_calls_messages_v01_night_danger_no",
+          "target_context": null,
+          "terminal": false,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v01",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v01_night_danger_no",
+      "field_key": "collectors.calls_messages.night_calls",
+      "question": "Среди звонков или сообщений, которые вы сейчас разбираете, был хотя бы один в рабочий день с 22:00 до 08:00 либо в выходной или нерабочий праздник с 20:00 до 09:00 по вашему местному времени?",
+      "prerequisites": [
+        {
+          "field_key": "collectors.calls_messages.immediate_danger",
+          "value": false
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v02",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": true,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": false
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": null
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v02",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v02_safety",
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v09",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": false
+          },
+          "target": null,
+          "next_question_id": "q_collectors_calls_messages_v02_night_danger_no",
+          "target_context": null,
+          "terminal": false,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v02",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v02_night_danger_no",
+      "field_key": "collectors.calls_messages.night_calls",
+      "question": "Среди звонков или сообщений, которые вы сейчас разбираете, был хотя бы один в рабочий день с 22:00 до 08:00 либо в выходной или нерабочий праздник с 20:00 до 09:00 по вашему местному времени?",
+      "prerequisites": [
+        {
+          "field_key": "collectors.calls_messages.immediate_danger",
+          "value": false
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v02",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": true,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": false
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": null
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v03",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v03_safety",
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v09",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": false
+          },
+          "target": null,
+          "next_question_id": "q_collectors_calls_messages_v03_night_danger_no",
+          "target_context": null,
+          "terminal": false,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v03",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v03_night_danger_no",
+      "field_key": "collectors.calls_messages.night_calls",
+      "question": "Среди звонков или сообщений, которые вы сейчас разбираете, был хотя бы один в рабочий день с 22:00 до 08:00 либо в выходной или нерабочий праздник с 20:00 до 09:00 по вашему местному времени?",
+      "prerequisites": [
+        {
+          "field_key": "collectors.calls_messages.immediate_danger",
+          "value": false
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v02",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": true,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": false
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": null
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v04",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v04_safety",
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v09",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": false
+          },
+          "target": null,
+          "next_question_id": "q_collectors_calls_messages_v04_night_danger_no",
+          "target_context": null,
+          "terminal": false,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v04",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v04_night_danger_no",
+      "field_key": "collectors.calls_messages.night_calls",
+      "question": "Среди звонков или сообщений, которые вы сейчас разбираете, был хотя бы один в рабочий день с 22:00 до 08:00 либо в выходной или нерабочий праздник с 20:00 до 09:00 по вашему местному времени?",
+      "prerequisites": [
+        {
+          "field_key": "collectors.calls_messages.immediate_danger",
+          "value": false
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v02",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": true,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": false
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": null
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v05",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v05_safety",
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v09",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": false
+          },
+          "target": null,
+          "next_question_id": "q_collectors_calls_messages_v05_night_danger_no",
+          "target_context": null,
+          "terminal": false,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v05",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v05_night_danger_no",
+      "field_key": "collectors.calls_messages.night_calls",
+      "question": "Среди звонков или сообщений, которые вы сейчас разбираете, был хотя бы один в рабочий день с 22:00 до 08:00 либо в выходной или нерабочий праздник с 20:00 до 09:00 по вашему местному времени?",
+      "prerequisites": [
+        {
+          "field_key": "collectors.calls_messages.immediate_danger",
+          "value": false
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v02",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": true,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": false
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": null
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v06",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v06_safety",
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v09",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": false
+          },
+          "target": null,
+          "next_question_id": "q_collectors_calls_messages_v06_night_danger_no",
+          "target_context": null,
+          "terminal": false,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v06",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v06_night_danger_no",
+      "field_key": "collectors.calls_messages.night_calls",
+      "question": "Среди звонков или сообщений, которые вы сейчас разбираете, был хотя бы один в рабочий день с 22:00 до 08:00 либо в выходной или нерабочий праздник с 20:00 до 09:00 по вашему местному времени?",
+      "prerequisites": [
+        {
+          "field_key": "collectors.calls_messages.immediate_danger",
+          "value": false
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v02",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": true,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": false
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": null
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v07",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v07_safety",
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v09",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": false
+          },
+          "target": null,
+          "next_question_id": "q_collectors_calls_messages_v07_night_danger_no",
+          "target_context": null,
+          "terminal": false,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v07",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v07_night_danger_no",
+      "field_key": "collectors.calls_messages.night_calls",
+      "question": "Среди звонков или сообщений, которые вы сейчас разбираете, был хотя бы один в рабочий день с 22:00 до 08:00 либо в выходной или нерабочий праздник с 20:00 до 09:00 по вашему местному времени?",
+      "prerequisites": [
+        {
+          "field_key": "collectors.calls_messages.immediate_danger",
+          "value": false
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v02",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": true,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": false
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": null
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v08",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v08_safety",
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v09",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": false
+          },
+          "target": null,
+          "next_question_id": "q_collectors_calls_messages_v08_night_danger_no",
+          "target_context": null,
+          "terminal": false,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v08",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v08_night_danger_no",
+      "field_key": "collectors.calls_messages.night_calls",
+      "question": "Среди звонков или сообщений, которые вы сейчас разбираете, был хотя бы один в рабочий день с 22:00 до 08:00 либо в выходной или нерабочий праздник с 20:00 до 09:00 по вашему местному времени?",
+      "prerequisites": [
+        {
+          "field_key": "collectors.calls_messages.immediate_danger",
+          "value": false
+        }
+      ],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v02",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": true,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": false
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.night_calls",
+            "value": null
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_calls_messages_v09",
+      "stage_id": "calls_messages",
+      "question_id": "q_collectors_calls_messages_v09_safety",
+      "field_key": "collectors.calls_messages.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_calls_messages_v09",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_calls_messages_v01",
+          "next_question_id": null,
+          "target_context": {
+            "night_calls": null,
+            "call_frequency_exceeded": null,
+            "message_frequency_exceeded": null,
+            "contacts_after_refusal": null,
+            "contact_log_saved": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.calls_messages.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_threats_pressure_v01",
+      "stage_id": "threats_pressure",
+      "question_id": "q_collectors_threats_pressure_v01_safety",
+      "field_key": "collectors.threats_pressure.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.threats_pressure.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_threats_pressure_v02",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": true,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.threats_pressure.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.threats_pressure.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_threats_pressure_v02",
+      "stage_id": "threats_pressure",
+      "question_id": "q_collectors_threats_pressure_v02_safety",
+      "field_key": "collectors.threats_pressure.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.threats_pressure.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_threats_pressure_v02",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": true,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.threats_pressure.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.threats_pressure.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_contact_relatives_work_v01",
+      "stage_id": "contact_relatives_work",
+      "question_id": "q_collectors_contact_relatives_work_v01_safety",
+      "field_key": "collectors.contact_relatives_work.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.contact_relatives_work.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_contact_relatives_work_v02",
+          "next_question_id": null,
+          "target_context": {
+            "debtor_consent_active": null,
+            "third_party_consent_given": null,
+            "third_party_refused": null,
+            "debt_disclosed": null,
+            "employer_contacted": null,
+            "contacts_continue": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.contact_relatives_work.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_contact_relatives_work_v01",
+          "next_question_id": null,
+          "target_context": {
+            "debtor_consent_active": null,
+            "third_party_consent_given": null,
+            "third_party_refused": null,
+            "debt_disclosed": null,
+            "employer_contacted": null,
+            "contacts_continue": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.contact_relatives_work.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_contact_relatives_work_v02",
+      "stage_id": "contact_relatives_work",
+      "question_id": "q_collectors_contact_relatives_work_v02_safety",
+      "field_key": "collectors.contact_relatives_work.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.contact_relatives_work.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_contact_relatives_work_v02",
+          "next_question_id": null,
+          "target_context": {
+            "debtor_consent_active": null,
+            "third_party_consent_given": null,
+            "third_party_refused": null,
+            "debt_disclosed": null,
+            "employer_contacted": null,
+            "contacts_continue": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.contact_relatives_work.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_contact_relatives_work_v01",
+          "next_question_id": null,
+          "target_context": {
+            "debtor_consent_active": null,
+            "third_party_consent_given": null,
+            "third_party_refused": null,
+            "debt_disclosed": null,
+            "employer_contacted": null,
+            "contacts_continue": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.contact_relatives_work.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_home_visits_v01",
+      "stage_id": "home_visits",
+      "question_id": "q_collectors_home_visits_v01_safety",
+      "field_key": "collectors.home_visits.attempted_forced_entry",
+      "question": "Посетитель сейчас пытается войти в жильё без вашего согласия?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.home_visits.attempted_forced_entry",
+            "value": true
+          },
+          "target": "collectors_home_visits_v02",
+          "next_question_id": null,
+          "target_context": {
+            "attempted_forced_entry": true,
+            "threats": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.home_visits.attempted_forced_entry",
+            "value": false
+          },
+          "target": "collectors_home_visits_v01",
+          "next_question_id": null,
+          "target_context": {
+            "attempted_forced_entry": null,
+            "threats": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.home_visits.attempted_forced_entry",
+            "value": null
+          },
+          "target": "collectors_home_visits_v01",
+          "next_question_id": null,
+          "target_context": {
+            "attempted_forced_entry": null,
+            "threats": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_home_visits_v02",
+      "stage_id": "home_visits",
+      "question_id": "q_collectors_home_visits_v02_safety",
+      "field_key": "collectors.home_visits.attempted_forced_entry",
+      "question": "Посетитель сейчас пытается войти в жильё без вашего согласия?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.home_visits.attempted_forced_entry",
+            "value": true
+          },
+          "target": "collectors_home_visits_v02",
+          "next_question_id": null,
+          "target_context": {
+            "attempted_forced_entry": true,
+            "threats": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.home_visits.attempted_forced_entry",
+            "value": false
+          },
+          "target": "collectors_home_visits_v01",
+          "next_question_id": null,
+          "target_context": {
+            "attempted_forced_entry": null,
+            "threats": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.home_visits.attempted_forced_entry",
+            "value": null
+          },
+          "target": "collectors_home_visits_v01",
+          "next_question_id": null,
+          "target_context": {
+            "attempted_forced_entry": null,
+            "threats": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_check_legality_v01",
+      "stage_id": "check_legality",
+      "question_id": "q_collectors_check_legality_v01_safety",
+      "field_key": "collectors.check_legality.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.check_legality.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_check_legality_v02",
+          "next_question_id": null,
+          "target_context": {
+            "organization_named": null,
+            "caller_identified": null,
+            "original_creditor_named": null,
+            "debt_documents_provided": null,
+            "assignment_notice_received": null,
+            "organization_in_fssp_registry": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.check_legality.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_check_legality_v01",
+          "next_question_id": null,
+          "target_context": {
+            "organization_named": null,
+            "caller_identified": null,
+            "original_creditor_named": null,
+            "debt_documents_provided": null,
+            "assignment_notice_received": null,
+            "organization_in_fssp_registry": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.check_legality.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_check_legality_v02",
+      "stage_id": "check_legality",
+      "question_id": "q_collectors_check_legality_v02_safety",
+      "field_key": "collectors.check_legality.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.check_legality.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_check_legality_v02",
+          "next_question_id": null,
+          "target_context": {
+            "organization_named": null,
+            "caller_identified": null,
+            "original_creditor_named": null,
+            "debt_documents_provided": null,
+            "assignment_notice_received": null,
+            "organization_in_fssp_registry": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.check_legality.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_check_legality_v01",
+          "next_question_id": null,
+          "target_context": {
+            "organization_named": null,
+            "caller_identified": null,
+            "original_creditor_named": null,
+            "debt_documents_provided": null,
+            "assignment_notice_received": null,
+            "organization_in_fssp_registry": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.check_legality.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_complaints_v01",
+      "stage_id": "complaints",
+      "question_id": "q_collectors_complaints_v01_safety",
+      "field_key": "collectors.complaints.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.complaints.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_complaints_v02",
+          "next_question_id": null,
+          "target_context": {
+            "collector_identified": null,
+            "evidence_available": null,
+            "written_demand_sent": null,
+            "violation_continues": null,
+            "threats_or_crime": null,
+            "personal_data_disclosed": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.complaints.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_complaints_v01",
+          "next_question_id": null,
+          "target_context": {
+            "collector_identified": null,
+            "evidence_available": null,
+            "written_demand_sent": null,
+            "violation_continues": null,
+            "threats_or_crime": null,
+            "personal_data_disclosed": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.complaints.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_complaints_v01",
+          "next_question_id": null,
+          "target_context": {
+            "collector_identified": null,
+            "evidence_available": null,
+            "written_demand_sent": null,
+            "violation_continues": null,
+            "threats_or_crime": null,
+            "personal_data_disclosed": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_complaints_v02",
+      "stage_id": "complaints",
+      "question_id": "q_collectors_complaints_v02_safety",
+      "field_key": "collectors.complaints.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.complaints.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_complaints_v02",
+          "next_question_id": null,
+          "target_context": {
+            "collector_identified": null,
+            "evidence_available": null,
+            "written_demand_sent": null,
+            "violation_continues": null,
+            "threats_or_crime": null,
+            "personal_data_disclosed": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.complaints.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_complaints_v01",
+          "next_question_id": null,
+          "target_context": {
+            "collector_identified": null,
+            "evidence_available": null,
+            "written_demand_sent": null,
+            "violation_continues": null,
+            "threats_or_crime": null,
+            "personal_data_disclosed": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.complaints.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_complaints_v01",
+          "next_question_id": null,
+          "target_context": {
+            "collector_identified": null,
+            "evidence_available": null,
+            "written_demand_sent": null,
+            "violation_continues": null,
+            "threats_or_crime": null,
+            "personal_data_disclosed": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_interaction_refusal_v01",
+      "stage_id": "interaction_refusal",
+      "question_id": "q_collectors_interaction_refusal_v01_safety",
+      "field_key": "collectors.interaction_refusal.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.interaction_refusal.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_interaction_refusal_v02",
+          "next_question_id": null,
+          "target_context": {
+            "refusal_sent": null,
+            "delivery_confirmed": null,
+            "contacts_continue": null,
+            "court_act_in_force": null,
+            "advocate_representative_selected": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.interaction_refusal.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_interaction_refusal_v01",
+          "next_question_id": null,
+          "target_context": {
+            "refusal_sent": null,
+            "delivery_confirmed": null,
+            "contacts_continue": null,
+            "court_act_in_force": null,
+            "advocate_representative_selected": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.interaction_refusal.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_interaction_refusal_v02",
+      "stage_id": "interaction_refusal",
+      "question_id": "q_collectors_interaction_refusal_v02_safety",
+      "field_key": "collectors.interaction_refusal.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.interaction_refusal.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_interaction_refusal_v02",
+          "next_question_id": null,
+          "target_context": {
+            "refusal_sent": null,
+            "delivery_confirmed": null,
+            "contacts_continue": null,
+            "court_act_in_force": null,
+            "advocate_representative_selected": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.interaction_refusal.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_interaction_refusal_v01",
+          "next_question_id": null,
+          "target_context": {
+            "refusal_sent": null,
+            "delivery_confirmed": null,
+            "contacts_continue": null,
+            "court_act_in_force": null,
+            "advocate_representative_selected": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.interaction_refusal.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_debt_not_mine_v01",
+      "stage_id": "debt_not_mine",
+      "question_id": "q_collectors_debt_not_mine_v01_safety",
+      "field_key": "collectors.debt_not_mine.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.debt_not_mine.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_debt_not_mine_v02",
+          "next_question_id": null,
+          "target_context": {
+            "never_was_borrower": null,
+            "debt_already_paid": null,
+            "phone_number_recently_acquired": null,
+            "identity_theft_suspected": null,
+            "credit_history_contains_debt": null,
+            "written_correction_sent": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.debt_not_mine.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_debt_not_mine_v01",
+          "next_question_id": null,
+          "target_context": {
+            "never_was_borrower": null,
+            "debt_already_paid": null,
+            "phone_number_recently_acquired": null,
+            "identity_theft_suspected": null,
+            "credit_history_contains_debt": null,
+            "written_correction_sent": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.debt_not_mine.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    },
+    {
+      "variant_id": "collectors_debt_not_mine_v02",
+      "stage_id": "debt_not_mine",
+      "question_id": "q_collectors_debt_not_mine_v02_safety",
+      "field_key": "collectors.debt_not_mine.immediate_danger",
+      "question": "Сейчас есть угроза немедленного вреда вам или близким?",
+      "prerequisites": [],
+      "branches": [
+        {
+          "value": true,
+          "label": "Да",
+          "write": {
+            "field_key": "collectors.debt_not_mine.immediate_danger",
+            "value": true
+          },
+          "target": "collectors_debt_not_mine_v02",
+          "next_question_id": null,
+          "target_context": {
+            "never_was_borrower": null,
+            "debt_already_paid": null,
+            "phone_number_recently_acquired": null,
+            "identity_theft_suspected": null,
+            "credit_history_contains_debt": null,
+            "written_correction_sent": null,
+            "immediate_danger": true
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": false,
+          "label": "Нет",
+          "write": {
+            "field_key": "collectors.debt_not_mine.immediate_danger",
+            "value": false
+          },
+          "target": "collectors_debt_not_mine_v01",
+          "next_question_id": null,
+          "target_context": {
+            "never_was_borrower": null,
+            "debt_already_paid": null,
+            "phone_number_recently_acquired": null,
+            "identity_theft_suspected": null,
+            "credit_history_contains_debt": null,
+            "written_correction_sent": null,
+            "immediate_danger": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        },
+        {
+          "value": null,
+          "label": "Не знаю",
+          "write": {
+            "field_key": "collectors.debt_not_mine.immediate_danger",
+            "value": null
+          },
+          "target": "collectors_threats_pressure_v01",
+          "next_question_id": null,
+          "target_context": {
+            "immediate_danger": null,
+            "blackmail": null,
+            "false_authority_claims": null,
+            "property_damage": null,
+            "collector_identified": null,
+            "evidence_saved": null
+          },
+          "terminal": true,
+          "unknown_does_not_erase_known": true
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": "calls_messages",
+      "phrase": "Мне звонят коллекторы"
+    },
+    {
+      "id": "threats_pressure",
+      "phrase": "Коллекторы угрожают мне"
+    },
+    {
+      "id": "contact_relatives_work",
+      "phrase": "Коллекторы звонят моим родственникам"
+    },
+    {
+      "id": "home_visits",
+      "phrase": "Коллектор пришёл ко мне домой"
+    },
+    {
+      "id": "check_legality",
+      "phrase": "Хочу проверить, кто звонит по долгу"
+    },
+    {
+      "id": "complaints",
+      "phrase": "Хочу пожаловаться на действия коллектора"
+    },
+    {
+      "id": "interaction_refusal",
+      "phrase": "Хочу отказаться от взаимодействия по долгу"
+    },
+    {
+      "id": "debt_not_mine",
+      "phrase": "Мне звонят по чужому долгу"
+    }
+  ],
+  "literals": {
+    "immediate_danger": {
+      "positive": [
+        "Сейчас мне угрожают немедленным вредом",
+        "Сейчас есть угроза немедленного вреда мне или близким"
+      ],
+      "negative": [
+        "Сейчас угрозы немедленного вреда мне или близким нет"
+      ],
+      "unknown": [
+        "Не знаю, есть ли сейчас угроза немедленного вреда мне или близким"
+      ]
+    },
+    "attempted_forced_entry": {
+      "positive": [
+        "Посетитель сейчас пытается войти в моё жильё без моего согласия"
+      ],
+      "negative": [
+        "Посетитель сейчас не пытается войти в моё жильё без моего согласия"
+      ],
+      "unknown": [
+        "Не знаю, пытается ли посетитель сейчас войти в моё жильё без моего согласия"
+      ]
+    },
+    "night_calls": {
+      "positive": [
+        "Среди этих звонков или сообщений был контакт в рабочий день с 22:00 до 08:00 по моему местному времени",
+        "Среди этих звонков или сообщений был контакт в выходной или нерабочий праздник с 20:00 до 09:00 по моему местному времени"
+      ],
+      "negative": [
+        "Среди этих звонков и сообщений не было контактов в рабочие дни с 22:00 до 08:00 и в выходные или нерабочие праздники с 20:00 до 09:00 по моему местному времени"
+      ],
+      "unknown": [
+        "Не знаю, были ли эти звонки или сообщения в указанные ночные часы"
+      ]
+    }
+  },
+  "scopeChangePhrases": [
+    "Это другой долг",
+    "Это другой эпизод по тому же долгу",
+    "Это другой взыскатель",
+    "Это другой получатель контактов",
+    "Теперь речь о другом канале связи"
+  ],
+  "newCasePhrase": "Это другое дело о взыскании, начинаю новый разбор",
+  "stopPhrase": "Не задавайте больше вопросов",
+  "repeatPhrase": "Повторите памятку",
+  "withheldVariants": [
+    "collectors_calls_messages_v03",
+    "collectors_calls_messages_v04",
+    "collectors_calls_messages_v05",
+    "collectors_calls_messages_v06",
+    "collectors_calls_messages_v07",
+    "collectors_calls_messages_v08"
+  ]
+}

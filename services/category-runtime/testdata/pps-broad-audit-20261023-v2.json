@@ -1,0 +1,2531 @@
+{
+  "schemaVersion": "pps-audit/v1",
+  "categoryId": "pps",
+  "categorySha256": "1f3d30732d4c00d77bbb5c63b715bdddfe97e5ecaed92bb764706541c2bd26af",
+  "labelStatus": "Versioned semantic correction after audit, not an independent holdout",
+  "cases": [
+    {
+      "id": "base.street_stop",
+      "origin": "synthetic_new_audit",
+      "family": "eight-stage-entry",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "base.identity_check",
+      "origin": "synthetic_new_audit",
+      "family": "eight-stage-entry",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "base.delivery_to_station",
+      "origin": "synthetic_new_audit",
+      "family": "eight-stage-entry",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "base.explanation_request",
+      "origin": "synthetic_new_audit",
+      "family": "eight-stage-entry",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "base.personal_search",
+      "origin": "synthetic_new_audit",
+      "family": "eight-stage-entry",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "base.bag_search",
+      "origin": "synthetic_new_audit",
+      "family": "eight-stage-entry",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "base.use_of_force",
+      "origin": "synthetic_new_audit",
+      "family": "eight-stage-entry",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "base.home_entry",
+      "origin": "synthetic_new_audit",
+      "family": "eight-stage-entry",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry",
+            "full": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.street_stop.identity_check",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.street_stop.delivery_to_station",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.street_stop.explanation_request",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.street_stop.personal_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.street_stop.bag_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.street_stop.use_of_force",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.street_stop.home_entry",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.identity_check.street_stop",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.identity_check.delivery_to_station",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.identity_check.explanation_request",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.identity_check.personal_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.identity_check.bag_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.identity_check.use_of_force",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.identity_check.home_entry",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.delivery_to_station.street_stop",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.delivery_to_station.identity_check",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.delivery_to_station.explanation_request",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.delivery_to_station.personal_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.delivery_to_station.bag_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.delivery_to_station.use_of_force",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.delivery_to_station.home_entry",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.explanation_request.street_stop",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.explanation_request.identity_check",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.explanation_request.delivery_to_station",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.explanation_request.personal_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.explanation_request.bag_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.explanation_request.use_of_force",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.explanation_request.home_entry",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.personal_search.street_stop",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.personal_search.identity_check",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.personal_search.delivery_to_station",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.personal_search.explanation_request",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.personal_search.bag_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.personal_search.use_of_force",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.personal_search.home_entry",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.bag_search.street_stop",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.bag_search.identity_check",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.bag_search.delivery_to_station",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.bag_search.explanation_request",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.bag_search.personal_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.bag_search.use_of_force",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.bag_search.home_entry",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.use_of_force.street_stop",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.use_of_force.identity_check",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.use_of_force.delivery_to_station",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.use_of_force.explanation_request",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.use_of_force.personal_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.use_of_force.bag_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.use_of_force.home_entry",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.home_entry.street_stop",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.home_entry.identity_check",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.home_entry.delivery_to_station",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.home_entry.explanation_request",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.home_entry.personal_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.home_entry.bag_search",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch.home_entry.use_of_force",
+      "origin": "synthetic_new_audit",
+      "family": "all-directed-stage-pairs",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.street_stop.True",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.street_stop.False",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "value": false,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.street_stop.None",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции остановил меня на улице.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "value": null,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.identity_check.True",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.identity_check.False",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "value": false,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.identity_check.None",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "value": null,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.delivery_to_station.True",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.delivery_to_station.False",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "value": false,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.delivery_to_station.None",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции везёт меня в отдел.",
+          "expect": {
+            "stage": "delivery_to_station"
+          }
+        },
+        {
+          "value": null,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.explanation_request.True",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.explanation_request.False",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "value": false,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.explanation_request.None",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {
+            "stage": "explanation_request"
+          }
+        },
+        {
+          "value": null,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.personal_search.True",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.personal_search.False",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "value": false,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.personal_search.None",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проводит мой личный досмотр.",
+          "expect": {
+            "stage": "personal_search"
+          }
+        },
+        {
+          "value": null,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.bag_search.True",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.bag_search.False",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "value": false,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.bag_search.None",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции проверяет мой рюкзак.",
+          "expect": {
+            "stage": "bag_search"
+          }
+        },
+        {
+          "value": null,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.use_of_force.True",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.use_of_force.False",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "value": false,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.use_of_force.None",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции меня ударил.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "value": null,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.home_entry.True",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.home_entry.False",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "value": false,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "choice.home_entry.None",
+      "origin": "synthetic_new_audit",
+      "family": "next-three-answers",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции пытается войти в мою квартиру.",
+          "expect": {
+            "stage": "home_entry"
+          }
+        },
+        {
+          "value": null,
+          "expect": {
+            "compatible": true,
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.street_stop.0",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский подошёл ко мне на улице и попросил остановиться.",
+          "expect": {
+            "acceptableTopic": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.street_stop.1",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Патрульный преградил мне дорогу и велел оставаться здесь.",
+          "expect": {
+            "acceptableTopic": "street_stop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.identity_check.0",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский попросил показать паспорт.",
+          "expect": {
+            "acceptableTopic": "identity_check"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.identity_check.1",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Инспектор интересуется моим удостоверением.",
+          "expect": {
+            "acceptableTopic": "identity_check"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.delivery_to_station.0",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейские усадили меня в машину и повезли в отделение.",
+          "expect": {
+            "acceptableTopic": "delivery_to_station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.delivery_to_station.1",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции приглашает меня проехать в отдел.",
+          "expect": {
+            "acceptableTopic": "delivery_to_station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.explanation_request.0",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский протягивает мне объяснение на подпись.",
+          "expect": {
+            "acceptableTopic": "explanation_request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.explanation_request.1",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции хочет, чтобы я письменно рассказал, что произошло.",
+          "expect": {
+            "acceptableTopic": "explanation_request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.personal_search.0",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский обыскивает мои карманы.",
+          "expect": {
+            "acceptableTopic": "personal_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.personal_search.1",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции ощупывает мою одежду.",
+          "expect": {
+            "acceptableTopic": "personal_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.bag_search.0",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует открыть мой рюкзак.",
+          "expect": {
+            "acceptableTopic": "bag_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.bag_search.1",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский смотрит, что лежит в моей сумке.",
+          "expect": {
+            "acceptableTopic": "bag_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.use_of_force.0",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский дал мне пощёчину.",
+          "expect": {
+            "acceptableTopic": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.use_of_force.1",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции заломил мне руку.",
+          "expect": {
+            "acceptableTopic": "use_of_force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.home_entry.0",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейские требуют впустить их в мою квартиру.",
+          "expect": {
+            "acceptableTopic": "home_entry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language.home_entry.1",
+      "origin": "synthetic_new_audit",
+      "family": "plain-language-paraphrase",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции ломает дверь моей квартиры.",
+          "expect": {
+            "acceptableTopic": "home_entry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.denial",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский меня не ударил.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.threat",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский угрожает меня ударить.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.future",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский говорит, что завтра ударит меня.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.condition",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Если полицейский меня ударит, что делать?",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.film",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "В фильме полицейский ударил меня.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.other",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский ударил другого человека.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.reverse",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Я ударил полицейского.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.not-police",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Меня ударил не полицейский, а прохожий.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.two-actors",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Со мной полицейский и врач. Он меня ударил.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.guard",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Меня ударил охранник, а полицейский стоял рядом.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.quote",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский читает моё заявление: «Он меня ударил».",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.force.new-episode",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Вчера полицейский ударил меня. Сейчас другой случай: проверяют документы.",
+          "expect": {
+            "forbidTrue": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.document.denial",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский не забирал мой паспорт.",
+          "expect": {
+            "forbidTrue": [
+              "pps.identity_check.documents_taken_away"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.document.future",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции сказал, что заберёт мой паспорт.",
+          "expect": {
+            "forbidTrue": [
+              "pps.identity_check.documents_taken_away"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.document.condition",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Если полицейский заберёт мой паспорт, что делать?",
+          "expect": {
+            "forbidTrue": [
+              "pps.identity_check.documents_taken_away"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.document.other",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский забрал паспорт моего коллеги.",
+          "expect": {
+            "forbidTrue": [
+              "pps.identity_check.documents_taken_away"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.document.friend",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции забрал паспорт моего друга.",
+          "expect": {
+            "forbidTrue": [
+              "pps.identity_check.documents_taken_away"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.document.not-police",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Мой паспорт забрал не полицейский, а охранник.",
+          "expect": {
+            "forbidTrue": [
+              "pps.identity_check.documents_taken_away"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.document.other-paper",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский забрал документы на мою квартиру.",
+          "expect": {
+            "forbidTrue": [
+              "pps.identity_check.documents_taken_away"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative.document.reverse",
+      "origin": "synthetic_new_audit",
+      "family": "false-fact-prevention",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Я забрал паспорт у полицейского.",
+          "expect": {
+            "forbidTrue": [
+              "pps.identity_check.documents_taken_away"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.stop-passport-force",
+      "origin": "synthetic_new_audit",
+      "family": "user-continuation",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Меня остановил сотрудник полиции.",
+          "expect": {
+            "stage": "street_stop"
+          }
+        },
+        {
+          "text": "Требуют паспорт.",
+          "expect": {
+            "stage": "identity_check"
+          }
+        },
+        {
+          "text": "Он меня ударил.",
+          "expect": {
+            "stage": "use_of_force",
+            "mustFacts": {
+              "pps.use_of_force.force_actually_used": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.force-ended",
+      "origin": "synthetic_new_audit",
+      "family": "event-and-current-state",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский меня бьёт.",
+          "expect": {
+            "stage": "use_of_force"
+          }
+        },
+        {
+          "text": "Он перестал меня бить.",
+          "expect": {
+            "mustFacts": {
+              "pps.use_of_force.force_actually_used": true
+            },
+            "dangerOngoing": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.force-correction",
+      "origin": "synthetic_new_audit",
+      "family": "explicit-correction",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский меня ударил.",
+          "expect": {}
+        },
+        {
+          "text": "Я ошибся: он меня не ударил.",
+          "expect": {
+            "mustFacts": {
+              "pps.use_of_force.force_actually_used": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.document-returned",
+      "origin": "synthetic_new_audit",
+      "family": "obsolete-advice",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский забрал мой паспорт.",
+          "expect": {
+            "stage": "identity_check",
+            "mustFacts": {
+              "pps.identity_check.documents_taken_away": true
+            }
+          }
+        },
+        {
+          "text": "Сотрудник вернул мой паспорт.",
+          "expect": {
+            "notFull": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.document-new-actor",
+      "origin": "synthetic_new_audit",
+      "family": "actor-change",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский проверяет мой паспорт.",
+          "expect": {}
+        },
+        {
+          "text": "Теперь паспорт забрал охранник, а не полицейский.",
+          "expect": {
+            "forbidTrue": [
+              "pps.identity_check.documents_taken_away"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.new-episode",
+      "origin": "synthetic_new_audit",
+      "family": "episode-isolation",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Полицейский меня ударил.",
+          "expect": {}
+        },
+        {
+          "text": "Другой случай: сотрудник полиции проверяет мой паспорт.",
+          "expect": {
+            "stage": "identity_check",
+            "absentFacts": [
+              "pps.use_of_force.force_actually_used"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.unrelated",
+      "origin": "synthetic_new_audit",
+      "family": "no-context-contamination",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции требует мой паспорт.",
+          "expect": {}
+        },
+        {
+          "text": "Как сварить борщ?",
+          "expect": {
+            "noAdvice": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.unknown-unknown",
+      "origin": "synthetic_new_audit",
+      "family": "unknown-and-repeat",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Сотрудник полиции просит дать письменное объяснение.",
+          "expect": {}
+        },
+        {
+          "value": null,
+          "expect": {
+            "noIdenticalFullRepeat": true
+          }
+        },
+        {
+          "value": null,
+          "expect": {
+            "noIdenticalFullRepeat": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.documents-generic",
+      "origin": "synthetic_new_audit",
+      "family": "document-clarification",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Мои документы забрал сотрудник полиции.",
+          "expect": {
+            "pendingKey": "identity_document"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "stage": "identity_check",
+            "mustFacts": {
+              "pps.identity_check.documents_taken_away": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain.broad-actor",
+      "origin": "synthetic_new_audit",
+      "family": "actor-clarification",
+      "initial": {},
+      "turns": [
+        {
+          "text": "Меня остановил сотрудник.",
+          "expect": {
+            "pendingKey": "police_actor"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "pendingKey": "retrieval_stage"
+          }
+        },
+        {
+          "value": true,
+          "expect": {
+            "stage": "street_stop"
+          }
+        }
+      ]
+    }
+  ],
+  "labelChanges": [
+    {
+      "caseId": "chain.force-correction",
+      "before": false,
+      "after": null,
+      "reason": "A narrow denial of the sole reported hit withdraws the supporting evidence; it does not prove absence of all other physical force. Must stop treating previous true as established."
+    }
+  ]
+}

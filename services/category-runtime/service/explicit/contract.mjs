@@ -39,18 +39,26 @@ export function validateExplicitBundle(bundle) {
     }
   }
   for (const { row, stage } of variants.values()) {
-    const seen = new Set();
-    function walk(q, facts, depth) {
+    const seen = new Map();
+    function walk(q, facts, depth, ancestors = new Set()) {
       if (depth > 32) blocked('Слишком глубокий каталог NEXT.');
-      if (seen.has(q.id)) blocked('Повтор id вопроса в одном NEXT.');
-      seen.add(q.id);
+      if (ancestors.has(q.id)) blocked('Повтор id вопроса в одной цепочке NEXT.');
+      // The same question can occur in disjoint branches with branch-specific targets.
+      const definition = JSON.stringify([q.type, q.field_key, q.question, q.data.map(a => [a.value, a.label])]);
+      if (seen.has(q.id) && seen.get(q.id) !== definition) blocked('Несогласованное определение вопроса NEXT: ' + q.id);
+      seen.set(q.id, definition);
+      const path = new Set([...ancestors, q.id]);
       if (!stage.context_fields.some(f => f.id === q.field_key)) blocked('Неизвестное поле вопроса.');
       const key = bundle.category.id + '.' + stage.stage.id + '.' + q.field_key;
       if (own(facts, key)) blocked('Повторное уточнение одного факта в цепочке.');
+      const labels = q.data.map(a => a.label);
+      if (new Set(labels).size !== labels.length || labels.some(label => label !== label.trim()
+        || !label.trim() || /[\u0000-\u001f\u007f]/u.test(label)))
+        blocked('Подписи ответов NEXT должны быть различимыми непустыми строками.');
       for (const a of q.data) {
         branchCount++;
         const known = { ...facts, [key]: a.value };
-        if (a.ask_next_question) walk(a.ask_next_question, known, depth + 1);
+        if (a.ask_next_question) walk(a.ask_next_question, known, depth + 1, path);
         else {
           const target = variants.get(a.go_to_variant);
           if (!target) blocked('Цель NEXT отсутствует: ' + a.go_to_variant);

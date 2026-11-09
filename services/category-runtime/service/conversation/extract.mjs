@@ -2,6 +2,7 @@
 // examples are test data and are never loaded here.
 import { dialoguePackage } from "./package.mjs";
 import { currentEpisode, project } from "./state.mjs";
+import { otherDocumentOwner } from "./evidence.mjs";
 const n = (s) =>
   s
     .toLowerCase()
@@ -14,6 +15,57 @@ const unknown = (t) =>
   /не знаю|не помню|неизвест|не извест|непонят|не уверен|не понял.{0,35}(?:ли|отказ|причин|основан)/u.test(
     t,
   );
+// An unspecified document needs confirmation before it becomes identity context.
+export function documentTakingReport(text) {
+  const t = n(text);
+  if (!/паспорт|документ/.test(t) || otherDocumentOwner(t)) return null;
+  if (
+    /(?:^|[\s,«])если(?:\s|$)|имеет ли право|в фильме|в кино|в прошлом году|в другом эпизоде|^боюсь|^я боюсь|собирается|хочет забрать|угрожает|заберет/.test(
+      t,
+    )
+  )
+    return null;
+  if (
+    /(?:у |паспорт |документы )(?:моего друга|соседа|брата|прохожего)|я (?:сам )?(?:забрал|унес)|(?:паспорт|документы).{0,15}забрал я|у (?:сотрудника полиции|полицейского).{0,12}(?:забрал|забрали)|договор|протокол|документ.{0,20}(?:по делу|на квартиру)/.test(
+      t,
+    )
+  )
+    return null;
+  const positive =
+    /(?:^|[^а-я])(?<!не )(?:забрал(?:а|и)?|забира(?:ет|ют)|унес(?:ла|ли)?|унос(?:ит|ят))[^.!?;\n]{0,60}(?:паспорт[а-я]*|документ[а-я]*)|(?:паспорт[а-я]*|документ[а-я]*)[^.!?;\n]{0,60}(?<!не )(?:забрал(?:а|и)?|забира(?:ет|ют)|унес(?:ла|ли)?|унос(?:ит|ят))/u.test(
+      t,
+    );
+  const negative = /(?:не забирал(?:а|и)?|не забрал(?:а|и)?)/.test(t);
+  if (!positive && !negative) return null;
+  const uncertain =
+    unknown(t) || /возможно|может быть|забрал(?:а|и)? ли/.test(t);
+  return {
+    value: uncertain ? null : positive ? true : false,
+    kind: /паспорт|документ.{0,30}(?:удостоверяющ|подтвержден).{0,15}личност/.test(
+      t,
+    )
+      ? "identity"
+      : "unspecified",
+  };
+}
+
+// Keep each component bound to its reported actor and current time. A third
+// party's restriction must not become a police fact through episode inheritance.
+function restrictionClauses(t) {
+  const clauses = t.split(/[;.!?]+|\s+но\s+|,\s*(?:а |однако |зато )|,\s*(?=теперь(?:\s|$)|сейчас(?:\s|$))/u);
+  const hasCurrent = /теперь|сейчас/u.test(t);
+  let otherActor = false;
+  return clauses.filter(c => {
+    if (/охранник|врач|сосед|продавец|сотрудник магазина/u.test(c)) {
+      otherActor = true;
+      return false;
+    }
+    if (/полицейск|сотрудник(?:а|и|ом)? полиции/u.test(c)) otherActor = false;
+    if (otherActor) return false;
+    return !(hasCurrent && /раньше|ранее|сначала|до этого/u.test(c));
+  });
+}
+
 const rules = {
   reason_explained: (t, stage) => explanation(t, stage),
   grounds_explained: (t, stage) => explanation(t, stage),
@@ -32,22 +84,20 @@ const rules = {
       /запрещает.{0,25}(?:сним|запис)|закрывает.{0,12}камер|мешает.{0,15}запис/,
     ),
   free_to_leave_denied: (t) => {
-    if (!/уйти|уходить|удержива|не отпуска|выпуска/.test(t)) return;
-    if (unknown(t)) return null;
-    if (
-      /не разреша.{0,35}(?:уйти|уходить)|запретил.{0,20}(?:уйти|уходить)|(?:не отпускает|не отпускают)|держит.{0,25}не выпускает|(?<!не )удерживает меня|(?<!не )удерживает за руку/.test(
-        t,
-      )
-    )
-      return true;
-    if (
-      /(?:разрешил|разрешает|разрешили).{0,30}уйти|могу.{0,65}(?:свободно )?уйти/.test(
-        t,
-      )
-    ) {
-      if (/не удержива|не выпуска/.test(t) && !/не удержива/.test(t)) return;
-      return false;
-    }
+    if (!/уйти|уходить|удержива|не отпуска|выпуска|выход|держит/u.test(t)) return;
+    const clauses = restrictionClauses(t);
+    const certain = clauses.filter(c => !unknown(c));
+    // A negative/unknown OR component does not negate another observed one.
+    if (certain.some(c =>
+      /не разреша[^;.!?]{0,35}(?:уйти|уходить)|(?<!не )запретил[^;.!?]{0,25}(?:уйти|уходить)|не (?:отпускает|отпускают|выпускает|выпускают)|(?<!не )удержива(?:ет|ют) (?:меня|за руку)|(?<!не )держит меня за руку|(?<!не )прегражда(?:ет|ют)[^;.!?]{0,20}(?:выход|путь)/u.test(c)
+    )) return true;
+    const explicitUnknown = clauses.some(c => unknown(c) && /уйти|уходить|удержива|держит|выпуска/u.test(c));
+    const known = certain.join("; ");
+    const permission = /(?<!не )разреш(?:ил[аи]?|ает|ают)[^;.!?]{0,60}уйти|(?<!не )могу[^;.!?]{0,35}уйти/u.test(known);
+    const noPhysical = /(?:больше )?не (?:удержива(?:ет|ют)|держит)|фактически[^;.!?]{0,25}не удержива/u.test(known);
+    const aggregateDeparture = /(?<!не )могу (?:сейчас )?свободно уйти|(?<!не )разреш(?:ил[аи]?|ает|ают)[^;.!?]{0,35}отказаться[^;.!?]{0,35}уйти/u.test(known);
+    if (!explicitUnknown && permission && (noPhysical || aggregateDeparture)) return false;
+    if (explicitUnknown) return null;
   },
   documents_present: (t) => {
     if (!/паспорт|документ/.test(t)) return;
@@ -72,13 +122,7 @@ const rules = {
       /не везут|никуда не везут/,
       /(?:везут|везет).{0,40}для установления личности/,
     ),
-  documents_taken_away: (t) =>
-    decide(
-      t,
-      /паспорт|документ/,
-      /не забирал.{0,8}(?:и )?не уносил|документ.{0,20}не забирал|его не забирал/,
-      /(?:забрал|забрали|унес|унесли|забирает).{0,25}(?:мой паспорт|мой документ|паспорт|документ)/,
-    ),
+  documents_taken_away: (t) => documentTakingReport(t)?.value,
   minor_person: (t) => {
     const age =
       /(?:мне|проверяемому|доставляемому|этому человеку)\s+(\d{1,3})\s*(?:лет|год)/.exec(
@@ -205,13 +249,16 @@ const rules = {
     if (yesW || yesV) return true;
     if (unknown(t)) return null;
   },
-  bag_opened_by_officer: (t) =>
-    decide(
-      t,
-      /сумк|рюкзак/,
-      /не открывал|а открыл ее я сам|я открыл ее своими руками/,
-      /(?:сам открыл|открыл).{0,20}мою сумку/,
-    ),
+  bag_opened_by_officer: (t) => {
+    if (!/сумк|рюкзак|откры/u.test(t)) return;
+    if (unknown(t) && /откры/u.test(t)) return null;
+    const clauses = t.split(/[;.!?]+|,|\s+но\s+/u)
+      .filter(c => !/(?:друг|подруга|сосед) открыл|я (?:сам )?открыл/u.test(c));
+    const own = clauses.join("; ");
+    if (/сотрудник[^;.!?]{0,45}(?<!не )открывает[^;.!?]{0,35}(?:мою|мою первую|мою вторую) (?:сумку|рюкзак)/u.test(own)) return true;
+    if (/не открывал[^;.!?]{0,70}(?:и сейчас не открывает|и не открывает)|сотрудник полиции ее не открывал|а открыл ее я сам|я открыл ее своими руками/u.test(t)) return false;
+    if (/(?<!не )открыл[^;.!?]{0,50}(?:мою|мою первую|мою вторую|мою другую) (?:сумку|рюкзак)/u.test(own)) return true;
+  },
   voluntary_show_agreed: (t) =>
     decide(
       t,
@@ -438,6 +485,8 @@ export function extractReviewed(s, text, out) {
     /о моем.{0,15}не сообщил/.test(t);
   const hypotheticalQuestion = /^(?:а )?если |имеет ли право/.test(t);
   const stages = new Set([out.stage, e?.stageId].filter(Boolean));
+  if (documentTakingReport(t)?.kind === "identity")
+    stages.add("identity_check");
   if (/личн.{0,10}досмотр/.test(t)) stages.add("personal_search");
   if (
     /(?:основан|причин).{0,30}проверк.{0,20}(?:паспорт|документ|личност)/.test(
@@ -457,7 +506,11 @@ export function extractReviewed(s, text, out) {
     stages.add("use_of_force");
   for (const f of dialoguePackage.fields) {
     if (f.semanticsStatus !== "REVIEWED" || !stages.has(f.stageId)) continue;
-    if (out.ambiguousActor && /(?:^|[\s,;])(?:он|тот)\s/.test(t)) continue;
+    if (out.ambiguousActor) continue;
+    if (f.fieldId === "free_to_leave_denied" &&
+        f.stageId !== (out.stage || e?.stageId)) continue;
+    if (f.stageId === "bag_search" &&
+        ["ambiguous", "foreign"].includes(out.itemResolution?.kind)) continue;
     if (hypotheticalQuestion || suppressOther) continue;
     if (
       f.fieldId === "recording_blocked" &&
@@ -482,14 +535,69 @@ export function extractReviewed(s, text, out) {
       continue;
     if (f.fieldId === "items_seized" && /про своем не знаю/.test(t)) continue;
     const fieldText =
-      f.fieldId.startsWith("copy_requested") &&
-      e?.stageId === "explanation_request" &&
-      /копи/.test(t) &&
-      !/объяснен|протокол|другого|нового/.test(t)
-        ? t + " объяснение"
-        : t;
+      f.fieldId === "refusal_pressure" &&
+      /сейчас говорит/.test(n(out.rawSourceText || ""))
+        ? n(out.rawSourceText)
+        : f.fieldId.startsWith("copy_requested") &&
+            e?.stageId === "explanation_request" &&
+            /копи/.test(t) &&
+            !/объяснен|протокол|другого|нового/.test(t)
+          ? t + " объяснение"
+          : t;
     let value = rules[f.fieldId]?.(fieldText, f.stageId);
+    if (
+      f.fieldId === "injuries_present" &&
+      !conditional &&
+      !unknown(t) &&
+      /у меня (?:идет |течет )?кровь|у меня кровотечение|после удара[^.!?]{0,25}(?:идет |течет )?кровь/u.test(
+        t,
+      ) &&
+      !/кровь[^.!?]{0,15}не (?:идет|течет)|до (?:удара|разговора|этого)|старое кровотечение|кровь (?:моего|моей|коллеги|друга)|кровь[^.!?]{0,12}(?:на одежде|на руках)/u.test(
+        t,
+      ) &&
+      (out.facts?.some(
+        (x) =>
+          x.field === "use_of_force.force_actually_used" && x.value === true,
+      ) ||
+        result.some(
+          (x) =>
+            x.field === "use_of_force.force_actually_used" && x.value === true,
+        ) ||
+        project(s, "use_of_force")["pps.use_of_force.force_actually_used"] ===
+          true)
+    )
+      value = true;
+    if (value === undefined && f.fieldId === "free_to_leave_denied" &&
+        f.stageId === (out.stage || e?.stageId) &&
+        /теперь|сейчас/u.test(t) &&
+        /(?<!не )разрешил[^.!?]{0,30}уйти/u.test(restrictionClauses(t).join("; "))) {
+      const old = s.factLedger?.findLast(x => x.episodeId === e?.id &&
+        x.subjectId === e?.personId && x.fieldKey === f.fieldKey &&
+        x.status === "active" && x.value === true);
+      const evidence = old ? [old.source, ...(old.supportingSources || [])]
+        .map(x => n(x?.quote || "")).join("; ") : "";
+      if (old) out.restrictionContinuity = true;
+      // An explicit end of the only evidenced verbal prohibition removes that
+      // basis. It does not prove absence of an unreported physical constraint.
+      if (/не разреша[^;.!?]{0,35}(?:уйти|уходить)|(?<!не )запретил[^;.!?]{0,25}(?:уйти|уходить)/u.test(evidence) &&
+          !/не (?:выпускает|отпускает)|(?<!не )удержива(?:ет|ют)|(?<!не )держит меня|прегражда/u.test(evidence)) {
+        result.push({ field: f.fieldKey.slice(4), value: null, operation: "withdraw" });
+        continue;
+      }
+    }
     if (value === undefined) continue;
+    if (f.stageId === "bag_search" && out.withdraw && value === null) {
+      // A withdrawal names a fact, not every field whose topic mentions a bag.
+      const withdrawalTopics = {
+        bag_opened_by_officer: /откры/u,
+        grounds_explained: /основан|причин|объясн/u,
+        voluntary_show_agreed: /согласи|согласил|доброволь/u,
+        items_seized: /изъя|изым/u,
+        search_protocol_created: /протокол/u,
+        witnesses_or_video_present: /понят|видео/u,
+      };
+      if (!withdrawalTopics[f.fieldId]?.test(t)) continue;
+    }
     if (
       f.fieldId === "warning_given" &&
       /предупредил другого человека, не меня/.test(t)
@@ -512,7 +620,7 @@ export function extractReviewed(s, text, out) {
   // claiming that every other form of force was absent.
   if (
     !result.some((f) => f.field === "use_of_force.force_actually_used") &&
-    /никто.{0,10}не ударил|он не ударил/.test(t) &&
+    /никто.{0,10}не ударил|он(?: меня)? не ударил/.test(t) &&
     !conditional
   ) {
     const old = s.factLedger?.findLast(
@@ -521,7 +629,16 @@ export function extractReviewed(s, text, out) {
         f.episodeId === e?.id &&
         f.status === "active",
     );
-    if (old && /удар|бьет/.test(n(old.source?.quote || "")))
+    const evidence = old
+      ? [old.source, ...(old.supportingSources || [])]
+          .map((x) => n(x?.quote || ""))
+          .join("; ")
+      : "";
+    if (
+      old &&
+      /удар|бьет/.test(evidence) &&
+      !/толкнул|выкручи|заломил|наручник/.test(evidence)
+    )
       result.push({
         field: "use_of_force.force_actually_used",
         value: null,
