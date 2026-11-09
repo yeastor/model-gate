@@ -98,6 +98,10 @@ server.listen(Number(process.env.CATEGORY_PORT||18150),host);""")
 
 def protect_dispatch(text, target):
     text = replace(text, "{atomic,read,identityKey}", "{atomic,read,identityKey,removeAtomicTemps}")
+    text = replace(text,
+                   "process.env.CATEGORY_CHILDREN_SITE_MVP='1';process.env.CHILDREN_PRIVATE_SQLITE_STORE=JSON.stringify(cfg);",
+                   "if(cfg){process.env.CATEGORY_CHILDREN_SITE_MVP='1';"
+                   "process.env.CHILDREN_PRIVATE_SQLITE_STORE=JSON.stringify(cfg);}")
     start = text.index(" async function internal(input,operation)")
     end = text.index(" async function respond(input)", start)
     return text[:start] + """ async function internal(input,operation){return locked(identity(input),async()=>{

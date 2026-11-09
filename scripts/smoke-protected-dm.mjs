@@ -65,9 +65,11 @@ const mocks = process.env.DM_SMOKE_REAL_VECTOR === 'true' ? [] : [
 ];
 let child;
 let exited;
-const spawnDM = (key) => {
+const spawnDM = (key, withChildren = true) => {
+  const settings = { ...env, ...(key ? { CHAT_RUNTIME_KEYS_FILE: key } : {}) };
+  if (!withChildren) delete settings.CATEGORY_CHILDREN_LOCATOR_FILE;
   child = spawn(process.execPath, ['start.mjs'], {
-    env: { ...env, ...(key ? { CHAT_RUNTIME_KEYS_FILE: key } : {}) },
+    env: settings,
     stdio: ['ignore', 'inherit', 'inherit'],
   });
   exited = new Promise((resolve, reject) => {
@@ -80,8 +82,8 @@ const stop = async () => {
   if (child.exitCode === null && child.signalCode === null) child.kill();
   await exited;
 };
-const launch = async (key) => {
-  spawnDM(key);
+const launch = async (key, withChildren = true) => {
+  spawnDM(key, withChildren);
   for (let i = 0; i < 150; i++) {
     assert.equal(child.exitCode, null, 'runtime exited during startup');
     try {
@@ -206,7 +208,14 @@ try {
   assert(!(await readFile(childrenStore.database)).includes(Buffer.from(childMarker)));
   assert.deepEqual(await post('/conversation/expire', identity), { status: 200, data: { ok: true } });
   checkChildren(true);
-  console.log('PASS: 18/18 categories, wrong key, owner isolation, restart, expiry, feedback and scoped SQLite');
+  await stop();
+  await launch(keyfile, false);
+  const withoutChildren = await post('/respond', {
+    ...pps.req, id: randomUUID(), turnId: randomUUID(), mode: 'chat',
+    question: 'Меня остановил сотрудник полиции на улице.',
+  });
+  assert.equal(withoutChildren.status, 200, 'ordinary chat without optional SQLite: ' + withoutChildren.data.error);
+  console.log('PASS: 18/18 categories, wrong key, owner isolation, restart, expiry, feedback, optional scoped SQLite');
 } finally {
   await stop();
   for (const server of mocks) server.close();
